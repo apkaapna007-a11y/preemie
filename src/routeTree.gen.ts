@@ -10,33 +10,116 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as HowToCalculateCorrectedAgeRouteImport } from './routes/how-to-calculate-corrected-age'
+import { Route as MethodologyRouteImport } from './routes/methodology'
+import { Route as PrematureBabyMilestonesRouteImport } from './routes/premature-baby-milestones'
+import { Route as RedFlagsRouteImport } from './routes/red-flags'
+import { Route as WhenToStopCorrectingRouteImport } from './routes/when-to-stop-correcting'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HowToCalculateCorrectedAgeRoute =
+  HowToCalculateCorrectedAgeRouteImport.update({
+    id: '/how-to-calculate-corrected-age',
+    path: '/how-to-calculate-corrected-age',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const MethodologyRoute = MethodologyRouteImport.update({
+  id: '/methodology',
+  path: '/methodology',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrematureBabyMilestonesRoute = PrematureBabyMilestonesRouteImport.update({
+  id: '/premature-baby-milestones',
+  path: '/premature-baby-milestones',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RedFlagsRoute = RedFlagsRouteImport.update({
+  id: '/red-flags',
+  path: '/red-flags',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WhenToStopCorrectingRoute = WhenToStopCorrectingRouteImport.update({
+  id: '/when-to-stop-correcting',
+  path: '/when-to-stop-correcting',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/how-to-calculate-corrected-age': typeof HowToCalculateCorrectedAgeRoute
+  '/methodology': typeof MethodologyRoute
+  '/premature-baby-milestones': typeof PrematureBabyMilestonesRoute
+  '/red-flags': typeof RedFlagsRoute
+  '/when-to-stop-correcting': typeof WhenToStopCorrectingRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/how-to-calculate-corrected-age': typeof HowToCalculateCorrectedAgeRoute
+  '/methodology': typeof MethodologyRoute
+  '/premature-baby-milestones': typeof PrematureBabyMilestonesRoute
+  '/red-flags': typeof RedFlagsRoute
+  '/when-to-stop-correcting': typeof WhenToStopCorrectingRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/how-to-calculate-corrected-age': typeof HowToCalculateCorrectedAgeRoute
+  '/methodology': typeof MethodologyRoute
+  '/premature-baby-milestones': typeof PrematureBabyMilestonesRoute
+  '/red-flags': typeof RedFlagsRoute
+  '/when-to-stop-correcting': typeof WhenToStopCorrectingRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/how-to-calculate-corrected-age'
+    | '/methodology'
+    | '/premature-baby-milestones'
+    | '/red-flags'
+    | '/when-to-stop-correcting'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/how-to-calculate-corrected-age'
+    | '/methodology'
+    | '/premature-baby-milestones'
+    | '/red-flags'
+    | '/when-to-stop-correcting'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/how-to-calculate-corrected-age'
+    | '/methodology'
+    | '/premature-baby-milestones'
+    | '/red-flags'
+    | '/when-to-stop-correcting'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  HowToCalculateCorrectedAgeRoute: typeof HowToCalculateCorrectedAgeRoute
+  MethodologyRoute: typeof MethodologyRoute
+  PrematureBabyMilestonesRoute: typeof PrematureBabyMilestonesRoute
+  RedFlagsRoute: typeof RedFlagsRoute
+  WhenToStopCorrectingRoute: typeof WhenToStopCorrectingRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,22 +131,60 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/how-to-calculate-corrected-age': {
+      id: '/how-to-calculate-corrected-age'
+      path: '/how-to-calculate-corrected-age'
+      fullPath: '/how-to-calculate-corrected-age'
+      preLoaderRoute: typeof HowToCalculateCorrectedAgeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/methodology': {
+      id: '/methodology'
+      path: '/methodology'
+      fullPath: '/methodology'
+      preLoaderRoute: typeof MethodologyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/premature-baby-milestones': {
+      id: '/premature-baby-milestones'
+      path: '/premature-baby-milestones'
+      fullPath: '/premature-baby-milestones'
+      preLoaderRoute: typeof PrematureBabyMilestonesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/red-flags': {
+      id: '/red-flags'
+      path: '/red-flags'
+      fullPath: '/red-flags'
+      preLoaderRoute: typeof RedFlagsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/when-to-stop-correcting': {
+      id: '/when-to-stop-correcting'
+      path: '/when-to-stop-correcting'
+      fullPath: '/when-to-stop-correcting'
+      preLoaderRoute: typeof WhenToStopCorrectingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  HowToCalculateCorrectedAgeRoute: HowToCalculateCorrectedAgeRoute,
+  MethodologyRoute: MethodologyRoute,
+  PrematureBabyMilestonesRoute: PrematureBabyMilestonesRoute,
+  RedFlagsRoute: RedFlagsRoute,
+  WhenToStopCorrectingRoute: WhenToStopCorrectingRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
