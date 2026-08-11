@@ -17,11 +17,12 @@ import {
 interface VisitEntry {
   id: string;
   date: string;
-  weightKg?: number;
-  lengthCm?: number;
-  headCm?: number;
-  note?: string;
+  weightKg?: number | undefined;
+  lengthCm?: number | undefined;
+  headCm?: number | undefined;
+  note?: string | undefined;
 }
+
 
 const STORAGE_KEY = "adjustedage.record.v1";
 
