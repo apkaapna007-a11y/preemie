@@ -89,6 +89,19 @@ export function CorrectedAgeTool() {
   const category = gaCategory(gaWeeks, gaDays);
   const futureBirth = Boolean(birthDate && !result);
 
+  const schedule = useMemo(
+    () =>
+      result && birthDate
+        ? followUpSchedule(birthDate, result.prematurityDays, onDate)
+        : [],
+    [result, birthDate, onDate],
+  );
+
+  useEffect(() => {
+    if (result) track("tool_calculated");
+    // one count per completed input set, not per keystroke
+  }, [birthDate, gaWeeks, gaDays, result]);
+
   function addVisit() {
     if (!birthDate) return;
     const entry: VisitEntry = {
@@ -97,12 +110,33 @@ export function CorrectedAgeTool() {
       weightKg: weight ? Number(weight) : undefined,
       lengthCm: length ? Number(length) : undefined,
       headCm: head ? Number(head) : undefined,
+      note: note.trim() ? note.trim() : undefined,
     };
     setVisits((v) => [...v.filter((x) => x.date !== entry.date), entry].sort((a, b) => a.date.localeCompare(b.date)));
     setWeight("");
     setLength("");
     setHead("");
+    setNote("");
+    track("visit_saved");
   }
+
+  function exportVisitPdf(v: VisitEntry) {
+    const idx = visits.findIndex((x) => x.id === v.id);
+    const prev = idx > 0 ? visits[idx - 1] : undefined;
+    generateVisitPdf({
+      birthDate,
+      gaWeeks,
+      gaDays,
+      visitDate: v.date,
+      weightKg: v.weightKg,
+      lengthCm: v.lengthCm,
+      headCm: v.headCm,
+      note: v.note,
+      previous: prev ? { date: prev.date, weightKg: prev.weightKg } : undefined,
+    });
+    track("pdf_exported");
+  }
+
 
   const plausibility: string[] = [];
   if (weight && (Number(weight) < 0.3 || Number(weight) > 25))
