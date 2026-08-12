@@ -165,9 +165,11 @@ licensing. Requires accounts and therefore a backend; the parent-facing tool
 must remain account-free and local-only regardless.
 
 **Phase 6 — infrastructure.**
-Sitemap and canonical tags once a domain is set, offline/PWA support,
-`FAQPage` and `HowTo` structured data, and an annual clinical review cycle with
-dated changelog entries on `/methodology`.
+Sitemap and canonical tags once a domain is set, `FAQPage` and `HowTo`
+structured data, an install prompt A2HS nudge on the published site, and an
+annual clinical review cycle with dated changelog entries on `/methodology`.
+(Offline/PWA support and the privacy page shipped in this release.)
+
 
 **Explicitly out of scope forever:** dosing calculators, fluid or electrolyte
 protocols, infusion dilutions, and anything where a decimal error harms a child.
