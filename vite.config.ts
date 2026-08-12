@@ -19,6 +19,8 @@ export default defineConfig({
         registerType: "autoUpdate",
         injectRegister: null,
         filename: "sw.js",
+        outDir: "dist/client",
+
         devOptions: { enabled: false },
         manifest: {
           name: "AdjustedAge — Corrected Age & Preemie Follow-Up",
