@@ -57,6 +57,7 @@ export function CorrectedAgeTool() {
   const [weight, setWeight] = useState("");
   const [length, setLength] = useState("");
   const [head, setHead] = useState("");
+  const [note, setNote] = useState("");
   const [checked, setChecked] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
