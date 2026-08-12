@@ -9,7 +9,7 @@ export const Route = createFileRoute("/red-flags")({
       {
         name: "description",
         content:
-          "Developmental and clinical red flags in premature babies that need a same-week call, whatever the corrected age. Reviewed by Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics).",
+          "Developmental and clinical red flags in premature babies that need a same-week call, whatever the corrected age. Reviewed by Dr. Zeeshan Islam.",
       },
       { property: "og:title", content: "Preemie Red Flags: When to Call the Doctor" },
       {

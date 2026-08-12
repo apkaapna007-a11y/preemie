@@ -5,13 +5,13 @@ import headshot from "@/assets/dr-zeeshan-islam.png.asset.json";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics) | AdjustedAge" },
+      { title: "About Dr. Zeeshan Islam | AdjustedAge" },
       {
         name: "description",
         content:
-          "AdjustedAge is written and clinically reviewed by Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics), a consultant paediatrician. Credentials, editorial policy and review schedule.",
+          "AdjustedAge is written and reviewed by Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics). Credentials, editorial policy and review schedule.",
       },
-      { property: "og:title", content: "About Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics)" },
+      { property: "og:title", content: "About Dr. Zeeshan Islam" },
       {
         property: "og:description",
         content:

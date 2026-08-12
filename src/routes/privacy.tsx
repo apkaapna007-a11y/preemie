@@ -16,7 +16,7 @@ export const Route = createFileRoute("/privacy")({
       {
         name: "description",
         content:
-          "AdjustedAge stores your baby's dates and measurements only in your own browser. No accounts, no cookies, no health data uploaded — and usage counts stay local too.",
+          "AdjustedAge stores your baby's dates and measurements only in your browser. No accounts, no cookies, no data uploaded.",
       },
       { property: "og:title", content: "Privacy & Data Handling | AdjustedAge" },
       {

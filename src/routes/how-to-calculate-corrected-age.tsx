@@ -4,7 +4,7 @@ import { Article, PageHeader, SiteLayout } from "@/components/SiteLayout";
 export const Route = createFileRoute("/how-to-calculate-corrected-age")({
   head: () => ({
     meta: [
-      { title: "How to Calculate Corrected Age (Worked Examples) | AdjustedAge" },
+      { title: "How to Calculate Corrected Age | AdjustedAge" },
       {
         name: "description",
         content:

@@ -9,7 +9,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Corrected age, chronological age and PMA for preterm infants, with CDC milestones re-indexed to corrected age. Reviewed by Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics).",
+          "Corrected age, milestones and follow-up tracking for NICU graduates, with CDC milestones re-indexed to corrected age. Reviewed by Dr. Zeeshan Islam.",
       },
       { property: "og:title", content: "Corrected Age Calculator for Premature Babies" },
       {

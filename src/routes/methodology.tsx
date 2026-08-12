@@ -8,7 +8,7 @@ export const Route = createFileRoute("/methodology")({
       {
         name: "description",
         content:
-          "Every formula, source and limitation behind the AdjustedAge corrected age tool, including the Fenton versus INTERGROWTH-21st question. Reviewed by Dr. Zeeshan Islam, MBBS, MCPS.",
+          "Every formula, source and limitation behind the AdjustedAge tool, including Fenton vs INTERGROWTH-21st. Reviewed by Dr. Zeeshan Islam.",
       },
       { property: "og:title", content: "Methodology, Formulas and References" },
       {

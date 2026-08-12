@@ -8,7 +8,7 @@ export const Route = createFileRoute("/when-to-stop-correcting")({
       {
         name: "description",
         content:
-          "Correction is conventionally stopped at 24 months, but the convention varies by domain and gestation. What the evidence actually supports, reviewed by Dr. Zeeshan Islam, MBBS, MCPS.",
+          "Correction is conventionally stopped at 24 months, but the convention varies by domain. What the evidence supports, reviewed by Dr. Zeeshan Islam.",
       },
       { property: "og:title", content: "When Do You Stop Correcting for Prematurity?" },
       {
