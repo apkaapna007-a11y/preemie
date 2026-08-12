@@ -62,11 +62,42 @@ is a named, credentialed paediatrician on a YMYL topic — not the code.
 4. Loss of a previously acquired skill is called out as a same-week concern at
    any age.
 
+### Follow-up, PDF, analytics and offline (this release)
+
+- **Follow-up visit schedule.** Corrected-age-indexed visit calendar (4, 8, 12,
+  18, 24, 36 months corrected) computed from the original due date, with each
+  visit's clinical focus and a done / due / upcoming state.
+  `src/lib/followup.ts`.
+- **One-tap clinician PDF.** Every serial entry exports an A4 visit summary:
+  visit and birth facts, GA category, corrected / chronological / postmenstrual
+  age, measurements, weight velocity in g/kg/day versus the previous visit, the
+  visit note, the corrected-age surveillance prompts, the act-early list and the
+  full disclaimer. Generated entirely client-side with `jsPDF`
+  (`src/lib/visit-pdf.ts`) — no upload, works offline.
+- **Visit notes.** Free-text note per visit, stored locally, printed on the PDF.
+- **Privacy-first analytics.** `src/lib/analytics.ts` counts event *names* only
+  (`tool_calculated`, `visit_saved`, `pdf_exported`, `csv_exported`,
+  `print_summary`, `milestone_checked`, `visit_removed`). No cookies, no
+  identifiers, no IP, no dates, no measurements, no note text — and the counts
+  stay in localStorage rather than being uploaded. `/privacy` displays the raw
+  counts and offers per-device opt-out and delete.
+- **Installable + offline.** `vite-plugin-pwa` (`generateSW`, `autoUpdate`) with
+  a single guarded registration wrapper in `src/lib/pwa.ts` that refuses to
+  register in dev, in an iframe, on Lovable preview hosts, or with `?sw=off`.
+  NetworkFirst for HTML navigations, CacheFirst for hashed same-origin assets.
+  Manifest, maskable icons, theme colour and apple-touch-icon are wired in
+  `vite.config.ts` and `src/routes/__root.tsx`.
+- **Premium header.** Sticky, blurred, credential trust-bar, pill navigation
+  with active state, primary CTA, and a proper mobile drawer.
+
 ### Technical
 TanStack Start + React 19, Tailwind v4 semantic tokens in `src/styles.css`
 (no hardcoded colours in components), static JSON milestone data, zero backend,
 zero paid API. Key modules: `src/lib/corrected-age.ts`,
-`src/lib/milestones.ts`, `src/components/CorrectedAgeTool.tsx`.
+`src/lib/milestones.ts`, `src/lib/followup.ts`, `src/lib/visit-pdf.ts`,
+`src/lib/analytics.ts`, `src/lib/pwa.ts`,
+`src/components/CorrectedAgeTool.tsx`.
+
 
 ---
 
