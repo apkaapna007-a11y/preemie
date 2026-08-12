@@ -14,6 +14,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as HowToCalculateCorrectedAgeRouteImport } from './routes/how-to-calculate-corrected-age'
 import { Route as MethodologyRouteImport } from './routes/methodology'
 import { Route as PrematureBabyMilestonesRouteImport } from './routes/premature-baby-milestones'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as RedFlagsRouteImport } from './routes/red-flags'
 import { Route as WhenToStopCorrectingRouteImport } from './routes/when-to-stop-correcting'
 
@@ -43,6 +44,11 @@ const PrematureBabyMilestonesRoute = PrematureBabyMilestonesRouteImport.update({
   path: '/premature-baby-milestones',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RedFlagsRoute = RedFlagsRouteImport.update({
   id: '/red-flags',
   path: '/red-flags',
@@ -60,6 +66,7 @@ export interface FileRoutesByFullPath {
   '/how-to-calculate-corrected-age': typeof HowToCalculateCorrectedAgeRoute
   '/methodology': typeof MethodologyRoute
   '/premature-baby-milestones': typeof PrematureBabyMilestonesRoute
+  '/privacy': typeof PrivacyRoute
   '/red-flags': typeof RedFlagsRoute
   '/when-to-stop-correcting': typeof WhenToStopCorrectingRoute
 }
@@ -69,6 +76,7 @@ export interface FileRoutesByTo {
   '/how-to-calculate-corrected-age': typeof HowToCalculateCorrectedAgeRoute
   '/methodology': typeof MethodologyRoute
   '/premature-baby-milestones': typeof PrematureBabyMilestonesRoute
+  '/privacy': typeof PrivacyRoute
   '/red-flags': typeof RedFlagsRoute
   '/when-to-stop-correcting': typeof WhenToStopCorrectingRoute
 }
@@ -79,6 +87,7 @@ export interface FileRoutesById {
   '/how-to-calculate-corrected-age': typeof HowToCalculateCorrectedAgeRoute
   '/methodology': typeof MethodologyRoute
   '/premature-baby-milestones': typeof PrematureBabyMilestonesRoute
+  '/privacy': typeof PrivacyRoute
   '/red-flags': typeof RedFlagsRoute
   '/when-to-stop-correcting': typeof WhenToStopCorrectingRoute
 }
@@ -90,6 +99,7 @@ export interface FileRouteTypes {
     | '/how-to-calculate-corrected-age'
     | '/methodology'
     | '/premature-baby-milestones'
+    | '/privacy'
     | '/red-flags'
     | '/when-to-stop-correcting'
   fileRoutesByTo: FileRoutesByTo
@@ -99,6 +109,7 @@ export interface FileRouteTypes {
     | '/how-to-calculate-corrected-age'
     | '/methodology'
     | '/premature-baby-milestones'
+    | '/privacy'
     | '/red-flags'
     | '/when-to-stop-correcting'
   id:
@@ -108,6 +119,7 @@ export interface FileRouteTypes {
     | '/how-to-calculate-corrected-age'
     | '/methodology'
     | '/premature-baby-milestones'
+    | '/privacy'
     | '/red-flags'
     | '/when-to-stop-correcting'
   fileRoutesById: FileRoutesById
@@ -118,6 +130,7 @@ export interface RootRouteChildren {
   HowToCalculateCorrectedAgeRoute: typeof HowToCalculateCorrectedAgeRoute
   MethodologyRoute: typeof MethodologyRoute
   PrematureBabyMilestonesRoute: typeof PrematureBabyMilestonesRoute
+  PrivacyRoute: typeof PrivacyRoute
   RedFlagsRoute: typeof RedFlagsRoute
   WhenToStopCorrectingRoute: typeof WhenToStopCorrectingRoute
 }
@@ -159,6 +172,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrematureBabyMilestonesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/red-flags': {
       id: '/red-flags'
       path: '/red-flags'
@@ -182,6 +202,7 @@ const rootRouteChildren: RootRouteChildren = {
   HowToCalculateCorrectedAgeRoute: HowToCalculateCorrectedAgeRoute,
   MethodologyRoute: MethodologyRoute,
   PrematureBabyMilestonesRoute: PrematureBabyMilestonesRoute,
+  PrivacyRoute: PrivacyRoute,
   RedFlagsRoute: RedFlagsRoute,
   WhenToStopCorrectingRoute: WhenToStopCorrectingRoute,
 }

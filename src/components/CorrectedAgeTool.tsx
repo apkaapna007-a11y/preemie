@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "@tanstack/react-router";
+import { FileDown, Printer, Table2, CalendarCheck } from "lucide-react";
 import {
   computeAges,
   correctedMonths,
@@ -13,6 +14,10 @@ import {
   milestoneSetForCorrectedMonths,
   nextMilestoneSet,
 } from "@/lib/milestones";
+import { followUpSchedule } from "@/lib/followup";
+import { generateVisitPdf } from "@/lib/visit-pdf";
+import { track } from "@/lib/analytics";
+
 
 interface VisitEntry {
   id: string;
