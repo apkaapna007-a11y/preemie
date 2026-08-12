@@ -11,14 +11,14 @@ export const Route = createFileRoute("/about")({
         content:
           "AdjustedAge is written and reviewed by Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics). Credentials, editorial policy and review schedule.",
       },
-      { property: "og:title", content: "About Dr. Zeeshan Islam" },
-      {
-        property: "og:description",
-        content:
-          "Who writes this site, what they are qualified to say, how it is reviewed, and who pays for it.",
-      },
+      { property: "og:url", content: "https://preemie.vercel.app/about" },
       { property: "og:type", content: "profile" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "article:published_time", content: "2026-08-11T00:00:00Z" },
+      { name: "article:modified_time", content: "2026-08-12T00:00:00Z" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://preemie.vercel.app/about" },
     ],
     scripts: [
       {
@@ -30,6 +30,10 @@ export const Route = createFileRoute("/about")({
           honorificPrefix: "Dr.",
           honorificSuffix: "MBBS, MCPS (Pediatrics)",
           jobTitle: "Consultant Paediatrician",
+          url: "https://preemie.vercel.app/about",
+          image: "https://preemie.vercel.app/og-image.png",
+          description:
+            "Author and clinical reviewer of AdjustedAge, a corrected-age calculator and preemie follow-up tool.",
           knowsAbout: [
             "Pediatrics",
             "Neonatology",
@@ -48,6 +52,22 @@ export const Route = createFileRoute("/about")({
               credentialCategory: "postgraduate certification",
               name: "MCPS in Paediatrics, College of Physicians and Surgeons Pakistan",
             },
+          ],
+          worksFor: {
+            "@type": "Organization",
+            name: "AdjustedAge",
+            url: "https://preemie.vercel.app",
+          },
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://preemie.vercel.app/" },
+            { "@type": "ListItem", position: 2, name: "About", item: "https://preemie.vercel.app/about" },
           ],
         }),
       },

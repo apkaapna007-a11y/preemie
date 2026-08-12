@@ -11,14 +11,59 @@ export const Route = createFileRoute("/red-flags")({
         content:
           "Developmental and clinical red flags in premature babies that need a same-week call, whatever the corrected age. Reviewed by Dr. Zeeshan Islam.",
       },
-      { property: "og:title", content: "Preemie Red Flags: When to Call the Doctor" },
-      {
-        property: "og:description",
-        content:
-          "Corrected age explains a lot of delay. It does not explain everything. These findings need a call today, not at the next visit.",
-      },
+      { property: "og:url", content: "https://preemie.vercel.app/red-flags" },
       { property: "og:type", content: "article" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "article:published_time", content: "2026-08-11T00:00:00Z" },
+      { name: "article:modified_time", content: "2026-08-12T00:00:00Z" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://preemie.vercel.app/red-flags" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "MedicalWebPage",
+          name: "Preemie Red Flags: When to Call the Doctor",
+          description:
+            "Emergency and same-week red flags for premature babies. CDC Act Early concerns that apply at every corrected age.",
+          url: "https://preemie.vercel.app/red-flags",
+          datePublished: "2026-08-11",
+          dateModified: "2026-08-12",
+          lastReviewed: "2026-08-12",
+          audience: {
+            "@type": "MedicalAudience",
+            audienceType: "Parents of preterm infants",
+          },
+          author: {
+            "@type": "Person",
+            name: "Dr. Zeeshan Islam",
+            honorificSuffix: "MBBS, MCPS (Pediatrics)",
+            jobTitle: "Consultant Paediatrician",
+            url: "https://preemie.vercel.app/about",
+          },
+          reviewedBy: {
+            "@type": "Person",
+            name: "Dr. Zeeshan Islam",
+            honorificSuffix: "MBBS, MCPS (Pediatrics)",
+            url: "https://preemie.vercel.app/about",
+          },
+          specialty: "Pediatrics",
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://preemie.vercel.app/" },
+            { "@type": "ListItem", position: 2, name: "Red Flags", item: "https://preemie.vercel.app/red-flags" },
+          ],
+        }),
+      },
     ],
   }),
   component: RedFlagsPage,

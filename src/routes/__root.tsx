@@ -85,6 +85,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Corrected age, milestones and follow-up tracking for NICU graduates, reviewed by Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics).",
       },
       { name: "author", content: "Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics)" },
+      { name: "robots", content: "index, follow" },
       { property: "og:title", content: "AdjustedAge — Corrected Age Tool for Premature Babies" },
       {
         property: "og:description",
@@ -92,13 +93,24 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Corrected age, milestones and follow-up tracking for NICU graduates, reviewed by a consultant paediatrician.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://preemie.vercel.app/" },
+      { property: "og:image", content: "https://preemie.vercel.app/og-image.png" },
+      { property: "og:locale", content: "en_US" },
+      { property: "og:site_name", content: "AdjustedAge" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:site", content: "@AdjustedAge" },
+      { name: "twitter:creator", content: "@AdjustedAge" },
+      { name: "twitter:image", content: "https://preemie.vercel.app/og-image.png" },
       { name: "theme-color", content: "#14606e" },
       { name: "apple-mobile-web-app-capable", content: "yes" },
       { name: "apple-mobile-web-app-title", content: "AdjustedAge" },
       { name: "apple-mobile-web-app-status-bar-style", content: "default" },
     ],
     links: [
+      {
+        rel: "canonical",
+        href: "https://preemie.vercel.app/",
+      },
       {
         rel: "stylesheet",
         href: appCss,
@@ -112,6 +124,32 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "icon", type: "image/png", href: "/favicon.png" },
       { rel: "apple-touch-icon", href: "/icons/icon-192.png" },
       { rel: "manifest", href: "/manifest.webmanifest" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "AdjustedAge",
+          url: "https://preemie.vercel.app",
+          description: "Corrected age calculator and preemie follow-up tool for NICU graduates.",
+          author: {
+            "@type": "Person",
+            name: "Dr. Zeeshan Islam",
+            honorificSuffix: "MBBS, MCPS (Pediatrics)",
+            jobTitle: "Consultant Paediatrician",
+          },
+          potentialAction: {
+            "@type": "SearchAction",
+            target: {
+              "@type": "EntryPoint",
+              urlTemplate: "https://preemie.vercel.app/?q={search_term_string}",
+            },
+            "query-input": "required name=search_term_string",
+          },
+        }),
+      },
     ],
 
   }),

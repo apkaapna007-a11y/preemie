@@ -11,14 +11,52 @@ export const Route = createFileRoute("/premature-baby-milestones")({
         content:
           "A premature baby milestones chart indexed to corrected age, from 2 to 36 months. CDC/AAP surveillance prompts, reviewed by Dr. Zeeshan Islam, MBBS, MCPS.",
       },
-      { property: "og:title", content: "Preemie Milestones by Corrected Age" },
-      {
-        property: "og:description",
-        content:
-          "Every milestone chart online uses birthday age. For a preterm baby that is the wrong column. This one is corrected.",
-      },
+      { property: "og:url", content: "https://preemie.vercel.app/premature-baby-milestones" },
       { property: "og:type", content: "article" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "article:published_time", content: "2026-08-11T00:00:00Z" },
+      { name: "article:modified_time", content: "2026-08-12T00:00:00Z" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://preemie.vercel.app/premature-baby-milestones" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: "Premature Baby Milestones by Corrected Age",
+          description:
+            "CDC/AAP developmental milestones chart re-indexed to corrected age for premature babies, from 2 to 36 months.",
+          url: "https://preemie.vercel.app/premature-baby-milestones",
+          datePublished: "2026-08-11",
+          dateModified: "2026-08-12",
+          author: {
+            "@type": "Person",
+            name: "Dr. Zeeshan Islam",
+            honorificSuffix: "MBBS, MCPS (Pediatrics)",
+            jobTitle: "Consultant Paediatrician",
+            url: "https://preemie.vercel.app/about",
+          },
+          publisher: {
+            "@type": "Organization",
+            name: "AdjustedAge",
+            url: "https://preemie.vercel.app",
+          },
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://preemie.vercel.app/" },
+            { "@type": "ListItem", position: 2, name: "Premature Baby Milestones", item: "https://preemie.vercel.app/premature-baby-milestones" },
+          ],
+        }),
+      },
     ],
   }),
   component: MilestonesPage,

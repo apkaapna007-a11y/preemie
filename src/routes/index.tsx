@@ -11,14 +11,12 @@ export const Route = createFileRoute("/")({
         content:
           "Corrected age, milestones and follow-up tracking for NICU graduates, with CDC milestones re-indexed to corrected age. Reviewed by Dr. Zeeshan Islam.",
       },
-      { property: "og:title", content: "Corrected Age Calculator for Premature Babies" },
-      {
-        property: "og:description",
-        content:
-          "One input set, every downstream answer: corrected age, PMA, milestones and a serial follow-up record that remembers each visit.",
-      },
+      { property: "og:url", content: "https://preemie.vercel.app/" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://preemie.vercel.app/" },
     ],
     scripts: [
       {
@@ -29,19 +27,42 @@ export const Route = createFileRoute("/")({
           name: "Corrected Age Calculator for Premature Babies",
           description:
             "Calculates corrected age, chronological age and postmenstrual age for preterm infants and re-indexes CDC developmental surveillance milestones to corrected age.",
-          lastReviewed: "2026-08-11",
+          url: "https://preemie.vercel.app/",
+          datePublished: "2026-08-11",
+          dateModified: "2026-08-12",
+          lastReviewed: "2026-08-12",
+          audience: {
+            "@type": "MedicalAudience",
+            audienceType: "Parents of preterm infants",
+          },
           author: {
             "@type": "Person",
             name: "Dr. Zeeshan Islam",
             honorificSuffix: "MBBS, MCPS (Pediatrics)",
             jobTitle: "Consultant Paediatrician",
+            url: "https://preemie.vercel.app/about",
           },
           reviewedBy: {
             "@type": "Person",
             name: "Dr. Zeeshan Islam",
             honorificSuffix: "MBBS, MCPS (Pediatrics)",
+            url: "https://preemie.vercel.app/about",
+          },
+          copyrightHolder: {
+            "@type": "Person",
+            name: "Dr. Zeeshan Islam",
           },
           specialty: "Pediatrics",
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://preemie.vercel.app/" },
+          ],
         }),
       },
     ],

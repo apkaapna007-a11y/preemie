@@ -10,14 +10,52 @@ export const Route = createFileRoute("/when-to-stop-correcting")({
         content:
           "Correction is conventionally stopped at 24 months, but the convention varies by domain. What the evidence supports, reviewed by Dr. Zeeshan Islam.",
       },
-      { property: "og:title", content: "When Do You Stop Correcting for Prematurity?" },
-      {
-        property: "og:description",
-        content:
-          "Two years is a convention, not a rule. Here is what changes at 12, 24 and 36 months corrected, and why growth and development stop at different points.",
-      },
+      { property: "og:url", content: "https://preemie.vercel.app/when-to-stop-correcting" },
       { property: "og:type", content: "article" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "article:published_time", content: "2026-08-11T00:00:00Z" },
+      { name: "article:modified_time", content: "2026-08-12T00:00:00Z" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://preemie.vercel.app/when-to-stop-correcting" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: "When Do You Stop Correcting for Prematurity?",
+          description:
+            "Two years is a convention, not a rule. Head circumference, weight, length and development all stop correcting at different ages.",
+          url: "https://preemie.vercel.app/when-to-stop-correcting",
+          datePublished: "2026-08-11",
+          dateModified: "2026-08-12",
+          author: {
+            "@type": "Person",
+            name: "Dr. Zeeshan Islam",
+            honorificSuffix: "MBBS, MCPS (Pediatrics)",
+            jobTitle: "Consultant Paediatrician",
+            url: "https://preemie.vercel.app/about",
+          },
+          publisher: {
+            "@type": "Organization",
+            name: "AdjustedAge",
+            url: "https://preemie.vercel.app",
+          },
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://preemie.vercel.app/" },
+            { "@type": "ListItem", position: 2, name: "When to Stop Correcting", item: "https://preemie.vercel.app/when-to-stop-correcting" },
+          ],
+        }),
+      },
     ],
   }),
   component: StopPage,

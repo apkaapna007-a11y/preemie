@@ -10,14 +10,93 @@ export const Route = createFileRoute("/methodology")({
         content:
           "Every formula, source and limitation behind the AdjustedAge tool, including Fenton vs INTERGROWTH-21st. Reviewed by Dr. Zeeshan Islam.",
       },
-      { property: "og:title", content: "Methodology, Formulas and References" },
-      {
-        property: "og:description",
-        content:
-          "The arithmetic, the primary sources, the limitations, and what this tool deliberately refuses to do.",
-      },
+      { property: "og:url", content: "https://preemie.vercel.app/methodology" },
       { property: "og:type", content: "article" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "article:published_time", content: "2026-08-11T00:00:00Z" },
+      { name: "article:modified_time", content: "2026-08-12T00:00:00Z" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://preemie.vercel.app/methodology" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: "Methodology, Formulas and References",
+          description:
+            "Every formula, source and limitation behind the AdjustedAge corrected age tool, including the Fenton versus INTERGROWTH-21st question.",
+          url: "https://preemie.vercel.app/methodology",
+          datePublished: "2026-08-11",
+          dateModified: "2026-08-12",
+          author: {
+            "@type": "Person",
+            name: "Dr. Zeeshan Islam",
+            honorificSuffix: "MBBS, MCPS (Pediatrics)",
+            jobTitle: "Consultant Paediatrician",
+            url: "https://preemie.vercel.app/about",
+          },
+          publisher: {
+            "@type": "Organization",
+            name: "AdjustedAge",
+            url: "https://preemie.vercel.app",
+          },
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            {
+              "@type": "Question",
+              name: "What is the corrected age formula?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Corrected age = chronological age − (280 days − gestational age in days). All arithmetic is done in whole days, UTC-normalised. Term is defined as 280 days (40+0).",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "What is postmenstrual age (PMA)?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Postmenstrual age = gestational age at birth + chronological age. It is the primary number used for clinical decisions below 50 weeks.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Do Fenton 2013 and INTERGROWTH-21st agree?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "No. Fenton 2013 is a descriptive reference of how preterm infants have actually grown. INTERGROWTH-21st is a prescriptive standard of how healthy preterm infants under optimal conditions grow. They disagree at the margins, particularly below 33 weeks PMA. Both are shown on this site when growth-chart plotting ships.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "When should correction stop?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Conventionally at 24 months for development. Head circumference corrects to about 18 months, weight to about 24 months, length to about 36–40 months. Immunisations are never corrected. See the full discussion on the when-to-stop-correcting page.",
+              },
+            },
+          ],
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://preemie.vercel.app/" },
+            { "@type": "ListItem", position: 2, name: "Methodology", item: "https://preemie.vercel.app/methodology" },
+          ],
+        }),
+      },
     ],
   }),
   component: MethodologyPage,

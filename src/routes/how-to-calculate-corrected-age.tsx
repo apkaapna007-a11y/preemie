@@ -8,16 +8,88 @@ export const Route = createFileRoute("/how-to-calculate-corrected-age")({
       {
         name: "description",
         content:
-          "The corrected age formula for premature babies, with three worked examples and the common mistakes. Reviewed by Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics).",
+          "The corrected age formula for premature babies with three worked examples and common mistakes. Reviewed by Dr. Zeeshan Islam.",
       },
-      { property: "og:title", content: "How to Calculate Corrected Age" },
-      {
-        property: "og:description",
-        content:
-          "Corrected age = chronological age minus weeks of prematurity. Three worked examples, plus the mistakes clinicians and parents actually make.",
-      },
+      { property: "og:url", content: "https://preemie.vercel.app/how-to-calculate-corrected-age" },
       { property: "og:type", content: "article" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "article:published_time", content: "2026-08-11T00:00:00Z" },
+      { name: "article:modified_time", content: "2026-08-12T00:00:00Z" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://preemie.vercel.app/how-to-calculate-corrected-age" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: "How to Calculate Corrected Age for Premature Babies",
+          description:
+            "The corrected age formula with three worked examples and the common mistakes clinicians and parents make.",
+          url: "https://preemie.vercel.app/how-to-calculate-corrected-age",
+          datePublished: "2026-08-11",
+          dateModified: "2026-08-12",
+          author: {
+            "@type": "Person",
+            name: "Dr. Zeeshan Islam",
+            honorificSuffix: "MBBS, MCPS (Pediatrics)",
+            jobTitle: "Consultant Paediatrician",
+            url: "https://preemie.vercel.app/about",
+          },
+          publisher: {
+            "@type": "Organization",
+            name: "AdjustedAge",
+            url: "https://preemie.vercel.app",
+          },
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "HowTo",
+          name: "How to Calculate Corrected Age",
+          description:
+            "Corrected age = chronological age minus weeks of prematurity. Three worked examples.",
+          totalTime: "PT2M",
+          step: [
+            {
+              "@type": "HowToStep",
+              name: "Calculate weeks of prematurity",
+              text: "Subtract gestational age at birth from 40 weeks. Example: 40 − 28 = 12 weeks premature.",
+            },
+            {
+              "@type": "HowToStep",
+              name: "Subtract from chronological age",
+              text: "Corrected age = chronological age − weeks of prematurity. Example: 6 months − 12 weeks = 3 months corrected.",
+            },
+            {
+              "@type": "HowToStep",
+              name: "Use corrected age for milestones",
+              text: "Read the CDC milestone row matching the corrected age, not the birthday age.",
+            },
+          ],
+          author: {
+            "@type": "Person",
+            name: "Dr. Zeeshan Islam",
+            honorificSuffix: "MBBS, MCPS (Pediatrics)",
+            url: "https://preemie.vercel.app/about",
+          },
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://preemie.vercel.app/" },
+            { "@type": "ListItem", position: 2, name: "How to Calculate Corrected Age", item: "https://preemie.vercel.app/how-to-calculate-corrected-age" },
+          ],
+        }),
+      },
     ],
   }),
   component: HowToPage,
