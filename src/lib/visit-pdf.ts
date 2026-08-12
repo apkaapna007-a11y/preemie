@@ -146,7 +146,7 @@ export function generateVisitPdf(input: VisitPdfInput) {
   const cMonths = ages ? correctedMonths(ages.correctedDays) : 0;
   const set = ages ? milestoneSetForCorrectedMonths(cMonths) : null;
   heading(
-    set ? `Surveillance prompts - ${set.label} (corrected)` : "Surveillance prompts",
+    set ? `Surveillance prompts - ${set.label}` : "Surveillance prompts",
   );
   if (set) {
     doc.setFontSize(9.5);
