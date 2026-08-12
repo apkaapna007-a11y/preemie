@@ -280,9 +280,11 @@ export function CorrectedAgeTool() {
                           <input
                             type="checkbox"
                             checked={Boolean(checked[key])}
-                            onChange={(e) =>
-                              setChecked((c) => ({ ...c, [key]: e.target.checked }))
-                            }
+                            onChange={(e) => {
+                              setChecked((c) => ({ ...c, [key]: e.target.checked }));
+                              if (e.target.checked) track("milestone_checked");
+                            }}
+
                             className="mt-1 size-4 accent-[var(--color-primary)]"
                           />
                           <span className="text-sm">
