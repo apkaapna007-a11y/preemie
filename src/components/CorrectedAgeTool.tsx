@@ -324,10 +324,44 @@ export function CorrectedAgeTool() {
           </section>
 
           <section className="mt-8 rounded-2xl border border-border bg-card p-5 shadow-paper sm:p-7">
+            <div className="flex items-center gap-2">
+              <CalendarCheck className="size-5 text-primary" aria-hidden />
+              <h2 className="font-display text-xl font-semibold">Follow-up visit schedule</h2>
+            </div>
+            <p className="mt-1 text-sm text-muted-foreground">
+              High-risk infant follow-up is timed to <strong>corrected</strong> age, so these dates
+              are calculated from your baby's original due date — not their birthday.
+            </p>
+            <ul className="mt-4 space-y-2">
+              {schedule.map((s) => (
+                <li
+                  key={s.correctedMonths}
+                  className={`flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 rounded-lg border px-3 py-2.5 ${
+                    s.status === "due"
+                      ? "border-primary bg-secondary"
+                      : s.status === "done"
+                        ? "border-border opacity-60"
+                        : "border-border"
+                  }`}
+                >
+                  <span className="text-sm font-medium">{s.label}</span>
+                  <span className="text-xs text-muted-foreground">{s.dueDate}</span>
+                  <span className="w-full text-xs text-muted-foreground">{s.focus}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-3 text-xs text-muted-foreground">
+              Indicative timing only. Your own NICU follow-up clinic's schedule always takes
+              precedence.
+            </p>
+          </section>
+
+          <section className="mt-8 rounded-2xl border border-border bg-card p-5 shadow-paper sm:p-7">
             <h2 className="font-display text-xl font-semibold">Serial record</h2>
             <p className="mt-1 text-sm text-muted-foreground">
-              Optional. Add measurements at each follow-up visit and the tool keeps the trajectory.
-              Stored only in this browser — nothing is uploaded.
+              Optional. Add measurements at each follow-up visit and the tool keeps the trajectory,
+              including weight velocity in g/kg/day. Stored only in this browser — nothing is
+              uploaded.
             </p>
 
             <div className="mt-4 grid gap-3 sm:grid-cols-4">
@@ -342,6 +376,19 @@ export function CorrectedAgeTool() {
                 Save this visit
               </button>
             </div>
+
+            <label className="mt-3 block">
+              <span className="text-xs font-medium text-muted-foreground">
+                Note for this visit (optional — stays on this device)
+              </span>
+              <textarea
+                value={note}
+                onChange={(e) => setNote(e.target.value)}
+                rows={2}
+                placeholder="e.g. feeding well, physio review booked"
+                className="mt-1 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-ring"
+              />
+            </label>
 
             {plausibility.map((msg) => (
               <p key={msg} className="mt-3 rounded-lg bg-caution px-3 py-2 text-sm text-caution-foreground">
@@ -366,20 +413,40 @@ export function CorrectedAgeTool() {
                     {visits.map((v) => {
                       const r = computeAges({ birthDate, gaWeeks, gaDays, onDate: v.date });
                       return (
-                        <tr key={v.id} className="border-t border-border">
-                          <td className="py-2 pr-4">{v.date}</td>
+                        <tr key={v.id} className="border-t border-border align-top">
+                          <td className="py-2 pr-4">
+                            {v.date}
+                            {v.note ? (
+                              <span className="mt-1 block max-w-[16rem] text-xs text-muted-foreground">
+                                {v.note}
+                              </span>
+                            ) : null}
+                          </td>
                           <td className="py-2 pr-4">{r ? formatDuration(r.correctedDays) : "—"}</td>
                           <td className="py-2 pr-4">{v.weightKg ? `${v.weightKg} kg` : "—"}</td>
                           <td className="py-2 pr-4">{v.lengthCm ? `${v.lengthCm} cm` : "—"}</td>
                           <td className="py-2 pr-4">{v.headCm ? `${v.headCm} cm` : "—"}</td>
                           <td className="no-print py-2">
-                            <button
-                              type="button"
-                              onClick={() => setVisits((list) => list.filter((x) => x.id !== v.id))}
-                              className="text-xs text-muted-foreground underline"
-                            >
-                              remove
-                            </button>
+                            <div className="flex items-center gap-3">
+                              <button
+                                type="button"
+                                onClick={() => exportVisitPdf(v)}
+                                className="inline-flex items-center gap-1.5 rounded-lg border border-border px-2.5 py-1.5 text-xs font-medium hover:bg-surface"
+                              >
+                                <FileDown className="size-3.5" aria-hidden />
+                                PDF
+                              </button>
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  setVisits((list) => list.filter((x) => x.id !== v.id));
+                                  track("visit_removed");
+                                }}
+                                className="text-xs text-muted-foreground underline"
+                              >
+                                remove
+                              </button>
+                            </div>
                           </td>
                         </tr>
                       );
@@ -390,9 +457,24 @@ export function CorrectedAgeTool() {
                 <div className="no-print mt-4 flex flex-wrap gap-3">
                   <button
                     type="button"
-                    onClick={() => window.print()}
-                    className="rounded-lg border border-border px-4 py-2 text-sm font-medium hover:bg-surface"
+                    onClick={() => {
+                      const latest = visits[visits.length - 1];
+                      if (latest) exportVisitPdf(latest);
+                    }}
+                    className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
                   >
+                    <FileDown className="size-4" aria-hidden />
+                    Clinician PDF for latest visit
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      track("print_summary");
+                      window.print();
+                    }}
+                    className="inline-flex items-center gap-2 rounded-lg border border-border px-4 py-2 text-sm font-medium hover:bg-surface"
+                  >
+                    <Printer className="size-4" aria-hidden />
                     Print visit summary
                   </button>
                   <button
@@ -411,15 +493,18 @@ export function CorrectedAgeTool() {
                       a.download = "adjustedage-visits.csv";
                       a.click();
                       URL.revokeObjectURL(url);
+                      track("csv_exported");
                     }}
-                    className="rounded-lg border border-border px-4 py-2 text-sm font-medium hover:bg-surface"
+                    className="inline-flex items-center gap-2 rounded-lg border border-border px-4 py-2 text-sm font-medium hover:bg-surface"
                   >
+                    <Table2 className="size-4" aria-hidden />
                     Export CSV
                   </button>
                 </div>
               </div>
             ) : null}
           </section>
+
         </>
       ) : null}
     </div>
