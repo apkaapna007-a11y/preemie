@@ -1,0 +1,63 @@
+# AdjustedAge
+
+> Corrected age calculator and preemie follow-up tool for NICU graduates.
+> Author: Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics), consultant paediatrician.
+
+## About
+
+AdjustedAge is a single-purpose clinical tool that turns two inputs — date of birth
+and gestational age at birth — into every downstream answer in preterm follow-up:
+corrected age, chronological age, postmenstrual age, the correct milestone row,
+and a serial visit record that persists across encounters.
+
+All calculations use whole days, UTC-normalised dates. No data is sent to any server;
+everything runs client-side and persists in localStorage only.
+
+## Pages
+
+- **/** — Corrected age calculator (primary tool). Enter date of birth and gestational
+  age; get corrected age, postmenstrual age, GA band classification, CDC/AAP
+  surveillance prompts, and serial visit tracking.
+- **/premature-baby-milestones** — Premature baby milestones chart. Age-indexed
+  developmental milestones with the correct corrected-age row highlighted.
+- **/how-to-calculate-corrected-age** — Explains the corrected-age formula
+  (chronological age minus the number of weeks born early) step by step.
+- **/when-to-stop-correcting** — When to stop using corrected age for developmental
+  assessment. AAP/WHO conventions and the 2-year rule.
+- **/red-flags** — Preemie developmental red flags. CDC "Act Early" concerns
+  surfaced at every age, unconditionally.
+- **/methodology** — Full methodology disclosure. Every formula, every source with
+  year and limitation, what the tool deliberately refuses to do.
+- **/about** — Author credentials and clinical reviewer information.
+- **/privacy** — Privacy policy. No tracking, no cookies, no data upload.
+
+## Key Concepts
+
+### Corrected Age
+Corrected age = chronological age − (280 − gestational age in days) / 7 weeks.
+Negative before term and displayed as such rather than clamped.
+
+### Postmenstrual Age (PMA)
+PMA = gestational age at birth + chronological age. Used for clinical decisions
+below 50 weeks.
+
+### Gestational Age Bands
+- Extremely preterm: <28 weeks
+- Very preterm: 28–32 weeks
+- Moderate preterm: 32–34 weeks
+- Late preterm: 34–37 weeks
+
+## Safety
+
+- No pass/fail verdict is ever emitted.
+- CDC act-early red flags always surface at every age.
+- "Contact your paediatrician — don't wait for the next visit" appears on every result.
+- Loss of a previously acquired skill is flagged as a same-week concern at any age.
+
+## Technical
+
+- Stack: TanStack Start + React 19, Tailwind CSS v4
+- No backend, no paid APIs
+- PWA with offline support
+- Client-side PDF export for visit summaries
+- Source: https://github.com/apkaapna007-a11y/preemie
