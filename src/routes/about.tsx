@@ -11,9 +11,25 @@ export const Route = createFileRoute("/about")({
         content:
           "AdjustedAge is written and reviewed by Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics). Credentials, editorial policy and review schedule.",
       },
+      { property: "og:title", content: "About Dr. Zeeshan Islam | AdjustedAge" },
+      {
+        property: "og:description",
+        content:
+          "AdjustedAge is written and reviewed by Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics). Credentials, editorial policy and review schedule.",
+      },
       { property: "og:url", content: "https://preemie.vercel.app/about" },
       { property: "og:type", content: "profile" },
+      { property: "og:image", content: "https://preemie.vercel.app/og-image.png" },
+      { property: "og:locale", content: "en_US" },
+      { property: "og:site_name", content: "AdjustedAge" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "About Dr. Zeeshan Islam | AdjustedAge" },
+      {
+        name: "twitter:description",
+        content:
+          "AdjustedAge is written and reviewed by Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics). Credentials, editorial policy and review schedule.",
+      },
+      { name: "twitter:image", content: "https://preemie.vercel.app/og-image.png" },
       { name: "article:published_time", content: "2026-08-11T00:00:00Z" },
       { name: "article:modified_time", content: "2026-08-12T00:00:00Z" },
     ],

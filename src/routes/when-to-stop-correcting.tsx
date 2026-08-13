@@ -10,9 +10,25 @@ export const Route = createFileRoute("/when-to-stop-correcting")({
         content:
           "Correction is conventionally stopped at 24 months, but the convention varies by domain. What the evidence supports, reviewed by Dr. Zeeshan Islam.",
       },
+      { property: "og:title", content: "When Do You Stop Correcting for Prematurity? | AdjustedAge" },
+      {
+        property: "og:description",
+        content:
+          "Correction is conventionally stopped at 24 months, but the convention varies by domain. What the evidence supports, reviewed by Dr. Zeeshan Islam.",
+      },
       { property: "og:url", content: "https://preemie.vercel.app/when-to-stop-correcting" },
       { property: "og:type", content: "article" },
+      { property: "og:image", content: "https://preemie.vercel.app/og-image.png" },
+      { property: "og:locale", content: "en_US" },
+      { property: "og:site_name", content: "AdjustedAge" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "When Do You Stop Correcting for Prematurity? | AdjustedAge" },
+      {
+        name: "twitter:description",
+        content:
+          "Correction is conventionally stopped at 24 months, but the convention varies by domain. What the evidence supports, reviewed by Dr. Zeeshan Islam.",
+      },
+      { name: "twitter:image", content: "https://preemie.vercel.app/og-image.png" },
       { name: "article:published_time", content: "2026-08-11T00:00:00Z" },
       { name: "article:modified_time", content: "2026-08-12T00:00:00Z" },
     ],

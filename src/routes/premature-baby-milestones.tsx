@@ -11,9 +11,25 @@ export const Route = createFileRoute("/premature-baby-milestones")({
         content:
           "A premature baby milestones chart indexed to corrected age, from 2 to 36 months. CDC/AAP surveillance prompts, reviewed by Dr. Zeeshan Islam, MBBS, MCPS.",
       },
+      { property: "og:title", content: "Preemie Milestones by Corrected Age | AdjustedAge" },
+      {
+        property: "og:description",
+        content:
+          "A premature baby milestones chart indexed to corrected age, from 2 to 36 months. CDC/AAP surveillance prompts, reviewed by Dr. Zeeshan Islam, MBBS, MCPS.",
+      },
       { property: "og:url", content: "https://preemie.vercel.app/premature-baby-milestones" },
       { property: "og:type", content: "article" },
+      { property: "og:image", content: "https://preemie.vercel.app/og-image.png" },
+      { property: "og:locale", content: "en_US" },
+      { property: "og:site_name", content: "AdjustedAge" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Preemie Milestones by Corrected Age | AdjustedAge" },
+      {
+        name: "twitter:description",
+        content:
+          "A premature baby milestones chart indexed to corrected age, from 2 to 36 months. CDC/AAP surveillance prompts, reviewed by Dr. Zeeshan Islam, MBBS, MCPS.",
+      },
+      { name: "twitter:image", content: "https://preemie.vercel.app/og-image.png" },
       { name: "article:published_time", content: "2026-08-11T00:00:00Z" },
       { name: "article:modified_time", content: "2026-08-12T00:00:00Z" },
     ],

@@ -18,9 +18,25 @@ export const Route = createFileRoute("/privacy")({
         content:
           "AdjustedAge stores your baby's dates and measurements only in your browser. No accounts, no cookies, no data uploaded.",
       },
+      { property: "og:title", content: "Privacy & Data Handling | AdjustedAge" },
+      {
+        property: "og:description",
+        content:
+          "AdjustedAge stores your baby's dates and measurements only in your browser. No accounts, no cookies, no data uploaded.",
+      },
       { property: "og:url", content: "https://preemie.vercel.app/privacy" },
       { property: "og:type", content: "article" },
+      { property: "og:image", content: "https://preemie.vercel.app/og-image.png" },
+      { property: "og:locale", content: "en_US" },
+      { property: "og:site_name", content: "AdjustedAge" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Privacy & Data Handling | AdjustedAge" },
+      {
+        name: "twitter:description",
+        content:
+          "AdjustedAge stores your baby's dates and measurements only in your browser. No accounts, no cookies, no data uploaded.",
+      },
+      { name: "twitter:image", content: "https://preemie.vercel.app/og-image.png" },
       { name: "article:published_time", content: "2026-08-11T00:00:00Z" },
       { name: "article:modified_time", content: "2026-08-12T00:00:00Z" },
     ],
