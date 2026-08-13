@@ -12,11 +12,15 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as HowToCalculateCorrectedAgeRouteImport } from './routes/how-to-calculate-corrected-age'
+import { Route as McpRouteImport } from './routes/mcp'
 import { Route as MethodologyRouteImport } from './routes/methodology'
 import { Route as PrematureBabyMilestonesRouteImport } from './routes/premature-baby-milestones'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as RedFlagsRouteImport } from './routes/red-flags'
 import { Route as WhenToStopCorrectingRouteImport } from './routes/when-to-stop-correcting'
+import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
+import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
+import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -34,6 +38,11 @@ const HowToCalculateCorrectedAgeRoute =
     path: '/how-to-calculate-corrected-age',
     getParentRoute: () => rootRouteImport,
   } as any)
+const McpRoute = McpRouteImport.update({
+  id: '/mcp',
+  path: '/mcp',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MethodologyRoute = MethodologyRouteImport.update({
   id: '/methodology',
   path: '/methodology',
@@ -59,37 +68,67 @@ const WhenToStopCorrectingRoute = WhenToStopCorrectingRouteImport.update({
   path: '/when-to-stop-correcting',
   getParentRoute: () => rootRouteImport,
 } as any)
+const Char91DotmcpChar93ListToolsRoute =
+  Char91DotmcpChar93ListToolsRouteImport.update({
+    id: '/.mcp/list-tools',
+    path: '/.mcp/list-tools',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const Char91DotwellKnownChar93OauthProtectedResourceRoute =
+  Char91DotwellKnownChar93OauthProtectedResourceRouteImport.update({
+    id: '/.well-known/oauth-protected-resource',
+    path: '/.well-known/oauth-protected-resource',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const Char91DotmcpChar93InvokeToolToolRoute =
+  Char91DotmcpChar93InvokeToolToolRouteImport.update({
+    id: '/.mcp/invoke-tool/$tool',
+    path: '/.mcp/invoke-tool/$tool',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/how-to-calculate-corrected-age': typeof HowToCalculateCorrectedAgeRoute
+  '/mcp': typeof McpRoute
   '/methodology': typeof MethodologyRoute
   '/premature-baby-milestones': typeof PrematureBabyMilestonesRoute
   '/privacy': typeof PrivacyRoute
   '/red-flags': typeof RedFlagsRoute
   '/when-to-stop-correcting': typeof WhenToStopCorrectingRoute
+  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/how-to-calculate-corrected-age': typeof HowToCalculateCorrectedAgeRoute
+  '/mcp': typeof McpRoute
   '/methodology': typeof MethodologyRoute
   '/premature-baby-milestones': typeof PrematureBabyMilestonesRoute
   '/privacy': typeof PrivacyRoute
   '/red-flags': typeof RedFlagsRoute
   '/when-to-stop-correcting': typeof WhenToStopCorrectingRoute
+  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/how-to-calculate-corrected-age': typeof HowToCalculateCorrectedAgeRoute
+  '/mcp': typeof McpRoute
   '/methodology': typeof MethodologyRoute
   '/premature-baby-milestones': typeof PrematureBabyMilestonesRoute
   '/privacy': typeof PrivacyRoute
   '/red-flags': typeof RedFlagsRoute
   '/when-to-stop-correcting': typeof WhenToStopCorrectingRoute
+  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -97,42 +136,58 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/how-to-calculate-corrected-age'
+    | '/mcp'
     | '/methodology'
     | '/premature-baby-milestones'
     | '/privacy'
     | '/red-flags'
     | '/when-to-stop-correcting'
+    | '/.mcp/list-tools'
+    | '/.well-known/oauth-protected-resource'
+    | '/.mcp/invoke-tool/$tool'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/how-to-calculate-corrected-age'
+    | '/mcp'
     | '/methodology'
     | '/premature-baby-milestones'
     | '/privacy'
     | '/red-flags'
     | '/when-to-stop-correcting'
+    | '/.mcp/list-tools'
+    | '/.well-known/oauth-protected-resource'
+    | '/.mcp/invoke-tool/$tool'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/how-to-calculate-corrected-age'
+    | '/mcp'
     | '/methodology'
     | '/premature-baby-milestones'
     | '/privacy'
     | '/red-flags'
     | '/when-to-stop-correcting'
+    | '/.mcp/list-tools'
+    | '/.well-known/oauth-protected-resource'
+    | '/.mcp/invoke-tool/$tool'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   HowToCalculateCorrectedAgeRoute: typeof HowToCalculateCorrectedAgeRoute
+  McpRoute: typeof McpRoute
   MethodologyRoute: typeof MethodologyRoute
   PrematureBabyMilestonesRoute: typeof PrematureBabyMilestonesRoute
   PrivacyRoute: typeof PrivacyRoute
   RedFlagsRoute: typeof RedFlagsRoute
   WhenToStopCorrectingRoute: typeof WhenToStopCorrectingRoute
+  Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
+  Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -156,6 +211,13 @@ declare module '@tanstack/react-router' {
       path: '/how-to-calculate-corrected-age'
       fullPath: '/how-to-calculate-corrected-age'
       preLoaderRoute: typeof HowToCalculateCorrectedAgeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mcp': {
+      id: '/mcp'
+      path: '/mcp'
+      fullPath: '/mcp'
+      preLoaderRoute: typeof McpRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/methodology': {
@@ -193,6 +255,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WhenToStopCorrectingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/.mcp/list-tools': {
+      id: '/.mcp/list-tools'
+      path: '/.mcp/list-tools'
+      fullPath: '/.mcp/list-tools'
+      preLoaderRoute: typeof Char91DotmcpChar93ListToolsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/.well-known/oauth-protected-resource': {
+      id: '/.well-known/oauth-protected-resource'
+      path: '/.well-known/oauth-protected-resource'
+      fullPath: '/.well-known/oauth-protected-resource'
+      preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/.mcp/invoke-tool/$tool': {
+      id: '/.mcp/invoke-tool/$tool'
+      path: '/.mcp/invoke-tool/$tool'
+      fullPath: '/.mcp/invoke-tool/$tool'
+      preLoaderRoute: typeof Char91DotmcpChar93InvokeToolToolRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -200,11 +283,16 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   HowToCalculateCorrectedAgeRoute: HowToCalculateCorrectedAgeRoute,
+  McpRoute: McpRoute,
   MethodologyRoute: MethodologyRoute,
   PrematureBabyMilestonesRoute: PrematureBabyMilestonesRoute,
   PrivacyRoute: PrivacyRoute,
   RedFlagsRoute: RedFlagsRoute,
   WhenToStopCorrectingRoute: WhenToStopCorrectingRoute,
+  Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
+  Char91DotwellKnownChar93OauthProtectedResourceRoute:
+    Char91DotwellKnownChar93OauthProtectedResourceRoute,
+  Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
