@@ -1,0 +1,176 @@
+{
+  "version": 1,
+  "sdk_version": "0.26.2",
+  "path": "/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "preemie-pathways",
+      "version": "0.1.0",
+      "title": "Preemie Pathways"
+    },
+    "tools": [
+      {
+        "name": "corrected_age",
+        "title": "Corrected age calculator",
+        "description": "Calculate corrected (adjusted) age, chronological age and postmenstrual age for a preterm infant from date of birth and gestational age at birth.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "birth_date": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "description": "Date of birth, yyyy-mm-dd."
+            },
+            "ga_weeks": {
+              "type": "integer",
+              "minimum": 22,
+              "maximum": 42,
+              "description": "Completed weeks of gestation at birth."
+            },
+            "ga_days": {
+              "default": 0,
+              "description": "Extra days of gestation (0-6).",
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 6
+            },
+            "on_date": {
+              "description": "Date to calculate for, yyyy-mm-dd. Defaults to today.",
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            }
+          },
+          "required": [
+            "birth_date",
+            "ga_weeks"
+          ]
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "milestone_prompts",
+        "title": "Corrected-age milestone prompts",
+        "description": "Return CDC/AAP developmental surveillance prompts re-indexed to a corrected age in months, plus the always-act-early red flags. These are conversation prompts, never a pass/fail screen.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "corrected_months": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 60,
+              "description": "Corrected age in months (may be fractional)."
+            }
+          },
+          "required": [
+            "corrected_months"
+          ]
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "followup_schedule",
+        "title": "NICU follow-up visit schedule",
+        "description": "Generate the high-risk infant follow-up visit schedule (4, 8, 12, 18, 24 and 36 months corrected) with calendar due dates derived from the original due date.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "birth_date": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "description": "Date of birth, yyyy-mm-dd."
+            },
+            "ga_weeks": {
+              "type": "integer",
+              "minimum": 22,
+              "maximum": 42,
+              "description": "Completed weeks of gestation at birth."
+            },
+            "ga_days": {
+              "default": 0,
+              "description": "Extra days of gestation (0-6).",
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 6
+            },
+            "on_date": {
+              "description": "Reference date used to mark visits done/due/upcoming. Defaults to today.",
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            }
+          },
+          "required": [
+            "birth_date",
+            "ga_weeks"
+          ]
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "weight_velocity",
+        "title": "Weight velocity (g/kg/day)",
+        "description": "Compute average daily weight gain in g/kg/day between two weighings, using the exponential (average-weight) method.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "previous_date": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "description": "Earlier weighing date, yyyy-mm-dd."
+            },
+            "previous_weight_kg": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "maximum": 30,
+              "description": "Earlier weight in kilograms."
+            },
+            "current_date": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "description": "Later weighing date, yyyy-mm-dd."
+            },
+            "current_weight_kg": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "maximum": 30,
+              "description": "Later weight in kilograms."
+            }
+          },
+          "required": [
+            "previous_date",
+            "previous_weight_kg",
+            "current_date",
+            "current_weight_kg"
+          ]
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
