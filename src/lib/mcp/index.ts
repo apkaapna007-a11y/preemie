@@ -1,4 +1,4 @@
-import { defineMcp, type AnyToolDefinition } from "@lovable.dev/mcp-js";
+import { defineMcp } from "@lovable.dev/mcp-js";
 import correctedAgeTool from "./tools/corrected-age";
 import milestonePromptsTool from "./tools/milestone-prompts";
 import followupScheduleTool from "./tools/followup-schedule";
@@ -15,5 +15,5 @@ export default defineMcp({
     milestonePromptsTool,
     followupScheduleTool,
     weightVelocityTool,
-  ] as unknown as AnyToolDefinition[],
+  ] as unknown as Parameters<typeof defineMcp>[0]["tools"],
 });
