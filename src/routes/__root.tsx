@@ -131,11 +131,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           name: "AdjustedAge",
           url: "https://preemie.vercel.app",
           description: "Corrected age calculator and preemie follow-up tool for NICU graduates.",
+          publisher: {
+            "@type": "Organization",
+            "name": "AdjustedAge",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://preemie.vercel.app/favicon.png"
+            }
+          },
           author: {
-            "@type": "Person",
-            name: "Dr. Zeeshan Islam",
-            honorificSuffix: "MBBS, MCPS (Pediatrics)",
-            jobTitle: "Consultant Paediatrician",
+            "@id": "https://preemie.vercel.app/about#drzeeshan"
           },
           potentialAction: {
             "@type": "SearchAction",
@@ -145,6 +150,25 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             },
             "query-input": "required name=search_term_string",
           },
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Physician",
+          "@id": "https://preemie.vercel.app/about#drzeeshan",
+          name: "Dr. Zeeshan Islam",
+          honorificSuffix: "MBBS, MCPS (Pediatrics)",
+          jobTitle: "Consultant Paediatrician",
+          medicalSpecialty: "Pediatrics",
+          url: "https://preemie.vercel.app/about",
+          image: "https://preemie.vercel.app/favicon.png",
+          description: "Dr. Zeeshan Islam is a Consultant Paediatrician specializing in neonatal follow-up and corrected age development.",
+          address: {
+            "@type": "PostalAddress",
+            "addressCountry": "PK"
+          }
         }),
       },
     ],
