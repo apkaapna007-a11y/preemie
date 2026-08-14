@@ -46,18 +46,17 @@ export const Route = createFileRoute("/methodology")({
             "Every formula, source and limitation behind the AdjustedAge corrected age tool, including the Fenton versus INTERGROWTH-21st question.",
           url: "https://preemie.vercel.app/methodology",
           datePublished: "2026-08-11",
-          dateModified: "2026-08-12",
+          dateModified: "2026-08-14",
           author: {
-            "@type": "Person",
-            name: "Dr. Zeeshan Islam",
-            honorificSuffix: "MBBS, MCPS (Pediatrics)",
-            jobTitle: "Consultant Paediatrician",
-            url: "https://preemie.vercel.app/about",
+            "@id": "https://preemie.vercel.app/about#drzeeshan",
           },
           publisher: {
             "@type": "Organization",
-            name: "AdjustedAge",
-            url: "https://preemie.vercel.app",
+            "name": "AdjustedAge",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://preemie.vercel.app/favicon.png"
+            }
           },
         }),
       },
