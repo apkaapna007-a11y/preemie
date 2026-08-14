@@ -46,18 +46,17 @@ export const Route = createFileRoute("/when-to-stop-correcting")({
             "Two years is a convention, not a rule. Head circumference, weight, length and development all stop correcting at different ages.",
           url: "https://preemie.vercel.app/when-to-stop-correcting",
           datePublished: "2026-08-11",
-          dateModified: "2026-08-12",
+          dateModified: "2026-08-14",
           author: {
-            "@type": "Person",
-            name: "Dr. Zeeshan Islam",
-            honorificSuffix: "MBBS, MCPS (Pediatrics)",
-            jobTitle: "Consultant Paediatrician",
-            url: "https://preemie.vercel.app/about",
+            "@id": "https://preemie.vercel.app/about#drzeeshan",
           },
           publisher: {
             "@type": "Organization",
-            name: "AdjustedAge",
-            url: "https://preemie.vercel.app",
+            "name": "AdjustedAge",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://preemie.vercel.app/favicon.png"
+            }
           },
         }),
       },
