@@ -90,6 +90,12 @@ is a named, credentialed paediatrician on a YMYL topic — not the code.
 - **Premium header.** Sticky, blurred, credential trust-bar, pill navigation
   with active state, primary CTA, and a proper mobile drawer.
 
+### SEO and Discovery (Verified)
+- **Sitemap & robots.txt.** Generated `public/sitemap.xml` including all 8 clinical routes and `/about`. `public/robots.txt` updated to reference the sitemap and allow full access to all assets and clinical paths.
+- **Verification.** Confirmed sitemap accessibility via Python validation script; all clinical routes return HTTP 200 without redirects or 404s.
+- **Schema.org Structured Data.** Implemented a robust hierarchy of `MedicalWebPage`, `Physician`, `Organization`, `Article`, `BreadcrumbList`, and `FAQPage` (on `/methodology`) and `HowTo` (on `/how-to-calculate-corrected-age`).
+- **E-E-A-T Linking.** Every page linked to Dr. Zeeshan Islam's physician profile via `@id: "#drzeeshan"`, establishing clear authorship and medical review signals.
+
 ### Technical
 TanStack Start + React 19, Tailwind v4 semantic tokens in `src/styles.css`
 (no hardcoded colours in components), static JSON milestone data, zero backend,
@@ -105,8 +111,7 @@ zero paid API. Key modules: `src/lib/corrected-age.ts`,
 
 - **Fenton 2013 / INTERGROWTH-21st LMS plotting.** Blocked pending written
   confirmation of redistribution terms for the published LMS coefficient tables.
-  Shipping the percentile without the licence, or with only one chart, would be
-  the wrong trade. See `/methodology`.
+  The current growth trajectory uses raw measurements (kg) without z-scores.
 - **Programmatic `/corrected-age-at-N-months` pages.** Thin duplicates. Do not
   build them.
 - **`gestational age calculator`** (4,400/mo). Obstetric due-date intent,
@@ -139,37 +144,33 @@ closed and the site should pivot to the Ballard scorer.
 
 ---
 
-## Future build plan
+## Future build plan: Serial-Data Preemie Tracker
 
-**Phase 2 — growth (unblocks after Day 5 licensing).**
-Fenton 2013 and INTERGROWTH-21st LMS z-scores side by side below 50 weeks PMA,
-with automatic hand-off to WHO after term-equivalent, an SVG serial trajectory
-plot, and the divergence explained inline. Adds `/fenton-growth-chart`,
-`/intergrowth-21st`, `/fenton-vs-intergrowth`.
+**Phase 2 — Growth Trajectory (LMS Unblocks).**
+- Transition from raw weight (kg) plotting to Fenton 2013 / INTERGROWTH-21st z-score trajectories (once licensing is confirmed).
+- Add head circumference and length velocity (cm/week) tracking alongside weight.
+- Implement WHO 2006 growth chart hand-off for infants reaching 50 weeks PMA.
 
-**Phase 3 — cluster completion (to 20 pages).**
-`/adjusted-age-calculator` (1,600/mo synonym), `/pma-pca-cga` (480/mo, the
-clinician entry point), `/late-preterm`, `/twins-multiples`,
-`/vaccines-corrected-age`, `/solid-foods`, `/catch-up-growth`,
-`/nicu-follow-up-schedule`, `/growth-velocity-preterm`,
-`/head-circumference-preterm`, plus Privacy / Contact / Disclaimer.
+**Phase 3 — Serial Milestone Tracking.**
+- Persist milestone checkbox states per-visit in `localStorage`.
+- Visualize milestone acquisition over time (e.g., "Rolling over" acquired at 4m corrected, 6m chronological).
+- Add "Compare to previous visit" view for clinicians to quickly see developmental progress or stalls.
 
-**Phase 4 — programmatic, tightly limited.**
-`born-at-{22..36}-weeks` — 15 pages only, each with genuinely distinct
-GA-specific outcome context, expected trajectory and follow-up schedule. Ship
-only the ones that are actually distinct.
+**Phase 4 — Cluster Completion (to 20 pages).**
+- `/adjusted-age-calculator` (1,600/mo synonym), `/pma-pca-cga` (480/mo, the
+  clinician entry point), `/late-preterm`, `/twins-multiples`,
+  `/vaccines-corrected-age`, `/solid-foods`, `/catch-up-growth`,
+  `/nicu-follow-up-schedule`, `/growth-velocity-preterm`,
+  `/head-circumference-preterm`.
 
-**Phase 5 — clinician tier.**
-Multi-patient list, EHR-pasteable visit summary, NICU-follow-up-clinic
-licensing. Requires accounts and therefore a backend; the parent-facing tool
-must remain account-free and local-only regardless.
+**Phase 5 — Clinician Export 2.0.**
+- Generate EHR-pasteable text summaries optimized for Epic/Cerner copy-pasting.
+- Add multi-visit longitudinal growth charts to the PDF export.
 
-**Phase 6 — infrastructure.**
-Sitemap and canonical tags once a domain is set, `FAQPage` and `HowTo`
-structured data, an install prompt A2HS nudge on the published site, and an
-annual clinical review cycle with dated changelog entries on `/methodology`.
-(Offline/PWA support and the privacy page shipped in this release.)
-
+**Phase 6 — Infrastructure & Authority.**
+- Implement annual clinical review cycle with dated changelog entries on `/methodology`.
+- Add an install prompt A2HS nudge on the published site.
+- Establish periodic verification of CDC milestone updates (AAP/CDC 2022).
 
 **Explicitly out of scope forever:** dosing calculators, fluid or electrolyte
 protocols, infusion dilutions, and anything where a decimal error harms a child.
