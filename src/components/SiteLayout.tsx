@@ -30,11 +30,8 @@ function SiteHeader() {
       <div className="bg-primary text-primary-foreground">
         <div className="mx-auto flex max-w-6xl items-center justify-center gap-2 px-5 py-1.5 text-[0.7rem] tracking-wide sm:text-xs">
           <ShieldCheck className="size-3.5 shrink-0 opacity-90" aria-hidden />
-          <span className="opacity-95 text-center whitespace-pre-line">
-            {`'''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
-                                        
-                                            
-                                            Generate and publish an XML sitemap.xml and ensure robots.txt references it so crawlers can reliably discover and rank every page.`}
+          <span className="opacity-95 text-center">
+            Clinically reviewed by Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics)
           </span>
         </div>
       </div>
