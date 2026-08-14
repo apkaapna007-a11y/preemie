@@ -48,6 +48,19 @@ export const Route = createFileRoute("/privacy")({
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
+          "@type": "MedicalWebPage",
+          name: "Privacy & Data Handling | AdjustedAge",
+          description: "AdjustedAge stores your baby's dates and measurements only in your browser. No accounts, no cookies, no data uploaded.",
+          url: "https://preemie.vercel.app/privacy",
+          author: {
+            "@id": "https://preemie.vercel.app/about#drzeeshan",
+          },
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
             { "@type": "ListItem", position: 1, name: "Home", item: "https://preemie.vercel.app/" },

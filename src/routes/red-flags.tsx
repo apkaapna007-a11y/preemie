@@ -47,24 +47,25 @@ export const Route = createFileRoute("/red-flags")({
             "Emergency and same-week red flags for premature babies. CDC Act Early concerns that apply at every corrected age.",
           url: "https://preemie.vercel.app/red-flags",
           datePublished: "2026-08-11",
-          dateModified: "2026-08-12",
-          lastReviewed: "2026-08-12",
+          dateModified: "2026-08-14",
+          lastReviewed: "2026-08-14",
           audience: {
             "@type": "MedicalAudience",
             audienceType: "Parents of preterm infants",
           },
           author: {
-            "@type": "Person",
-            name: "Dr. Zeeshan Islam",
-            honorificSuffix: "MBBS, MCPS (Pediatrics)",
-            jobTitle: "Consultant Paediatrician",
-            url: "https://preemie.vercel.app/about",
+            "@id": "https://preemie.vercel.app/about#drzeeshan",
           },
           reviewedBy: {
-            "@type": "Person",
-            name: "Dr. Zeeshan Islam",
-            honorificSuffix: "MBBS, MCPS (Pediatrics)",
-            url: "https://preemie.vercel.app/about",
+            "@id": "https://preemie.vercel.app/about#drzeeshan",
+          },
+          publisher: {
+            "@type": "Organization",
+            "name": "AdjustedAge",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://preemie.vercel.app/favicon.png"
+            }
           },
           specialty: "Pediatrics",
         }),

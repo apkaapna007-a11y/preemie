@@ -46,18 +46,17 @@ export const Route = createFileRoute("/how-to-calculate-corrected-age")({
             "The corrected age formula with three worked examples and the common mistakes clinicians and parents make.",
           url: "https://preemie.vercel.app/how-to-calculate-corrected-age",
           datePublished: "2026-08-11",
-          dateModified: "2026-08-12",
+          dateModified: "2026-08-14",
           author: {
-            "@type": "Person",
-            name: "Dr. Zeeshan Islam",
-            honorificSuffix: "MBBS, MCPS (Pediatrics)",
-            jobTitle: "Consultant Paediatrician",
-            url: "https://preemie.vercel.app/about",
+            "@id": "https://preemie.vercel.app/about#drzeeshan",
           },
           publisher: {
             "@type": "Organization",
-            name: "AdjustedAge",
-            url: "https://preemie.vercel.app",
+            "name": "AdjustedAge",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://preemie.vercel.app/favicon.png"
+            }
           },
         }),
       },
@@ -88,10 +87,7 @@ export const Route = createFileRoute("/how-to-calculate-corrected-age")({
             },
           ],
           author: {
-            "@type": "Person",
-            name: "Dr. Zeeshan Islam",
-            honorificSuffix: "MBBS, MCPS (Pediatrics)",
-            url: "https://preemie.vercel.app/about",
+            "@id": "https://preemie.vercel.app/about#drzeeshan",
           },
         }),
       },

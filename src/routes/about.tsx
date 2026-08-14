@@ -41,15 +41,17 @@ export const Route = createFileRoute("/about")({
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "Person",
+          "@type": "Physician",
+          "@id": "https://preemie.vercel.app/about#drzeeshan",
           name: "Dr. Zeeshan Islam",
           honorificPrefix: "Dr.",
           honorificSuffix: "MBBS, MCPS (Pediatrics)",
           jobTitle: "Consultant Paediatrician",
+          medicalSpecialty: "Pediatrics",
           url: "https://preemie.vercel.app/about",
           image: "https://preemie.vercel.app/favicon.png",
           description:
-            "Author and clinical reviewer of AdjustedAge, a corrected-age calculator and preemie follow-up tool.",
+            "Dr. Zeeshan Islam is the author and clinical reviewer of AdjustedAge. He is a Consultant Paediatrician with expertise in neonatology and preterm infant developmental follow-up.",
           knowsAbout: [
             "Pediatrics",
             "Neonatology",
@@ -74,6 +76,10 @@ export const Route = createFileRoute("/about")({
             name: "AdjustedAge",
             url: "https://preemie.vercel.app",
           },
+          address: {
+            "@type": "PostalAddress",
+            "addressCountry": "PK"
+          }
         }),
       },
       {
