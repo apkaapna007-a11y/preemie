@@ -1,6 +1,16 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { FileDown, Printer, Table2, CalendarCheck } from "lucide-react";
+import { FileDown, Printer, Table2, CalendarCheck, TrendingUp } from "lucide-react";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+  Legend,
+} from "recharts";
 import {
   computeAges,
   correctedMonths,
@@ -486,7 +496,13 @@ export function CorrectedAgeTool() {
                         "visit_date,corrected_age_days,weight_kg,length_cm,head_cm",
                         ...visits.map((v) => {
                           const r = computeAges({ birthDate, gaWeeks, gaDays, onDate: v.date });
-                          return [v.date, r?.correctedDays ?? "", v.weightKg ?? "", v.lengthCm ?? "", v.headCm ?? ""].join(",");
+                          return [
+                            v.date,
+                            r?.correctedDays ?? "",
+                            v.weightKg ?? "",
+                            v.lengthCm ?? "",
+                            v.headCm ?? "",
+                          ].join(",");
                         }),
                       ].join("\n");
                       const url = URL.createObjectURL(new Blob([rows], { type: "text/csv" }));
@@ -503,6 +519,75 @@ export function CorrectedAgeTool() {
                     Export CSV
                   </button>
                 </div>
+
+                {visits.length > 1 && (
+                  <div className="mt-8 border-t border-border pt-8">
+                    <div className="flex items-center gap-2 mb-4">
+                      <TrendingUp className="size-5 text-primary" aria-hidden />
+                      <h3 className="font-display text-lg font-semibold">Growth Trajectory</h3>
+                    </div>
+                    <div className="h-64 w-full">
+                      <ResponsiveContainer width="100%" height="100%">
+                        <LineChart
+                          data={visits.map((v) => ({
+                            ...v,
+                            correctedDays: computeAges({ birthDate, gaWeeks, gaDays, onDate: v.date })
+                              ?.correctedDays,
+                            label: v.date,
+                          }))}
+                        >
+                          <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e5e7eb" />
+                          <XAxis
+                            dataKey="correctedDays"
+                            type="number"
+                            domain={["dataMin", "dataMax"]}
+                            tickFormatter={(v) => formatDuration(v).split(" ")[0]}
+                            fontSize={10}
+                            tick={{ fill: "#6b7280" }}
+                            axisLine={{ stroke: "#e5e7eb" }}
+                          />
+                          <YAxis
+                            yId="weight"
+                            fontSize={10}
+                            tick={{ fill: "#6b7280" }}
+                            axisLine={{ stroke: "#e5e7eb" }}
+                            label={{
+                              value: "Weight (kg)",
+                              angle: -90,
+                              position: "insideLeft",
+                              fontSize: 10,
+                              fill: "#6b7280",
+                            }}
+                          />
+                          <Tooltip
+                            contentStyle={{
+                              borderRadius: "12px",
+                              border: "none",
+                              boxShadow: "0 10px 15px -3px rgb(0 0 0 / 0.1)",
+                              fontSize: "12px",
+                            }}
+                            labelFormatter={(v) => `Corrected age: ${formatDuration(v as number)}`}
+                          />
+                          <Legend verticalAlign="top" height={36} iconType="circle" />
+                          <Line
+                            yId="weight"
+                            type="monotone"
+                            dataKey="weightKg"
+                            name="Weight (kg)"
+                            stroke="var(--color-primary)"
+                            strokeWidth={3}
+                            dot={{ r: 4, fill: "var(--color-primary)", strokeWidth: 0 }}
+                            activeDot={{ r: 6 }}
+                          />
+                        </LineChart>
+                      </ResponsiveContainer>
+                    </div>
+                    <p className="mt-4 text-xs text-muted-foreground leading-relaxed italic">
+                      This chart shows raw trajectory over time. It is not plotted against reference
+                      percentiles (Fenton/WHO). Growth percentiles are planned for a future update.
+                    </p>
+                  </div>
+                )}
               </div>
             ) : null}
           </section>
