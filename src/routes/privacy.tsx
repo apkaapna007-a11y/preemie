@@ -38,7 +38,7 @@ export const Route = createFileRoute("/privacy")({
       },
       { name: "twitter:image", content: "https://preemie.vercel.app/favicon.png" },
       { name: "article:published_time", content: "2026-08-11T00:00:00Z" },
-      { name: "article:modified_time", content: "2026-08-12T00:00:00Z" },
+      { name: "article:modified_time", content: "2026-08-14T00:00:00Z" },
     ],
     links: [
       { rel: "canonical", href: "https://preemie.vercel.app/privacy" },
