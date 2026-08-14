@@ -541,7 +541,7 @@ export function CorrectedAgeTool() {
                             dataKey="correctedDays"
                             type="number"
                             domain={["dataMin", "dataMax"]}
-                            tickFormatter={(v) => formatDuration(Number(v)).split(" ")[0]}
+                            tickFormatter={(v) => formatDuration(Number(v)).split(" ")[0] || ""}
                             fontSize={10}
                             tick={{ fill: "#6b7280" }}
                             axisLine={{ stroke: "#e5e7eb" }}
