@@ -19,7 +19,7 @@ export const Route = createFileRoute("/red-flags")({
       },
       { property: "og:url", content: "https://preemie.vercel.app/red-flags" },
       { property: "og:type", content: "article" },
-      { property: "og:image", content: "https://preemie.vercel.app/og-image.png" },
+      { property: "og:image", content: "https://preemie.vercel.app/favicon.png" },
       { property: "og:locale", content: "en_US" },
       { property: "og:site_name", content: "AdjustedAge" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -29,7 +29,7 @@ export const Route = createFileRoute("/red-flags")({
         content:
           "Developmental and clinical red flags in premature babies that need a same-week call, whatever the corrected age. Reviewed by Dr. Zeeshan Islam.",
       },
-      { name: "twitter:image", content: "https://preemie.vercel.app/og-image.png" },
+      { name: "twitter:image", content: "https://preemie.vercel.app/favicon.png" },
       { name: "article:published_time", content: "2026-08-11T00:00:00Z" },
       { name: "article:modified_time", content: "2026-08-12T00:00:00Z" },
     ],

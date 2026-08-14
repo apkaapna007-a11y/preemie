@@ -18,7 +18,7 @@ export const Route = createFileRoute("/how-to-calculate-corrected-age")({
       },
       { property: "og:url", content: "https://preemie.vercel.app/how-to-calculate-corrected-age" },
       { property: "og:type", content: "article" },
-      { property: "og:image", content: "https://preemie.vercel.app/og-image.png" },
+      { property: "og:image", content: "https://preemie.vercel.app/favicon.png" },
       { property: "og:locale", content: "en_US" },
       { property: "og:site_name", content: "AdjustedAge" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -28,7 +28,7 @@ export const Route = createFileRoute("/how-to-calculate-corrected-age")({
         content:
           "The corrected age formula for premature babies with three worked examples and common mistakes. Reviewed by Dr. Zeeshan Islam.",
       },
-      { name: "twitter:image", content: "https://preemie.vercel.app/og-image.png" },
+      { name: "twitter:image", content: "https://preemie.vercel.app/favicon.png" },
       { name: "article:published_time", content: "2026-08-11T00:00:00Z" },
       { name: "article:modified_time", content: "2026-08-12T00:00:00Z" },
     ],
