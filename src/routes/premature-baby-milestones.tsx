@@ -47,18 +47,17 @@ export const Route = createFileRoute("/premature-baby-milestones")({
             "CDC/AAP developmental milestones chart re-indexed to corrected age for premature babies, from 2 to 36 months.",
           url: "https://preemie.vercel.app/premature-baby-milestones",
           datePublished: "2026-08-11",
-          dateModified: "2026-08-12",
+          dateModified: "2026-08-14",
           author: {
-            "@type": "Person",
-            name: "Dr. Zeeshan Islam",
-            honorificSuffix: "MBBS, MCPS (Pediatrics)",
-            jobTitle: "Consultant Paediatrician",
-            url: "https://preemie.vercel.app/about",
+            "@id": "https://preemie.vercel.app/about#drzeeshan",
           },
           publisher: {
             "@type": "Organization",
-            name: "AdjustedAge",
-            url: "https://preemie.vercel.app",
+            "name": "AdjustedAge",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://preemie.vercel.app/favicon.png"
+            }
           },
         }),
       },
