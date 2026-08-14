@@ -31,16 +31,7 @@ function SiteHeader() {
         <div className="mx-auto flex max-w-6xl items-center justify-center gap-2 px-5 py-1.5 text-[0.7rem] tracking-wide sm:text-xs">
           <ShieldCheck className="size-3.5 shrink-0 opacity-90" aria-hidden />
           <span className="opacity-95 text-center">
-            '''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
-            
-                
-                Add Schema.org structured data to every clinical page (MedicalWebPage, BreadcrumbList, and author/Organization) so search engines understand the E-E-A-T signals.
-
-Implement the corrected-age–native preemie follow-up tracker that saves serial visit inputs (4, 8, 12, 18, 24, 36 months corrected) and renders an updated chart each time.
-
-Generate a printable PDF follow-up summary for each visit including corrected age, growth/date table, and the clinical methodology disclaimer.
-
-Publish an author credentials page for Dr.Zeeshan Islam MBBS MCPS Pediatrics with a headshot and update every page to link to it as the visible medical author.
+            Clinically reviewed by Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics)
           </span>
         </div>
       </div>
