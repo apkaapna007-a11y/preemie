@@ -541,13 +541,13 @@ export function CorrectedAgeTool() {
                             dataKey="correctedDays"
                             type="number"
                             domain={["dataMin", "dataMax"]}
-                            tickFormatter={(v) => formatDuration(v).split(" ")[0]}
+                            tickFormatter={(v) => formatDuration(Number(v)).split(" ")[0]}
                             fontSize={10}
                             tick={{ fill: "#6b7280" }}
                             axisLine={{ stroke: "#e5e7eb" }}
                           />
                           <YAxis
-                            yId="weight"
+                            yAxisId="weight"
                             fontSize={10}
                             tick={{ fill: "#6b7280" }}
                             axisLine={{ stroke: "#e5e7eb" }}
@@ -566,11 +566,11 @@ export function CorrectedAgeTool() {
                               boxShadow: "0 10px 15px -3px rgb(0 0 0 / 0.1)",
                               fontSize: "12px",
                             }}
-                            labelFormatter={(v) => `Corrected age: ${formatDuration(v as number)}`}
+                            labelFormatter={(v) => `Corrected age: ${formatDuration(Number(v))}`}
                           />
                           <Legend verticalAlign="top" height={36} iconType="circle" />
                           <Line
-                            yId="weight"
+                            yAxisId="weight"
                             type="monotone"
                             dataKey="weightKg"
                             name="Weight (kg)"
