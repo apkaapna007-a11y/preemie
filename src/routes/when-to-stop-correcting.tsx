@@ -35,8 +35,10 @@ export const Route = createFileRoute("/when-to-stop-correcting")({
           "Correction is conventionally stopped at 24 months, but the convention varies by domain. What the evidence supports, reviewed by Dr. Zeeshan Islam.",
       },
       { name: "twitter:image", content: "https://preemie.vercel.app/favicon.png" },
+      { name: "twitter:image:alt", content: "When to stop correcting for prematurity" },
+      { property: "og:image:alt", content: "When to stop correcting for prematurity" },
       { name: "article:published_time", content: "2026-08-11T00:00:00Z" },
-      { name: "article:modified_time", content: "2026-08-14T00:00:00Z" },
+      { name: "article:modified_time", content: "2026-08-24T00:00:00Z" },
     ],
     links: [{ rel: "canonical", href: "https://preemie.vercel.app/when-to-stop-correcting" }],
     scripts: [
@@ -50,7 +52,7 @@ export const Route = createFileRoute("/when-to-stop-correcting")({
             "Two years is a convention, not a rule. Head circumference, weight, length and development all stop correcting at different ages.",
           url: "https://preemie.vercel.app/when-to-stop-correcting",
           datePublished: "2026-08-11",
-          dateModified: "2026-08-14",
+          dateModified: "2026-08-24",
           author: {
             "@id": "https://preemie.vercel.app/about#drzeeshan",
           },

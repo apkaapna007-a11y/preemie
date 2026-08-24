@@ -5,17 +5,17 @@ import { MILESTONES } from "@/lib/milestones";
 export const Route = createFileRoute("/premature-baby-milestones")({
   head: () => ({
     meta: [
-      { title: "Preemie Milestones by Corrected Age | AdjustedAge" },
+      { title: "Premature Baby Milestones by Corrected Age | AdjustedAge" },
       {
         name: "description",
         content:
-          "A premature baby milestones chart indexed to corrected age, from 2 to 36 months. CDC/AAP surveillance prompts, reviewed by Dr. Zeeshan Islam, MBBS, MCPS.",
+          "Premature baby milestones by corrected age from 2 to 36 months, using CDC/AAP surveillance prompts as conversation guides. Reviewed by Dr. Zeeshan Islam.",
       },
-      { property: "og:title", content: "Preemie Milestones by Corrected Age | AdjustedAge" },
+      { property: "og:title", content: "Premature Baby Milestones by Corrected Age | AdjustedAge" },
       {
         property: "og:description",
         content:
-          "A premature baby milestones chart indexed to corrected age, from 2 to 36 months. CDC/AAP surveillance prompts, reviewed by Dr. Zeeshan Islam, MBBS, MCPS.",
+          "Premature baby milestones by corrected age from 2 to 36 months, using CDC/AAP surveillance prompts as conversation guides. Reviewed by Dr. Zeeshan Islam.",
       },
       { property: "og:url", content: "https://preemie.vercel.app/premature-baby-milestones" },
       { property: "og:type", content: "article" },
@@ -23,15 +23,20 @@ export const Route = createFileRoute("/premature-baby-milestones")({
       { property: "og:locale", content: "en_US" },
       { property: "og:site_name", content: "AdjustedAge" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Preemie Milestones by Corrected Age | AdjustedAge" },
+      {
+        name: "twitter:title",
+        content: "Premature Baby Milestones by Corrected Age | AdjustedAge",
+      },
       {
         name: "twitter:description",
         content:
-          "A premature baby milestones chart indexed to corrected age, from 2 to 36 months. CDC/AAP surveillance prompts, reviewed by Dr. Zeeshan Islam, MBBS, MCPS.",
+          "Premature baby milestones by corrected age from 2 to 36 months, using CDC/AAP surveillance prompts as conversation guides. Reviewed by Dr. Zeeshan Islam.",
       },
       { name: "twitter:image", content: "https://preemie.vercel.app/favicon.png" },
+      { name: "twitter:image:alt", content: "Premature baby milestones by corrected age" },
+      { property: "og:image:alt", content: "Premature baby milestones by corrected age" },
       { name: "article:published_time", content: "2026-08-11T00:00:00Z" },
-      { name: "article:modified_time", content: "2026-08-14T00:00:00Z" },
+      { name: "article:modified_time", content: "2026-08-24T00:00:00Z" },
     ],
     links: [{ rel: "canonical", href: "https://preemie.vercel.app/premature-baby-milestones" }],
     scripts: [
@@ -45,7 +50,7 @@ export const Route = createFileRoute("/premature-baby-milestones")({
             "CDC/AAP developmental milestones chart re-indexed to corrected age for premature babies, from 2 to 36 months.",
           url: "https://preemie.vercel.app/premature-baby-milestones",
           datePublished: "2026-08-11",
-          dateModified: "2026-08-14",
+          dateModified: "2026-08-24",
           author: {
             "@id": "https://preemie.vercel.app/about#drzeeshan",
           },
@@ -57,6 +62,31 @@ export const Route = createFileRoute("/premature-baby-milestones")({
               url: "https://preemie.vercel.app/favicon.png",
             },
           },
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            {
+              "@type": "Question",
+              name: "Should premature baby milestones use corrected age?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "For early developmental conversations, use the milestone row that matches corrected age rather than birthday age. The appropriate approach can vary by child and domain, so discuss concerns with the child’s clinician.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Are these premature baby milestones a developmental screen?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "No. These CDC/AAP surveillance prompts are conversation guides and do not diagnose, screen, score, or replace assessment by a clinician.",
+              },
+            },
+          ],
         }),
       },
       {
@@ -94,6 +124,11 @@ function MilestonesPage() {
           Use <Link to="/">the corrected age calculator</Link> first, then read the row that matches
           the corrected number. A 9-month-old born at 28 weeks is a 6-month-old corrected, and 6
           months is the row you should be reading.
+        </p>
+        <p>
+          If you want to check the arithmetic first, follow the{" "}
+          <Link to="/how-to-calculate-corrected-age">corrected-age worked examples</Link>. For the
+          source list and limitations, see <Link to="/methodology">the methodology page</Link>.
         </p>
         <p>
           These are <strong>surveillance prompts</strong>, taken from the 2022 CDC/AAP revised
@@ -136,6 +171,11 @@ function MilestonesPage() {
         <p>
           What is never normal, at any age, corrected or not, is <strong>losing a skill</strong> the
           baby previously had. See <Link to="/red-flags">when to call the doctor</Link>.
+        </p>
+        <p>
+          These lists are conversation prompts, not a diagnosis or developmental screen. Read{" "}
+          <Link to="/when-to-stop-correcting">when corrected-age use usually stops</Link> and speak
+          with your child’s clinician if you are concerned.
         </p>
       </Article>
     </SiteLayout>

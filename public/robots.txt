@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /mcp
+Disallow: /.mcp/
+Disallow: /.well-known/
+Disallow: /~oauth/
 
 Sitemap: https://preemie.vercel.app/sitemap.xml

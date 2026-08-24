@@ -101,6 +101,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:site", content: "@AdjustedAge" },
       { name: "twitter:creator", content: "@AdjustedAge" },
       { name: "twitter:image", content: "https://preemie.vercel.app/favicon.png" },
+      { name: "twitter:image:alt", content: "AdjustedAge corrected age calculator" },
+      { property: "og:image:alt", content: "AdjustedAge corrected age calculator" },
       { name: "theme-color", content: "#14606e" },
       { name: "apple-mobile-web-app-capable", content: "yes" },
       { name: "apple-mobile-web-app-title", content: "AdjustedAge" },
@@ -140,14 +142,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           },
           author: {
             "@id": "https://preemie.vercel.app/about#drzeeshan",
-          },
-          potentialAction: {
-            "@type": "SearchAction",
-            target: {
-              "@type": "EntryPoint",
-              urlTemplate: "https://preemie.vercel.app/?q={search_term_string}",
-            },
-            "query-input": "required name=search_term_string",
           },
         }),
       },

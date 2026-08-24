@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Article, PageHeader, SiteLayout } from "@/components/SiteLayout";
 
 export const Route = createFileRoute("/methodology")({
@@ -29,8 +29,10 @@ export const Route = createFileRoute("/methodology")({
           "Every formula, source and limitation behind the AdjustedAge tool, including Fenton vs INTERGROWTH-21st. Reviewed by Dr. Zeeshan Islam.",
       },
       { name: "twitter:image", content: "https://preemie.vercel.app/favicon.png" },
+      { name: "twitter:image:alt", content: "AdjustedAge formulas and clinical references" },
+      { property: "og:image:alt", content: "AdjustedAge formulas and clinical references" },
       { name: "article:published_time", content: "2026-08-11T00:00:00Z" },
-      { name: "article:modified_time", content: "2026-08-14T00:00:00Z" },
+      { name: "article:modified_time", content: "2026-08-24T00:00:00Z" },
     ],
     links: [{ rel: "canonical", href: "https://preemie.vercel.app/methodology" }],
     scripts: [
@@ -44,7 +46,7 @@ export const Route = createFileRoute("/methodology")({
             "Every formula, source and limitation behind the AdjustedAge corrected age tool, including the Fenton versus INTERGROWTH-21st question.",
           url: "https://preemie.vercel.app/methodology",
           datePublished: "2026-08-11",
-          dateModified: "2026-08-14",
+          dateModified: "2026-08-24",
           author: {
             "@id": "https://preemie.vercel.app/about#drzeeshan",
           },
@@ -253,6 +255,14 @@ function MethodologyPage() {
         </p>
         <p>
           Last full clinical review: August 2026, by Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics).
+        </p>
+        <h2>Use the methodology with the calculator</h2>
+        <p>
+          Start with the <Link to="/">corrected age calculator</Link>, then use the{" "}
+          <Link to="/premature-baby-milestones">premature baby milestone chart</Link> for
+          surveillance prompts. The{" "}
+          <Link to="/how-to-calculate-corrected-age">worked examples</Link> explain the arithmetic,
+          while <Link to="/red-flags">red flags</Link> explains when to seek medical advice.
         </p>
       </Article>
     </SiteLayout>
