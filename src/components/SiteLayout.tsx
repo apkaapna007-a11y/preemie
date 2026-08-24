@@ -1,7 +1,18 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState, type ReactNode } from "react";
 import { Menu, X, ShieldCheck } from "lucide-react";
-import headshot from "@/assets/dr-zeeshan-islam.png.asset.json";
+
+export function AuthorMark({ className = "" }: { className?: string }) {
+  return (
+    <div
+      role="img"
+      aria-label="Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics)"
+      className={`flex shrink-0 items-center justify-center rounded-full bg-primary font-display font-semibold text-primary-foreground ring-2 ring-accent ${className}`}
+    >
+      ZI
+    </div>
+  );
+}
 
 const NAV = [
   { to: "/", label: "Corrected age tool" },
@@ -117,18 +128,10 @@ export function SiteLayout({ children }: { children: ReactNode }) {
 
       <main>{children}</main>
 
-
       <footer className="no-print mt-20 border-t border-border bg-surface">
         <div className="mx-auto max-w-5xl px-5 py-10">
           <div className="flex flex-col gap-5 sm:flex-row sm:items-center">
-            <img
-              src={headshot.url}
-              alt="Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics)"
-              className="size-16 rounded-full object-cover object-top ring-2 ring-accent"
-              loading="lazy"
-              width={64}
-              height={64}
-            />
+            <AuthorMark className="size-16 text-xl" />
             <div className="text-sm">
               <p className="font-display text-base font-semibold text-foreground">
                 Written and clinically reviewed by Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics)
@@ -137,7 +140,10 @@ export function SiteLayout({ children }: { children: ReactNode }) {
                 Consultant paediatrician. Every calculation, reference and milestone list on this
                 site is reviewed against the primary source before publication.
               </p>
-              <Link to="/about" className="mt-2 inline-block text-primary underline underline-offset-4">
+              <Link
+                to="/about"
+                className="mt-2 inline-block text-primary underline underline-offset-4"
+              >
                 Read the author's credentials and review policy
               </Link>
             </div>
@@ -193,14 +199,7 @@ export function PageHeader({
 export function ReviewLine() {
   return (
     <div className="mt-5 flex items-center gap-3 rounded-lg border border-border bg-card px-4 py-3">
-      <img
-        src={headshot.url}
-        alt="Dr. Zeeshan Islam"
-        className="size-10 rounded-full object-cover object-top"
-        loading="lazy"
-        width={40}
-        height={40}
-      />
+      <AuthorMark className="size-10 text-sm" />
       <p className="text-xs leading-relaxed text-muted-foreground">
         Medically reviewed by{" "}
         <Link to="/about" className="font-medium text-foreground underline underline-offset-2">

@@ -52,11 +52,11 @@ export const Route = createFileRoute("/how-to-calculate-corrected-age")({
           },
           publisher: {
             "@type": "Organization",
-            "name": "AdjustedAge",
-            "logo": {
+            name: "AdjustedAge",
+            logo: {
               "@type": "ImageObject",
-              "url": "https://preemie.vercel.app/favicon.png"
-            }
+              url: "https://preemie.vercel.app/favicon.png",
+            },
           },
         }),
       },
@@ -98,7 +98,12 @@ export const Route = createFileRoute("/how-to-calculate-corrected-age")({
           "@type": "BreadcrumbList",
           itemListElement: [
             { "@type": "ListItem", position: 1, name: "Home", item: "https://preemie.vercel.app/" },
-            { "@type": "ListItem", position: 2, name: "How to Calculate Corrected Age", item: "https://preemie.vercel.app/how-to-calculate-corrected-age" },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "How to Calculate Corrected Age",
+              item: "https://preemie.vercel.app/how-to-calculate-corrected-age",
+            },
           ],
         }),
       },
@@ -129,9 +134,13 @@ function HowToPage() {
 
         <h3>Worked example 1 — 28 weeks, now 6 months old</h3>
         <ul>
-          <li>Prematurity: 280 − (28 × 7) = 280 − 196 = <strong>84 days (12 weeks)</strong></li>
+          <li>
+            Prematurity: 280 − (28 × 7) = 280 − 196 = <strong>84 days (12 weeks)</strong>
+          </li>
           <li>Chronological age: 6 months = about 183 days</li>
-          <li>Corrected age: 183 − 84 = 99 days = <strong>about 3 months 8 days</strong></li>
+          <li>
+            Corrected age: 183 − 84 = 99 days = <strong>about 3 months 8 days</strong>
+          </li>
         </ul>
         <p>
           This baby's first birthday cake is six months away, but developmentally you should be
@@ -141,22 +150,33 @@ function HowToPage() {
         <h3>Worked example 2 — 34+3 weeks, now 10 weeks old</h3>
         <ul>
           <li>GA in days: (34 × 7) + 3 = 241</li>
-          <li>Prematurity: 280 − 241 = <strong>39 days</strong></li>
+          <li>
+            Prematurity: 280 − 241 = <strong>39 days</strong>
+          </li>
           <li>Chronological: 70 days</li>
-          <li>Corrected: 70 − 39 = <strong>31 days, about 4½ weeks</strong></li>
+          <li>
+            Corrected: 70 − 39 = <strong>31 days, about 4½ weeks</strong>
+          </li>
         </ul>
         <p>
           Late preterm correction is the one most often skipped. At this age it more than halves the
           expected developmental age — which is exactly why{" "}
-          <Link to="/when-to-stop-correcting">stopping too early</Link> causes unnecessary referrals.
+          <Link to="/when-to-stop-correcting">stopping too early</Link> causes unnecessary
+          referrals.
         </p>
 
         <h3>Worked example 3 — 25 weeks, still before the due date</h3>
         <ul>
-          <li>Prematurity: 280 − 175 = <strong>105 days</strong></li>
+          <li>
+            Prematurity: 280 − 175 = <strong>105 days</strong>
+          </li>
           <li>Chronological: 60 days</li>
-          <li>Corrected: 60 − 105 = <strong>−45 days</strong>, i.e. 6 weeks 3 days before term</li>
-          <li>Postmenstrual age: 25 weeks + 60 days = <strong>33+4 weeks PMA</strong></li>
+          <li>
+            Corrected: 60 − 105 = <strong>−45 days</strong>, i.e. 6 weeks 3 days before term
+          </li>
+          <li>
+            Postmenstrual age: 25 weeks + 60 days = <strong>33+4 weeks PMA</strong>
+          </li>
         </ul>
         <p>
           Before term-equivalent age, corrected age is negative and PMA is the number clinicians

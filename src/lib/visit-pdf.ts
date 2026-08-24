@@ -7,6 +7,7 @@ import {
   gaCategory,
 } from "@/lib/corrected-age";
 import { milestoneSetForCorrectedMonths, ALWAYS_ACT_EARLY } from "@/lib/milestones";
+import { calculateWeightVelocity } from "@/lib/weight-velocity";
 
 export interface VisitPdfInput {
   birthDate: string;
@@ -122,19 +123,18 @@ export function generateVisitPdf(input: VisitPdfInput) {
   kv("Head circumference", input.headCm ? `${input.headCm} cm` : "not recorded");
 
   if (input.previous?.weightKg && input.weightKg) {
-    const days = Math.max(
-      1,
-      Math.round(
-        (Date.parse(`${input.visitDate}T00:00:00Z`) - Date.parse(`${input.previous.date}T00:00:00Z`)) /
-          86400000,
-      ),
-    );
-    const gain =
-      ((input.weightKg - input.previous.weightKg) * 1000) / (input.previous.weightKg * days);
-    kv(
-      "Weight velocity",
-      `${gain.toFixed(1)} g/kg/day since ${input.previous.date} (${days} days)`,
-    );
+    const velocity = calculateWeightVelocity({
+      previousDate: input.previous.date,
+      previousWeightKg: input.previous.weightKg,
+      currentDate: input.visitDate,
+      currentWeightKg: input.weightKg,
+    });
+    if (velocity) {
+      kv(
+        "Weight velocity",
+        `${velocity.gramsPerKgPerDay.toFixed(1)} g/kg/day since ${input.previous.date} (${velocity.intervalDays} days)`,
+      );
+    }
   }
   if (input.note) {
     line(4);
@@ -145,9 +145,7 @@ export function generateVisitPdf(input: VisitPdfInput) {
 
   const cMonths = ages ? correctedMonths(ages.correctedDays) : 0;
   const set = ages ? milestoneSetForCorrectedMonths(cMonths) : null;
-  heading(
-    set ? `Surveillance prompts - ${set.label}` : "Surveillance prompts",
-  );
+  heading(set ? `Surveillance prompts - ${set.label}` : "Surveillance prompts");
   if (set) {
     doc.setFontSize(9.5);
     for (const item of set.items) {

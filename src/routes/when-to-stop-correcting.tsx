@@ -10,7 +10,10 @@ export const Route = createFileRoute("/when-to-stop-correcting")({
         content:
           "Correction is conventionally stopped at 24 months, but the convention varies by domain. What the evidence supports, reviewed by Dr. Zeeshan Islam.",
       },
-      { property: "og:title", content: "When Do You Stop Correcting for Prematurity? | AdjustedAge" },
+      {
+        property: "og:title",
+        content: "When Do You Stop Correcting for Prematurity? | AdjustedAge",
+      },
       {
         property: "og:description",
         content:
@@ -22,7 +25,10 @@ export const Route = createFileRoute("/when-to-stop-correcting")({
       { property: "og:locale", content: "en_US" },
       { property: "og:site_name", content: "AdjustedAge" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "When Do You Stop Correcting for Prematurity? | AdjustedAge" },
+      {
+        name: "twitter:title",
+        content: "When Do You Stop Correcting for Prematurity? | AdjustedAge",
+      },
       {
         name: "twitter:description",
         content:
@@ -32,9 +38,7 @@ export const Route = createFileRoute("/when-to-stop-correcting")({
       { name: "article:published_time", content: "2026-08-11T00:00:00Z" },
       { name: "article:modified_time", content: "2026-08-14T00:00:00Z" },
     ],
-    links: [
-      { rel: "canonical", href: "https://preemie.vercel.app/when-to-stop-correcting" },
-    ],
+    links: [{ rel: "canonical", href: "https://preemie.vercel.app/when-to-stop-correcting" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -52,11 +56,11 @@ export const Route = createFileRoute("/when-to-stop-correcting")({
           },
           publisher: {
             "@type": "Organization",
-            "name": "AdjustedAge",
-            "logo": {
+            name: "AdjustedAge",
+            logo: {
               "@type": "ImageObject",
-              "url": "https://preemie.vercel.app/favicon.png"
-            }
+              url: "https://preemie.vercel.app/favicon.png",
+            },
           },
         }),
       },
@@ -67,7 +71,12 @@ export const Route = createFileRoute("/when-to-stop-correcting")({
           "@type": "BreadcrumbList",
           itemListElement: [
             { "@type": "ListItem", position: 1, name: "Home", item: "https://preemie.vercel.app/" },
-            { "@type": "ListItem", position: 2, name: "When to Stop Correcting", item: "https://preemie.vercel.app/when-to-stop-correcting" },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "When to Stop Correcting",
+              item: "https://preemie.vercel.app/when-to-stop-correcting",
+            },
           ],
         }),
       },

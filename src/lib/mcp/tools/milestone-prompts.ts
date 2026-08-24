@@ -24,9 +24,7 @@ export default defineTool({
     const next = nextMilestoneSet(corrected_months);
     const payload = {
       corrected_months,
-      current_set: current
-        ? { label: current.label, items: current.items }
-        : null,
+      current_set: current ? { label: current.label, items: current.items } : null,
       note: current
         ? "Surveillance prompts only — no score, no pass/fail."
         : "Corrected age is below the first surveillance set; feeding, weight gain and settling matter most.",

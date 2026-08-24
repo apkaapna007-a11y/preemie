@@ -103,7 +103,10 @@ export const MILESTONES: MilestoneSet[] = [
     month: 18,
     label: "18 months corrected",
     items: [
-      { domain: "Social/Emotional", text: "Moves away from you but looks to make sure you are close" },
+      {
+        domain: "Social/Emotional",
+        text: "Moves away from you but looks to make sure you are close",
+      },
       { domain: "Social/Emotional", text: "Points to show you something interesting" },
       { domain: "Language", text: "Tries to say three or more words besides mama or dada" },
       { domain: "Language", text: "Follows one-step directions without gestures" },
@@ -132,7 +135,10 @@ export const MILESTONES: MilestoneSet[] = [
       { domain: "Social/Emotional", text: "Plays next to other children, sometimes with them" },
       { domain: "Language", text: "Says about 50 words" },
       { domain: "Language", text: "Names things in a book when you point and ask" },
-      { domain: "Cognitive", text: "Shows simple problem solving, like standing on a stool to reach" },
+      {
+        domain: "Cognitive",
+        text: "Shows simple problem solving, like standing on a stool to reach",
+      },
       { domain: "Movement", text: "Twists things with their hands, like a lid" },
       { domain: "Movement", text: "Jumps off the ground with both feet" },
     ],
@@ -141,8 +147,14 @@ export const MILESTONES: MilestoneSet[] = [
     month: 36,
     label: "36 months corrected",
     items: [
-      { domain: "Social/Emotional", text: "Calms within 10 minutes after you leave, at childcare for example" },
-      { domain: "Language", text: "Talks with you in conversation using at least two back-and-forth exchanges" },
+      {
+        domain: "Social/Emotional",
+        text: "Calms within 10 minutes after you leave, at childcare for example",
+      },
+      {
+        domain: "Language",
+        text: "Talks with you in conversation using at least two back-and-forth exchanges",
+      },
       { domain: "Language", text: "Says their first name when asked" },
       { domain: "Cognitive", text: "Draws a circle when you show them how" },
       { domain: "Movement", text: "Strings items together, like large beads" },

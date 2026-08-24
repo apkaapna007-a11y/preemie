@@ -33,9 +33,7 @@ export const Route = createFileRoute("/premature-baby-milestones")({
       { name: "article:published_time", content: "2026-08-11T00:00:00Z" },
       { name: "article:modified_time", content: "2026-08-14T00:00:00Z" },
     ],
-    links: [
-      { rel: "canonical", href: "https://preemie.vercel.app/premature-baby-milestones" },
-    ],
+    links: [{ rel: "canonical", href: "https://preemie.vercel.app/premature-baby-milestones" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -53,11 +51,11 @@ export const Route = createFileRoute("/premature-baby-milestones")({
           },
           publisher: {
             "@type": "Organization",
-            "name": "AdjustedAge",
-            "logo": {
+            name: "AdjustedAge",
+            logo: {
               "@type": "ImageObject",
-              "url": "https://preemie.vercel.app/favicon.png"
-            }
+              url: "https://preemie.vercel.app/favicon.png",
+            },
           },
         }),
       },
@@ -68,7 +66,12 @@ export const Route = createFileRoute("/premature-baby-milestones")({
           "@type": "BreadcrumbList",
           itemListElement: [
             { "@type": "ListItem", position: 1, name: "Home", item: "https://preemie.vercel.app/" },
-            { "@type": "ListItem", position: 2, name: "Premature Baby Milestones", item: "https://preemie.vercel.app/premature-baby-milestones" },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "Premature Baby Milestones",
+              item: "https://preemie.vercel.app/premature-baby-milestones",
+            },
           ],
         }),
       },
@@ -88,15 +91,14 @@ function MilestonesPage() {
 
       <Article>
         <p>
-          Use{" "}
-          <Link to="/">the corrected age calculator</Link> first, then read the row that matches the
-          corrected number. A 9-month-old born at 28 weeks is a 6-month-old corrected, and 6 months
-          is the row you should be reading.
+          Use <Link to="/">the corrected age calculator</Link> first, then read the row that matches
+          the corrected number. A 9-month-old born at 28 weeks is a 6-month-old corrected, and 6
+          months is the row you should be reading.
         </p>
         <p>
           These are <strong>surveillance prompts</strong>, taken from the 2022 CDC/AAP revised
-          milestone checklists — the behaviours about 75% of children show by that age. They are
-          not a developmental screen and they do not produce a score. Their purpose is to give you
+          milestone checklists — the behaviours about 75% of children show by that age. They are not
+          a developmental screen and they do not produce a score. Their purpose is to give you
           specific things to raise at the next visit.
         </p>
       </Article>
@@ -133,8 +135,7 @@ function MilestonesPage() {
         </p>
         <p>
           What is never normal, at any age, corrected or not, is <strong>losing a skill</strong> the
-          baby previously had. See{" "}
-          <Link to="/red-flags">when to call the doctor</Link>.
+          baby previously had. See <Link to="/red-flags">when to call the doctor</Link>.
         </p>
       </Article>
     </SiteLayout>

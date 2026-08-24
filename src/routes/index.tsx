@@ -11,7 +11,10 @@ export const Route = createFileRoute("/")({
         content:
           "Corrected age, milestones and follow-up tracking for NICU graduates, with CDC milestones re-indexed to corrected age. Reviewed by Dr. Zeeshan Islam.",
       },
-      { property: "og:title", content: "Corrected Age Calculator for Premature Babies | AdjustedAge" },
+      {
+        property: "og:title",
+        content: "Corrected Age Calculator for Premature Babies | AdjustedAge",
+      },
       {
         property: "og:description",
         content:
@@ -23,7 +26,10 @@ export const Route = createFileRoute("/")({
       { property: "og:locale", content: "en_US" },
       { property: "og:site_name", content: "AdjustedAge" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Corrected Age Calculator for Premature Babies | AdjustedAge" },
+      {
+        name: "twitter:title",
+        content: "Corrected Age Calculator for Premature Babies | AdjustedAge",
+      },
       {
         name: "twitter:description",
         content:
@@ -31,9 +37,7 @@ export const Route = createFileRoute("/")({
       },
       { name: "twitter:image", content: "https://preemie.vercel.app/favicon.png" },
     ],
-    links: [
-      { rel: "canonical", href: "https://preemie.vercel.app/" },
-    ],
+    links: [{ rel: "canonical", href: "https://preemie.vercel.app/" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -59,11 +63,11 @@ export const Route = createFileRoute("/")({
           },
           publisher: {
             "@type": "Organization",
-            "name": "AdjustedAge",
-            "logo": {
+            name: "AdjustedAge",
+            logo: {
               "@type": "ImageObject",
-              "url": "https://preemie.vercel.app/favicon.png"
-            }
+              url: "https://preemie.vercel.app/favicon.png",
+            },
           },
           copyrightHolder: {
             "@id": "https://preemie.vercel.app/about#drzeeshan",

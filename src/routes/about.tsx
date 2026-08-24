@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Article, SiteLayout } from "@/components/SiteLayout";
-import headshot from "@/assets/dr-zeeshan-islam.png.asset.json";
+import { Article, AuthorMark, SiteLayout } from "@/components/SiteLayout";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -33,9 +32,7 @@ export const Route = createFileRoute("/about")({
       { name: "article:published_time", content: "2026-08-11T00:00:00Z" },
       { name: "article:modified_time", content: "2026-08-14T00:00:00Z" },
     ],
-    links: [
-      { rel: "canonical", href: "https://preemie.vercel.app/about" },
-    ],
+    links: [{ rel: "canonical", href: "https://preemie.vercel.app/about" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -78,8 +75,8 @@ export const Route = createFileRoute("/about")({
           },
           address: {
             "@type": "PostalAddress",
-            "addressCountry": "PK"
-          }
+            addressCountry: "PK",
+          },
         }),
       },
       {
@@ -89,7 +86,12 @@ export const Route = createFileRoute("/about")({
           "@type": "BreadcrumbList",
           itemListElement: [
             { "@type": "ListItem", position: 1, name: "Home", item: "https://preemie.vercel.app/" },
-            { "@type": "ListItem", position: 2, name: "About", item: "https://preemie.vercel.app/about" },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "About",
+              item: "https://preemie.vercel.app/about",
+            },
           ],
         }),
       },
@@ -103,13 +105,7 @@ function AboutPage() {
     <SiteLayout>
       <div className="mx-auto max-w-3xl px-5 pt-12">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
-          <img
-            src={headshot.url}
-            alt="Portrait of Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics), consultant paediatrician"
-            className="h-44 w-36 rounded-2xl object-cover object-top shadow-paper ring-1 ring-border"
-            width={144}
-            height={176}
-          />
+          <AuthorMark className="h-44 w-36 rounded-2xl text-4xl shadow-paper ring-1 ring-border" />
           <div>
             <p className="text-xs font-medium uppercase tracking-[0.18em] text-clay">
               About the author
@@ -193,10 +189,10 @@ function AboutPage() {
 
         <h2>Scope and limits of this site</h2>
         <p>
-          This is an educational and calculation tool. It is not a consultation, it does not create a
-          doctor–patient relationship, and it cannot replace assessment by the clinician who can
-          actually examine your child. If you are worried about your baby, contact your paediatrician
-          today — do not wait for the next visit.
+          This is an educational and calculation tool. It is not a consultation, it does not create
+          a doctor–patient relationship, and it cannot replace assessment by the clinician who can
+          actually examine your child. If you are worried about your baby, contact your
+          paediatrician today — do not wait for the next visit.
         </p>
       </Article>
     </SiteLayout>

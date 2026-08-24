@@ -32,9 +32,7 @@ export const Route = createFileRoute("/methodology")({
       { name: "article:published_time", content: "2026-08-11T00:00:00Z" },
       { name: "article:modified_time", content: "2026-08-14T00:00:00Z" },
     ],
-    links: [
-      { rel: "canonical", href: "https://preemie.vercel.app/methodology" },
-    ],
+    links: [{ rel: "canonical", href: "https://preemie.vercel.app/methodology" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -52,11 +50,11 @@ export const Route = createFileRoute("/methodology")({
           },
           publisher: {
             "@type": "Organization",
-            "name": "AdjustedAge",
-            "logo": {
+            name: "AdjustedAge",
+            logo: {
               "@type": "ImageObject",
-              "url": "https://preemie.vercel.app/favicon.png"
-            }
+              url: "https://preemie.vercel.app/favicon.png",
+            },
           },
         }),
       },
@@ -108,7 +106,12 @@ export const Route = createFileRoute("/methodology")({
           "@type": "BreadcrumbList",
           itemListElement: [
             { "@type": "ListItem", position: 1, name: "Home", item: "https://preemie.vercel.app/" },
-            { "@type": "ListItem", position: 2, name: "Methodology", item: "https://preemie.vercel.app/methodology" },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "Methodology",
+              item: "https://preemie.vercel.app/methodology",
+            },
           ],
         }),
       },
@@ -125,7 +128,8 @@ const SOURCES = [
     limit: "A convention, not a rule; practice varies 18–36 months by domain",
   },
   {
-    source: "Zubler JM, Whitaker TM, et al. Pediatrics 2022;149(3):e2021052138 (summary: Am Fam Physician 2022;106(4):370-371)",
+    source:
+      "Zubler JM, Whitaker TM, et al. Pediatrics 2022;149(3):e2021052138 (summary: Am Fam Physician 2022;106(4):370-371)",
     year: "2022",
     role: "Milestone content used on this site",
     limit: "Surveillance prompts, explicitly NOT a validated screening instrument",
@@ -137,7 +141,8 @@ const SOURCES = [
     limit: "A descriptive reference of how preterm infants grew, not a prescriptive standard",
   },
   {
-    source: "Villar J, et al. INTERGROWTH-21st. Lancet Glob Health 2015;3(11):e681-e691 (PMID 26475015)",
+    source:
+      "Villar J, et al. INTERGROWTH-21st. Lancet Glob Health 2015;3(11):e681-e691 (PMID 26475015)",
     year: "2015",
     role: "Postnatal growth standard for preterm infants",
     limit: "Disagrees with Fenton at the margins, particularly below 33 weeks PMA",
@@ -169,11 +174,20 @@ function MethodologyPage() {
         <ul>
           <li>All internal calculation is in whole days. Term is defined as 280 days (40+0).</li>
           <li>Gestational age at birth (days) = weeks × 7 + days.</li>
-          <li>Chronological age (days) = visit date − date of birth, using UTC-normalised dates so daylight saving cannot shift a result by a day.</li>
+          <li>
+            Chronological age (days) = visit date − date of birth, using UTC-normalised dates so
+            daylight saving cannot shift a result by a day.
+          </li>
           <li>Prematurity (days) = max(0, 280 − gestational age in days).</li>
-          <li>Corrected age (days) = chronological age − prematurity. It is negative before the original due date, and is displayed that way rather than clamped to zero.</li>
+          <li>
+            Corrected age (days) = chronological age − prematurity. It is negative before the
+            original due date, and is displayed that way rather than clamped to zero.
+          </li>
           <li>Postmenstrual age (days) = gestational age at birth + chronological age.</li>
-          <li>Display conversion uses 30.4375 days per month. Weeks and days are shown below 12 weeks, where rounding to months would be misleading.</li>
+          <li>
+            Display conversion uses 30.4375 days per month. Weeks and days are shown below 12 weeks,
+            where rounding to months would be misleading.
+          </li>
         </ul>
 
         <h2>Sources</h2>
@@ -221,18 +235,25 @@ function MethodologyPage() {
         <ul>
           <li>It will not return a pass, fail, score or percentile-of-development.</li>
           <li>It will not tell you your baby is fine. No tool can know that.</li>
-          <li>It will not suppress the &ldquo;act early&rdquo; concerns at any age, in any state.</li>
+          <li>
+            It will not suppress the &ldquo;act early&rdquo; concerns at any age, in any state.
+          </li>
           <li>It will not take formula-industry or infant-nutrition sponsorship.</li>
-          <li>It will not send your data anywhere. Entries live in your browser's local storage and can be cleared by clearing site data.</li>
+          <li>
+            It will not send your data anywhere. Entries live in your browser's local storage and
+            can be cleared by clearing site data.
+          </li>
         </ul>
 
         <h2>Corrections</h2>
         <p>
-          If you find an error in a formula, a citation or a milestone item, it will be corrected and
-          the change dated on this page. Clinical accuracy takes precedence over everything else on
-          this site.
+          If you find an error in a formula, a citation or a milestone item, it will be corrected
+          and the change dated on this page. Clinical accuracy takes precedence over everything else
+          on this site.
         </p>
-        <p>Last full clinical review: August 2026, by Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics).</p>
+        <p>
+          Last full clinical review: August 2026, by Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics).
+        </p>
       </Article>
     </SiteLayout>
   );

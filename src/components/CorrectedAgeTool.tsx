@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { z } from "zod";
 import { Link } from "@tanstack/react-router";
 import { FileDown, Printer, Table2, CalendarCheck, TrendingUp } from "lucide-react";
 import {
@@ -17,6 +18,7 @@ import {
   formatDuration,
   formatPMA,
   gaCategory,
+  parseDate,
   todayISO,
 } from "@/lib/corrected-age";
 import {
@@ -28,7 +30,6 @@ import { followUpSchedule } from "@/lib/followup";
 import { generateVisitPdf } from "@/lib/visit-pdf";
 import { track } from "@/lib/analytics";
 
-
 interface VisitEntry {
   id: string;
   date: string;
@@ -37,7 +38,6 @@ interface VisitEntry {
   headCm?: number | undefined;
   note?: string | undefined;
 }
-
 
 const STORAGE_KEY = "adjustedage.record.v1";
 
@@ -48,10 +48,31 @@ interface StoredRecord {
   visits: VisitEntry[];
 }
 
+const storedRecordSchema = z.object({
+  birthDate: z.string(),
+  gaWeeks: z.number().int().min(22).max(40),
+  gaDays: z.number().int().min(0).max(6),
+  visits: z.array(
+    z.object({
+      id: z.string(),
+      date: z.string(),
+      weightKg: z.number().positive().max(25).optional(),
+      lengthCm: z.number().positive().max(120).optional(),
+      headCm: z.number().positive().max(60).optional(),
+      note: z.string().max(5000).optional(),
+    }),
+  ),
+});
+
 function loadRecord(): StoredRecord | null {
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
-    return raw ? (JSON.parse(raw) as StoredRecord) : null;
+    if (!raw) return null;
+    const parsed = storedRecordSchema.safeParse(JSON.parse(raw));
+    if (!parsed.success) return null;
+    if (!parseDate(parsed.data.birthDate)) return null;
+    if (!parsed.data.visits.every((visit) => parseDate(visit.date))) return null;
+    return parsed.data;
   } catch {
     return null;
   }
@@ -68,6 +89,7 @@ export function CorrectedAgeTool() {
   const [length, setLength] = useState("");
   const [head, setHead] = useState("");
   const [note, setNote] = useState("");
+  const [formError, setFormError] = useState<string | null>(null);
   const [checked, setChecked] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
@@ -101,10 +123,7 @@ export function CorrectedAgeTool() {
   const futureBirth = Boolean(birthDate && !result);
 
   const schedule = useMemo(
-    () =>
-      result && birthDate
-        ? followUpSchedule(birthDate, result.prematurityDays, onDate)
-        : [],
+    () => (result && birthDate ? followUpSchedule(birthDate, result.prematurityDays, onDate) : []),
     [result, birthDate, onDate],
   );
 
@@ -113,17 +132,47 @@ export function CorrectedAgeTool() {
     // one count per completed input set, not per keystroke
   }, [birthDate, gaWeeks, gaDays, result]);
 
+  const parsedWeight = weight.trim() ? Number(weight) : undefined;
+  const parsedLength = length.trim() ? Number(length) : undefined;
+  const parsedHead = head.trim() ? Number(head) : undefined;
+  const measurementErrors: string[] = [];
+  if (parsedWeight !== undefined && (!Number.isFinite(parsedWeight) || parsedWeight <= 0)) {
+    measurementErrors.push("Weight must be a positive number in kilograms.");
+  }
+  if (parsedLength !== undefined && (!Number.isFinite(parsedLength) || parsedLength <= 0)) {
+    measurementErrors.push("Length must be a positive number in centimetres.");
+  }
+  if (parsedHead !== undefined && (!Number.isFinite(parsedHead) || parsedHead <= 0)) {
+    measurementErrors.push("Head circumference must be a positive number in centimetres.");
+  }
+
   function addVisit() {
-    if (!birthDate) return;
+    if (!birthDate) {
+      setFormError("Enter a date of birth before saving a visit.");
+      return;
+    }
+    if (!result) {
+      setFormError("The visit date must be on or after the date of birth.");
+      return;
+    }
+    if (measurementErrors.length > 0) {
+      setFormError(measurementErrors[0] ?? "Check the visit measurements.");
+      return;
+    }
+    setFormError(null);
     const entry: VisitEntry = {
       id: `${Date.now()}`,
       date: onDate,
-      weightKg: weight ? Number(weight) : undefined,
-      lengthCm: length ? Number(length) : undefined,
-      headCm: head ? Number(head) : undefined,
+      weightKg: parsedWeight,
+      lengthCm: parsedLength,
+      headCm: parsedHead,
       note: note.trim() ? note.trim() : undefined,
     };
-    setVisits((v) => [...v.filter((x) => x.date !== entry.date), entry].sort((a, b) => a.date.localeCompare(b.date)));
+    setVisits((v) =>
+      [...v.filter((x) => x.date !== entry.date), entry].sort((a, b) =>
+        a.date.localeCompare(b.date),
+      ),
+    );
     setWeight("");
     setLength("");
     setHead("");
@@ -148,22 +197,25 @@ export function CorrectedAgeTool() {
     track("pdf_exported");
   }
 
-
   const plausibility: string[] = [];
   if (weight && (Number(weight) < 0.3 || Number(weight) > 25))
-    plausibility.push("That weight is outside the usual range for an infant — please double-check the units (kg).");
+    plausibility.push(
+      "That weight is outside the usual range for an infant — please double-check the units (kg).",
+    );
   if (length && (Number(length) < 25 || Number(length) > 120))
     plausibility.push("That length looks unusual — please double-check the units (cm).");
   if (head && (Number(head) < 18 || Number(head) > 60))
-    plausibility.push("That head circumference looks unusual — please double-check the units (cm).");
+    plausibility.push(
+      "That head circumference looks unusual — please double-check the units (cm).",
+    );
 
   return (
     <div className="mx-auto max-w-3xl px-5">
       <section className="rounded-2xl border border-border bg-card p-5 shadow-paper sm:p-7">
         <h2 className="font-display text-xl font-semibold">Enter the birth details once</h2>
         <p className="mt-1 text-sm text-muted-foreground">
-          Everything below is calculated from these two facts. They are saved in this browser so
-          you do not have to type them again at the next visit.
+          Everything below is calculated from these two facts. They are saved in this browser so you
+          do not have to type them again at the next visit.
         </p>
 
         <div className="mt-5 grid gap-4 sm:grid-cols-2">
@@ -173,7 +225,10 @@ export function CorrectedAgeTool() {
               type="date"
               value={birthDate}
               max={todayISO()}
-              onChange={(e) => setBirthDate(e.target.value)}
+              onChange={(e) => {
+                setBirthDate(e.target.value);
+                setFormError(null);
+              }}
               className="mt-1 w-full rounded-lg border border-input bg-background px-3 py-2 text-base outline-none focus:ring-2 focus:ring-ring"
             />
           </label>
@@ -183,7 +238,11 @@ export function CorrectedAgeTool() {
             <input
               type="date"
               value={onDate}
-              onChange={(e) => setOnDate(e.target.value)}
+              min={birthDate || undefined}
+              onChange={(e) => {
+                setOnDate(e.target.value);
+                setFormError(null);
+              }}
               className="mt-1 w-full rounded-lg border border-input bg-background px-3 py-2 text-base outline-none focus:ring-2 focus:ring-ring"
             />
           </label>
@@ -225,7 +284,10 @@ export function CorrectedAgeTool() {
         </div>
 
         {futureBirth ? (
-          <p className="mt-4 rounded-lg bg-caution px-4 py-3 text-sm text-caution-foreground">
+          <p
+            role="alert"
+            className="mt-4 rounded-lg bg-caution px-4 py-3 text-sm text-caution-foreground"
+          >
             The visit date is before the date of birth. Please check both dates.
           </p>
         ) : null}
@@ -253,9 +315,9 @@ export function CorrectedAgeTool() {
           </section>
 
           <p className="mt-4 rounded-xl border border-border bg-surface px-4 py-3 text-sm leading-relaxed">
-            Your baby was born {result.prematurityDays} days ({Math.floor(result.prematurityDays / 7)}{" "}
-            weeks {result.prematurityDays % 7} days) before their due date, so when people ask how
-            old they are, the honest answer is two numbers:{" "}
+            Your baby was born {result.prematurityDays} days (
+            {Math.floor(result.prematurityDays / 7)} weeks {result.prematurityDays % 7} days) before
+            their due date, so when people ask how old they are, the honest answer is two numbers:{" "}
             <strong>{formatDuration(result.chronologicalDays)} since birth</strong>, and{" "}
             <strong>{formatDuration(result.correctedDays)} corrected</strong>. Development is
             expected to track the corrected number.
@@ -278,8 +340,8 @@ export function CorrectedAgeTool() {
               <>
                 <p className="mt-2 text-sm text-muted-foreground">
                   These are the CDC/AAP milestones most children do by this age, re-indexed to{" "}
-                  <strong>corrected</strong> age. They are conversation prompts for your next visit —
-                  not a test, and there is no score.
+                  <strong>corrected</strong> age. They are conversation prompts for your next visit
+                  — not a test, and there is no score.
                 </p>
                 <ul className="mt-4 space-y-2">
                   {currentSet.items.map((item) => {
@@ -317,7 +379,9 @@ export function CorrectedAgeTool() {
             )}
 
             <div className="mt-6 rounded-xl bg-caution px-4 py-4 text-caution-foreground">
-              <p className="text-sm font-semibold">Call your paediatrician today if any of these apply, at any age</p>
+              <p className="text-sm font-semibold">
+                Call your paediatrician today if any of these apply, at any age
+              </p>
               <ul className="mt-2 space-y-1 text-sm">
                 {ALWAYS_ACT_EARLY.map((item) => (
                   <li key={item}>• {item}</li>
@@ -377,9 +441,27 @@ export function CorrectedAgeTool() {
             </p>
 
             <div className="mt-4 grid gap-3 sm:grid-cols-4">
-              <NumField label="Weight (kg)" value={weight} onChange={setWeight} step="0.01" />
-              <NumField label="Length (cm)" value={length} onChange={setLength} step="0.1" />
-              <NumField label="Head circ. (cm)" value={head} onChange={setHead} step="0.1" />
+              <NumField
+                label="Weight (kg)"
+                value={weight}
+                onChange={setWeight}
+                step="0.01"
+                min={0.01}
+              />
+              <NumField
+                label="Length (cm)"
+                value={length}
+                onChange={setLength}
+                step="0.1"
+                min={0.1}
+              />
+              <NumField
+                label="Head circ. (cm)"
+                value={head}
+                onChange={setHead}
+                step="0.1"
+                min={0.1}
+              />
               <button
                 type="button"
                 onClick={addVisit}
@@ -402,8 +484,28 @@ export function CorrectedAgeTool() {
               />
             </label>
 
+            {formError ? (
+              <p
+                role="alert"
+                className="mt-3 rounded-lg bg-caution px-3 py-2 text-sm text-caution-foreground"
+              >
+                {formError}
+              </p>
+            ) : null}
+            {measurementErrors.map((msg) => (
+              <p
+                key={msg}
+                role="alert"
+                className="mt-3 rounded-lg bg-caution px-3 py-2 text-sm text-caution-foreground"
+              >
+                {msg}
+              </p>
+            ))}
             {plausibility.map((msg) => (
-              <p key={msg} className="mt-3 rounded-lg bg-caution px-3 py-2 text-sm text-caution-foreground">
+              <p
+                key={msg}
+                className="mt-3 rounded-lg bg-caution px-3 py-2 text-sm text-caution-foreground"
+              >
                 {msg}
               </p>
             ))}
@@ -531,8 +633,12 @@ export function CorrectedAgeTool() {
                         <LineChart
                           data={visits.map((v) => ({
                             ...v,
-                            correctedDays: computeAges({ birthDate, gaWeeks, gaDays, onDate: v.date })
-                              ?.correctedDays,
+                            correctedDays: computeAges({
+                              birthDate,
+                              gaWeeks,
+                              gaDays,
+                              onDate: v.date,
+                            })?.correctedDays,
                             label: v.date,
                           }))}
                         >
@@ -591,7 +697,6 @@ export function CorrectedAgeTool() {
               </div>
             ) : null}
           </section>
-
         </>
       ) : null}
     </div>
@@ -612,7 +717,9 @@ function Stat({
   return (
     <div
       className={`rounded-xl border p-4 ${
-        tone === "primary" ? "border-primary bg-primary text-primary-foreground" : "border-border bg-card"
+        tone === "primary"
+          ? "border-primary bg-primary text-primary-foreground"
+          : "border-border bg-card"
       }`}
     >
       <p className="text-xs uppercase tracking-wide opacity-80">{label}</p>
@@ -627,11 +734,13 @@ function NumField({
   value,
   onChange,
   step,
+  min,
 }: {
   label: string;
   value: string;
   onChange: (v: string) => void;
   step: string;
+  min?: number;
 }) {
   return (
     <label className="block">
@@ -640,6 +749,7 @@ function NumField({
         type="number"
         inputMode="decimal"
         step={step}
+        min={min}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         className="mt-1 h-10 w-full rounded-lg border border-input bg-background px-3 text-base outline-none focus:ring-2 focus:ring-ring"
