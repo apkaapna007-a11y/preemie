@@ -1,12 +1,6 @@
 import { defineTool, ToolError } from "@lovable.dev/mcp-js";
 import { z } from "zod";
-import {
-  computeAges,
-  formatDuration,
-  formatPMA,
-  gaCategory,
-  todayISO,
-} from "@/lib/corrected-age";
+import { computeAges, formatDuration, formatPMA, gaCategory, todayISO } from "@/lib/corrected-age";
 
 export default defineTool({
   name: "corrected_age",
@@ -14,8 +8,16 @@ export default defineTool({
   description:
     "Calculate corrected (adjusted) age, chronological age and postmenstrual age for a preterm infant from date of birth and gestational age at birth.",
   inputSchema: {
-    birth_date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).describe("Date of birth, yyyy-mm-dd."),
-    ga_weeks: z.number().int().min(22).max(42).describe("Completed weeks of gestation at birth."),
+    birth_date: z
+      .string()
+      .regex(/^\d{4}-\d{2}-\d{2}$/)
+      .describe("Date of birth, yyyy-mm-dd."),
+    ga_weeks: z
+      .number()
+      .int()
+      .min(22)
+      .max(40)
+      .describe("Completed weeks of gestation at birth (22-40 weeks)."),
     ga_days: z.number().int().min(0).max(6).default(0).describe("Extra days of gestation (0-6)."),
     on_date: z
       .string()
@@ -26,7 +28,12 @@ export default defineTool({
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: ({ birth_date, ga_weeks, ga_days, on_date }) => {
     const onDate = on_date ?? todayISO();
-    const result = computeAges({ birthDate: birth_date, gaWeeks: ga_weeks, gaDays: ga_days, onDate });
+    const result = computeAges({
+      birthDate: birth_date,
+      gaWeeks: ga_weeks,
+      gaDays: ga_days,
+      onDate,
+    });
     if (!result) {
       throw new ToolError("Invalid dates: the visit date must be on or after the date of birth.");
     }

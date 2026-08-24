@@ -21,7 +21,7 @@ export default defineConfig({
         registerType: "autoUpdate",
         injectRegister: null,
         filename: "sw.js",
-        outDir: "dist/client",
+        outDir: ".output/public",
 
         devOptions: { enabled: false },
         manifest: {
@@ -37,7 +37,12 @@ export default defineConfig({
           icons: [
             { src: "/icons/icon-192.png", sizes: "192x192", type: "image/png", purpose: "any" },
             { src: "/icons/icon-512.png", sizes: "512x512", type: "image/png", purpose: "any" },
-            { src: "/icons/icon-512.png", sizes: "512x512", type: "image/png", purpose: "maskable" },
+            {
+              src: "/icons/icon-512.png",
+              sizes: "512x512",
+              type: "image/png",
+              purpose: "maskable",
+            },
           ],
         },
         workbox: {
@@ -51,7 +56,8 @@ export default defineConfig({
             },
             {
               urlPattern: ({ request, sameOrigin }: { request: Request; sameOrigin: boolean }) =>
-                sameOrigin && ["style", "script", "worker", "image", "font"].includes(request.destination),
+                sameOrigin &&
+                ["style", "script", "worker", "image", "font"].includes(request.destination),
               handler: "CacheFirst",
               options: {
                 cacheName: "static-assets",

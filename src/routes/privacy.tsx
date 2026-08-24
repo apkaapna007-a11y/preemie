@@ -40,9 +40,7 @@ export const Route = createFileRoute("/privacy")({
       { name: "article:published_time", content: "2026-08-11T00:00:00Z" },
       { name: "article:modified_time", content: "2026-08-14T00:00:00Z" },
     ],
-    links: [
-      { rel: "canonical", href: "https://preemie.vercel.app/privacy" },
-    ],
+    links: [{ rel: "canonical", href: "https://preemie.vercel.app/privacy" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -50,7 +48,8 @@ export const Route = createFileRoute("/privacy")({
           "@context": "https://schema.org",
           "@type": "MedicalWebPage",
           name: "Privacy & Data Handling | AdjustedAge",
-          description: "AdjustedAge stores your baby's dates and measurements only in your browser. No accounts, no cookies, no data uploaded.",
+          description:
+            "AdjustedAge stores your baby's dates and measurements only in your browser. No accounts, no cookies, no data uploaded.",
           url: "https://preemie.vercel.app/privacy",
           author: {
             "@id": "https://preemie.vercel.app/about#drzeeshan",
@@ -64,7 +63,12 @@ export const Route = createFileRoute("/privacy")({
           "@type": "BreadcrumbList",
           itemListElement: [
             { "@type": "ListItem", position: 1, name: "Home", item: "https://preemie.vercel.app/" },
-            { "@type": "ListItem", position: 2, name: "Privacy", item: "https://preemie.vercel.app/privacy" },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "Privacy",
+              item: "https://preemie.vercel.app/privacy",
+            },
           ],
         }),
       },
@@ -105,8 +109,8 @@ function PrivacyPage() {
           To know whether the tool is actually useful, AdjustedAge counts how often a small set of
           actions happen — a calculation, a saved visit, a PDF or CSV export, a print. It records
           the <em>name</em> of the action and nothing else. It never records a date of birth,
-          gestational age, weight, length, head circumference, note text, name, IP address or
-          device identifier, and it sets no cookies and no cross-site identifiers.
+          gestational age, weight, length, head circumference, note text, name, IP address or device
+          identifier, and it sets no cookies and no cross-site identifiers.
         </p>
         <p>
           These counts also stay on your device. You can read them, switch them off, or delete them

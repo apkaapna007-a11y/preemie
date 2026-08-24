@@ -1,4 +1,4 @@
-import { parseDate, MS_PER_DAY } from "@/lib/corrected-age";
+import { parseDate, MS_PER_DAY } from "./corrected-age.ts";
 
 /**
  * NICU-graduate follow-up visit schedule, indexed to CORRECTED age.
@@ -14,20 +14,48 @@ export interface FollowUpVisit {
 }
 
 const SCHEDULE: { months: number; label: string; focus: string }[] = [
-  { months: 4, label: "4 months corrected", focus: "Feeding, weight velocity, head growth, early motor symmetry" },
-  { months: 8, label: "8 months corrected", focus: "Sitting, transfer of objects, babble, hearing check follow-up" },
-  { months: 12, label: "12 months corrected", focus: "Pulling to stand, pincer grasp, first words, vision review" },
-  { months: 18, label: "18 months corrected", focus: "Walking, single words, autism-specific surveillance" },
-  { months: 24, label: "24 months corrected", focus: "Two-word phrases, formal developmental assessment, most correction stops here" },
-  { months: 36, label: "36 months corrected", focus: "Pre-school readiness; motor and language correction ends" },
+  {
+    months: 4,
+    label: "4 months corrected",
+    focus: "Feeding, weight velocity, head growth, early motor symmetry",
+  },
+  {
+    months: 8,
+    label: "8 months corrected",
+    focus: "Sitting, transfer of objects, babble, hearing check follow-up",
+  },
+  {
+    months: 12,
+    label: "12 months corrected",
+    focus: "Pulling to stand, pincer grasp, first words, vision review",
+  },
+  {
+    months: 18,
+    label: "18 months corrected",
+    focus: "Walking, single words, autism-specific surveillance",
+  },
+  {
+    months: 24,
+    label: "24 months corrected",
+    focus: "Two-word phrases, formal developmental assessment, most correction stops here",
+  },
+  {
+    months: 36,
+    label: "36 months corrected",
+    focus: "Pre-school readiness; motor and language correction ends",
+  },
 ];
 
 function addMonths(iso: string, months: number): string {
   const base = parseDate(iso);
-  if (!base) return "";
-  const d = new Date(base.getTime());
-  d.setUTCMonth(d.getUTCMonth() + months);
-  return d.toISOString().slice(0, 10);
+  if (!base || !Number.isInteger(months)) return "";
+
+  const target = new Date(Date.UTC(base.getUTCFullYear(), base.getUTCMonth() + months, 1));
+  const lastDay = new Date(
+    Date.UTC(target.getUTCFullYear(), target.getUTCMonth() + 1, 0),
+  ).getUTCDate();
+  target.setUTCDate(Math.min(base.getUTCDate(), lastDay));
+  return target.toISOString().slice(0, 10);
 }
 
 export function followUpSchedule(
@@ -35,10 +63,14 @@ export function followUpSchedule(
   prematurityDays: number,
   today: string,
 ): FollowUpVisit[] {
-  const termDate = new Date((parseDate(birthDate)?.getTime() ?? 0) + prematurityDays * MS_PER_DAY)
+  const birth = parseDate(birthDate);
+  const todayDate = parseDate(today);
+  if (!birth || !todayDate || !Number.isInteger(prematurityDays) || prematurityDays < 0) return [];
+
+  const termDate = new Date(birth.getTime() + prematurityDays * MS_PER_DAY)
     .toISOString()
     .slice(0, 10);
-  const now = parseDate(today)?.getTime() ?? 0;
+  const now = todayDate.getTime();
 
   return SCHEDULE.map((s) => {
     const dueDate = addMonths(termDate, s.months);

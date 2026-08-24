@@ -61,7 +61,7 @@ export function readAnalytics(): AnalyticsSnapshot {
   if (!isBrowser()) return EMPTY;
   try {
     const raw = window.localStorage.getItem(KEY);
-    return raw ? ({ ...EMPTY, ...(JSON.parse(raw) as AnalyticsSnapshot) }) : EMPTY;
+    return raw ? { ...EMPTY, ...(JSON.parse(raw) as AnalyticsSnapshot) } : EMPTY;
   } catch {
     return EMPTY;
   }

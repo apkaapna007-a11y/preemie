@@ -108,7 +108,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       {
-
         rel: "stylesheet",
         href: appCss,
       },
@@ -133,14 +132,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           description: "Corrected age calculator and preemie follow-up tool for NICU graduates.",
           publisher: {
             "@type": "Organization",
-            "name": "AdjustedAge",
-            "logo": {
+            name: "AdjustedAge",
+            logo: {
               "@type": "ImageObject",
-              "url": "https://preemie.vercel.app/favicon.png"
-            }
+              url: "https://preemie.vercel.app/favicon.png",
+            },
           },
           author: {
-            "@id": "https://preemie.vercel.app/about#drzeeshan"
+            "@id": "https://preemie.vercel.app/about#drzeeshan",
           },
           potentialAction: {
             "@type": "SearchAction",
@@ -164,15 +163,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           medicalSpecialty: "Pediatrics",
           url: "https://preemie.vercel.app/about",
           image: "https://preemie.vercel.app/favicon.png",
-          description: "Dr. Zeeshan Islam is a Consultant Paediatrician specializing in neonatal follow-up and corrected age development.",
+          description:
+            "Dr. Zeeshan Islam is a Consultant Paediatrician specializing in neonatal follow-up and corrected age development.",
           address: {
             "@type": "PostalAddress",
-            "addressCountry": "PK"
-          }
+            addressCountry: "PK",
+          },
         }),
       },
     ],
-
   }),
 
   shellComponent: RootShell,
@@ -209,4 +208,3 @@ function RootComponent() {
     </QueryClientProvider>
   );
 }
-

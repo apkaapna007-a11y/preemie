@@ -25,11 +25,20 @@ export interface AgeResult {
 }
 
 export function parseDate(value: string): Date | null {
-  if (!value) return null;
-  const [y, m, d] = value.split("-").map(Number);
-  if (!y || !m || !d) return null;
-  const dt = new Date(Date.UTC(y, m - 1, d));
-  return Number.isNaN(dt.getTime()) ? null : dt;
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return null;
+  const parts = value.split("-");
+  if (parts.length !== 3) return null;
+  const year = Number(parts[0]);
+  const month = Number(parts[1]);
+  const day = Number(parts[2]);
+  if (!Number.isInteger(year) || !Number.isInteger(month) || !Number.isInteger(day)) return null;
+
+  const dt = new Date(Date.UTC(year, month - 1, day));
+  if (Number.isNaN(dt.getTime())) return null;
+  if (dt.getUTCFullYear() !== year || dt.getUTCMonth() !== month - 1 || dt.getUTCDate() !== day) {
+    return null;
+  }
+  return dt;
 }
 
 export function daysBetween(from: Date, to: Date): number {
@@ -40,6 +49,16 @@ export function computeAges(input: AgeInput): AgeResult | null {
   const birth = parseDate(input.birthDate);
   const on = parseDate(input.onDate);
   if (!birth || !on) return null;
+  if (
+    !Number.isInteger(input.gaWeeks) ||
+    !Number.isInteger(input.gaDays) ||
+    input.gaWeeks < 22 ||
+    input.gaWeeks > 40 ||
+    input.gaDays < 0 ||
+    input.gaDays > 6
+  ) {
+    return null;
+  }
 
   const gaTotalDays = input.gaWeeks * 7 + input.gaDays;
   const chronologicalDays = daysBetween(birth, on);
@@ -58,7 +77,10 @@ export function computeAges(input: AgeInput): AgeResult | null {
   };
 }
 
-/** Whole months (30.4375-day months are wrong for milestones; use calendar-anchored months). */
+/**
+ * Convert a duration to a mean-month display approximation.
+ * Milestone thresholds use the same convention through correctedMonths().
+ */
 export function daysToMonthsDays(days: number): { months: number; days: number } {
   if (days < 0) {
     const p = daysToMonthsDays(-days);
@@ -92,7 +114,10 @@ export function correctedMonths(correctedDays: number): number {
   return correctedDays / 30.4375;
 }
 
-export function gaCategory(gaWeeks: number, gaDays: number): {
+export function gaCategory(
+  gaWeeks: number,
+  gaDays: number,
+): {
   label: string;
   detail: string;
 } {
@@ -100,22 +125,26 @@ export function gaCategory(gaWeeks: number, gaDays: number): {
   if (total < 28 * 7)
     return {
       label: "Extremely preterm",
-      detail: "Born before 28 weeks. Correction is used through at least 24 months, and many follow-up programmes correct to 36 months for motor and language.",
+      detail:
+        "Born before 28 weeks. Correction is used through at least 24 months, and many follow-up programmes correct to 36 months for motor and language.",
     };
   if (total < 32 * 7)
     return {
       label: "Very preterm",
-      detail: "Born 28 to 31+6 weeks. Correction is conventionally applied through 24 months corrected.",
+      detail:
+        "Born 28 to 31+6 weeks. Correction is conventionally applied through 24 months corrected.",
     };
   if (total < 34 * 7)
     return {
       label: "Moderately preterm",
-      detail: "Born 32 to 33+6 weeks. Correction usually matters most in the first 12 to 24 months.",
+      detail:
+        "Born 32 to 33+6 weeks. Correction usually matters most in the first 12 to 24 months.",
     };
   if (total < 37 * 7)
     return {
       label: "Late preterm",
-      detail: "Born 34 to 36+6 weeks. Correction is still meaningful in the first year — the 2 to 3 week difference is large for a 4-month-old.",
+      detail:
+        "Born 34 to 36+6 weeks. Correction is still meaningful in the first year — the 2 to 3 week difference is large for a 4-month-old.",
     };
   return {
     label: "Term",
