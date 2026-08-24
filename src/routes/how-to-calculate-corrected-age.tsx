@@ -4,17 +4,20 @@ import { Article, PageHeader, SiteLayout } from "@/components/SiteLayout";
 export const Route = createFileRoute("/how-to-calculate-corrected-age")({
   head: () => ({
     meta: [
-      { title: "How to Calculate Corrected Age | AdjustedAge" },
+      { title: "How to Calculate Corrected Age for a Premature Baby | AdjustedAge" },
       {
         name: "description",
         content:
-          "The corrected age formula for premature babies with three worked examples and common mistakes. Reviewed by Dr. Zeeshan Islam.",
+          "Learn how to calculate corrected age for a premature baby using gestational age, chronological age and three worked examples. Reviewed by Dr. Zeeshan Islam.",
       },
-      { property: "og:title", content: "How to Calculate Corrected Age | AdjustedAge" },
+      {
+        property: "og:title",
+        content: "How to Calculate Corrected Age for a Premature Baby | AdjustedAge",
+      },
       {
         property: "og:description",
         content:
-          "The corrected age formula for premature babies with three worked examples and common mistakes. Reviewed by Dr. Zeeshan Islam.",
+          "Learn how to calculate corrected age for a premature baby using gestational age, chronological age and three worked examples. Reviewed by Dr. Zeeshan Islam.",
       },
       { property: "og:url", content: "https://preemie.vercel.app/how-to-calculate-corrected-age" },
       { property: "og:type", content: "article" },
@@ -22,15 +25,20 @@ export const Route = createFileRoute("/how-to-calculate-corrected-age")({
       { property: "og:locale", content: "en_US" },
       { property: "og:site_name", content: "AdjustedAge" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "How to Calculate Corrected Age | AdjustedAge" },
+      {
+        name: "twitter:title",
+        content: "How to Calculate Corrected Age for a Premature Baby | AdjustedAge",
+      },
       {
         name: "twitter:description",
         content:
-          "The corrected age formula for premature babies with three worked examples and common mistakes. Reviewed by Dr. Zeeshan Islam.",
+          "Learn how to calculate corrected age for a premature baby using gestational age, chronological age and three worked examples. Reviewed by Dr. Zeeshan Islam.",
       },
       { name: "twitter:image", content: "https://preemie.vercel.app/favicon.png" },
+      { name: "twitter:image:alt", content: "Corrected age formula for premature babies" },
+      { property: "og:image:alt", content: "Corrected age formula for premature babies" },
       { name: "article:published_time", content: "2026-08-11T00:00:00Z" },
-      { name: "article:modified_time", content: "2026-08-14T00:00:00Z" },
+      { name: "article:modified_time", content: "2026-08-24T00:00:00Z" },
     ],
     links: [
       { rel: "canonical", href: "https://preemie.vercel.app/how-to-calculate-corrected-age" },
@@ -46,7 +54,7 @@ export const Route = createFileRoute("/how-to-calculate-corrected-age")({
             "The corrected age formula with three worked examples and the common mistakes clinicians and parents make.",
           url: "https://preemie.vercel.app/how-to-calculate-corrected-age",
           datePublished: "2026-08-11",
-          dateModified: "2026-08-14",
+          dateModified: "2026-08-24",
           author: {
             "@id": "https://preemie.vercel.app/about#drzeeshan",
           },
@@ -89,6 +97,39 @@ export const Route = createFileRoute("/how-to-calculate-corrected-age")({
           author: {
             "@id": "https://preemie.vercel.app/about#drzeeshan",
           },
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            {
+              "@type": "Question",
+              name: "Do you correct a premature baby’s vaccine schedule?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "No. Immunisations are scheduled by chronological age. Corrected age is used for many developmental conversations, not to delay vaccines.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "What if corrected age is negative?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Before the original due date, corrected age can be below zero. The tool displays that value and also shows postmenstrual age.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "When should corrected-age calculations stop?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Developmental correction is commonly used until about 24 months, with domain-specific variation.",
+              },
+            },
+          ],
         }),
       },
       {
@@ -183,6 +224,25 @@ function HowToPage() {
           actually use. The tool shows both.
         </p>
 
+        <h2>Common questions about corrected age</h2>
+        <h3>Do you correct a premature baby’s vaccine schedule?</h3>
+        <p>
+          No. Immunisations are scheduled by chronological age. Corrected age is used for many
+          developmental conversations, not to delay vaccines.
+        </p>
+        <h3>What if corrected age is negative?</h3>
+        <p>
+          Before the original due date, corrected age can be below zero. The tool displays that
+          value and also shows postmenstrual age, which is the clinically useful age before
+          term-equivalent age.
+        </p>
+        <h3>When should corrected-age calculations stop?</h3>
+        <p>
+          Developmental correction is commonly used until about 24 months, with domain-specific
+          variation. See <Link to="/when-to-stop-correcting">when to stop correcting</Link> for the
+          full explanation.
+        </p>
+
         <h2>The mistakes that actually happen</h2>
         <ul>
           <li>
@@ -202,6 +262,14 @@ function HowToPage() {
             the child's life it represents shrinks every month. That is why it stops mattering.
           </li>
         </ul>
+
+        <h2>Related preterm follow-up guides</h2>
+        <p>
+          Use the <Link to="/">corrected age calculator</Link> for a date-specific result, read the{" "}
+          <Link to="/premature-baby-milestones">premature baby milestone chart</Link>, review{" "}
+          <Link to="/red-flags">red flags</Link>, or inspect the{" "}
+          <Link to="/methodology">methodology and sources</Link>.
+        </p>
       </Article>
     </SiteLayout>
   );

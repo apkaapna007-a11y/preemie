@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { CorrectedAgeTool } from "@/components/CorrectedAgeTool";
 import { Article, PageHeader, SiteLayout } from "@/components/SiteLayout";
 
@@ -9,7 +9,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Corrected age, milestones and follow-up tracking for NICU graduates, with CDC milestones re-indexed to corrected age. Reviewed by Dr. Zeeshan Islam.",
+          "Calculate corrected age for a premature baby from birth date and gestational age, plus chronological age, PMA and milestones. Reviewed by Dr. Zeeshan Islam.",
       },
       {
         property: "og:title",
@@ -18,7 +18,7 @@ export const Route = createFileRoute("/")({
       {
         property: "og:description",
         content:
-          "Corrected age, milestones and follow-up tracking for NICU graduates, with CDC milestones re-indexed to corrected age. Reviewed by Dr. Zeeshan Islam.",
+          "Calculate corrected age for a premature baby from birth date and gestational age, plus chronological age, PMA and milestones. Reviewed by Dr. Zeeshan Islam.",
       },
       { property: "og:url", content: "https://preemie.vercel.app/" },
       { property: "og:type", content: "website" },
@@ -46,11 +46,11 @@ export const Route = createFileRoute("/")({
           "@type": "MedicalWebPage",
           name: "Corrected Age Calculator for Premature Babies",
           description:
-            "Calculates corrected age, chronological age and postmenstrual age for preterm infants and re-indexes CDC developmental surveillance milestones to corrected age.",
+            "Corrected age calculator for premature babies using birth date and gestational age to calculate corrected age, chronological age and postmenstrual age.",
           url: "https://preemie.vercel.app/",
           datePublished: "2026-08-11",
-          dateModified: "2026-08-14",
-          lastReviewed: "2026-08-14",
+          dateModified: "2026-08-24",
+          lastReviewed: "2026-08-24",
           audience: {
             "@type": "MedicalAudience",
             audienceType: "Parents of preterm infants",
@@ -73,6 +73,39 @@ export const Route = createFileRoute("/")({
             "@id": "https://preemie.vercel.app/about#drzeeshan",
           },
           specialty: "Pediatrics",
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            {
+              "@type": "Question",
+              name: "What is corrected age for a premature baby?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Corrected age is chronological age minus the weeks of prematurity. Calculate prematurity from 40 weeks, then use the corrected number when reading early developmental milestones.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Should vaccines use corrected age?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "No. Immunisations are scheduled by chronological age. Use corrected age for development-related conversations.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "When does corrected age stop being used?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Developmental correction is commonly used until about 24 months, although the appropriate endpoint can vary by developmental domain.",
+              },
+            },
+          ],
         }),
       },
       {
@@ -147,6 +180,33 @@ function Index() {
           Two things in particular are <em>not</em> corrected: immunisations are given by
           chronological age, and the growth chart choice changes at term-equivalent age. The tool
           shows the chronological number alongside the corrected one for exactly this reason.
+        </p>
+
+        <h2>Common corrected-age questions</h2>
+        <h3>What is corrected age for a premature baby?</h3>
+        <p>
+          Corrected age is chronological age minus the weeks of prematurity. Calculate prematurity
+          from 40 weeks, then use the corrected number when reading early developmental milestones.
+        </p>
+        <h3>Should vaccines use corrected age?</h3>
+        <p>
+          No. Immunisations are scheduled by chronological age. Use the calculator’s chronological
+          age for vaccine timing and corrected age for development-related conversations.
+        </p>
+        <h3>When does corrected age stop being used?</h3>
+        <p>
+          Developmental correction is commonly used until about 24 months, although the appropriate
+          endpoint can vary by developmental domain. Read{" "}
+          <Link to="/when-to-stop-correcting">when correction should stop</Link> and discuss your
+          child’s follow-up plan with their clinician.
+        </p>
+
+        <h2>Continue with the preterm follow-up guides</h2>
+        <p>
+          <Link to="/how-to-calculate-corrected-age">Check the corrected-age formula</Link>, read
+          the <Link to="/premature-baby-milestones">premature baby milestone chart</Link>, review
+          the <Link to="/red-flags">red flags that need medical attention</Link>, or see the{" "}
+          <Link to="/methodology">formulas and sources</Link> behind this tool.
         </p>
       </Article>
     </SiteLayout>
