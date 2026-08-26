@@ -1,6 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Printer } from "lucide-react";
-import { Article, PageHeader, SiteLayout } from "@/components/SiteLayout";
+import {
+  Article,
+  Breadcrumbs,
+  LinkGridSection,
+  PageHeader,
+  SiteLayout,
+} from "@/components/SiteLayout";
 import { MILESTONES } from "@/lib/milestones";
 
 export const Route = createFileRoute("/premature-baby-milestones")({
@@ -42,7 +48,7 @@ export const Route = createFileRoute("/premature-baby-milestones")({
       { name: "twitter:image:alt", content: "Premature baby milestones chart by corrected age" },
       { property: "og:image:alt", content: "Premature baby milestones chart by corrected age" },
       { name: "article:published_time", content: "2026-08-11T00:00:00Z" },
-      { name: "article:modified_time", content: "2026-08-24T00:00:00Z" },
+      { name: "article:modified_time", content: "2026-08-27T00:00:00Z" },
     ],
     links: [{ rel: "canonical", href: "https://preemie.vercel.app/premature-baby-milestones" }],
     scripts: [
@@ -56,7 +62,7 @@ export const Route = createFileRoute("/premature-baby-milestones")({
             "Printable CDC/AAP developmental milestones chart re-indexed to corrected age for premature babies, from 2 to 36 months.",
           url: "https://preemie.vercel.app/premature-baby-milestones",
           datePublished: "2026-08-11",
-          dateModified: "2026-08-24",
+          dateModified: "2026-08-27",
           author: {
             "@id": "https://preemie.vercel.app/about#drzeeshan",
           },
@@ -119,6 +125,9 @@ export const Route = createFileRoute("/premature-baby-milestones")({
 function MilestonesPage() {
   return (
     <SiteLayout>
+      <Breadcrumbs
+        items={[{ to: "/", label: "Home" }, { label: "Premature baby milestones chart" }]}
+      />
       <PageHeader
         eyebrow="Printable milestone chart"
         title="Premature baby milestones chart, by corrected age"
@@ -146,6 +155,15 @@ function MilestonesPage() {
           If you want to check the arithmetic first, follow the{" "}
           <Link to="/how-to-calculate-corrected-age">corrected-age worked examples</Link>. For the
           source list and limitations, see <Link to="/methodology">the methodology page</Link>.
+        </p>
+        <p>
+          This is especially important for babies born only a few weeks early. The{" "}
+          <Link to="/late-preterm-baby">late preterm baby guide</Link> explains why a 35- or 36-week
+          baby can still shift rows in the first year, and the{" "}
+          <Link to="/adjusted-age-vs-chronological-age">
+            adjusted age vs chronological age guide
+          </Link>
+          shows when milestones use one age while vaccines use another.
         </p>
         <p>
           These are <strong>surveillance prompts</strong>, taken from the 2022 CDC/AAP revised
@@ -190,11 +208,66 @@ function MilestonesPage() {
           baby previously had. See <Link to="/red-flags">when to call the doctor</Link>.
         </p>
         <p>
+          Feeding skills follow the same corrected-age logic. If parents are asking whether interest
+          in food means it is time to start weaning, read{" "}
+          <Link to="/when-can-my-preemie-start-solids">when a preemie can start solids</Link>.
+        </p>
+        <p>
           These lists are conversation prompts, not a diagnosis or developmental screen. Read{" "}
           <Link to="/when-to-stop-correcting">when corrected-age use usually stops</Link> and speak
           with your child’s clinician if you are concerned.
         </p>
       </Article>
+
+      <LinkGridSection
+        title="Use the chart with the rest of the follow-up toolkit"
+        links={[
+          {
+            to: "/",
+            label: "Corrected age calculator",
+            description:
+              "Calculate the corrected age first so you know which milestone row applies.",
+          },
+          {
+            to: "/adjusted-age-calculator",
+            label: "Adjusted age calculator",
+            description:
+              "Use the same calculation if your clinic uses the term adjusted age instead.",
+          },
+          {
+            to: "/adjusted-age-vs-chronological-age",
+            label: "Adjusted age vs chronological age",
+            description: "See why milestones, vaccines and PMA do not all use the same age.",
+          },
+          {
+            to: "/late-preterm-baby",
+            label: "Late preterm baby guide",
+            description:
+              "Useful when a baby was only a few weeks early but the milestone row still shifts.",
+          },
+          {
+            to: "/when-can-my-preemie-start-solids",
+            label: "When can my preemie start solids?",
+            description: "Apply milestone readiness thinking to complementary feeding questions.",
+          },
+          {
+            to: "/how-to-calculate-corrected-age",
+            label: "How to calculate corrected age",
+            description: "Check the formula manually with worked examples.",
+          },
+          {
+            to: "/when-to-stop-correcting",
+            label: "When to stop correcting",
+            description: "Understand when milestone correction usually tapers off.",
+          },
+          {
+            to: "/red-flags",
+            label: "Preemie red flags",
+            description:
+              "Know which concerns should trigger a call regardless of milestone timing.",
+          },
+        ]}
+      />
     </SiteLayout>
   );
 }

@@ -18,6 +18,7 @@ is a named, credentialed paediatrician on a YMYL topic — not the code.
 ## Implemented in this release
 
 ### Tool (`/`)
+
 - Corrected age = chronological − (280 − GA in days); negative before term and
   displayed as such rather than clamped.
 - Postmenstrual age = GA at birth + chronological age.
@@ -33,17 +34,27 @@ is a named, credentialed paediatrician on a YMYL topic — not the code.
   No account, no server, no upload. Print stylesheet and CSV export.
 
 ### Content cluster shipped
-| Route | Target keyword |
-|---|---|
-| `/` | corrected age calculator |
-| `/premature-baby-milestones` | premature baby milestones chart |
-| `/how-to-calculate-corrected-age` | how to calculate corrected age |
-| `/when-to-stop-correcting` | when to stop using corrected age |
-| `/red-flags` | preemie developmental red flags |
-| `/methodology` | trust / E-E-A-T |
-| `/about` | author authority |
+
+| Route                                | Target keyword                            |
+| ------------------------------------ | ----------------------------------------- |
+| `/`                                  | corrected age calculator                  |
+| `/adjusted-age-calculator`           | adjusted age calculator                   |
+| `/adjusted-age-vs-chronological-age` | adjusted age vs chronological age         |
+| `/pma-calculator`                    | postmenstrual age calculator              |
+| `/preemie-weight-gain`               | preemie weight gain / weight velocity     |
+| `/preemie-vaccines`                  | do preemies get vaccines by corrected age |
+| `/late-preterm-baby`                 | late preterm baby                         |
+| `/nicu-follow-up-schedule`           | NICU follow-up schedule                   |
+| `/when-can-my-preemie-start-solids`  | when can my preemie start solids          |
+| `/premature-baby-milestones`         | premature baby milestones chart           |
+| `/how-to-calculate-corrected-age`    | how to calculate corrected age            |
+| `/when-to-stop-correcting`           | when to stop using corrected age          |
+| `/red-flags`                         | preemie developmental red flags           |
+| `/methodology`                       | trust / E-E-A-T                           |
+| `/about`                             | author authority                          |
 
 ### E-E-A-T implementation
+
 - Named author with credentials in the header of every page (`ReviewLine`),
   the footer, and `Person` + `MedicalWebPage` JSON-LD.
 - Visible last-reviewed date sitewide.
@@ -55,6 +66,7 @@ is a named, credentialed paediatrician on a YMYL topic — not the code.
   behind one number.
 
 ### Safety design (non-negotiable, do not regress)
+
 1. No pass/fail verdict is ever emitted.
 2. CDC act-early red flags always surface, in every state of the UI.
 3. "Contact your paediatrician today — don't wait for the next visit" appears on
@@ -75,9 +87,9 @@ is a named, credentialed paediatrician on a YMYL topic — not the code.
   full disclaimer. Generated entirely client-side with `jsPDF`
   (`src/lib/visit-pdf.ts`) — no upload, works offline.
 - **Visit notes.** Free-text note per visit, stored locally, printed on the PDF.
-- **Privacy-first analytics.** `src/lib/analytics.ts` counts event *names* only
+- **Privacy-first analytics.** `src/lib/analytics.ts` counts event _names_ only
   (`tool_calculated`, `visit_saved`, `pdf_exported`, `csv_exported`,
-  `print_summary`, `milestone_checked`, `visit_removed`). No cookies, no
+  `print_summary`, `milestone_checked`, `visit_removed`, `weight_velocity_calculated`). No cookies, no
   identifiers, no IP, no dates, no measurements, no note text — and the counts
   stay in localStorage rather than being uploaded. `/privacy` displays the raw
   counts and offers per-device opt-out and delete.
@@ -91,19 +103,20 @@ is a named, credentialed paediatrician on a YMYL topic — not the code.
   with active state, primary CTA, and a proper mobile drawer.
 
 ### SEO and Discovery (Verified)
-- **Sitemap & robots.txt.** Generated `public/sitemap.xml` including all 8 clinical routes and `/about`. `public/robots.txt` updated to reference the sitemap and allow full access to all assets and clinical paths.
+
+- **Sitemap & robots.txt.** Generated `public/sitemap.xml` including the calculator hub, long-tail clinical pages, trust pages and supporting guides. `public/robots.txt` updated to reference the sitemap and allow full access to all assets and clinical paths.
 - **Verification.** Confirmed sitemap accessibility via Python validation script; all clinical routes return HTTP 200 without redirects or 404s.
 - **Schema.org Structured Data.** Implemented a robust hierarchy of `MedicalWebPage`, `Physician`, `Organization`, `Article`, `BreadcrumbList`, and `FAQPage` (on `/methodology`) and `HowTo` (on `/how-to-calculate-corrected-age`).
 - **E-E-A-T Linking.** Every page linked to Dr. Zeeshan Islam's physician profile via `@id: "#drzeeshan"`, establishing clear authorship and medical review signals.
 
 ### Technical
+
 TanStack Start + React 19, Tailwind v4 semantic tokens in `src/styles.css`
 (no hardcoded colours in components), static JSON milestone data, zero backend,
 zero paid API. Key modules: `src/lib/corrected-age.ts`,
 `src/lib/milestones.ts`, `src/lib/followup.ts`, `src/lib/visit-pdf.ts`,
 `src/lib/analytics.ts`, `src/lib/pwa.ts`,
 `src/components/CorrectedAgeTool.tsx`.
-
 
 ---
 
@@ -147,16 +160,19 @@ closed and the site should pivot to the Ballard scorer.
 ## Future build plan: Serial-Data Preemie Tracker
 
 **Phase 2 — Growth Trajectory (LMS Unblocks).**
+
 - Transition from raw weight (kg) plotting to Fenton 2013 / INTERGROWTH-21st z-score trajectories (once licensing is confirmed).
 - Add head circumference and length velocity (cm/week) tracking alongside weight.
 - Implement WHO 2006 growth chart hand-off for infants reaching 50 weeks PMA.
 
 **Phase 3 — Serial Milestone Tracking.**
+
 - Persist milestone checkbox states per-visit in `localStorage`.
 - Visualize milestone acquisition over time (e.g., "Rolling over" acquired at 4m corrected, 6m chronological).
 - Add "Compare to previous visit" view for clinicians to quickly see developmental progress or stalls.
 
 **Phase 4 — Cluster Completion (to 20 pages).**
+
 - `/adjusted-age-calculator` (1,600/mo synonym), `/pma-pca-cga` (480/mo, the
   clinician entry point), `/late-preterm`, `/twins-multiples`,
   `/vaccines-corrected-age`, `/solid-foods`, `/catch-up-growth`,
@@ -164,10 +180,12 @@ closed and the site should pivot to the Ballard scorer.
   `/head-circumference-preterm`.
 
 **Phase 5 — Clinician Export 2.0.**
+
 - Generate EHR-pasteable text summaries optimized for Epic/Cerner copy-pasting.
 - Add multi-visit longitudinal growth charts to the PDF export.
 
 **Phase 6 — Infrastructure & Authority.**
+
 - Implement annual clinical review cycle with dated changelog entries on `/methodology`.
 - Add an install prompt A2HS nudge on the published site.
 - Establish periodic verification of CDC milestone updates (AAP/CDC 2022).

@@ -1,5 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Article, PageHeader, SiteLayout } from "@/components/SiteLayout";
+import {
+  Article,
+  Breadcrumbs,
+  LinkGridSection,
+  PageHeader,
+  SiteLayout,
+} from "@/components/SiteLayout";
 
 export const Route = createFileRoute("/how-to-calculate-corrected-age")({
   head: () => ({
@@ -40,7 +46,7 @@ export const Route = createFileRoute("/how-to-calculate-corrected-age")({
       { name: "twitter:image:alt", content: "Corrected age formula for premature babies" },
       { property: "og:image:alt", content: "Corrected age formula for premature babies" },
       { name: "article:published_time", content: "2026-08-11T00:00:00Z" },
-      { name: "article:modified_time", content: "2026-08-24T00:00:00Z" },
+      { name: "article:modified_time", content: "2026-08-27T00:00:00Z" },
     ],
     links: [
       { rel: "canonical", href: "https://preemie.vercel.app/how-to-calculate-corrected-age" },
@@ -56,7 +62,7 @@ export const Route = createFileRoute("/how-to-calculate-corrected-age")({
             "The corrected age formula with three worked examples and the common mistakes clinicians and parents make.",
           url: "https://preemie.vercel.app/how-to-calculate-corrected-age",
           datePublished: "2026-08-11",
-          dateModified: "2026-08-24",
+          dateModified: "2026-08-27",
           author: {
             "@id": "https://preemie.vercel.app/about#drzeeshan",
           },
@@ -158,6 +164,9 @@ export const Route = createFileRoute("/how-to-calculate-corrected-age")({
 function HowToPage() {
   return (
     <SiteLayout>
+      <Breadcrumbs
+        items={[{ to: "/", label: "Home" }, { label: "How to calculate corrected age" }]}
+      />
       <PageHeader
         eyebrow="Worked examples"
         title="How to calculate corrected age"
@@ -203,7 +212,8 @@ function HowToPage() {
         </ul>
         <p>
           Late preterm correction is the one most often skipped. At this age it more than halves the
-          expected developmental age — which is exactly why{" "}
+          expected developmental age — which is exactly why the{" "}
+          <Link to="/late-preterm-baby">late preterm baby guide</Link> exists and why{" "}
           <Link to="/when-to-stop-correcting">stopping too early</Link> causes unnecessary
           referrals.
         </p>
@@ -267,12 +277,62 @@ function HowToPage() {
 
         <h2>Related preterm follow-up guides</h2>
         <p>
-          Use the <Link to="/">corrected age calculator</Link> for a date-specific result, read the{" "}
-          <Link to="/premature-baby-milestones">premature baby milestone chart</Link>, review{" "}
+          Use the <Link to="/">corrected age calculator</Link> for a date-specific result, compare{" "}
+          <Link to="/adjusted-age-vs-chronological-age">adjusted age vs chronological age</Link>,
+          review a typical <Link to="/nicu-follow-up-schedule">NICU follow-up schedule</Link>, read
+          the <Link to="/late-preterm-baby">late preterm baby guide</Link>, review{" "}
           <Link to="/red-flags">red flags</Link>, or inspect the{" "}
           <Link to="/methodology">methodology and sources</Link>.
         </p>
       </Article>
+
+      <LinkGridSection
+        title="Continue with the calculator and follow-up pages"
+        links={[
+          {
+            to: "/",
+            label: "Corrected age calculator",
+            description:
+              "Run the dates through the calculator and keep the follow-up record locally.",
+          },
+          {
+            to: "/adjusted-age-calculator",
+            label: "Adjusted age calculator",
+            description:
+              "Same calculation, explained using the adjusted-age terminology many parents search for.",
+          },
+          {
+            to: "/adjusted-age-vs-chronological-age",
+            label: "Adjusted age vs chronological age",
+            description: "See the most common age labels separated clearly on one page.",
+          },
+          {
+            to: "/late-preterm-baby",
+            label: "Late preterm baby guide",
+            description: "Use this when a 34- to 36-week baby seems only slightly early on paper.",
+          },
+          {
+            to: "/nicu-follow-up-schedule",
+            label: "NICU follow-up schedule",
+            description: "See how corrected age gets used across common clinic checkpoints.",
+          },
+          {
+            to: "/premature-baby-milestones",
+            label: "Premature baby milestones chart",
+            description: "See the printable milestone rows matched to corrected age.",
+          },
+          {
+            to: "/when-to-stop-correcting",
+            label: "When to stop correcting",
+            description: "Understand when 24 months applies and where the exceptions sit.",
+          },
+          {
+            to: "/red-flags",
+            label: "Preemie red flags",
+            description: "Know what should trigger a same-day or same-week call.",
+          },
+        ]}
+      />
     </SiteLayout>
   );
 }

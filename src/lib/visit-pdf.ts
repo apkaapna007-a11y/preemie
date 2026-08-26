@@ -89,7 +89,7 @@ export function generateVisitPdf(input: VisitPdfInput) {
   doc.setFontSize(9.5);
   doc.setTextColor(110);
   doc.text(
-    "AdjustedAge - corrected-age tool. Clinically reviewed by Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics).",
+    "AdjustedAge - corrected age calculator for premature babies. Clinically reviewed by Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics).",
     M,
     y,
   );
@@ -186,7 +186,7 @@ export function generateVisitPdf(input: VisitPdfInput) {
   doc.setFontSize(8);
   doc.setTextColor(140);
   doc.text(
-    `Generated ${new Date().toISOString().slice(0, 10)} - AdjustedAge - adjustedage tool`,
+    `Generated ${new Date().toISOString().slice(0, 10)} - AdjustedAge - https://preemie.vercel.app`,
     M,
     doc.internal.pageSize.getHeight() - 28,
   );

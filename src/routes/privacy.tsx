@@ -1,6 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Article, PageHeader, SiteLayout } from "@/components/SiteLayout";
+import {
+  Article,
+  Breadcrumbs,
+  LinkGridSection,
+  PageHeader,
+  SiteLayout,
+} from "@/components/SiteLayout";
 import {
   clearAnalytics,
   isOptedOut,
@@ -42,7 +48,7 @@ export const Route = createFileRoute("/privacy")({
       { name: "twitter:image:alt", content: "AdjustedAge privacy and local data handling" },
       { property: "og:image:alt", content: "AdjustedAge privacy and local data handling" },
       { name: "article:published_time", content: "2026-08-11T00:00:00Z" },
-      { name: "article:modified_time", content: "2026-08-24T00:00:00Z" },
+      { name: "article:modified_time", content: "2026-08-26T00:00:00Z" },
     ],
     links: [{ rel: "canonical", href: "https://preemie.vercel.app/privacy" }],
     scripts: [
@@ -55,7 +61,7 @@ export const Route = createFileRoute("/privacy")({
           description:
             "AdjustedAge stores your baby's dates and measurements only in your browser. No accounts, no cookies, no data uploaded.",
           url: "https://preemie.vercel.app/privacy",
-          dateModified: "2026-08-24",
+          dateModified: "2026-08-26",
           author: {
             "@id": "https://preemie.vercel.app/about#drzeeshan",
           },
@@ -95,6 +101,7 @@ function PrivacyPage() {
 
   return (
     <SiteLayout>
+      <Breadcrumbs items={[{ to: "/", label: "Home" }, { label: "Privacy" }]} />
       <PageHeader
         eyebrow="Trust"
         title="Privacy and data handling"
@@ -189,6 +196,44 @@ function PrivacyPage() {
           Islam, MBBS, MCPS (Pediatrics) via the about page.
         </p>
       </Article>
+
+      <LinkGridSection
+        title="Trust pages and core tools"
+        links={[
+          {
+            to: "/",
+            label: "Corrected age calculator",
+            description:
+              "Main tool for corrected age, PMA and follow-up visits with local-only storage.",
+          },
+          {
+            to: "/adjusted-age-calculator",
+            label: "Adjusted age calculator",
+            description: "Same tool for the adjusted-age search phrase and terminology.",
+          },
+          {
+            to: "/methodology",
+            label: "Methodology and references",
+            description: "See the formulas, evidence base and limitations behind the calculator.",
+          },
+          {
+            to: "/about",
+            label: "About the author",
+            description: "Review the physician credentials, editorial policy and identity links.",
+          },
+          {
+            to: "/premature-baby-milestones",
+            label: "Premature baby milestones chart",
+            description: "Use the corrected-age result with the printable milestone chart.",
+          },
+          {
+            to: "/red-flags",
+            label: "Preemie red flags",
+            description:
+              "Know when concern should override any online tool and prompt direct care.",
+          },
+        ]}
+      />
     </SiteLayout>
   );
 }
