@@ -20,7 +20,8 @@ export type AnalyticsEvent =
   | "pdf_exported"
   | "csv_exported"
   | "print_summary"
-  | "app_installed";
+  | "app_installed"
+  | "weight_velocity_calculated";
 
 export interface AnalyticsSnapshot {
   counts: Partial<Record<AnalyticsEvent, number>>;

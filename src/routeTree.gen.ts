@@ -11,12 +11,20 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AdjustedAgeCalculatorRouteImport } from './routes/adjusted-age-calculator'
+import { Route as AdjustedAgeVsChronologicalAgeRouteImport } from './routes/adjusted-age-vs-chronological-age'
 import { Route as HowToCalculateCorrectedAgeRouteImport } from './routes/how-to-calculate-corrected-age'
+import { Route as LatePretermBabyRouteImport } from './routes/late-preterm-baby'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as MethodologyRouteImport } from './routes/methodology'
+import { Route as NicuFollowUpScheduleRouteImport } from './routes/nicu-follow-up-schedule'
+import { Route as PmaCalculatorRouteImport } from './routes/pma-calculator'
+import { Route as PreemieVaccinesRouteImport } from './routes/preemie-vaccines'
+import { Route as PreemieWeightGainRouteImport } from './routes/preemie-weight-gain'
 import { Route as PrematureBabyMilestonesRouteImport } from './routes/premature-baby-milestones'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as RedFlagsRouteImport } from './routes/red-flags'
+import { Route as WhenCanMyPreemieStartSolidsRouteImport } from './routes/when-can-my-preemie-start-solids'
 import { Route as WhenToStopCorrectingRouteImport } from './routes/when-to-stop-correcting'
 import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
@@ -32,12 +40,28 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdjustedAgeCalculatorRoute = AdjustedAgeCalculatorRouteImport.update({
+  id: '/adjusted-age-calculator',
+  path: '/adjusted-age-calculator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdjustedAgeVsChronologicalAgeRoute =
+  AdjustedAgeVsChronologicalAgeRouteImport.update({
+    id: '/adjusted-age-vs-chronological-age',
+    path: '/adjusted-age-vs-chronological-age',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const HowToCalculateCorrectedAgeRoute =
   HowToCalculateCorrectedAgeRouteImport.update({
     id: '/how-to-calculate-corrected-age',
     path: '/how-to-calculate-corrected-age',
     getParentRoute: () => rootRouteImport,
   } as any)
+const LatePretermBabyRoute = LatePretermBabyRouteImport.update({
+  id: '/late-preterm-baby',
+  path: '/late-preterm-baby',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const McpRoute = McpRouteImport.update({
   id: '/mcp',
   path: '/mcp',
@@ -46,6 +70,26 @@ const McpRoute = McpRouteImport.update({
 const MethodologyRoute = MethodologyRouteImport.update({
   id: '/methodology',
   path: '/methodology',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NicuFollowUpScheduleRoute = NicuFollowUpScheduleRouteImport.update({
+  id: '/nicu-follow-up-schedule',
+  path: '/nicu-follow-up-schedule',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PmaCalculatorRoute = PmaCalculatorRouteImport.update({
+  id: '/pma-calculator',
+  path: '/pma-calculator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PreemieVaccinesRoute = PreemieVaccinesRouteImport.update({
+  id: '/preemie-vaccines',
+  path: '/preemie-vaccines',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PreemieWeightGainRoute = PreemieWeightGainRouteImport.update({
+  id: '/preemie-weight-gain',
+  path: '/preemie-weight-gain',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrematureBabyMilestonesRoute = PrematureBabyMilestonesRouteImport.update({
@@ -63,6 +107,12 @@ const RedFlagsRoute = RedFlagsRouteImport.update({
   path: '/red-flags',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WhenCanMyPreemieStartSolidsRoute =
+  WhenCanMyPreemieStartSolidsRouteImport.update({
+    id: '/when-can-my-preemie-start-solids',
+    path: '/when-can-my-preemie-start-solids',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const WhenToStopCorrectingRoute = WhenToStopCorrectingRouteImport.update({
   id: '/when-to-stop-correcting',
   path: '/when-to-stop-correcting',
@@ -90,12 +140,20 @@ const Char91DotmcpChar93InvokeToolToolRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/adjusted-age-calculator': typeof AdjustedAgeCalculatorRoute
+  '/adjusted-age-vs-chronological-age': typeof AdjustedAgeVsChronologicalAgeRoute
   '/how-to-calculate-corrected-age': typeof HowToCalculateCorrectedAgeRoute
+  '/late-preterm-baby': typeof LatePretermBabyRoute
   '/mcp': typeof McpRoute
   '/methodology': typeof MethodologyRoute
+  '/nicu-follow-up-schedule': typeof NicuFollowUpScheduleRoute
+  '/pma-calculator': typeof PmaCalculatorRoute
+  '/preemie-vaccines': typeof PreemieVaccinesRoute
+  '/preemie-weight-gain': typeof PreemieWeightGainRoute
   '/premature-baby-milestones': typeof PrematureBabyMilestonesRoute
   '/privacy': typeof PrivacyRoute
   '/red-flags': typeof RedFlagsRoute
+  '/when-can-my-preemie-start-solids': typeof WhenCanMyPreemieStartSolidsRoute
   '/when-to-stop-correcting': typeof WhenToStopCorrectingRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -104,12 +162,20 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/adjusted-age-calculator': typeof AdjustedAgeCalculatorRoute
+  '/adjusted-age-vs-chronological-age': typeof AdjustedAgeVsChronologicalAgeRoute
   '/how-to-calculate-corrected-age': typeof HowToCalculateCorrectedAgeRoute
+  '/late-preterm-baby': typeof LatePretermBabyRoute
   '/mcp': typeof McpRoute
   '/methodology': typeof MethodologyRoute
+  '/nicu-follow-up-schedule': typeof NicuFollowUpScheduleRoute
+  '/pma-calculator': typeof PmaCalculatorRoute
+  '/preemie-vaccines': typeof PreemieVaccinesRoute
+  '/preemie-weight-gain': typeof PreemieWeightGainRoute
   '/premature-baby-milestones': typeof PrematureBabyMilestonesRoute
   '/privacy': typeof PrivacyRoute
   '/red-flags': typeof RedFlagsRoute
+  '/when-can-my-preemie-start-solids': typeof WhenCanMyPreemieStartSolidsRoute
   '/when-to-stop-correcting': typeof WhenToStopCorrectingRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -119,12 +185,20 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/adjusted-age-calculator': typeof AdjustedAgeCalculatorRoute
+  '/adjusted-age-vs-chronological-age': typeof AdjustedAgeVsChronologicalAgeRoute
   '/how-to-calculate-corrected-age': typeof HowToCalculateCorrectedAgeRoute
+  '/late-preterm-baby': typeof LatePretermBabyRoute
   '/mcp': typeof McpRoute
   '/methodology': typeof MethodologyRoute
+  '/nicu-follow-up-schedule': typeof NicuFollowUpScheduleRoute
+  '/pma-calculator': typeof PmaCalculatorRoute
+  '/preemie-vaccines': typeof PreemieVaccinesRoute
+  '/preemie-weight-gain': typeof PreemieWeightGainRoute
   '/premature-baby-milestones': typeof PrematureBabyMilestonesRoute
   '/privacy': typeof PrivacyRoute
   '/red-flags': typeof RedFlagsRoute
+  '/when-can-my-preemie-start-solids': typeof WhenCanMyPreemieStartSolidsRoute
   '/when-to-stop-correcting': typeof WhenToStopCorrectingRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -135,12 +209,20 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/adjusted-age-calculator'
+    | '/adjusted-age-vs-chronological-age'
     | '/how-to-calculate-corrected-age'
+    | '/late-preterm-baby'
     | '/mcp'
     | '/methodology'
+    | '/nicu-follow-up-schedule'
+    | '/pma-calculator'
+    | '/preemie-vaccines'
+    | '/preemie-weight-gain'
     | '/premature-baby-milestones'
     | '/privacy'
     | '/red-flags'
+    | '/when-can-my-preemie-start-solids'
     | '/when-to-stop-correcting'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -149,12 +231,20 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/adjusted-age-calculator'
+    | '/adjusted-age-vs-chronological-age'
     | '/how-to-calculate-corrected-age'
+    | '/late-preterm-baby'
     | '/mcp'
     | '/methodology'
+    | '/nicu-follow-up-schedule'
+    | '/pma-calculator'
+    | '/preemie-vaccines'
+    | '/preemie-weight-gain'
     | '/premature-baby-milestones'
     | '/privacy'
     | '/red-flags'
+    | '/when-can-my-preemie-start-solids'
     | '/when-to-stop-correcting'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -163,12 +253,20 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/adjusted-age-calculator'
+    | '/adjusted-age-vs-chronological-age'
     | '/how-to-calculate-corrected-age'
+    | '/late-preterm-baby'
     | '/mcp'
     | '/methodology'
+    | '/nicu-follow-up-schedule'
+    | '/pma-calculator'
+    | '/preemie-vaccines'
+    | '/preemie-weight-gain'
     | '/premature-baby-milestones'
     | '/privacy'
     | '/red-flags'
+    | '/when-can-my-preemie-start-solids'
     | '/when-to-stop-correcting'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -178,12 +276,20 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AdjustedAgeCalculatorRoute: typeof AdjustedAgeCalculatorRoute
+  AdjustedAgeVsChronologicalAgeRoute: typeof AdjustedAgeVsChronologicalAgeRoute
   HowToCalculateCorrectedAgeRoute: typeof HowToCalculateCorrectedAgeRoute
+  LatePretermBabyRoute: typeof LatePretermBabyRoute
   McpRoute: typeof McpRoute
   MethodologyRoute: typeof MethodologyRoute
+  NicuFollowUpScheduleRoute: typeof NicuFollowUpScheduleRoute
+  PmaCalculatorRoute: typeof PmaCalculatorRoute
+  PreemieVaccinesRoute: typeof PreemieVaccinesRoute
+  PreemieWeightGainRoute: typeof PreemieWeightGainRoute
   PrematureBabyMilestonesRoute: typeof PrematureBabyMilestonesRoute
   PrivacyRoute: typeof PrivacyRoute
   RedFlagsRoute: typeof RedFlagsRoute
+  WhenCanMyPreemieStartSolidsRoute: typeof WhenCanMyPreemieStartSolidsRoute
   WhenToStopCorrectingRoute: typeof WhenToStopCorrectingRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -206,11 +312,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/adjusted-age-calculator': {
+      id: '/adjusted-age-calculator'
+      path: '/adjusted-age-calculator'
+      fullPath: '/adjusted-age-calculator'
+      preLoaderRoute: typeof AdjustedAgeCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/adjusted-age-vs-chronological-age': {
+      id: '/adjusted-age-vs-chronological-age'
+      path: '/adjusted-age-vs-chronological-age'
+      fullPath: '/adjusted-age-vs-chronological-age'
+      preLoaderRoute: typeof AdjustedAgeVsChronologicalAgeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/how-to-calculate-corrected-age': {
       id: '/how-to-calculate-corrected-age'
       path: '/how-to-calculate-corrected-age'
       fullPath: '/how-to-calculate-corrected-age'
       preLoaderRoute: typeof HowToCalculateCorrectedAgeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/late-preterm-baby': {
+      id: '/late-preterm-baby'
+      path: '/late-preterm-baby'
+      fullPath: '/late-preterm-baby'
+      preLoaderRoute: typeof LatePretermBabyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/mcp': {
@@ -225,6 +352,34 @@ declare module '@tanstack/react-router' {
       path: '/methodology'
       fullPath: '/methodology'
       preLoaderRoute: typeof MethodologyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nicu-follow-up-schedule': {
+      id: '/nicu-follow-up-schedule'
+      path: '/nicu-follow-up-schedule'
+      fullPath: '/nicu-follow-up-schedule'
+      preLoaderRoute: typeof NicuFollowUpScheduleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pma-calculator': {
+      id: '/pma-calculator'
+      path: '/pma-calculator'
+      fullPath: '/pma-calculator'
+      preLoaderRoute: typeof PmaCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/preemie-vaccines': {
+      id: '/preemie-vaccines'
+      path: '/preemie-vaccines'
+      fullPath: '/preemie-vaccines'
+      preLoaderRoute: typeof PreemieVaccinesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/preemie-weight-gain': {
+      id: '/preemie-weight-gain'
+      path: '/preemie-weight-gain'
+      fullPath: '/preemie-weight-gain'
+      preLoaderRoute: typeof PreemieWeightGainRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/premature-baby-milestones': {
@@ -246,6 +401,13 @@ declare module '@tanstack/react-router' {
       path: '/red-flags'
       fullPath: '/red-flags'
       preLoaderRoute: typeof RedFlagsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/when-can-my-preemie-start-solids': {
+      id: '/when-can-my-preemie-start-solids'
+      path: '/when-can-my-preemie-start-solids'
+      fullPath: '/when-can-my-preemie-start-solids'
+      preLoaderRoute: typeof WhenCanMyPreemieStartSolidsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/when-to-stop-correcting': {
@@ -282,12 +444,20 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AdjustedAgeCalculatorRoute: AdjustedAgeCalculatorRoute,
+  AdjustedAgeVsChronologicalAgeRoute: AdjustedAgeVsChronologicalAgeRoute,
   HowToCalculateCorrectedAgeRoute: HowToCalculateCorrectedAgeRoute,
+  LatePretermBabyRoute: LatePretermBabyRoute,
   McpRoute: McpRoute,
   MethodologyRoute: MethodologyRoute,
+  NicuFollowUpScheduleRoute: NicuFollowUpScheduleRoute,
+  PmaCalculatorRoute: PmaCalculatorRoute,
+  PreemieVaccinesRoute: PreemieVaccinesRoute,
+  PreemieWeightGainRoute: PreemieWeightGainRoute,
   PrematureBabyMilestonesRoute: PrematureBabyMilestonesRoute,
   PrivacyRoute: PrivacyRoute,
   RedFlagsRoute: RedFlagsRoute,
+  WhenCanMyPreemieStartSolidsRoute: WhenCanMyPreemieStartSolidsRoute,
   WhenToStopCorrectingRoute: WhenToStopCorrectingRoute,
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:

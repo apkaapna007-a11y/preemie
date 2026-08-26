@@ -100,11 +100,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:locale", content: "en_US" },
       { property: "og:site_name", content: "AdjustedAge" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "AdjustedAge — Corrected Age Tool for Premature Babies" },
+      {
+        name: "twitter:description",
+        content:
+          "Corrected age, milestones and follow-up tracking for NICU graduates, reviewed by Dr. Zeeshan Islam.",
+      },
       { name: "twitter:site", content: "@AdjustedAge" },
       { name: "twitter:creator", content: "@AdjustedAge" },
       { name: "twitter:image", content: "https://preemie.vercel.app/og/og-home.png" },
       { name: "twitter:image:alt", content: "AdjustedAge corrected age calculator" },
       { property: "og:image:alt", content: "AdjustedAge corrected age calculator" },
+      { name: "application-name", content: "AdjustedAge" },
       { name: "theme-color", content: "#14606e" },
       { name: "apple-mobile-web-app-capable", content: "yes" },
       { name: "apple-mobile-web-app-title", content: "AdjustedAge" },
@@ -132,8 +139,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@context": "https://schema.org",
           "@type": "WebSite",
           name: "AdjustedAge",
+          alternateName: "Adjusted Age Calculator",
           url: "https://preemie.vercel.app",
           description: "Corrected age calculator and preemie follow-up tool for NICU graduates.",
+          inLanguage: "en",
+          image: "https://preemie.vercel.app/og/og-brand.png",
           publisher: {
             "@type": "Organization",
             name: "AdjustedAge",
@@ -158,7 +168,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           jobTitle: "Consultant Paediatrician",
           medicalSpecialty: "Pediatrics",
           url: "https://preemie.vercel.app/about",
-          image: "https://preemie.vercel.app/favicon.png",
+          image: {
+            "@type": "ImageObject",
+            url: "https://preemie.vercel.app/dr-zeeshan-islam.png",
+            width: 709,
+            height: 585,
+          },
           alternateName: "Dr Zee",
           sameAs: [
             "https://drzeeshanislam.blog",
@@ -166,7 +181,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             "https://drzeewrites.com",
           ],
           description:
-            "Dr. Zeeshan Islam is a Consultant Paediatrician specializing in neonatal follow-up and corrected age development.",
+            "Dr. Zeeshan Islam is a pediatrician, medical writer and digital health creator specializing in neonatal follow-up and corrected age development.",
+          inLanguage: "en",
           address: {
             "@type": "PostalAddress",
             addressCountry: "PK",

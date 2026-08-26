@@ -1,5 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Article, PageHeader, SiteLayout } from "@/components/SiteLayout";
+import {
+  Article,
+  Breadcrumbs,
+  LinkGridSection,
+  PageHeader,
+  SiteLayout,
+} from "@/components/SiteLayout";
 import { ALWAYS_ACT_EARLY } from "@/lib/milestones";
 
 export const Route = createFileRoute("/red-flags")({
@@ -38,7 +44,7 @@ export const Route = createFileRoute("/red-flags")({
       { name: "twitter:image:alt", content: "Preemie red flags and when to call the doctor" },
       { property: "og:image:alt", content: "Preemie red flags and when to call the doctor" },
       { name: "article:published_time", content: "2026-08-11T00:00:00Z" },
-      { name: "article:modified_time", content: "2026-08-24T00:00:00Z" },
+      { name: "article:modified_time", content: "2026-08-26T00:00:00Z" },
     ],
     links: [{ rel: "canonical", href: "https://preemie.vercel.app/red-flags" }],
     scripts: [
@@ -52,8 +58,8 @@ export const Route = createFileRoute("/red-flags")({
             "Emergency and same-week red flags for premature babies. CDC Act Early concerns that apply at every corrected age.",
           url: "https://preemie.vercel.app/red-flags",
           datePublished: "2026-08-11",
-          dateModified: "2026-08-24",
-          lastReviewed: "2026-08-24",
+          dateModified: "2026-08-26",
+          lastReviewed: "2026-08-26",
           audience: {
             "@type": "MedicalAudience",
             audienceType: "Parents of preterm infants",
@@ -99,6 +105,7 @@ export const Route = createFileRoute("/red-flags")({
 function RedFlagsPage() {
   return (
     <SiteLayout>
+      <Breadcrumbs items={[{ to: "/", label: "Home" }, { label: "Preemie red flags" }]} />
       <PageHeader
         eyebrow="Safety page"
         title="Preemie red flags: when to call the doctor"
@@ -174,6 +181,45 @@ function RedFlagsPage() {
           called about a NICU graduate.
         </p>
       </Article>
+
+      <LinkGridSection
+        title="Use this safety page with the rest of the tool"
+        links={[
+          {
+            to: "/",
+            label: "Corrected age calculator",
+            description:
+              "Check the corrected and chronological ages, then come back here if something still worries you.",
+          },
+          {
+            to: "/adjusted-age-calculator",
+            label: "Adjusted age calculator",
+            description: "Same tool for parents who search using adjusted age terminology.",
+          },
+          {
+            to: "/premature-baby-milestones",
+            label: "Premature baby milestones chart",
+            description: "Separate normal corrected-age timing from concerns that should not wait.",
+          },
+          {
+            to: "/how-to-calculate-corrected-age",
+            label: "How to calculate corrected age",
+            description: "Check the arithmetic if a milestone concern may be a calendar issue.",
+          },
+          {
+            to: "/when-to-stop-correcting",
+            label: "When to stop correcting",
+            description:
+              "Learn when corrected age still applies and when a delay needs direct assessment.",
+          },
+          {
+            to: "/methodology",
+            label: "Methodology and references",
+            description:
+              "Review the source basis and safety limits behind the guidance on this site.",
+          },
+        ]}
+      />
     </SiteLayout>
   );
 }

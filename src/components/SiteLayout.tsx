@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState, type ReactNode } from "react";
-import { Menu, X, ShieldCheck } from "lucide-react";
+import { ArrowRight, ChevronRight, Menu, ShieldCheck, X } from "lucide-react";
 
 export function AuthorMark({ className = "" }: { className?: string }) {
   return (
@@ -14,11 +14,12 @@ export function AuthorMark({ className = "" }: { className?: string }) {
   );
 }
 
+const AUTHOR_PHOTO_WEBP = "/dr-zeeshan-islam.webp";
+const AUTHOR_PHOTO_PNG = "/dr-zeeshan-islam.png";
+
 /**
- * The author's real photograph, with a graceful fallback to the initials
- * mark. Renders /dr-zeeshan-islam.jpg when that file exists in public/
- * (commit the photo from the Lovable asset store to enable it); until then
- * every load falls back to AuthorMark, so the page never shows a broken image.
+ * Real author headshot, self-hosted for performance and reliable E-E-A-T
+ * signals, with a graceful fallback to the initials mark if the image fails.
  */
 export function AuthorPhoto({ className = "" }: { className?: string }) {
   const [failed, setFailed] = useState(false);
@@ -26,13 +27,20 @@ export function AuthorPhoto({ className = "" }: { className?: string }) {
   if (failed) return <AuthorMark className={className} />;
 
   return (
-    <img
-      src="/dr-zeeshan-islam.jpg"
-      alt="Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics), consultant paediatrician"
-      loading="eager"
-      onError={() => setFailed(true)}
-      className={`shrink-0 object-cover ${className}`}
-    />
+    <picture>
+      <source srcSet={AUTHOR_PHOTO_WEBP} type="image/webp" />
+      <img
+        src={AUTHOR_PHOTO_PNG}
+        alt="Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics), consultant paediatrician"
+        width={709}
+        height={585}
+        loading="eager"
+        decoding="async"
+        fetchPriority="high"
+        onError={() => setFailed(true)}
+        className={`shrink-0 object-cover ${className}`}
+      />
+    </picture>
   );
 }
 
@@ -46,6 +54,28 @@ const NAV = [
   { to: "/about", label: "About the author" },
   { to: "/privacy", label: "Privacy" },
 ];
+
+const FOOTER_EXPLORE = [
+  { to: "/adjusted-age-calculator", label: "Adjusted age calculator" },
+  { to: "/adjusted-age-vs-chronological-age", label: "Adjusted vs chronological age" },
+  { to: "/pma-calculator", label: "PMA calculator" },
+  { to: "/preemie-weight-gain", label: "Preemie weight gain" },
+  { to: "/preemie-vaccines", label: "Preemie vaccines" },
+  { to: "/late-preterm-baby", label: "Late preterm baby" },
+  { to: "/nicu-follow-up-schedule", label: "NICU follow-up schedule" },
+  { to: "/when-can-my-preemie-start-solids", label: "When can my preemie start solids?" },
+];
+
+export interface BreadcrumbItem {
+  to?: string;
+  label: string;
+}
+
+export interface LinkGridItem {
+  to: string;
+  label: string;
+  description: string;
+}
 
 function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -63,7 +93,7 @@ function SiteHeader() {
       <div className="bg-primary text-primary-foreground">
         <div className="mx-auto flex max-w-6xl items-center justify-center gap-2 px-5 py-1.5 text-[0.7rem] tracking-wide sm:text-xs">
           <ShieldCheck className="size-3.5 shrink-0 opacity-90" aria-hidden />
-          <span className="opacity-95 text-center">
+          <span className="text-center opacity-95">
             Clinically reviewed by Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics)
           </span>
         </div>
@@ -91,7 +121,7 @@ function SiteHeader() {
             </span>
           </Link>
 
-          <nav className="hidden items-center gap-1 lg:flex">
+          <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
             {NAV.slice(1, 7).map((item) => (
               <Link
                 key={item.to}
@@ -124,7 +154,10 @@ function SiteHeader() {
         </div>
 
         {open ? (
-          <nav className="border-t border-border bg-background px-5 pb-4 pt-2 lg:hidden">
+          <nav
+            className="border-t border-border bg-background px-5 pb-4 pt-2 lg:hidden"
+            aria-label="Mobile"
+          >
             {NAV.map((item) => (
               <Link
                 key={item.to}
@@ -146,14 +179,21 @@ function SiteHeader() {
 export function SiteLayout({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen bg-background">
+      <a
+        href="#main-content"
+        className="sr-only fixed left-4 top-4 z-[60] rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-paper focus:not-sr-only"
+      >
+        Skip to main content
+      </a>
+
       <SiteHeader />
 
-      <main>{children}</main>
+      <main id="main-content">{children}</main>
 
       <footer className="no-print mt-20 border-t border-border bg-surface">
         <div className="mx-auto max-w-5xl px-5 py-10">
           <div className="flex flex-col gap-5 sm:flex-row sm:items-center">
-            <AuthorMark className="size-16 text-xl" />
+            <AuthorPhoto className="size-16 rounded-full ring-1 ring-border" />
             <div className="text-sm">
               <p className="font-display text-base font-semibold text-foreground">
                 Written and clinically reviewed by Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics)
@@ -162,11 +202,22 @@ export function SiteLayout({ children }: { children: ReactNode }) {
                 Consultant paediatrician. Every calculation, reference and milestone list on this
                 site is reviewed against the primary source before publication.
               </p>
+              <div className="mt-3 flex flex-wrap gap-2 text-xs text-muted-foreground">
+                <span className="rounded-full border border-border bg-background px-3 py-1">
+                  No accounts
+                </span>
+                <span className="rounded-full border border-border bg-background px-3 py-1">
+                  No uploads
+                </span>
+                <span className="rounded-full border border-border bg-background px-3 py-1">
+                  Works offline
+                </span>
+              </div>
               <Link
                 to="/about"
-                className="mt-2 inline-block text-primary underline underline-offset-4"
+                className="mt-3 inline-block text-primary underline underline-offset-4"
               >
-                Read the author's credentials and review policy
+                Read the author&apos;s credentials and review policy
               </Link>
             </div>
           </div>
@@ -177,6 +228,19 @@ export function SiteLayout({ children }: { children: ReactNode }) {
                 {item.label}
               </Link>
             ))}
+          </div>
+
+          <div className="mt-8 border-t border-border pt-6">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+              Popular SEO pages
+            </p>
+            <div className="mt-3 grid gap-2 text-sm text-muted-foreground sm:grid-cols-2 lg:grid-cols-4">
+              {FOOTER_EXPLORE.map((item) => (
+                <Link key={item.to} to={item.to} className="hover:text-primary">
+                  {item.label}
+                </Link>
+              ))}
+            </div>
           </div>
 
           <p className="mt-8 border-t border-border pt-6 text-xs leading-relaxed text-muted-foreground">
@@ -192,6 +256,38 @@ export function SiteLayout({ children }: { children: ReactNode }) {
         </div>
       </footer>
     </div>
+  );
+}
+
+export function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
+  return (
+    <nav
+      aria-label="Breadcrumb"
+      className="mx-auto max-w-3xl px-5 pt-8 text-sm text-muted-foreground"
+    >
+      <ol className="flex flex-wrap items-center gap-1.5">
+        {items.map((item, index) => {
+          const isLast = index === items.length - 1;
+          return (
+            <li key={`${item.label}-${index}`} className="flex items-center gap-1.5">
+              {item.to && !isLast ? (
+                <Link to={item.to} className="hover:text-primary">
+                  {item.label}
+                </Link>
+              ) : (
+                <span
+                  aria-current={isLast ? "page" : undefined}
+                  className={isLast ? "text-foreground" : undefined}
+                >
+                  {item.label}
+                </span>
+              )}
+              {!isLast ? <ChevronRight className="size-3.5 opacity-60" aria-hidden /> : null}
+            </li>
+          );
+        })}
+      </ol>
+    </nav>
   );
 }
 
@@ -221,7 +317,7 @@ export function PageHeader({
 export function ReviewLine() {
   return (
     <div className="mt-5 flex items-center gap-3 rounded-lg border border-border bg-card px-4 py-3">
-      <AuthorMark className="size-10 text-sm" />
+      <AuthorPhoto className="size-10 rounded-full ring-1 ring-border" />
       <p className="text-xs leading-relaxed text-muted-foreground">
         Medically reviewed by{" "}
         <Link to="/about" className="font-medium text-foreground underline underline-offset-2">
@@ -234,6 +330,73 @@ export function ReviewLine() {
         </Link>
       </p>
     </div>
+  );
+}
+
+export function KeyTakeaways({
+  title = "Quick answers",
+  items,
+}: {
+  title?: string;
+  items: string[];
+}) {
+  if (!items.length) return null;
+
+  return (
+    <section className="mx-auto mt-8 max-w-3xl px-5">
+      <div className="rounded-2xl border border-border bg-card p-5 shadow-paper sm:p-6">
+        <h2 className="font-display text-xl font-semibold text-foreground">{title}</h2>
+        <ul className="mt-4 space-y-2 text-sm leading-relaxed text-foreground">
+          {items.map((item) => (
+            <li key={item} className="flex gap-3">
+              <span className="mt-1.5 size-2 shrink-0 rounded-full bg-primary" aria-hidden />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+export function LinkGridSection({
+  title,
+  intro,
+  links,
+}: {
+  title: string;
+  intro?: string;
+  links: LinkGridItem[];
+}) {
+  if (!links.length) return null;
+
+  return (
+    <section className="mx-auto mt-12 max-w-5xl px-5">
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <h2 className="font-display text-2xl font-semibold text-foreground">{title}</h2>
+          {intro ? <p className="mt-2 max-w-2xl text-sm text-muted-foreground">{intro}</p> : null}
+        </div>
+      </div>
+      <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        {links.map((item) => (
+          <Link
+            key={item.to}
+            to={item.to}
+            className="group rounded-2xl border border-border bg-card p-5 shadow-paper transition-transform hover:-translate-y-0.5 hover:border-primary/30"
+          >
+            <div className="flex items-start justify-between gap-3">
+              <h3 className="font-display text-lg font-semibold text-foreground">{item.label}</h3>
+              <ArrowRight
+                className="mt-1 size-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary"
+                aria-hidden
+              />
+            </div>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.description}</p>
+          </Link>
+        ))}
+      </div>
+    </section>
   );
 }
 

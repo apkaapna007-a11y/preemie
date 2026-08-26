@@ -20,6 +20,23 @@ everything runs client-side and persists in localStorage only.
 - **/** — Corrected age calculator (primary tool). Enter date of birth and gestational
   age; get corrected age, postmenstrual age, GA band classification, CDC/AAP
   surveillance prompts, and serial visit tracking.
+- **/adjusted-age-calculator** — Adjusted age calculator. Targets the common synonym
+  “adjusted age”, explains adjusted vs corrected age, and provides the same tool
+  with PMA, milestones and follow-up tracking.
+- **/pma-calculator** — Postmenstrual age calculator. Explains PMA versus corrected
+  age and helps with early NICU and follow-up documentation.
+- **/preemie-weight-gain** — Preemie weight gain calculator. Calculates grams/day
+  and g/kg/day between two weights for follow-up trend checks.
+- **/preemie-vaccines** — Preemie vaccines guide. Explains why routine vaccines
+  usually use chronological age rather than corrected age.
+- **/late-preterm-baby** — Late preterm baby guide. Covers 34- to 36-week
+  babies, corrected age, feeding, milestones and common concerns.
+- **/nicu-follow-up-schedule** — NICU follow-up schedule. Explains common
+  corrected-age review points from 4 to 36 months and what each visit checks.
+- **/when-can-my-preemie-start-solids** — Preemie solids guide. Explains how
+  corrected age, developmental readiness and feeding safety fit together.
+- **/adjusted-age-vs-chronological-age** — Age comparison guide. Explains
+  adjusted age, corrected age, chronological age and PMA in one place.
 - **/premature-baby-milestones** — Premature baby milestones chart. Age-indexed
   developmental milestones with the correct corrected-age row highlighted.
 - **/how-to-calculate-corrected-age** — Explains the corrected-age formula

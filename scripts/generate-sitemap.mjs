@@ -17,6 +17,54 @@ const BASE = "https://preemie.vercel.app";
 const PAGES = [
   { path: "/", file: "src/routes/index.tsx", changefreq: "weekly", priority: "1.0" },
   {
+    path: "/adjusted-age-calculator",
+    file: "src/routes/adjusted-age-calculator.tsx",
+    changefreq: "monthly",
+    priority: "0.9",
+  },
+  {
+    path: "/pma-calculator",
+    file: "src/routes/pma-calculator.tsx",
+    changefreq: "monthly",
+    priority: "0.8",
+  },
+  {
+    path: "/preemie-weight-gain",
+    file: "src/routes/preemie-weight-gain.tsx",
+    changefreq: "monthly",
+    priority: "0.8",
+  },
+  {
+    path: "/preemie-vaccines",
+    file: "src/routes/preemie-vaccines.tsx",
+    changefreq: "monthly",
+    priority: "0.8",
+  },
+  {
+    path: "/late-preterm-baby",
+    file: "src/routes/late-preterm-baby.tsx",
+    changefreq: "monthly",
+    priority: "0.78",
+  },
+  {
+    path: "/nicu-follow-up-schedule",
+    file: "src/routes/nicu-follow-up-schedule.tsx",
+    changefreq: "monthly",
+    priority: "0.78",
+  },
+  {
+    path: "/when-can-my-preemie-start-solids",
+    file: "src/routes/when-can-my-preemie-start-solids.tsx",
+    changefreq: "monthly",
+    priority: "0.78",
+  },
+  {
+    path: "/adjusted-age-vs-chronological-age",
+    file: "src/routes/adjusted-age-vs-chronological-age.tsx",
+    changefreq: "monthly",
+    priority: "0.78",
+  },
+  {
     path: "/premature-baby-milestones",
     file: "src/routes/premature-baby-milestones.tsx",
     changefreq: "monthly",
@@ -47,13 +95,14 @@ const PAGES = [
 
 function lastmodFor(file) {
   const abs = join(ROOT, file);
+  const mtime = statSync(abs).mtime.toISOString().slice(0, 10);
   try {
     const out = execSync(`git log -1 --format=%cs -- "${file}"`, { cwd: ROOT }).toString().trim();
-    if (/^\d{4}-\d{2}-\d{2}$/.test(out)) return out;
+    if (/^\d{4}-\d{2}-\d{2}$/.test(out)) return out > mtime ? out : mtime;
   } catch {
     // not a git repo / no history — fall through to mtime
   }
-  return statSync(abs).mtime.toISOString().slice(0, 10);
+  return mtime;
 }
 
 const urls = PAGES.map((p) => {

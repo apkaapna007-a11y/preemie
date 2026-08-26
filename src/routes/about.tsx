@@ -1,6 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ExternalLink } from "lucide-react";
-import { Article, AuthorPhoto, SiteLayout } from "@/components/SiteLayout";
+import {
+  Article,
+  AuthorPhoto,
+  Breadcrumbs,
+  LinkGridSection,
+  SiteLayout,
+} from "@/components/SiteLayout";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -9,13 +15,13 @@ export const Route = createFileRoute("/about")({
       {
         name: "description",
         content:
-          "AdjustedAge is written and reviewed by Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics). Credentials, editorial policy and review schedule.",
+          "AdjustedAge is written and reviewed by Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics), a pediatrician, medical writer and digital health creator in Pakistan.",
       },
       { property: "og:title", content: "About Dr. Zeeshan Islam | AdjustedAge" },
       {
         property: "og:description",
         content:
-          "AdjustedAge is written and reviewed by Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics). Credentials, editorial policy and review schedule.",
+          "AdjustedAge is written and reviewed by Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics), a pediatrician, medical writer and digital health creator in Pakistan.",
       },
       { property: "og:url", content: "https://preemie.vercel.app/about" },
       { property: "og:type", content: "profile" },
@@ -29,11 +35,13 @@ export const Route = createFileRoute("/about")({
       {
         name: "twitter:description",
         content:
-          "AdjustedAge is written and reviewed by Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics). Credentials, editorial policy and review schedule.",
+          "AdjustedAge is written and reviewed by Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics), a pediatrician, medical writer and digital health creator in Pakistan.",
       },
       { name: "twitter:image", content: "https://preemie.vercel.app/og/og-about.png" },
+      { name: "twitter:image:alt", content: "About Dr. Zeeshan Islam, author of AdjustedAge" },
+      { property: "og:image:alt", content: "About Dr. Zeeshan Islam, author of AdjustedAge" },
       { name: "article:published_time", content: "2026-08-11T00:00:00Z" },
-      { name: "article:modified_time", content: "2026-08-14T00:00:00Z" },
+      { name: "article:modified_time", content: "2026-08-26T00:00:00Z" },
     ],
     links: [{ rel: "canonical", href: "https://preemie.vercel.app/about" }],
     scripts: [
@@ -49,7 +57,12 @@ export const Route = createFileRoute("/about")({
           jobTitle: "Consultant Paediatrician",
           medicalSpecialty: "Pediatrics",
           url: "https://preemie.vercel.app/about",
-          image: "https://preemie.vercel.app/favicon.png",
+          image: {
+            "@type": "ImageObject",
+            url: "https://preemie.vercel.app/dr-zeeshan-islam.png",
+            width: 709,
+            height: 585,
+          },
           alternateName: "Dr Zee",
           identifier: {
             "@type": "PropertyValue",
@@ -62,7 +75,7 @@ export const Route = createFileRoute("/about")({
             "https://drzeewrites.com",
           ],
           description:
-            "Dr. Zeeshan Islam is the author and clinical reviewer of AdjustedAge. He is a Consultant Paediatrician with expertise in neonatology and preterm infant developmental follow-up.",
+            "Dr. Zeeshan Islam is the author and clinical reviewer of AdjustedAge. He is a pediatrician, medical writer and digital health creator focused on evidence-based child health and preterm infant developmental follow-up.",
           knowsAbout: [
             "Pediatrics",
             "Neonatology",
@@ -117,6 +130,7 @@ export const Route = createFileRoute("/about")({
 function AboutPage() {
   return (
     <SiteLayout>
+      <Breadcrumbs items={[{ to: "/", label: "Home" }, { label: "About the author" }]} />
       <div className="mx-auto max-w-3xl px-5 pt-12">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
           <AuthorPhoto className="h-44 w-36 rounded-2xl shadow-paper ring-1 ring-border" />
@@ -268,6 +282,44 @@ function AboutPage() {
           paediatrician today — do not wait for the next visit.
         </p>
       </Article>
+
+      <LinkGridSection
+        title="Read the pages this review supports"
+        links={[
+          {
+            to: "/",
+            label: "Corrected age calculator",
+            description:
+              "The main calculator for corrected age, PMA, milestones and visit tracking.",
+          },
+          {
+            to: "/adjusted-age-calculator",
+            label: "Adjusted age calculator",
+            description: "Same tool for people who search by the adjusted-age term instead.",
+          },
+          {
+            to: "/premature-baby-milestones",
+            label: "Premature baby milestones chart",
+            description: "Printable milestone chart reviewed against CDC/AAP prompts.",
+          },
+          {
+            to: "/how-to-calculate-corrected-age",
+            label: "How to calculate corrected age",
+            description:
+              "Formula and worked examples for parents and clinicians who want to check the math.",
+          },
+          {
+            to: "/red-flags",
+            label: "Preemie red flags",
+            description: "Safety page explaining when to seek medical help without delay.",
+          },
+          {
+            to: "/methodology",
+            label: "Methodology and references",
+            description: "Transparent source list, formulas and editorial limits behind the site.",
+          },
+        ]}
+      />
     </SiteLayout>
   );
 }
