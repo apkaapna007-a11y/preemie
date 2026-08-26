@@ -22,7 +22,9 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:url", content: "https://preemie.vercel.app/" },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: "https://preemie.vercel.app/favicon.png" },
+      { property: "og:image", content: "https://preemie.vercel.app/og/og-home.png" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
       { property: "og:locale", content: "en_US" },
       { property: "og:site_name", content: "AdjustedAge" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -35,7 +37,9 @@ export const Route = createFileRoute("/")({
         content:
           "Corrected age, milestones and follow-up tracking for NICU graduates, with CDC milestones re-indexed to corrected age. Reviewed by Dr. Zeeshan Islam.",
       },
-      { name: "twitter:image", content: "https://preemie.vercel.app/favicon.png" },
+      { name: "twitter:image", content: "https://preemie.vercel.app/og/og-home.png" },
+      { name: "twitter:image:alt", content: "Corrected age calculator for premature babies" },
+      { property: "og:image:alt", content: "Corrected age calculator for premature babies" },
     ],
     links: [{ rel: "canonical", href: "https://preemie.vercel.app/" }],
     scripts: [

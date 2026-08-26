@@ -15,6 +15,11 @@ export default defineConfig({
     server: { entry: "server" },
   },
   vite: {
+    server: {
+      // Allow sandbox/preview proxies (Lovable + Arena/e2b) to reach the dev
+      // server. Dev-only; has no effect on the production build.
+      allowedHosts: [".e2b.app", ".lovable.app", ".lovableproject.com"],
+    },
     plugins: [
       mcpPlugin(),
       VitePWA({
