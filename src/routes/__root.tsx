@@ -157,6 +157,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           medicalSpecialty: "Pediatrics",
           url: "https://preemie.vercel.app/about",
           image: "https://preemie.vercel.app/favicon.png",
+          alternateName: "Dr Zee",
+          sameAs: [
+            "https://drzeeshanislam.blog",
+            "https://www.linkedin.com/in/dr-zeeshan-islam-b81b0b373",
+            "https://drzeewrites.com",
+          ],
           description:
             "Dr. Zeeshan Islam is a Consultant Paediatrician specializing in neonatal follow-up and corrected age development.",
           address: {

@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { ExternalLink } from "lucide-react";
 import { Article, AuthorMark, SiteLayout } from "@/components/SiteLayout";
 
 export const Route = createFileRoute("/about")({
@@ -47,6 +48,17 @@ export const Route = createFileRoute("/about")({
           medicalSpecialty: "Pediatrics",
           url: "https://preemie.vercel.app/about",
           image: "https://preemie.vercel.app/favicon.png",
+          alternateName: "Dr Zee",
+          identifier: {
+            "@type": "PropertyValue",
+            propertyID: "Gravatar",
+            value: "50c92b77e1d7a4a9ee98b970f50188f88806b7b02c9c8e5004ee52a1ff4c861c",
+          },
+          sameAs: [
+            "https://drzeeshanislam.blog",
+            "https://www.linkedin.com/in/dr-zeeshan-islam-b81b0b373",
+            "https://drzeewrites.com",
+          ],
           description:
             "Dr. Zeeshan Islam is the author and clinical reviewer of AdjustedAge. He is a Consultant Paediatrician with expertise in neonatology and preterm infant developmental follow-up.",
           knowsAbout: [
@@ -173,6 +185,65 @@ function AboutPage() {
             child is fine, because it cannot know that.
           </li>
         </ul>
+
+        <h2>Identity card and elsewhere</h2>
+        <p>
+          My public identity card at{" "}
+          <a
+            href="https://drzeeshanislam.blog"
+            target="_blank"
+            rel="me noopener noreferrer"
+            className="text-primary underline underline-offset-4"
+          >
+            drzeeshanislam.blog
+          </a>{" "}
+          carries my verified accounts and current bio. Treat it as the canonical pointer to who
+          writes and reviews this site.
+        </p>
+        <ul>
+          <li>
+            <a
+              href="https://drzeeshanislam.blog"
+              target="_blank"
+              rel="me noopener noreferrer"
+              className="text-primary underline underline-offset-4"
+            >
+              drzeeshanislam.blog — identity card
+            </a>{" "}
+            <ExternalLink className="inline size-3.5 text-muted-foreground" aria-hidden />
+            <span className="text-muted-foreground"> verified accounts and current bio.</span>
+          </li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/dr-zeeshan-islam-b81b0b373"
+              target="_blank"
+              rel="me noopener noreferrer"
+              className="text-primary underline underline-offset-4"
+            >
+              Dr. Zeeshan Islam on LinkedIn
+            </a>{" "}
+            <ExternalLink className="inline size-3.5 text-muted-foreground" aria-hidden />
+            <span className="text-muted-foreground"> verified by the identity card.</span>
+          </li>
+          <li>
+            <a
+              href="https://drzeewrites.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary underline underline-offset-4"
+            >
+              DrZeeWrites — medical and healthcare content practice
+            </a>{" "}
+            <ExternalLink className="inline size-3.5 text-muted-foreground" aria-hidden />
+            <span className="text-muted-foreground"> the author&rsquo;s writing practice.</span>
+          </li>
+        </ul>
+        <p>
+          Disclosure: AdjustedAge is editorially independent of that practice. DrZeeWrites works
+          with healthcare and health-tech clients, but no client content, placement or sponsorship
+          reaches this tool, and the practice has no editorial role in it. The funding statement
+          below applies to AdjustedAge alone.
+        </p>
 
         <h2>Funding and conflicts of interest</h2>
         <p>
