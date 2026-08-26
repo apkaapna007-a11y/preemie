@@ -14,6 +14,28 @@ export function AuthorMark({ className = "" }: { className?: string }) {
   );
 }
 
+/**
+ * The author's real photograph, with a graceful fallback to the initials
+ * mark. Renders /dr-zeeshan-islam.jpg when that file exists in public/
+ * (commit the photo from the Lovable asset store to enable it); until then
+ * every load falls back to AuthorMark, so the page never shows a broken image.
+ */
+export function AuthorPhoto({ className = "" }: { className?: string }) {
+  const [failed, setFailed] = useState(false);
+
+  if (failed) return <AuthorMark className={className} />;
+
+  return (
+    <img
+      src="/dr-zeeshan-islam.jpg"
+      alt="Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics), consultant paediatrician"
+      loading="eager"
+      onError={() => setFailed(true)}
+      className={`shrink-0 object-cover ${className}`}
+    />
+  );
+}
+
 const NAV = [
   { to: "/", label: "Corrected age tool" },
   { to: "/premature-baby-milestones", label: "Milestones" },

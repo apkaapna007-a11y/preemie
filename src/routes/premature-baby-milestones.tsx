@@ -1,40 +1,46 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { Printer } from "lucide-react";
 import { Article, PageHeader, SiteLayout } from "@/components/SiteLayout";
 import { MILESTONES } from "@/lib/milestones";
 
 export const Route = createFileRoute("/premature-baby-milestones")({
   head: () => ({
     meta: [
-      { title: "Premature Baby Milestones by Corrected Age | AdjustedAge" },
+      { title: "Premature Baby Milestones Chart by Corrected Age (2–36 Months) | AdjustedAge" },
       {
         name: "description",
         content:
-          "Premature baby milestones by corrected age from 2 to 36 months, using CDC/AAP surveillance prompts as conversation guides. Reviewed by Dr. Zeeshan Islam.",
+          "Printable premature baby milestones chart by corrected age, 2 to 36 months, using CDC/AAP surveillance prompts. Free to print, reviewed by Dr. Zeeshan Islam.",
       },
-      { property: "og:title", content: "Premature Baby Milestones by Corrected Age | AdjustedAge" },
+      {
+        property: "og:title",
+        content: "Premature Baby Milestones Chart by Corrected Age | AdjustedAge",
+      },
       {
         property: "og:description",
         content:
-          "Premature baby milestones by corrected age from 2 to 36 months, using CDC/AAP surveillance prompts as conversation guides. Reviewed by Dr. Zeeshan Islam.",
+          "Printable premature baby milestones chart by corrected age, 2 to 36 months, using CDC/AAP surveillance prompts. Free to print, reviewed by Dr. Zeeshan Islam.",
       },
       { property: "og:url", content: "https://preemie.vercel.app/premature-baby-milestones" },
       { property: "og:type", content: "article" },
-      { property: "og:image", content: "https://preemie.vercel.app/favicon.png" },
+      { property: "og:image", content: "https://preemie.vercel.app/og/og-milestones.png" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
       { property: "og:locale", content: "en_US" },
       { property: "og:site_name", content: "AdjustedAge" },
       { name: "twitter:card", content: "summary_large_image" },
       {
         name: "twitter:title",
-        content: "Premature Baby Milestones by Corrected Age | AdjustedAge",
+        content: "Premature Baby Milestones Chart by Corrected Age | AdjustedAge",
       },
       {
         name: "twitter:description",
         content:
-          "Premature baby milestones by corrected age from 2 to 36 months, using CDC/AAP surveillance prompts as conversation guides. Reviewed by Dr. Zeeshan Islam.",
+          "Printable premature baby milestones chart by corrected age, 2 to 36 months, using CDC/AAP surveillance prompts. Reviewed by Dr. Zeeshan Islam.",
       },
-      { name: "twitter:image", content: "https://preemie.vercel.app/favicon.png" },
-      { name: "twitter:image:alt", content: "Premature baby milestones by corrected age" },
-      { property: "og:image:alt", content: "Premature baby milestones by corrected age" },
+      { name: "twitter:image", content: "https://preemie.vercel.app/og/og-milestones.png" },
+      { name: "twitter:image:alt", content: "Premature baby milestones chart by corrected age" },
+      { property: "og:image:alt", content: "Premature baby milestones chart by corrected age" },
       { name: "article:published_time", content: "2026-08-11T00:00:00Z" },
       { name: "article:modified_time", content: "2026-08-24T00:00:00Z" },
     ],
@@ -45,9 +51,9 @@ export const Route = createFileRoute("/premature-baby-milestones")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Article",
-          headline: "Premature Baby Milestones by Corrected Age",
+          headline: "Premature Baby Milestones Chart by Corrected Age",
           description:
-            "CDC/AAP developmental milestones chart re-indexed to corrected age for premature babies, from 2 to 36 months.",
+            "Printable CDC/AAP developmental milestones chart re-indexed to corrected age for premature babies, from 2 to 36 months.",
           url: "https://preemie.vercel.app/premature-baby-milestones",
           datePublished: "2026-08-11",
           dateModified: "2026-08-24",
@@ -114,10 +120,21 @@ function MilestonesPage() {
   return (
     <SiteLayout>
       <PageHeader
-        eyebrow="Milestone chart"
-        title="Premature baby milestones, by corrected age"
-        intro="Standard milestone charts are indexed to the birthday. For a baby born at 29 weeks, that is the wrong column for the first two to three years. Here is the same CDC/AAP list, re-indexed."
+        eyebrow="Printable milestone chart"
+        title="Premature baby milestones chart, by corrected age"
+        intro="Standard milestone charts are indexed to the birthday. For a baby born at 29 weeks, that is the wrong column for the first two to three years. Here is the same CDC/AAP list, re-indexed — and it prints cleanly for the fridge or the next clinic visit."
       />
+
+      <div className="no-print mx-auto max-w-3xl px-5">
+        <button
+          type="button"
+          onClick={() => window.print()}
+          className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground shadow-paper transition-opacity hover:opacity-90"
+        >
+          <Printer className="size-4" aria-hidden />
+          Print this chart
+        </button>
+      </div>
 
       <Article>
         <p>

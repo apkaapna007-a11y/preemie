@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ExternalLink } from "lucide-react";
-import { Article, AuthorMark, SiteLayout } from "@/components/SiteLayout";
+import { Article, AuthorPhoto, SiteLayout } from "@/components/SiteLayout";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -19,7 +19,9 @@ export const Route = createFileRoute("/about")({
       },
       { property: "og:url", content: "https://preemie.vercel.app/about" },
       { property: "og:type", content: "profile" },
-      { property: "og:image", content: "https://preemie.vercel.app/favicon.png" },
+      { property: "og:image", content: "https://preemie.vercel.app/og/og-about.png" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
       { property: "og:locale", content: "en_US" },
       { property: "og:site_name", content: "AdjustedAge" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -29,7 +31,7 @@ export const Route = createFileRoute("/about")({
         content:
           "AdjustedAge is written and reviewed by Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics). Credentials, editorial policy and review schedule.",
       },
-      { name: "twitter:image", content: "https://preemie.vercel.app/favicon.png" },
+      { name: "twitter:image", content: "https://preemie.vercel.app/og/og-about.png" },
       { name: "article:published_time", content: "2026-08-11T00:00:00Z" },
       { name: "article:modified_time", content: "2026-08-14T00:00:00Z" },
     ],
@@ -117,7 +119,7 @@ function AboutPage() {
     <SiteLayout>
       <div className="mx-auto max-w-3xl px-5 pt-12">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
-          <AuthorMark className="h-44 w-36 rounded-2xl text-4xl shadow-paper ring-1 ring-border" />
+          <AuthorPhoto className="h-44 w-36 rounded-2xl shadow-paper ring-1 ring-border" />
           <div>
             <p className="text-xs font-medium uppercase tracking-[0.18em] text-clay">
               About the author

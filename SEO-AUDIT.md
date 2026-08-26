@@ -219,3 +219,19 @@ Everywhere the physician appears (directories, profiles, bios), the name, creden
 ## 8. Bottom line
 
 The site does the hard part right: credible, safe, technically clean content with a named expert. Ranking will come from three compounding moves — **fix the share layer (P0)**, **ship the growth-chart + long-tail cluster (P1)**, and **build the physician identity graph (P1)** — measured weekly in Search Console. Ship P0 this week, clear the Fenton/WHO licensing next, and the site is positioned to own the "corrected age + preemie growth" SERP as the only credentialed tool in it.
+
+---
+
+## 9. Progress log
+
+| Date | Item | Status |
+|---|---|---|
+| 2026-08-26 | Identity card (drzeeshanislam.blog) wired in: `sameAs` (×2 Physician blocks), Gravatar `identifier`, `alternateName`, "Identity card and elsewhere" section + disclosure on `/about`, `llm.txt`/`llms.txt` | ✅ done |
+| 2026-08-26 | OG/social cards: 6 brand cards at 1200×630 generated deterministically (`scripts/generate-og-images.mjs`, SVG→PNG via sharp); wired into `__root.tsx` + all 8 routes with `og:image:width/height` and `twitter:image:alt` | ✅ done (P0 §3.1) |
+| 2026-08-26 | Milestones keyword fix: title/H1/description now target "premature baby milestones chart", "printable" positioning, Print-the-chart CTA (print CSS already existed), Article schema headline updated | ✅ done (P0 §3.3) |
+| 2026-08-26 | Author photo plumbing: `AuthorPhoto` component renders `/dr-zeeshan-islam.jpg` when present, falls back to initials mark until the photo is committed | ✅ code ready — **photo file still to be added** |
+| 2026-08-26 | Sitemap `lastmod` now generated from git history (`scripts/generate-sitemap.mjs`) | ✅ done (P0 §3.5) |
+| 2026-08-26 | GSC + Bing WMT — instructions written (`SEARCH-CONSOLE-SETUP.md`); verification file already in `public/` | ⏳ **needs the owner's Google/Microsoft account** (P0 §3.4) |
+| — | Google Fonts self-hosting (CWV), `WebApplication` schema on `/`, title CTR experiments | ⏳ P0 §3.5 remainder |
+| — | Growth-chart page (Fenton/WHO licensing first), long-tail cluster, identity-graph off-site work | ⏳ P1 — see `SEO-AUTHORITY-PLAYBOOK.md` |
+
