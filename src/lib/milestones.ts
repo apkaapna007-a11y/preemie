@@ -12,6 +12,9 @@
 
 export type Domain = "Social/Emotional" | "Language" | "Cognitive" | "Movement";
 
+/** Column order for the corrected-age chart and its CSV export. */
+export const DOMAINS: Domain[] = ["Social/Emotional", "Language", "Cognitive", "Movement"];
+
 export interface MilestoneSet {
   month: number;
   label: string;
@@ -184,4 +187,25 @@ export function milestoneSetForCorrectedMonths(months: number): MilestoneSet | n
 
 export function nextMilestoneSet(months: number): MilestoneSet | null {
   return MILESTONES.find((s) => months < s.month - 0.5) ?? null;
+}
+
+/** Quote every field so commas and quotes inside a prompt survive the round-trip. */
+function csvCell(value: string | number): string {
+  return `"${String(value).replace(/"/g, '""')}"`;
+}
+
+/**
+ * The chart as CSV: one row per milestone, grouped by corrected-age bucket.
+ * Pure string building — the DOM download lives in the route.
+ */
+export function milestonesToCsv(sets: MilestoneSet[] = MILESTONES): string {
+  const rows: (string | number)[][] = [
+    ["corrected_age_months", "corrected_age_label", "domain", "milestone"],
+  ];
+  for (const set of sets) {
+    for (const item of set.items) {
+      rows.push([set.month, set.label, item.domain, item.text]);
+    }
+  }
+  return rows.map((row) => row.map(csvCell).join(",")).join("\r\n");
 }

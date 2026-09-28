@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Article,
@@ -7,6 +8,19 @@ import {
   PageHeader,
   SiteLayout,
 } from "@/components/SiteLayout";
+
+function ExtLink({ href, children }: { href: string; children: ReactNode }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-primary underline underline-offset-4 break-words"
+    >
+      {children}
+    </a>
+  );
+}
 
 const COMPARISON = [
   {
@@ -43,7 +57,7 @@ export const Route = createFileRoute("/adjusted-age-vs-chronological-age")({
       {
         name: "description",
         content:
-          "What is the difference between adjusted age and chronological age in a preemie? A clear comparison for milestones, vaccines, PMA and follow-up. Reviewed by Dr. Zeeshan Islam.",
+          "What is the difference between adjusted age and chronological age in a preemie? Compare milestones, vaccines, PMA and follow-up. Reviewed by Dr. Zeeshan Islam.",
       },
       {
         property: "og:title",
@@ -52,7 +66,7 @@ export const Route = createFileRoute("/adjusted-age-vs-chronological-age")({
       {
         property: "og:description",
         content:
-          "What is the difference between adjusted age and chronological age in a preemie? A clear comparison for milestones, vaccines, PMA and follow-up. Reviewed by Dr. Zeeshan Islam.",
+          "What is the difference between adjusted age and chronological age in a preemie? Compare milestones, vaccines, PMA and follow-up. Reviewed by Dr. Zeeshan Islam.",
       },
       {
         property: "og:url",
@@ -78,7 +92,7 @@ export const Route = createFileRoute("/adjusted-age-vs-chronological-age")({
       { name: "twitter:image:alt", content: "Adjusted age vs chronological age guide" },
       { property: "og:image:alt", content: "Adjusted age vs chronological age guide" },
       { name: "article:published_time", content: "2026-08-27T00:00:00Z" },
-      { name: "article:modified_time", content: "2026-08-27T00:00:00Z" },
+      { name: "article:modified_time", content: "2026-09-28T00:00:00Z" },
     ],
     links: [
       { rel: "canonical", href: "https://preemie.vercel.app/adjusted-age-vs-chronological-age" },
@@ -95,8 +109,16 @@ export const Route = createFileRoute("/adjusted-age-vs-chronological-age")({
           url: "https://preemie.vercel.app/adjusted-age-vs-chronological-age",
           image: "https://preemie.vercel.app/og/og-age-difference.png",
           datePublished: "2026-08-27",
-          dateModified: "2026-08-27",
+          dateModified: "2026-09-28",
           lastReviewed: "2026-08-27",
+          citation: [
+            "https://www.healthychildren.org/English/ages-stages/baby/preemie/Pages/Corrected-Age-For-Preemies.aspx",
+            "https://www.healthychildren.org/English/ages-stages/baby/preemie/Pages/Preemie-Milestones.aspx",
+            "https://www.healthychildren.org/English/safety-prevention/immunizations/Pages/Immunizations-For-Preterm-Babies.aspx",
+            "https://publications.aap.org/redbook/book/755/chapter/14074422/Immunization-in-Preterm-and-Low-Birth-Weight",
+            "https://www.cdc.gov/vaccines/hcp/imz-schedules/",
+            "https://www.cdc.gov/act-early/milestones/index.html",
+          ],
           audience: {
             "@type": "MedicalAudience",
             audienceType: "Parents and clinicians caring for premature babies",
@@ -106,7 +128,7 @@ export const Route = createFileRoute("/adjusted-age-vs-chronological-age")({
           publisher: {
             "@type": "Organization",
             name: "AdjustedAge",
-            logo: { "@type": "ImageObject", url: "https://preemie.vercel.app/favicon.png" },
+            logo: { "@type": "ImageObject", url: "https://preemie.vercel.app/icon-512.png" },
           },
           specialty: "Pediatrics",
         }),
@@ -192,7 +214,11 @@ function AdjustedAgeVsChronologicalAgePage() {
         <p>
           <strong>Chronological age</strong> is the easy one: it is the time since birth.
           <strong>Adjusted age</strong> — also called <strong>corrected age</strong> — subtracts the
-          weeks of prematurity so the baby is compared against their due-date maturity instead.
+          weeks of prematurity so the baby is compared against their due-date maturity instead. The{" "}
+          <ExtLink href="https://www.healthychildren.org/English/ages-stages/baby/preemie/Pages/Corrected-Age-For-Preemies.aspx">
+            AAP describes both terms as the same concept
+          </ExtLink>{" "}
+          in preterm follow-up.
         </p>
         <p>
           <strong>PMA</strong>, or postmenstrual age, is different again. It adds the gestational
@@ -221,13 +247,36 @@ function AdjustedAgeVsChronologicalAgePage() {
             </tbody>
           </table>
         </div>
+        <p className="text-sm text-muted-foreground">
+          Vaccine timing follows the{" "}
+          <ExtLink href="https://www.cdc.gov/vaccines/hcp/imz-schedules/">
+            CDC immunisation schedules
+          </ExtLink>{" "}
+          and the AAP Red Book chapter on{" "}
+          <ExtLink href="https://publications.aap.org/redbook/book/755/chapter/14074422/Immunization-in-Preterm-and-Low-Birth-Weight">
+            immunisation in preterm and low birth weight infants
+          </ExtLink>
+          ; milestone timing follows the AAP&apos;s{" "}
+          <ExtLink href="https://www.healthychildren.org/English/ages-stages/baby/preemie/Pages/Preemie-Milestones.aspx">
+            preemie milestones
+          </ExtLink>{" "}
+          and the CDC&apos;s{" "}
+          <ExtLink href="https://www.cdc.gov/act-early/milestones/index.html">
+            Learn the Signs. Act. Early. milestones
+          </ExtLink>
+          . Full detail sits on the <Link to="/preemie-vaccines">preemie vaccines guide</Link>.
+        </p>
 
         <h2>Why the difference matters</h2>
         <p>
           If you use chronological age for a milestone conversation, a preterm baby may look delayed
           simply because the wrong calendar was used. If you use corrected age for routine vaccines,
-          the baby may be left unprotected for longer than necessary. The age framework changes the
-          conclusion, which is why mixing them up causes so much confusion.
+          the baby may be left unprotected for longer than necessary — which is why{" "}
+          <ExtLink href="https://www.healthychildren.org/English/safety-prevention/immunizations/Pages/Immunizations-For-Preterm-Babies.aspx">
+            the AAP gives preterm immunisation by chronological age and birth weight
+          </ExtLink>{" "}
+          rather than by due date. The age framework changes the conclusion, which is why mixing
+          them up causes so much confusion.
         </p>
 
         <h2>What adjusted age actually changes</h2>
@@ -257,6 +306,44 @@ function AdjustedAgeVsChronologicalAgePage() {
         <p>
           Routine vaccines usually follow chronological age. See{" "}
           <Link to="/preemie-vaccines">preemie vaccines</Link>.
+        </p>
+
+        <h2>Sources for this page</h2>
+        <ul>
+          <li>
+            <ExtLink href="https://www.healthychildren.org/English/ages-stages/baby/preemie/Pages/Corrected-Age-For-Preemies.aspx">
+              HealthyChildren.org (AAP) — Corrected Age For Preemies
+            </ExtLink>
+          </li>
+          <li>
+            <ExtLink href="https://www.healthychildren.org/English/ages-stages/baby/preemie/Pages/Preemie-Milestones.aspx">
+              HealthyChildren.org (AAP) — Preemie Milestones
+            </ExtLink>
+          </li>
+          <li>
+            <ExtLink href="https://www.healthychildren.org/English/safety-prevention/immunizations/Pages/Immunizations-For-Preterm-Babies.aspx">
+              HealthyChildren.org (AAP) — Immunizations for Preterm Babies
+            </ExtLink>
+          </li>
+          <li>
+            <ExtLink href="https://publications.aap.org/redbook/book/755/chapter/14074422/Immunization-in-Preterm-and-Low-Birth-Weight">
+              AAP Red Book — Immunization in Preterm and Low Birth Weight Infants
+            </ExtLink>
+          </li>
+          <li>
+            <ExtLink href="https://www.cdc.gov/vaccines/hcp/imz-schedules/">
+              CDC — Recommended Immunization Schedules
+            </ExtLink>
+          </li>
+          <li>
+            <ExtLink href="https://www.cdc.gov/act-early/milestones/index.html">
+              CDC — Learn the Signs. Act. Early. Milestones
+            </ExtLink>
+          </li>
+        </ul>
+        <p>
+          Methodology and full source list: <Link to="/methodology">how we build these pages</Link>.
+          Corrections are logged publicly on our <Link to="/about">corrections log</Link>.
         </p>
       </Article>
 

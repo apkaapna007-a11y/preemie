@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import type { ReactNode } from "react";
 import {
   Article,
   Breadcrumbs,
@@ -40,23 +41,52 @@ const CORRECTION_DOMAINS = [
   },
 ];
 
+/**
+ * Peer-reviewed and institutional sources cited in the evidence section.
+ * Each URL was verified to resolve before publication.
+ */
+const CORRECTION_CITATIONS = [
+  "https://pmc.ncbi.nlm.nih.gov/articles/PMC12221983/",
+  "https://www.nature.com/articles/s41390-024-03449-0",
+  "https://med.emory.edu/departments/pediatrics/divisions/neonatology/dpc/dev-iq-testing.html",
+  "https://cps.ca/en/documents/position/follow-up-care",
+  "https://publications.aap.org/pediatrics/article/152/1/e2023062511/192156/Primary-Care-Framework-to-Monitor-Preterm-Infants",
+];
+
+function SourceLink({ href, children }: { href: string; children: ReactNode }) {
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer">
+      {children}
+    </a>
+  );
+}
+
+function EvidenceNote({ label, children }: { label: string; children: ReactNode }) {
+  return (
+    <div className="not-prose my-4 rounded-2xl border border-border bg-card p-5 shadow-paper">
+      <p className="font-display text-base font-semibold text-foreground">{label}</p>
+      <div className="prose-clinical mt-1 text-[0.975rem]">{children}</div>
+    </div>
+  );
+}
+
 export const Route = createFileRoute("/when-to-stop-correcting")({
   head: () => ({
     meta: [
-      { title: "When to Stop Correcting Age for a Preemie | Milestones, Growth & Vaccines" },
+      { title: "When to Stop Correcting Age for a Preemie | AdjustedAge" },
       {
         name: "description",
         content:
-          "When do you stop correcting age for a preemie? Usually around 24 months for development, but growth, vaccines and late-preterm follow-up use different rules. Reviewed by Dr. Zeeshan Islam.",
+          "When do you stop correcting a preemie's age? Usually 24 months — but growth, milestones and vaccines follow different rules. See the evidence by domain.",
       },
       {
         property: "og:title",
-        content: "When to Stop Correcting Age for a Preemie | Milestones, Growth & Vaccines",
+        content: "When to Stop Correcting Age for a Preemie | AdjustedAge",
       },
       {
         property: "og:description",
         content:
-          "When do you stop correcting age for a preemie? Usually around 24 months for development, but growth, vaccines and late-preterm follow-up use different rules. Reviewed by Dr. Zeeshan Islam.",
+          "When do you stop correcting a preemie's age? Usually 24 months — but growth, milestones and vaccines follow different rules. See the evidence by domain.",
       },
       { property: "og:url", content: "https://preemie.vercel.app/when-to-stop-correcting" },
       { property: "og:type", content: "article" },
@@ -68,12 +98,12 @@ export const Route = createFileRoute("/when-to-stop-correcting")({
       { name: "twitter:card", content: "summary_large_image" },
       {
         name: "twitter:title",
-        content: "When to Stop Correcting Age for a Preemie | Milestones, Growth & Vaccines",
+        content: "When to Stop Correcting Age for a Preemie | AdjustedAge",
       },
       {
         name: "twitter:description",
         content:
-          "When do you stop correcting age for a preemie? Usually around 24 months for development, but growth, vaccines and PMA use different rules. Reviewed by Dr. Zeeshan Islam.",
+          "When do you stop correcting a preemie's age? Usually 24 months — but growth, milestones and vaccines follow different rules. See the evidence by domain.",
       },
       { name: "twitter:image", content: "https://preemie.vercel.app/og/og-guides.png" },
       { name: "twitter:image:alt", content: "When to stop correcting age for a preemie" },
@@ -96,6 +126,7 @@ export const Route = createFileRoute("/when-to-stop-correcting")({
           datePublished: "2026-08-11",
           dateModified: "2026-08-27",
           lastReviewed: "2026-08-27",
+          citation: CORRECTION_CITATIONS,
           audience: {
             "@type": "MedicalAudience",
             audienceType: "Parents and clinicians following premature babies",
@@ -111,7 +142,7 @@ export const Route = createFileRoute("/when-to-stop-correcting")({
             name: "AdjustedAge",
             logo: {
               "@type": "ImageObject",
-              url: "https://preemie.vercel.app/favicon.png",
+              url: "https://preemie.vercel.app/icon-512.png",
             },
           },
           specialty: "Pediatrics",
@@ -223,6 +254,14 @@ function StopPage() {
             </tbody>
           </table>
         </div>
+        <p>
+          Two of those rows are worth stating plainly, because they are the ones most often mixed
+          up. Routine vaccines are never corrected — the schedule runs on real age, as set out on
+          the <Link to="/preemie-vaccines">preemie vaccines page</Link>. And the difference between
+          the two ages themselves is explained once, in{" "}
+          <Link to="/adjusted-age-vs-chronological-age">adjusted vs chronological age</Link>, rather
+          than re-argued here.
+        </p>
 
         <h2>Why 24 months became the default answer</h2>
         <p>
@@ -231,9 +270,82 @@ function StopPage() {
           not flip a switch at 24 months and declare prematurity irrelevant.
         </p>
         <p>
-          That is why the site keeps the wording careful. Saying “correct to 2 years” is often good
-          shorthand, but it becomes misleading if someone applies it to vaccines, length catch-up,
-          or a baby still being followed in a high-risk clinic at 36 months.
+          Official guidance reflects that convention: the{" "}
+          <SourceLink href="https://publications.aap.org/pediatrics/article/152/1/e2023062511/192156/Primary-Care-Framework-to-Monitor-Preterm-Infants">
+            American Academy of Pediatrics primary care framework for preterm infants
+          </SourceLink>{" "}
+          uses corrected age for preterm infants under 24 months of chronological age, and
+          chronological age after that.
+        </p>
+        <p>
+          That is why the site keeps the wording careful. Saying &ldquo;correct to 2 years&rdquo; is
+          often good shorthand, but it becomes misleading if someone applies it to vaccines, length
+          catch-up, or a baby still being followed in a high-risk clinic at 36 months.
+        </p>
+
+        <h2>What the evidence shows beyond the convention</h2>
+        <p>
+          Correction is not one decision — it is at least three: how you plot growth, how you
+          interpret development, and how you count for vaccines and dosing. Those three have
+          different evidence behind them, and the honest position is that they do not all end on the
+          same day.
+        </p>
+
+        <EvidenceNote label="Growth: correction may matter through 36 months">
+          <p>
+            A 2025 <em>Journal of Perinatology</em> study of children born extremely and very
+            preterm found that age correction was required for{" "}
+            <strong>all growth measures through 36 months of corrected age</strong>, and that up to
+            72.9% of children were classified as stunted when their chronological age was used
+            instead (
+            <SourceLink href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12221983/">
+              Elmrayed et al., 2025
+            </SourceLink>
+            ). The limit worth naming: that study followed children born before 32 weeks, so it does
+            not tell us that a late preterm baby&apos;s weight chart needs the same treatment.
+          </p>
+        </EvidenceNote>
+
+        <EvidenceNote label="Development: 24 months usually suffices — except at the extremes">
+          <p>
+            A 2024 <em>Pediatric Research</em> study across a very large cohort found that standard
+            correction to 24 months was{" "}
+            <strong>generally sufficient for moderate and late preterm children</strong>, but{" "}
+            <strong>underestimated delays in those born extremely and very preterm</strong> — with
+            residual gaps of roughly two months in motor scores and about a month in language/social
+            scores (
+            <SourceLink href="https://www.nature.com/articles/s41390-024-03449-0">
+              Goldshtein et al., 2024
+            </SourceLink>
+            ). One caveat: children already identified with delay at age two were excluded from that
+            comparison, so it describes children who were doing broadly well at two.
+          </p>
+        </EvidenceNote>
+
+        <EvidenceNote label="There is no single consensus — and clinics differ deliberately">
+          <p>
+            Emory&apos;s neonatology team states it directly: there is{" "}
+            <SourceLink href="https://med.emory.edu/departments/pediatrics/divisions/neonatology/dpc/dev-iq-testing.html">
+              no consensus among professionals
+            </SourceLink>
+            , the majority correct through two years, and their own clinic corrects through the
+            first three years. Guidelines split the same way — the{" "}
+            <SourceLink href="https://cps.ca/en/documents/position/follow-up-care">
+              Canadian Paediatric Society
+            </SourceLink>{" "}
+            notes correction of growth and development until 36 months for children born extremely
+            preterm, while immunisations are given by chronological age. Two reputable teams landing
+            on different answers is not a puzzle you have to solve alone: it is a reason to ask your
+            follow-up team which convention they are using and why.
+          </p>
+        </EvidenceNote>
+
+        <p>
+          So the contested areas, named honestly: how long growth charts should be corrected for
+          babies born before 32 weeks (evidence says longer than 24 months), whether standard
+          correction is enough for moderate and late preterm development (large-cohort evidence says
+          usually yes), and what to do past 24 months for the most preterm babies when screening
+          suggests a real concern (no consensus — that is a clinical decision).
         </p>
 
         <h2>When 24 months is too blunt</h2>
@@ -250,10 +362,10 @@ function StopPage() {
 
         <h2>Late preterm babies often get dropped too early</h2>
         <p>
-          A baby born at 35 weeks is “only” five weeks early, which is exactly why correction is so
-          often abandoned too soon. But at a four-month visit those five weeks are still a large
-          chunk of the child&apos;s post-term life. In the first year, that difference can still
-          change which milestone row is fair.
+          A baby born at 35 weeks is &ldquo;only&rdquo; five weeks early, which is exactly why
+          correction is so often abandoned too soon. But at a four-month visit those five weeks are
+          still a large chunk of the child&apos;s post-term life. In the first year, that difference
+          can still change which milestone row is fair.
         </p>
         <p>
           Use the <Link to="/how-to-calculate-corrected-age">worked late-preterm example</Link> and
@@ -282,7 +394,10 @@ function StopPage() {
           </li>
           <li>Do not let corrected age delay routine immunisations.</li>
           <li>Do not assume a late-preterm baby can skip correction immediately.</li>
-          <li>Do not use “still a preemie” forever to explain persistent developmental concern.</li>
+          <li>
+            Do not use &ldquo;still a preemie&rdquo; forever to explain persistent developmental
+            concern.
+          </li>
         </ul>
       </Article>
 

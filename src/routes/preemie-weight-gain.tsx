@@ -12,20 +12,20 @@ import {
 export const Route = createFileRoute("/preemie-weight-gain")({
   head: () => ({
     meta: [
-      { title: "Preemie Weight Gain Calculator (g/day & g/kg/day) | AdjustedAge" },
+      { title: "Preemie Weight Gain Calculator (g/kg/day) | AdjustedAge" },
       {
         name: "description",
         content:
-          "Calculate preemie weight gain between two dates in grams per day and grams per kilogram per day. Built for NICU follow-up and reviewed by Dr. Zeeshan Islam.",
+          "Two weights and two dates give grams per day and g/kg/day, but the trend beats one interval. Know when low gain means a call. Reviewed by Dr. Zeeshan Islam.",
       },
       {
         property: "og:title",
-        content: "Preemie Weight Gain Calculator (g/day & g/kg/day) | AdjustedAge",
+        content: "Preemie Weight Gain Calculator (g/kg/day) | AdjustedAge",
       },
       {
         property: "og:description",
         content:
-          "Calculate preemie weight gain between two dates in grams per day and grams per kilogram per day. Built for NICU follow-up and reviewed by Dr. Zeeshan Islam.",
+          "Two weights and two dates give grams per day and g/kg/day, but the trend beats one interval. Know when low gain means a call. Reviewed by Dr. Zeeshan Islam.",
       },
       { property: "og:url", content: "https://preemie.vercel.app/preemie-weight-gain" },
       { property: "og:type", content: "website" },
@@ -37,12 +37,12 @@ export const Route = createFileRoute("/preemie-weight-gain")({
       { name: "twitter:card", content: "summary_large_image" },
       {
         name: "twitter:title",
-        content: "Preemie Weight Gain Calculator (g/day & g/kg/day) | AdjustedAge",
+        content: "Preemie Weight Gain Calculator (g/kg/day) | AdjustedAge",
       },
       {
         name: "twitter:description",
         content:
-          "Calculate preemie weight gain between two dates in grams per day and grams per kilogram per day. Reviewed by Dr. Zeeshan Islam.",
+          "Two weights and two dates give grams per day and g/kg/day, but the trend beats one interval. Know when low gain means a call. Reviewed by Dr. Zeeshan Islam.",
       },
       { name: "twitter:image", content: "https://preemie.vercel.app/og/og-weight-gain.png" },
       { name: "twitter:image:alt", content: "Preemie weight gain calculator" },
@@ -71,9 +71,26 @@ export const Route = createFileRoute("/preemie-weight-gain")({
           publisher: {
             "@type": "Organization",
             name: "AdjustedAge",
-            logo: { "@type": "ImageObject", url: "https://preemie.vercel.app/favicon.png" },
+            logo: { "@type": "ImageObject", url: "https://preemie.vercel.app/icon-512.png" },
           },
           specialty: "Pediatrics",
+          citation: [
+            {
+              "@type": "Article",
+              name: "A longitudinal growth chart for children born preterm (Fenton & Kim, 2013)",
+              url: "https://pubmed.ncbi.nlm.nih.gov/23601190/",
+            },
+            {
+              "@type": "WebPage",
+              name: "Growth Charts — CDC National Center for Health Statistics",
+              url: "https://www.cdc.gov/growthcharts/",
+            },
+            {
+              "@type": "WebPage",
+              name: "Preterm birth — World Health Organization",
+              url: "https://www.who.int/news-room/fact-sheets/detail/preterm-birth",
+            },
+          ],
         }),
       },
       {
@@ -175,9 +192,17 @@ function PreemieWeightGainPage() {
       <Article>
         <h2>Why preemie weight gain is tracked differently</h2>
         <p>
-          A premature baby does not grow like a term-born child of the same birthday, especially in
-          the earlier months. That is why neonatal teams often discuss{" "}
-          <strong>weight velocity</strong>
+          A baby born before 37 completed weeks — the{" "}
+          <a
+            href="https://www.who.int/news-room/fact-sheets/detail/preterm-birth"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary underline underline-offset-4"
+          >
+            World Health Organization&apos;s definition of preterm birth
+          </a>{" "}
+          — does not grow like a term-born child of the same birthday, especially in the earlier
+          months. That is why neonatal teams often discuss <strong>weight velocity</strong>
           rather than one single weight value. Looking at gain over time is more informative than
           staring at one number in isolation.
         </p>
@@ -185,7 +210,16 @@ function PreemieWeightGainPage() {
           This page calculates two common ways to describe gain: <strong>grams per day</strong> and
           <strong> grams per kilogram per day</strong>. The second method adjusts the gain to the
           baby&apos;s average body weight over the interval and is often used in NICU and high-risk
-          infant follow-up.
+          infant follow-up, where{" "}
+          <a
+            href="https://pubmed.ncbi.nlm.nih.gov/23601190/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary underline underline-offset-4"
+          >
+            preterm-specific growth references such as the Fenton preterm growth chart
+          </a>{" "}
+          replace the term-born charts used for full-term babies.
         </p>
 
         <h2>How this calculator works</h2>
@@ -193,6 +227,19 @@ function PreemieWeightGainPage() {
           Enter a previous weight and date, then a current weight and date. The tool calculates the
           total gain in grams, divides it by the number of days for grams per day, and also reports
           grams per kilogram per day using the average-weight method.
+        </p>
+        <p>
+          The result on its own is not a percentile. Trend context comes from a growth chart: the{" "}
+          <a
+            href="https://www.cdc.gov/growthcharts/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary underline underline-offset-4"
+          >
+            CDC&apos;s growth chart guidance
+          </a>{" "}
+          describes growth charts as percentile curves for tracking body measurements over time, and
+          recommends the WHO growth standards for children from birth to 2 years.
         </p>
         <p>
           If you also need the baby&apos;s developmental age context, use the{" "}

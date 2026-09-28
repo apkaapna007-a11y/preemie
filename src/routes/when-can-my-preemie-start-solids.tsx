@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Article,
@@ -8,23 +9,36 @@ import {
   SiteLayout,
 } from "@/components/SiteLayout";
 
+function ExtLink({ href, children }: { href: string; children: ReactNode }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-primary underline underline-offset-4 break-words"
+    >
+      {children}
+    </a>
+  );
+}
+
 export const Route = createFileRoute("/when-can-my-preemie-start-solids")({
   head: () => ({
     meta: [
-      { title: "When Can My Preemie Start Solids? Corrected Age Guide | AdjustedAge" },
+      { title: "When Can My Preemie Start Solids? | AdjustedAge" },
       {
         name: "description",
         content:
-          "When can a preemie start solids? A corrected-age guide to readiness, timing, feeding safety and the questions to ask your clinician. Reviewed by Dr. Zeeshan Islam.",
+          "When can a preemie start solids? Use corrected age together with readiness signs and feeding safety, not the calendar alone. Reviewed by Dr. Zeeshan Islam.",
       },
       {
         property: "og:title",
-        content: "When Can My Preemie Start Solids? Corrected Age Guide | AdjustedAge",
+        content: "When Can My Preemie Start Solids? | AdjustedAge",
       },
       {
         property: "og:description",
         content:
-          "When can a preemie start solids? A corrected-age guide to readiness, timing, feeding safety and the questions to ask your clinician. Reviewed by Dr. Zeeshan Islam.",
+          "When can a preemie start solids? Use corrected age together with readiness signs and feeding safety, not the calendar alone. Reviewed by Dr. Zeeshan Islam.",
       },
       {
         property: "og:url",
@@ -39,18 +53,18 @@ export const Route = createFileRoute("/when-can-my-preemie-start-solids")({
       { name: "twitter:card", content: "summary_large_image" },
       {
         name: "twitter:title",
-        content: "When Can My Preemie Start Solids? Corrected Age Guide | AdjustedAge",
+        content: "When Can My Preemie Start Solids? | AdjustedAge",
       },
       {
         name: "twitter:description",
         content:
-          "A corrected-age guide to starting solids in preterm babies, with readiness signs and safety questions. Reviewed by Dr. Zeeshan Islam.",
+          "Corrected age, readiness signs and feeding safety for starting solids in a preterm baby. Reviewed by Dr. Zeeshan Islam.",
       },
       { name: "twitter:image", content: "https://preemie.vercel.app/og/og-solids.png" },
       { name: "twitter:image:alt", content: "When can my preemie start solids guide" },
       { property: "og:image:alt", content: "When can my preemie start solids guide" },
       { name: "article:published_time", content: "2026-08-27T00:00:00Z" },
-      { name: "article:modified_time", content: "2026-08-27T00:00:00Z" },
+      { name: "article:modified_time", content: "2026-09-28T00:00:00Z" },
     ],
     links: [
       { rel: "canonical", href: "https://preemie.vercel.app/when-can-my-preemie-start-solids" },
@@ -67,8 +81,13 @@ export const Route = createFileRoute("/when-can-my-preemie-start-solids")({
           url: "https://preemie.vercel.app/when-can-my-preemie-start-solids",
           image: "https://preemie.vercel.app/og/og-solids.png",
           datePublished: "2026-08-27",
-          dateModified: "2026-08-27",
+          dateModified: "2026-09-28",
           lastReviewed: "2026-08-27",
+          citation: [
+            "https://www.cdc.gov/infant-toddler-nutrition/foods-and-drinks/when-what-and-how-to-introduce-solid-foods.html",
+            "https://www.healthychildren.org/English/ages-stages/baby/preemie/Pages/Corrected-Age-For-Preemies.aspx",
+            "https://www.aap.org/en/patient-care/newborn-infant-and-early-childhood-nutrition/newborn-and-infant-nutrition-assessment-tools/preterm-infant-growth-tools",
+          ],
           audience: {
             "@type": "MedicalAudience",
             audienceType: "Parents of preterm infants beginning complementary feeding",
@@ -78,7 +97,7 @@ export const Route = createFileRoute("/when-can-my-preemie-start-solids")({
           publisher: {
             "@type": "Organization",
             name: "AdjustedAge",
-            logo: { "@type": "ImageObject", url: "https://preemie.vercel.app/favicon.png" },
+            logo: { "@type": "ImageObject", url: "https://preemie.vercel.app/icon-512.png" },
           },
           specialty: "Pediatrics",
         }),
@@ -164,7 +183,11 @@ function PreemieSolidsPage() {
         <p>
           Many preterm feeding decisions are discussed using <strong>corrected age</strong>, but
           solids should not be started by a date alone. The baby also needs the right developmental
-          signs and enough feeding stability for solids to be introduced safely.
+          signs and enough feeding stability for solids to be introduced safely — the CDC&apos;s{" "}
+          <ExtLink href="https://www.cdc.gov/infant-toddler-nutrition/foods-and-drinks/when-what-and-how-to-introduce-solid-foods.html">
+            guidance on when, what and how to introduce solid foods
+          </ExtLink>{" "}
+          frames readiness the same way for all babies.
         </p>
 
         <h2>Why corrected age matters for solids</h2>
@@ -172,7 +195,11 @@ function PreemieSolidsPage() {
           A baby born early may be several weeks behind a term-born baby of the same birthday in
           head control, trunk stability and oral-motor maturity. That is why corrected age is often
           more meaningful than chronological age when thinking about readiness for complementary
-          feeding.
+          feeding, as explained in the AAP&apos;s{" "}
+          <ExtLink href="https://www.healthychildren.org/English/ages-stages/baby/preemie/Pages/Corrected-Age-For-Preemies.aspx">
+            corrected age guidance for preemies
+          </ExtLink>
+          .
         </p>
         <p>
           Use the <Link to="/">corrected age calculator</Link> first if you are not sure which age
@@ -189,7 +216,12 @@ function PreemieSolidsPage() {
         </ul>
         <p>
           These signs do not replace medical advice, but they explain why two babies with the same
-          corrected age may not be equally ready.
+          corrected age may not be equally ready. The CDC lists the same cluster of readiness signs
+          for all infants, alongside the usual starting point of around 6 months, in{" "}
+          <ExtLink href="https://www.cdc.gov/infant-toddler-nutrition/foods-and-drinks/when-what-and-how-to-introduce-solid-foods.html">
+            when, what and how to introduce solid foods
+          </ExtLink>
+          .
         </p>
 
         <h2>When the answer is more individual</h2>
@@ -230,7 +262,34 @@ function PreemieSolidsPage() {
           one reason the site keeps <Link to="/preemie-weight-gain">weight gain</Link>,
           <Link to="/premature-baby-milestones"> milestones</Link> and{" "}
           <Link to="/red-flags">safety guidance</Link> together instead of treating feeding as a
-          separate topic.
+          separate topic. For growth plotting, the AAP publishes{" "}
+          <ExtLink href="https://www.aap.org/en/patient-care/newborn-infant-and-early-childhood-nutrition/newborn-and-infant-nutrition-assessment-tools/preterm-infant-growth-tools">
+            preterm infant growth tools
+          </ExtLink>
+          .
+        </p>
+
+        <h2>Sources for this page</h2>
+        <ul>
+          <li>
+            <ExtLink href="https://www.cdc.gov/infant-toddler-nutrition/foods-and-drinks/when-what-and-how-to-introduce-solid-foods.html">
+              CDC — When, What, and How to Introduce Solid Foods
+            </ExtLink>
+          </li>
+          <li>
+            <ExtLink href="https://www.healthychildren.org/English/ages-stages/baby/preemie/Pages/Corrected-Age-For-Preemies.aspx">
+              HealthyChildren.org (AAP) — Corrected Age For Preemies
+            </ExtLink>
+          </li>
+          <li>
+            <ExtLink href="https://www.aap.org/en/patient-care/newborn-infant-and-early-childhood-nutrition/newborn-and-infant-nutrition-assessment-tools/preterm-infant-growth-tools">
+              AAP — Preterm Infant Growth Tools
+            </ExtLink>
+          </li>
+        </ul>
+        <p>
+          Methodology and full source list: <Link to="/methodology">how we build these pages</Link>.
+          Found something wrong? It is logged on our <Link to="/about">corrections log</Link>.
         </p>
       </Article>
 

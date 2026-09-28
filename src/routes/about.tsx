@@ -41,7 +41,7 @@ export const Route = createFileRoute("/about")({
       { name: "twitter:image:alt", content: "About Dr. Zeeshan Islam, author of AdjustedAge" },
       { property: "og:image:alt", content: "About Dr. Zeeshan Islam, author of AdjustedAge" },
       { name: "article:published_time", content: "2026-08-11T00:00:00Z" },
-      { name: "article:modified_time", content: "2026-08-26T00:00:00Z" },
+      { name: "article:modified_time", content: "2026-09-28T00:00:00Z" },
     ],
     links: [{ rel: "canonical", href: "https://preemie.vercel.app/about" }],
     scripts: [
@@ -197,8 +197,80 @@ function AboutPage() {
             rather than hidden behind a single number.
           </li>
           <li>
+            What the site collects — which is very little — is set out on the{" "}
+            <Link to="/privacy">privacy page</Link>.
+          </li>
+          <li>
             No result on this site is ever framed as reassurance. The tool does not tell you your
             child is fine, because it cannot know that.
+          </li>
+        </ul>
+
+        <h2>Contact</h2>
+        <p>
+          If you have found an error, own a source we should be citing, or need to reach the author,
+          email{" "}
+          <a
+            href="mailto:[CONTACT EMAIL]"
+            className="text-primary underline underline-offset-4 break-words"
+          >
+            [CONTACT EMAIL]
+          </a>
+          . The identity card at{" "}
+          <a
+            href="https://drzeeshanislam.blog"
+            target="_blank"
+            rel="me noopener noreferrer"
+            className="text-primary underline underline-offset-4"
+          >
+            drzeeshanislam.blog
+          </a>{" "}
+          and the{" "}
+          <a
+            href="https://www.linkedin.com/in/dr-zeeshan-islam-b81b0b373"
+            target="_blank"
+            rel="me noopener noreferrer"
+            className="text-primary underline underline-offset-4"
+          >
+            LinkedIn profile
+          </a>{" "}
+          list the same verified accounts.
+        </p>
+        <p>
+          Please do not send medical questions here. This is not a consultation channel and nothing
+          sent to it creates a doctor–patient relationship; for anything about your own baby,
+          contact the clinician who can examine them.
+        </p>
+
+        <h2 id="corrections-log">Corrections log</h2>
+        <p>
+          Substantive changes to published pages are dated and listed here, and corrections are
+          never silently edited in. Editorial additions that add a source without changing the
+          guidance are recorded as such.
+        </p>
+        <ul>
+          <li>
+            <strong>2026-09-28</strong> — Added named outbound sources and citation schema across
+            the methodology, vaccines, late preterm, solids, age-comparison and privacy pages;
+            shortened page titles and meta descriptions that were truncating in search results; and
+            removed the vaccine heading from the late preterm page so the{" "}
+            <Link to="/preemie-vaccines">preemie vaccines guide</Link> is the single answer for
+            vaccine timing. No clinical guidance changed, and physician review dates were left as
+            they were pending re-review.
+          </li>
+          <li>
+            <strong>2026-08-27</strong> — Long-tail pages first published: late preterm baby, NICU
+            follow-up schedule, starting solids, and adjusted age vs chronological age, each with
+            canonical URLs and physician review wiring. New pages rather than corrections.
+          </li>
+          <li>
+            <strong>2026-08-26</strong> — PMA calculator, preemie weight gain and preemie vaccines
+            pages published as part of the long-tail cluster, with the identity card and share cards
+            wired in. New pages rather than corrections.
+          </li>
+          <li>
+            No clinical correction has been required since launch. If a guideline cited on this site
+            changes, the affected page is re-reviewed and the change is recorded above.
           </li>
         </ul>
 

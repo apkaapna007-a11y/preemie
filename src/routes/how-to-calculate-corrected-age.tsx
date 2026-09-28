@@ -10,20 +10,20 @@ import {
 export const Route = createFileRoute("/how-to-calculate-corrected-age")({
   head: () => ({
     meta: [
-      { title: "How to Calculate Corrected Age for a Premature Baby | AdjustedAge" },
+      { title: "How to Calculate Corrected Age for a Preemie | AdjustedAge" },
       {
         name: "description",
         content:
-          "Learn how to calculate corrected age for a premature baby using gestational age, chronological age and three worked examples. Reviewed by Dr. Zeeshan Islam.",
+          "Corrected age = chronological age minus weeks of prematurity, worked through for 28, 34 and 36 weeks plus the usual mistakes. Reviewed by Dr. Zeeshan Islam.",
       },
       {
         property: "og:title",
-        content: "How to Calculate Corrected Age for a Premature Baby | AdjustedAge",
+        content: "How to Calculate Corrected Age for a Preemie | AdjustedAge",
       },
       {
         property: "og:description",
         content:
-          "Learn how to calculate corrected age for a premature baby using gestational age, chronological age and three worked examples. Reviewed by Dr. Zeeshan Islam.",
+          "Corrected age = chronological age minus weeks of prematurity, worked through for 28, 34 and 36 weeks plus the usual mistakes. Reviewed by Dr. Zeeshan Islam.",
       },
       { property: "og:url", content: "https://preemie.vercel.app/how-to-calculate-corrected-age" },
       { property: "og:type", content: "article" },
@@ -35,12 +35,12 @@ export const Route = createFileRoute("/how-to-calculate-corrected-age")({
       { name: "twitter:card", content: "summary_large_image" },
       {
         name: "twitter:title",
-        content: "How to Calculate Corrected Age for a Premature Baby | AdjustedAge",
+        content: "How to Calculate Corrected Age for a Preemie | AdjustedAge",
       },
       {
         name: "twitter:description",
         content:
-          "Learn how to calculate corrected age for a premature baby using gestational age, chronological age and three worked examples. Reviewed by Dr. Zeeshan Islam.",
+          "Corrected age = chronological age minus weeks of prematurity, worked through for 28, 34 and 36 weeks plus the usual mistakes. Reviewed by Dr. Zeeshan Islam.",
       },
       { name: "twitter:image", content: "https://preemie.vercel.app/og/og-guides.png" },
       { name: "twitter:image:alt", content: "Corrected age formula for premature babies" },
@@ -59,7 +59,7 @@ export const Route = createFileRoute("/how-to-calculate-corrected-age")({
           "@type": "Article",
           headline: "How to Calculate Corrected Age for Premature Babies",
           description:
-            "The corrected age formula with three worked examples and the common mistakes clinicians and parents make.",
+            "The corrected age formula with four worked examples and the common mistakes clinicians and parents make.",
           url: "https://preemie.vercel.app/how-to-calculate-corrected-age",
           datePublished: "2026-08-11",
           dateModified: "2026-08-27",
@@ -71,9 +71,31 @@ export const Route = createFileRoute("/how-to-calculate-corrected-age")({
             name: "AdjustedAge",
             logo: {
               "@type": "ImageObject",
-              url: "https://preemie.vercel.app/favicon.png",
+              url: "https://preemie.vercel.app/icon-512.png",
             },
           },
+          citation: [
+            {
+              "@type": "WebPage",
+              name: "Preterm birth — World Health Organization",
+              url: "https://www.who.int/news-room/fact-sheets/detail/preterm-birth",
+            },
+            {
+              "@type": "WebPage",
+              name: "Learn the Signs. Act Early. — CDC developmental milestones",
+              url: "https://www.cdc.gov/actearly/",
+            },
+            {
+              "@type": "Article",
+              name: "Evidence-Informed Milestones for Developmental Surveillance Tools (Zubler et al., 2022)",
+              url: "https://doi.org/10.1542/peds.2021-052138",
+            },
+            {
+              "@type": "WebPage",
+              name: "Child and Adolescent Immunization Schedule by Age — CDC",
+              url: "https://www.cdc.gov/vaccines/hcp/imz-schedules/",
+            },
+          ],
         }),
       },
       {
@@ -83,7 +105,7 @@ export const Route = createFileRoute("/how-to-calculate-corrected-age")({
           "@type": "HowTo",
           name: "How to Calculate Corrected Age",
           description:
-            "Corrected age = chronological age minus weeks of prematurity. Three worked examples.",
+            "Corrected age = chronological age minus weeks of prematurity. Four worked examples.",
           totalTime: "PT2M",
           step: [
             {
@@ -180,8 +202,25 @@ function HowToPage() {
           <strong>Corrected age = chronological age − weeks of prematurity.</strong>
         </p>
         <p>
-          Forty weeks means 280 days. Everything is done in days and converted at the end, which
-          avoids the rounding errors you get from working in whole months.
+          Stated in one line:{" "}
+          <strong>corrected age = chronological age − (40 weeks − gestational age at birth)</strong>
+          . Forty weeks is 280 days, and it is the reference length of a full-term pregnancy;
+          anything before 37 completed weeks counts as preterm under the{" "}
+          <a
+            href="https://www.who.int/news-room/fact-sheets/detail/preterm-birth"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary underline underline-offset-4"
+          >
+            World Health Organization&apos;s preterm birth definition
+          </a>
+          . The gap between those numbers — 40 weeks minus the gestational age the baby actually
+          reached — is the fixed amount you subtract for the whole of the child&apos;s early
+          follow-up. It never changes; only the chronological age keeps moving.
+        </p>
+        <p>
+          Everything below is worked out in days and converted at the end, which avoids the rounding
+          errors you get from working in whole months.
         </p>
 
         <h3>Worked example 1 — 28 weeks, now 6 months old</h3>
@@ -195,8 +234,26 @@ function HowToPage() {
           </li>
         </ul>
         <p>
-          This baby's first birthday cake is six months away, but developmentally you should be
-          reading the 4-month milestone row soon, not the 6-month row.
+          This baby&apos;s first birthday cake is six months away, but developmentally you should be
+          reading the{" "}
+          <a
+            href="https://www.cdc.gov/actearly/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary underline underline-offset-4"
+          >
+            4-month milestone row
+          </a>{" "}
+          soon, not the 6-month row — and that milestone set itself comes from the{" "}
+          <a
+            href="https://doi.org/10.1542/peds.2021-052138"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary underline underline-offset-4"
+          >
+            2022 evidence-informed milestones review in Pediatrics
+          </a>
+          .
         </p>
 
         <h3>Worked example 2 — 34+3 weeks, now 10 weeks old</h3>
@@ -233,7 +290,38 @@ function HowToPage() {
         </ul>
         <p>
           Before term-equivalent age, corrected age is negative and PMA is the number clinicians
-          actually use. The tool shows both.
+          actually use. The tool shows both. The same two inputs read a discharge note in reverse: a
+          baby born at 29+2 weeks who is 5 weeks old today is 29+2 + 5 weeks ={" "}
+          <strong>34+2 weeks PMA</strong>, and that is the figure the clinic will quote at that
+          visit.
+        </p>
+
+        <h3>Worked example 4 — 36 weeks, now 12 weeks old</h3>
+        <ul>
+          <li>GA in days: 36 × 7 = 252</li>
+          <li>
+            Prematurity: 280 − 252 = <strong>28 days (4 weeks)</strong>
+          </li>
+          <li>Chronological: 12 weeks = 84 days</li>
+          <li>
+            Corrected: 84 − 28 = <strong>56 days = 8 weeks corrected</strong>
+          </li>
+        </ul>
+        <p>
+          A 36-week birth sits in the{" "}
+          <a
+            href="https://www.who.int/news-room/fact-sheets/detail/preterm-birth"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary underline underline-offset-4"
+          >
+            moderate to late preterm band
+          </a>{" "}
+          — the case most often dismissed, because the baby looks term at birth. Twelve weeks after
+          delivery the four-week gap is still a third of the baby&apos;s life, so the milestone row
+          you should read is the 2-month one, not the row implied by 12 weeks of calendar age.
+          Skipping this example is how a healthy late-preterm baby gets compared with the wrong
+          calendar.
         </p>
 
         <h2>Common questions about corrected age</h2>
@@ -262,8 +350,37 @@ function HowToPage() {
             days depending on the months involved. Use 280.
           </li>
           <li>
-            <strong>Correcting immunisations.</strong> Vaccines are given by chronological age.
-            Correcting delays protection in the most vulnerable infants.
+            <strong>Using 37 weeks as the reference.</strong> 37 weeks is the threshold below which
+            a birth counts as{" "}
+            <a
+              href="https://www.who.int/news-room/fact-sheets/detail/preterm-birth"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary underline underline-offset-4"
+            >
+              preterm
+            </a>
+            , not the length of a full-term pregnancy. Subtracting 37 instead of 40 under-corrects
+            by three weeks every single time.
+          </li>
+          <li>
+            <strong>Correcting immunisations.</strong> Vaccines are given by chronological age, as
+            the{" "}
+            <a
+              href="https://www.cdc.gov/vaccines/hcp/imz-schedules/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary underline underline-offset-4"
+            >
+              CDC immunization schedule by age
+            </a>{" "}
+            makes explicit. Correcting delays protection in the most vulnerable infants.
+          </li>
+          <li>
+            <strong>Swapping PMA for corrected age.</strong> PMA starts at gestational age at birth
+            and only ever rises; corrected age starts negative and reaches zero at the due date.
+            They answer different questions — see the{" "}
+            <Link to="/pma-calculator">PMA calculator</Link> for the distinction.
           </li>
           <li>
             <strong>Rounding gestational age down to whole weeks.</strong> 34+6 is nearly a week
@@ -271,9 +388,18 @@ function HowToPage() {
           </li>
           <li>
             <strong>Forgetting to recalculate.</strong> The gap in weeks is fixed; the proportion of
-            the child's life it represents shrinks every month. That is why it stops mattering.
+            the child&apos;s life it represents shrinks every month, which is exactly why{" "}
+            <Link to="/when-to-stop-correcting">correction stops being used</Link> later on.
           </li>
         </ul>
+        <p>
+          A quick check on your own answer: corrected age must always be smaller than chronological
+          age for a baby born early, and the difference between the two must equal exactly (40 weeks
+          − gestational age at birth) for ever. If a clinic&apos;s number differs from yours by more
+          than a few days, the usual causes are a rounded gestational age, a due date recalculated
+          from an early scan, or arithmetic done in months instead of days — all three are worth
+          asking about rather than assuming the tool is wrong.
+        </p>
 
         <h2>Related preterm follow-up guides</h2>
         <p>

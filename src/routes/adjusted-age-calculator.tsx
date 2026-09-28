@@ -16,7 +16,7 @@ export const Route = createFileRoute("/adjusted-age-calculator")({
       {
         name: "description",
         content:
-          "Use this adjusted age calculator for premature babies. Adjusted age and corrected age mean the same thing. Includes PMA, milestones and follow-up planning, reviewed by Dr. Zeeshan Islam.",
+          "Adjusted age and corrected age are the same number. Get it beside chronological age and PMA, with the milestone row it maps to. Reviewed by Dr. Zeeshan Islam.",
       },
       {
         property: "og:title",
@@ -25,7 +25,7 @@ export const Route = createFileRoute("/adjusted-age-calculator")({
       {
         property: "og:description",
         content:
-          "Use this adjusted age calculator for premature babies. Adjusted age and corrected age mean the same thing. Includes PMA, milestones and follow-up planning, reviewed by Dr. Zeeshan Islam.",
+          "Adjusted age and corrected age are the same number. Get it beside chronological age and PMA, with the milestone row it maps to. Reviewed by Dr. Zeeshan Islam.",
       },
       { property: "og:url", content: "https://preemie.vercel.app/adjusted-age-calculator" },
       { property: "og:type", content: "website" },
@@ -42,7 +42,7 @@ export const Route = createFileRoute("/adjusted-age-calculator")({
       {
         name: "twitter:description",
         content:
-          "Use this adjusted age calculator for premature babies. Adjusted age and corrected age mean the same thing. Includes PMA, milestones and follow-up planning, reviewed by Dr. Zeeshan Islam.",
+          "Adjusted age and corrected age are the same number. Get it beside chronological age and PMA, with the milestone row it maps to. Reviewed by Dr. Zeeshan Islam.",
       },
       { name: "twitter:image", content: "https://preemie.vercel.app/og/og-home.png" },
       { name: "twitter:image:alt", content: "Adjusted age calculator for premature babies" },
@@ -77,10 +77,32 @@ export const Route = createFileRoute("/adjusted-age-calculator")({
             name: "AdjustedAge",
             logo: {
               "@type": "ImageObject",
-              url: "https://preemie.vercel.app/favicon.png",
+              url: "https://preemie.vercel.app/icon-512.png",
             },
           },
           specialty: "Pediatrics",
+          citation: [
+            {
+              "@type": "Article",
+              name: "Evidence-Informed Milestones for Developmental Surveillance Tools (Zubler et al., 2022)",
+              url: "https://doi.org/10.1542/peds.2021-052138",
+            },
+            {
+              "@type": "WebPage",
+              name: "Learn the Signs. Act Early. — CDC developmental milestones",
+              url: "https://www.cdc.gov/actearly/",
+            },
+            {
+              "@type": "WebPage",
+              name: "Child and Adolescent Immunization Schedule by Age — CDC",
+              url: "https://www.cdc.gov/vaccines/hcp/imz-schedules/",
+            },
+            {
+              "@type": "WebPage",
+              name: "Preterm birth — World Health Organization",
+              url: "https://www.who.int/news-room/fact-sheets/detail/preterm-birth",
+            },
+          ],
         }),
       },
       {
@@ -191,7 +213,6 @@ function AdjustedAgeCalculatorPage() {
           "Adjusted age and corrected age are two names for the same number.",
           "Use adjusted age for early milestone follow-up, not for vaccine timing.",
           "The calculator on this page also shows chronological age and postmenstrual age so the terms do not get mixed up.",
-          "Late preterm babies can still need adjusted age in the first year, even when they look only a few weeks early on paper.",
         ]}
       />
 
@@ -210,27 +231,14 @@ function AdjustedAgeCalculatorPage() {
         </p>
 
         <h2>Adjusted age vs corrected age vs chronological age</h2>
-        <ul>
-          <li>
-            <strong>Adjusted age:</strong> time since the due date.
-          </li>
-          <li>
-            <strong>Corrected age:</strong> the same thing, just a different label.
-          </li>
-          <li>
-            <strong>Chronological age:</strong> time since birth.
-          </li>
-          <li>
-            <strong>Postmenstrual age (PMA):</strong> gestational age at birth plus days since
-            birth.
-          </li>
-        </ul>
         <p>
-          The confusion happens because all four numbers can matter in the same appointment. This is
-          why the calculator shows them side by side instead of hiding the "other" ages.
+          Adjusted age and corrected age both count from the due date. Chronological age counts from
+          the birthday, and PMA adds gestational age at birth to time since birth. All four numbers
+          can appear in the same appointment, which is why the calculator shows them side by side
+          instead of hiding the &ldquo;other&rdquo; ages.
         </p>
         <p>
-          If you want the labels compared side by side, read the{" "}
+          For the full side-by-side comparison of every label, read the{" "}
           <Link to="/adjusted-age-vs-chronological-age">
             adjusted age vs chronological age guide
           </Link>
@@ -253,7 +261,26 @@ function AdjustedAgeCalculatorPage() {
         <p>
           Adjusted age usually matters most for developmental follow-up in the first two years, and
           especially in the first year. It is the age you normally use when reading milestone guides
-          for a preterm baby. That is why this calculator links directly into the{" "}
+          for a preterm baby, because the{" "}
+          <a
+            href="https://www.cdc.gov/actearly/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary underline underline-offset-4"
+          >
+            CDC&apos;s developmental milestone lists
+          </a>{" "}
+          are published by age in months since birth — a milestone set that was itself rebuilt from
+          an evidence review published in{" "}
+          <a
+            href="https://doi.org/10.1542/peds.2021-052138"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary underline underline-offset-4"
+          >
+            Pediatrics in 2022
+          </a>
+          . That is why this calculator links directly into the{" "}
           <Link to="/premature-baby-milestones">premature baby milestones chart</Link>.
         </p>
         <p>
@@ -262,8 +289,17 @@ function AdjustedAgeCalculatorPage() {
           follow-up.
         </p>
         <p>
-          This also applies to babies who were only a few weeks early. The{" "}
-          <Link to="/late-preterm-baby">late preterm baby guide</Link> explains why 35- and 36-week
+          This also applies to babies who were only a few weeks early: WHO groups 35- and 36-week
+          births in the{" "}
+          <a
+            href="https://www.who.int/news-room/fact-sheets/detail/preterm-birth"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary underline underline-offset-4"
+          >
+            moderate to late preterm category
+          </a>
+          . The <Link to="/late-preterm-baby">late preterm baby guide</Link> explains why these
           babies can still shift milestone expectations, and the{" "}
           <Link to="/nicu-follow-up-schedule">NICU follow-up schedule</Link> shows how clinics often
           organise corrected-age visits around the same logic.
@@ -272,8 +308,18 @@ function AdjustedAgeCalculatorPage() {
         <h2>When should adjusted age not be used?</h2>
         <p>
           Adjusted age is <strong>not</strong> how vaccine timing is scheduled. Immunisations follow
-          chronological age. This is one of the most common mistakes parents encounter online, so
-          the site keeps both ages visible in the result.
+          chronological age — the{" "}
+          <a
+            href="https://www.cdc.gov/vaccines/hcp/imz-schedules/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary underline underline-offset-4"
+          >
+            CDC child and adolescent immunization schedule
+          </a>{" "}
+          is published by age in weeks and months since birth, not by corrected age. This is one of
+          the most common mistakes parents encounter online, so the site keeps both ages visible in
+          the result.
         </p>
         <p>
           Adjusted age is also not a promise of catch-up. It is a tool for fair comparison, not a

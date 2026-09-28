@@ -1,6 +1,8 @@
 {
   "summary": {
-    "health_score": 0,
+    "health_score": 77.4,
+    "health_score_formula": "Weighted sum of the 7 category scores: Technical 85x0.22 + Content 70x0.23 + On-Page 85x0.20 + Schema 74x0.10 + Performance 71x0.10 + AI Search 76x0.10 + Images 70x0.05 = 77.4",
+    "health_score_baseline_date": "2026-09-28",
     "business_type": "Publisher / YMYL health tool (calculator + editorial guides)",
     "top_findings": [
       "public/favicon.png is a committed Vercel 503 timeout page served as image/png, referenced by rel=icon and WebSite.publisher.logo (regression)",
@@ -197,17 +199,141 @@
     },
     {
       "name": "Schema / Structured Data",
-      "score": 0,
+      "score": 74,
       "weight": 0.1,
-      "what_works": [],
-      "findings": []
+      "subscores": {
+        "coverage_syntax": 20,
+        "property_completeness": 14,
+        "entity_graph_integrity": 14,
+        "value_validity": 10,
+        "markup_content_parity": 8,
+        "ymyl_medical_depth": 8
+      },
+      "what_works": [
+        "16/16 sitemap URLs emit JSON-LD: 82 blocks, 82/82 parse-valid, 0 truncated, all @context https, all URLs absolute, all dates ISO-8601",
+        "Physician @id resolves on 16/16 pages; every author/reviewedBy/copyrightHolder/creator reference resolves",
+        "WebApplication emitted on exactly the 4 tool routes, with applicationCategory HealthApplication and offers price 0",
+        "All 11 og/*.png URLs referenced by schema return 200 as real 1200x630 PNGs; Physician.image claims 709x585 and the live PNG is 709x585",
+        "No fabricated aggregateRating or Review markup"
+      ],
+      "findings": [
+        {
+          "title": "Organization.logo points at a file that is not an image (16/16 pages)",
+          "severity": "High",
+          "description": "Organization.logo resolves to the 447-byte Vercel 503 XHTML page served as image/png, so every logo/organization validation fails sitewide. Same root asset as the technical F1.",
+          "recommendation": "Regenerate public/favicon.png as a real PNG and point Organization.logo at public/icons/icon-192.png (verified 192x192, 32 KB)."
+        },
+        {
+          "title": "Duplicate, conflicting Physician node on /about",
+          "severity": "High",
+          "description": "about.tsx emits a second Physician with the same @id already defined in __root.tsx, with different description and extra properties, so JSON-LD merging is order-dependent.",
+          "recommendation": "Fold the richer property set into the single __root.tsx node and delete the duplicate block in about.tsx."
+        },
+        {
+          "title": "/about has no page-level schema node at all",
+          "severity": "High",
+          "description": "/about emits only WebSite, two Physician copies and BreadcrumbList: no WebPage/ProfilePage, no dates, no publisher, on the page carrying all YMYL identity weight.",
+          "recommendation": "Add a single ProfilePage (or WebPage) node with dates and publisher, after resolving the duplicate Physician."
+        },
+        {
+          "title": "Organization exists only as 31 anonymous inline copies",
+          "severity": "Medium",
+          "description": "31 Organization nodes sitewide carry no @id, so they can never be referenced, merged or enriched; MedicalWebPage.copyrightHolder points at the physician rather than the publisher.",
+          "recommendation": "Define one @id-keyed Organization with sameAs and url, and replace the anonymous copies with references."
+        },
+        {
+          "title": "medicalSpecialty value 'Pediatrics' is not a valid enum member",
+          "severity": "Medium",
+          "description": "schema.org's MedicalSpecialty enumeration member is 'Pediatric'; the string 'Pediatrics' is used in 14 source locations and therefore renders on all 16 pages.",
+          "recommendation": "Replace with 'Pediatric' (or the full https://schema.org/Pediatric URL) in all 14 spots; free-text knowsAbout is fine as-is."
+        },
+        {
+          "title": "image missing from 9 page nodes",
+          "severity": "Medium",
+          "description": "MedicalWebPage.image missing on 7 URLs and Article.image on the 2 guide pages, even though every one already has an og:image meta tag and a live 1200x630 card.",
+          "recommendation": "Point each node's image at the OG card that already exists for that page."
+        },
+        {
+          "title": "Two guide pages use Article only, with no medical review wiring",
+          "severity": "Medium",
+          "description": "/premature-baby-milestones and /how-to-calculate-corrected-age emit Article with author and publisher but no lastReviewed, reviewedBy, audience or specialty, despite a visible review line, violating the repo's own SEO-AUDIT.md rule.",
+          "recommendation": "Add the MedicalWebPage node plus reviewedBy/lastReviewed to match the site-wide pattern."
+        },
+        {
+          "title": "/privacy is typed MedicalWebPage",
+          "severity": "Medium",
+          "description": "A privacy policy is declared as MedicalWebPage with no medical audience, specialty or reviewer.",
+          "recommendation": "Retype as WebPage."
+        },
+        {
+          "title": "Schema dates drift from sitemap lastmod on 13 pages",
+          "severity": "Low",
+          "description": "dateModified/lastReviewed read 2026-08-27 while sitemap lastmod was frozen at 2026-08-26, so crawlers saw two competing current dates.",
+          "recommendation": "Regenerate the sitemap at build time and keep schema dates in sync with the visible review line."
+        },
+        {
+          "title": "Breadcrumb name differs from the visible label on 13/16 pages",
+          "severity": "Low",
+          "description": "Case-only differences on 10 pages and wording differences on 3 (e.g. schema 'Premature Baby Milestones' vs visible 'Premature baby milestones chart').",
+          "recommendation": "Make each BreadcrumbList name match the visible breadcrumb text exactly."
+        },
+        {
+          "title": "FAQPage markup does not match the visible copy",
+          "severity": "Low",
+          "description": "Of 46 marked-up questions only 13 appear verbatim on-page, and 5 pages carry FAQPage with no visible Q&A section. Recorded as integrity only: Google retired FAQ rich results on 2026-05-07, so there is no SERP feature at stake and this is NOT a recommendation to add or remove FAQPage.",
+          "recommendation": "Regenerate the JSON-LD strings from the copy already on the page, or render the marked-up Q&A visibly. Info priority, no new FAQPage."
+        },
+        {
+          "title": "HowTo block on /how-to-calculate-corrected-age earns nothing",
+          "severity": "Low",
+          "description": "Google removed how-to rich results in September 2023; the steps are honest visible copy but the markup has no SERP value.",
+          "recommendation": "Optional cleanup: remove the block. Never add HowTo anywhere else."
+        }
+      ]
     },
     {
       "name": "Performance (CWV)",
-      "score": 0,
+      "score": 71,
       "weight": 0.1,
-      "what_works": [],
-      "findings": []
+      "evidence_quality": "code-level inference only — PageSpeed Insights returned rate-limited (240 QPM / 25,000 QPD) and render_page.py fell back to raw mode, so no lab or field Core Web Vitals were measured",
+      "what_works": [
+        "Viewport meta, html lang and explicit image width/height on all 16 pages (zero CLS risk from images)",
+        "Module scripts plus modulepreload; hashed /assets/* served with Cache-Control public, max-age=31536000, immutable",
+        "True SSR: h1, FAQ text and 6 JSON-LD blocks present in the raw response, so LCP is server-delivered HTML rather than client render",
+        "13 OG cards are fixed 1200x630 PNGs with og:image:width/height declared"
+      ],
+      "findings": [
+        {
+          "title": "Google Fonts render-blocking third-party CSS on all 16 pages",
+          "severity": "Medium",
+          "description": "Two serialized round-trips (Google CSS then gstatic font files) sit on the LCP path; the homepage h1 is set in font-display Newsreader, so LCP text stays invisible until the webfont resolves. Still open from the 2026-08-26 audit.",
+          "recommendation": "Self-host via @fontsource-variable/newsreader and @fontsource-variable/public-sans (both OFL), preload only the LCP weight, drop both preconnects."
+        },
+        {
+          "title": "Large initial JavaScript payload (INP risk)",
+          "severity": "Medium",
+          "description": "The homepage preloads a 257 KB gzipped chunk containing jsPDF (86 refs) and Recharts (74 refs); total initial JS is about 398 KB gzipped, pressuring INP on mid-range mobile — the device a parent uses at 3 a.m.",
+          "recommendation": "Code-split jsPDF (export/print) and Recharts (chart) behind dynamic import so the calculator path ships neither."
+        },
+        {
+          "title": "Three avatar images compete with the LCP element at high priority",
+          "severity": "Low",
+          "description": "Hero, sidebar and footer avatars all carry fetchPriority=high and loading=eager, including a 64 px footer image below the fold; all three contend with the h1 for the limited-connection priority queue.",
+          "recommendation": "Reserve fetchPriority=high for the LCP candidate and lazy-load the footer avatar."
+        },
+        {
+          "title": "Public images are served with Cache-Control max-age=0, must-revalidate",
+          "severity": "Low",
+          "description": "Author photo, OG art, favicon and manifest revalidate on every load, while hashed assets are immutable.",
+          "recommendation": "Give public/ images a real TTL such as max-age=604800, stale-while-revalidate=86400."
+        },
+        {
+          "title": "No field Core Web Vitals available",
+          "severity": "Medium",
+          "description": "No CrUX, PageSpeed or GSC credentials are configured, so INP and LCP cannot be confirmed against the 2.5 s / 200 ms thresholds.",
+          "recommendation": "Verify the property in Search Console and enable the PageSpeed Insights API so the next audit reports measured CWV instead of inference."
+        }
+      ]
     },
     {
       "name": "AI Search Readiness",
@@ -255,18 +381,125 @@
     },
     {
       "name": "Images",
-      "score": 0,
+      "score": 70,
       "weight": 0.05,
-      "what_works": [],
-      "findings": []
+      "evidence_quality": "derived from the technical and content passes — the dedicated visual/images agent never completed, so no separate image crawl was run",
+      "subscores": {
+        "alt_text_coverage": 25,
+        "intrinsic_dimensions_cls": 20,
+        "format_and_payload": 12,
+        "http_caching": 6,
+        "icon_set": 2,
+        "visual_coverage_for_query_intent": 5
+      },
+      "max_subscores": {
+        "alt_text_coverage": 25,
+        "intrinsic_dimensions_cls": 20,
+        "format_and_payload": 20,
+        "http_caching": 15,
+        "icon_set": 10,
+        "visual_coverage_for_query_intent": 10
+      },
+      "what_works": [
+        "0 images missing alt text across all 16 pages",
+        "0 images missing explicit width/height across all 16 pages, so images contribute no CLS",
+        "Author photo served as <picture> with a 31,112 B WebP source ahead of the 498,507 B PNG",
+        "All 13 social cards return 200 image/png at 1200x630 with og:image:width/height and twitter:image:alt present"
+      ],
+      "findings": [
+        {
+          "title": "public/favicon.png is not an image",
+          "severity": "High",
+          "description": "The favicon is a 447-byte Vercel 503 XHTML page served as image/png and /favicon.ico returns 404, so the browser tab and search sitelink favicon are broken sitewide.",
+          "recommendation": "Regenerate a proper favicon set: 32x32 favicon.png, 180x180 apple-touch-icon.png, 512x512 icon and a multi-size favicon.ico."
+        },
+        {
+          "title": "Only one crawlable content image on the whole site",
+          "severity": "Medium",
+          "description": "Across 16 pages there is a single crawlable content image (the rest are avatars, OG art and icons), so image search brings no traffic and visual results give the site nothing to show for the milestones and growth-chart queries.",
+          "recommendation": "Add bespoke diagrams — a corrected-age timeline, the milestones chart as an image, and a growth-curve explainer — each with descriptive filenames, alt text and matching schema image."
+        },
+        {
+          "title": "498 KB PNG fallback behind the author photo",
+          "severity": "Low",
+          "description": "Browsers without WebP support download a 498,507 B PNG for a headshot rendered at 40-96 px.",
+          "recommendation": "Resize the PNG fallback to at most 2x its largest rendered size."
+        },
+        {
+          "title": "Avatar images use fetchPriority=high and eager loading below the fold",
+          "severity": "Low",
+          "description": "Three avatars including the 64 px footer image request high priority, competing with the LCP element.",
+          "recommendation": "Keep high priority for the LCP candidate only; lazy-load the rest."
+        },
+        {
+          "title": "Public images revalidate on every request",
+          "severity": "Low",
+          "description": "Cache-Control max-age=0, must-revalidate on public/ images means repeat visits re-fetch the author photo and OG art.",
+          "recommendation": "Set a one-week TTL with stale-while-revalidate."
+        }
+      ]
     }
   ],
   "action_plan": {
     "phases": [
-      { "name": "Phase 1: Critical Fixes", "timeframe": "Week 1", "items": [] },
-      { "name": "Phase 2: High-Impact Improvements", "timeframe": "Weeks 2-3", "items": [] },
-      { "name": "Phase 3: Content & Authority", "timeframe": "Month 2", "items": [] },
-      { "name": "Phase 4: Monitoring & Iteration", "timeframe": "Ongoing", "items": [] }
+      {
+        "name": "Phase 1: Critical Fixes",
+        "timeframe": "Week 1",
+        "status": "Implemented 2026-09-28 (this week's plan)",
+        "items": [
+          "Replace the 447-byte Vercel error-page favicon with a real icon set (favicon.png, apple-touch-icon.png, icon-512.png, favicon.ico) and repoint rel=icon plus WebSite.publisher.logo / Organization.logo",
+          "Wire scripts/generate-sitemap.mjs into the build script and derive lastmod from the last commit touching each route (mtime only for uncommitted edits)",
+          "Add vercel.json security headers: X-Content-Type-Options, Referrer-Policy, X-Frame-Options, Permissions-Policy",
+          "Give the 404 route its own title and meta robots noindex while keeping HTTP 404",
+          "Regenerate llm.txt and llms.txt as absolute markdown links covering all 16 URLs, kept byte-identical",
+          "Resolve the service-worker registration that points at a /sw.js which 404s",
+          "Add genuine outbound citation links plus JSON-LD citation arrays across all 16 pages",
+          "Expand the thin pages: /red-flags (166 to 508 prose words), /nicu-follow-up-schedule, /how-to-calculate-corrected-age",
+          "Render /premature-baby-milestones as a real semantic table with CSV export",
+          "Rewrite titles to <=60 chars and descriptions to 150-160 chars on all 16 URLs; restore the brand suffix on /when-to-stop-correcting",
+          "Add a contact channel and a dated corrections log to /about",
+          "Make /when-to-stop-correcting evidence-led (PMC12221983, Nature Pediatric Research 2024 n=656,986, Emory no-consensus)"
+        ]
+      },
+      {
+        "name": "Phase 2: High-Impact Improvements",
+        "timeframe": "Weeks 2-3",
+        "items": [
+          "Self-host the Google Fonts CSS via @fontsource-variable, preload only the LCP weight, drop both preconnects",
+          "Code-split jsPDF and Recharts behind dynamic import to cut the ~398 KB gzipped initial payload and relieve INP",
+          "Schema repair: one @id-keyed Organization replacing 31 anonymous copies, dedupe the Physician node on /about, add ProfilePage to /about",
+          "Fix medicalSpecialty 'Pediatrics' to the 'Pediatric' enum in all 14 source locations",
+          "Add image to the 9 page nodes that lack it, retype /privacy as WebPage, add MedicalWebPage + reviewedBy to the 2 Article guides",
+          "Align every BreadcrumbList name with the visible breadcrumb text",
+          "Expand header navigation so the 10 routes with no header presence are reachable in one click",
+          "De-duplicate the calculator trio: unique intro and FAQ sets, hub/spoke section split, no page deletions",
+          "Readability pass on the 8 parent-facing guides toward Flesch >= 60",
+          "Implement internal query-string prefill links (SEO-AUDIT section 3.3)",
+          "Give public/ images a real cache TTL and drop fetchPriority=high from non-LCP avatars"
+        ]
+      },
+      {
+        "name": "Phase 3: Content & Authority",
+        "timeframe": "Month 2",
+        "items": [
+          "Ship the growth-chart page still open from the 2026-08-26 audit",
+          "Ship the twins, discharge and sleep guides identified as topical gaps",
+          "Add homepage FAQ 8-10",
+          "Produce bespoke visual assets: corrected-age timeline, milestones chart image, growth-curve explainer",
+          "Verify the property in Google Search Console and Bing Webmaster Tools (still open from the prior audit)",
+          "Begin backlink acquisition; execute the domain cutover checklist (decided, deliberately not this week)"
+        ]
+      },
+      {
+        "name": "Phase 4: Monitoring & Iteration",
+        "timeframe": "Ongoing",
+        "items": [
+          "Drift baseline id 1 captured 2026-09-28; re-run monthly and compare against it",
+          "Report measured Core Web Vitals once CrUX/GSC credentials exist (current CWV evidence is code-level only)",
+          "Track rankings for the target query set and watch the calculator-cluster cannibalization scores",
+          "Maintain the /about corrections log on every substantive content change"
+        ]
+      }
     ]
   },
   "artifacts": {
@@ -277,6 +510,12 @@
     "Google API credentials not configured: no CrUX field CWV, no GSC indexation status, no GA4 traffic (seo-google agent not spawned).",
     "Moz/Bing/Keywords Everywhere keys not configured: backlink tier is Common Crawl only (0 cached domains at audit time).",
     "No prior drift baseline existed; one is being captured during this audit so future runs can compare.",
-    "PageSpeed Insights returned rate-limited during the technical pass; lab evidence is structural (HTML/JS/CSS analysis), not field data."
+    "PageSpeed Insights returned rate-limited during the technical pass; lab evidence is structural (HTML/JS/CSS analysis), not field data.",
+    "Schema score 74 is a full structured-data pass: JSON-LD extracted from all 16 live URLs (82 blocks) and validated block-by-block against schema.org V30.1. See findings/schema.md.",
+    "Performance score 71 is the code-level CWV-potential dimension from findings/technical.md. It is NOT measured Core Web Vitals: PSI was rate-limited and render_page.py fell back to raw mode, so LCP/INP/CLS were inferred from payload and markup, never observed.",
+    "Images score 70 is derived from the technical and content passes. The dedicated visual/images agent failed before producing findings, so there is no separate image crawl; subscores are itemised in the Images category.",
+    "Sitemap and link coverage score 78 comes from findings/sitemap.md (16/16 sitemap URLs valid, no orphans, no broken internal links, but header nav exposes only 6 of 16 pages).",
+    "Category scores reflect the LIVE site as crawled on 2026-09-28, i.e. BEFORE this week's implementation. The Week 1 fixes are applied in the repository and verified locally (lint, 6/6 tests, production build) but are not yet reflected in these numbers until deploy.",
+    "Never recommend HowTo schema; do not add new FAQPage (Google retired FAQ rich results on 2026-05-07). Core Web Vitals use INP, not FID."
   ]
 }

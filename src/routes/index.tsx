@@ -18,7 +18,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Calculate corrected age for a premature baby from birth date and gestational age, plus chronological age, PMA, milestones and follow-up planning. Reviewed by Dr. Zeeshan Islam.",
+          "Corrected age is chronological age minus the weeks born early. Enter two dates to get it beside PMA and the CDC milestone row. Reviewed by Dr. Zeeshan Islam.",
       },
       {
         property: "og:title",
@@ -27,7 +27,7 @@ export const Route = createFileRoute("/")({
       {
         property: "og:description",
         content:
-          "Calculate corrected age for a premature baby from birth date and gestational age, plus chronological age, PMA, milestones and follow-up planning. Reviewed by Dr. Zeeshan Islam.",
+          "Corrected age is chronological age minus the weeks born early. Enter two dates to get it beside PMA and the CDC milestone row. Reviewed by Dr. Zeeshan Islam.",
       },
       { property: "og:url", content: "https://preemie.vercel.app/" },
       { property: "og:type", content: "website" },
@@ -44,7 +44,7 @@ export const Route = createFileRoute("/")({
       {
         name: "twitter:description",
         content:
-          "Corrected age, milestones and follow-up tracking for NICU graduates, with CDC milestones re-indexed to corrected age. Reviewed by Dr. Zeeshan Islam.",
+          "Corrected age is chronological age minus the weeks born early. Enter two dates to get it beside PMA and the CDC milestone row. Reviewed by Dr. Zeeshan Islam.",
       },
       { name: "twitter:image", content: "https://preemie.vercel.app/og/og-home.png" },
       { name: "twitter:image:alt", content: "Corrected age calculator for premature babies" },
@@ -79,13 +79,35 @@ export const Route = createFileRoute("/")({
             name: "AdjustedAge",
             logo: {
               "@type": "ImageObject",
-              url: "https://preemie.vercel.app/favicon.png",
+              url: "https://preemie.vercel.app/icon-512.png",
             },
           },
           copyrightHolder: {
             "@id": "https://preemie.vercel.app/about#drzeeshan",
           },
           specialty: "Pediatrics",
+          citation: [
+            {
+              "@type": "WebPage",
+              name: "Learn the Signs. Act Early. — CDC developmental milestones",
+              url: "https://www.cdc.gov/actearly/",
+            },
+            {
+              "@type": "WebPage",
+              name: "Child and Adolescent Immunization Schedule by Age — CDC",
+              url: "https://www.cdc.gov/vaccines/hcp/imz-schedules/",
+            },
+            {
+              "@type": "Article",
+              name: "A longitudinal growth chart for children born preterm (Fenton & Kim, 2013)",
+              url: "https://pubmed.ncbi.nlm.nih.gov/23601190/",
+            },
+            {
+              "@type": "WebPage",
+              name: "Preterm birth — World Health Organization",
+              url: "https://www.who.int/news-room/fact-sheets/detail/preterm-birth",
+            },
+          ],
         }),
       },
       {
@@ -418,10 +440,19 @@ function Index() {
       <Article>
         <h2>Why corrected age exists</h2>
         <p>
-          A baby born at 28 weeks has spent twelve fewer weeks growing inside than a baby born at
-          term. Those twelve weeks do not disappear at birth — the brain finishes them outside. So
-          when we judge whether a preterm baby is developing as expected, we compare them against
-          where they would be if they had been born on their due date. That adjusted number is the{" "}
+          A baby born at{" "}
+          <a
+            href="https://www.who.int/news-room/fact-sheets/detail/preterm-birth"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary underline underline-offset-4"
+          >
+            28 weeks — the start of the WHO&apos;s very preterm category
+          </a>{" "}
+          has spent twelve fewer weeks growing inside than a baby born at term. Those twelve weeks
+          do not disappear at birth — the brain finishes them outside. So when we judge whether a
+          preterm baby is developing as expected, we compare them against where they would be if
+          they had been born on their due date. That adjusted number is the{" "}
           <strong>corrected age</strong> (also called adjusted age).
         </p>
         <p>
@@ -465,8 +496,16 @@ function Index() {
             postmenstrual age from the same two facts.
           </li>
           <li>
-            <strong>Milestones are re-indexed automatically.</strong> The CDC/AAP surveillance
-            prompts shown are the ones for the corrected age, not the birthday age.
+            <strong>Milestones are re-indexed automatically.</strong> The{" "}
+            <a
+              href="https://www.cdc.gov/actearly/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary underline underline-offset-4"
+            >
+              CDC/AAP surveillance prompts
+            </a>{" "}
+            shown are the ones for the corrected age, not the birthday age.
           </li>
           <li>
             <strong>It remembers.</strong> Visits at 4, 8, 12, 18, 24 and 36 months corrected are
@@ -491,8 +530,26 @@ function Index() {
         <h2>Corrected age is not used for everything</h2>
         <p>
           Two things in particular are <em>not</em> corrected: immunisations are given by
-          chronological age, and the growth chart choice changes at term-equivalent age. The tool
-          shows the chronological number alongside the corrected one for exactly this reason.
+          chronological age, as the{" "}
+          <a
+            href="https://www.cdc.gov/vaccines/hcp/imz-schedules/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary underline underline-offset-4"
+          >
+            CDC immunization schedule by age
+          </a>{" "}
+          is written, and the growth chart choice changes at term-equivalent age —{" "}
+          <a
+            href="https://pubmed.ncbi.nlm.nih.gov/23601190/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary underline underline-offset-4"
+          >
+            preterm growth references such as Fenton&apos;s chart
+          </a>{" "}
+          are used while the baby is still small. The tool shows the chronological number alongside
+          the corrected one for exactly this reason.
         </p>
 
         <h2>Common corrected-age questions</h2>

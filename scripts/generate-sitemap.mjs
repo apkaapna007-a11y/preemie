@@ -93,15 +93,36 @@ const PAGES = [
   { path: "/privacy", file: "src/routes/privacy.tsx", changefreq: "monthly", priority: "0.3" },
 ];
 
+function gitOut(args) {
+  try {
+    return execSync(`git ${args}`, { cwd: ROOT, stdio: ["ignore", "pipe", "ignore"] })
+      .toString()
+      .trim();
+  } catch {
+    // not a git repo, no history, or git unavailable — caller falls back to mtime
+    return null;
+  }
+}
+
+/**
+ * lastmod precedence:
+ *  1. Uncommitted edit  -> file mtime (the content on disk is newer than any commit).
+ *  2. Clean checkout    -> last commit date touching that route.
+ *     Deliberately NOT max(commit, mtime): on CI/Vercel mtime is the checkout time,
+ *     which would stamp every URL with the build date and tell Google the whole
+ *     site changed on each deploy.
+ *  3. No git available   -> file mtime.
+ */
 function lastmodFor(file) {
   const abs = join(ROOT, file);
   const mtime = statSync(abs).mtime.toISOString().slice(0, 10);
-  try {
-    const out = execSync(`git log -1 --format=%cs -- "${file}"`, { cwd: ROOT }).toString().trim();
-    if (/^\d{4}-\d{2}-\d{2}$/.test(out)) return out > mtime ? out : mtime;
-  } catch {
-    // not a git repo / no history — fall through to mtime
-  }
+
+  const dirty = gitOut(`status --porcelain -- "${file}"`);
+  if (dirty !== null && dirty !== "") return mtime;
+
+  const committed = gitOut(`log -1 --format=%cs -- "${file}"`);
+  if (committed && /^\d{4}-\d{2}-\d{2}$/.test(committed)) return committed;
+
   return mtime;
 }
 

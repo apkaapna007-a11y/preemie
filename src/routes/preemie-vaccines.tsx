@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import type { ReactNode } from "react";
 import {
   Article,
   Breadcrumbs,
@@ -8,6 +9,19 @@ import {
   SiteLayout,
 } from "@/components/SiteLayout";
 
+function ExtLink({ href, children }: { href: string; children: ReactNode }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-primary underline underline-offset-4 break-words"
+    >
+      {children}
+    </a>
+  );
+}
+
 export const Route = createFileRoute("/preemie-vaccines")({
   head: () => ({
     meta: [
@@ -15,7 +29,7 @@ export const Route = createFileRoute("/preemie-vaccines")({
       {
         name: "description",
         content:
-          "Preemie vaccine timing usually follows chronological age, not corrected age. A clear guide for parents of premature babies, reviewed by Dr. Zeeshan Islam.",
+          "Routine vaccines follow a premature baby's real age from birth, not corrected age. See why that is the usual approach, with the AAP and CDC sources cited.",
       },
       {
         property: "og:title",
@@ -24,7 +38,7 @@ export const Route = createFileRoute("/preemie-vaccines")({
       {
         property: "og:description",
         content:
-          "Preemie vaccine timing usually follows chronological age, not corrected age. A clear guide for parents of premature babies, reviewed by Dr. Zeeshan Islam.",
+          "Routine vaccines follow a premature baby's real age from birth, not corrected age. See why that is the usual approach, with the AAP and CDC sources cited.",
       },
       { property: "og:url", content: "https://preemie.vercel.app/preemie-vaccines" },
       { property: "og:type", content: "article" },
@@ -41,13 +55,13 @@ export const Route = createFileRoute("/preemie-vaccines")({
       {
         name: "twitter:description",
         content:
-          "Preemie vaccine timing usually follows chronological age, not corrected age. Reviewed by Dr. Zeeshan Islam.",
+          "Routine vaccines follow a premature baby's real age from birth, not corrected age — with the AAP and CDC sources shown.",
       },
       { name: "twitter:image", content: "https://preemie.vercel.app/og/og-vaccines.png" },
       { name: "twitter:image:alt", content: "Preemie vaccine timing guide" },
       { property: "og:image:alt", content: "Preemie vaccine timing guide" },
       { name: "article:published_time", content: "2026-08-26T00:00:00Z" },
-      { name: "article:modified_time", content: "2026-08-27T00:00:00Z" },
+      { name: "article:modified_time", content: "2026-09-28T00:00:00Z" },
     ],
     links: [{ rel: "canonical", href: "https://preemie.vercel.app/preemie-vaccines" }],
     scripts: [
@@ -61,8 +75,14 @@ export const Route = createFileRoute("/preemie-vaccines")({
             "Guide to vaccine timing in premature babies, explaining why routine immunisations usually follow chronological age rather than corrected age.",
           url: "https://preemie.vercel.app/preemie-vaccines",
           datePublished: "2026-08-26",
-          dateModified: "2026-08-27",
+          dateModified: "2026-09-28",
           lastReviewed: "2026-08-27",
+          citation: [
+            "https://publications.aap.org/redbook/book/755/chapter/14074422/Immunization-in-Preterm-and-Low-Birth-Weight",
+            "https://www.healthychildren.org/English/safety-prevention/immunizations/Pages/Immunizations-For-Preterm-Babies.aspx",
+            "https://www.cdc.gov/vaccines/hcp/imz-schedules/",
+            "https://www.cdc.gov/vaccines/hcp/imz-schedules/child-adolescent.html",
+          ],
           audience: {
             "@type": "MedicalAudience",
             audienceType: "Parents of preterm infants",
@@ -72,7 +92,7 @@ export const Route = createFileRoute("/preemie-vaccines")({
           publisher: {
             "@type": "Organization",
             name: "AdjustedAge",
-            logo: { "@type": "ImageObject", url: "https://preemie.vercel.app/favicon.png" },
+            logo: { "@type": "ImageObject", url: "https://preemie.vercel.app/icon-512.png" },
           },
           specialty: "Pediatrics",
         }),
@@ -158,13 +178,37 @@ function PreemieVaccinesPage() {
           since birth. Do <strong>not</strong> shift the schedule forward by the number of weeks the
           baby was born early.
         </p>
+        <p>
+          That is not a local convention. The AAP states that preterm or low birth weight infants
+          who are clinically stable &ldquo;should, with few exceptions, receive all routinely
+          recommended childhood vaccines at the same chronologic age as term and normal birth weight
+          infants&rdquo; (
+          <ExtLink href="https://publications.aap.org/redbook/book/755/chapter/14074422/Immunization-in-Preterm-and-Low-Birth-Weight">
+            AAP Red Book: Immunization in Preterm and Low Birth Weight Infants
+          </ExtLink>
+          ), and the parent-facing version of the same advice is{" "}
+          <ExtLink href="https://www.healthychildren.org/English/safety-prevention/immunizations/Pages/Immunizations-For-Preterm-Babies.aspx">
+            Immunizations for Preterm Babies on HealthyChildren.org
+          </ExtLink>
+          . The schedule that assigns each dose to an age is published by the{" "}
+          <ExtLink href="https://www.cdc.gov/vaccines/hcp/imz-schedules/">
+            CDC immunization schedules
+          </ExtLink>
+          , which is the calendar this page means by &ldquo;the routine vaccine calendar&rdquo;.
+        </p>
 
         <h2>Why corrected age is not used for vaccines</h2>
         <p>
           Corrected age exists to make developmental comparison fair. A baby born early has had less
           time to mature before birth, so milestones are often interpreted against the due-date age.
           Vaccines are different. They protect against infections in the real world after the baby
-          is born, so delaying routine protection because of prematurity is usually the wrong move.
+          is born, so delaying routine protection because of prematurity is usually the wrong move —
+          the AAP notes that preterm babies who catch these infections have a greater chance of
+          disease-related problems (
+          <ExtLink href="https://www.healthychildren.org/English/safety-prevention/immunizations/Pages/Immunizations-For-Preterm-Babies.aspx">
+            HealthyChildren.org
+          </ExtLink>
+          ).
         </p>
         <p>
           This is why the <Link to="/">main calculator</Link> always shows both corrected age and
@@ -192,6 +236,19 @@ function PreemieVaccinesPage() {
           admission, respiratory disease, immune issues, or other medical factors. Those details
           belong to the baby&apos;s own clinical team. This page explains the{" "}
           <em>usual age framework</em>, not a personalised vaccine schedule.
+        </p>
+        <p>
+          The exceptions are documented rather than folklore: the{" "}
+          <ExtLink href="https://www.cdc.gov/vaccines/hcp/imz-schedules/child-adolescent.html">
+            CDC child and adolescent schedule
+          </ExtLink>{" "}
+          carries a separate table for vaccination by medical condition plus per-vaccine notes, and
+          the{" "}
+          <ExtLink href="https://publications.aap.org/redbook/book/755/chapter/14074422/Immunization-in-Preterm-and-Low-Birth-Weight">
+            AAP Red Book chapter on preterm and low birth weight infants
+          </ExtLink>{" "}
+          sets out where preterm babies are handled differently. Ask your team which of those rows
+          applies to your baby.
         </p>
 
         <h2>How to avoid the common mistake</h2>
@@ -227,6 +284,29 @@ function PreemieVaccinesPage() {
           Even late preterm babies may still use corrected age for development while keeping
           vaccines on chronological age. See the{" "}
           <Link to="/late-preterm-baby">late preterm baby guide</Link>.
+        </p>
+
+        <h2>Sources for this page</h2>
+        <ul>
+          <li>
+            <ExtLink href="https://publications.aap.org/redbook/book/755/chapter/14074422/Immunization-in-Preterm-and-Low-Birth-Weight">
+              AAP Red Book — Immunization in Preterm and Low Birth Weight Infants
+            </ExtLink>
+          </li>
+          <li>
+            <ExtLink href="https://www.healthychildren.org/English/safety-prevention/immunizations/Pages/Immunizations-For-Preterm-Babies.aspx">
+              HealthyChildren.org (AAP) — Immunizations for Preterm Babies
+            </ExtLink>
+          </li>
+          <li>
+            <ExtLink href="https://www.cdc.gov/vaccines/hcp/imz-schedules/">
+              CDC — Immunization schedules for healthcare professionals
+            </ExtLink>
+          </li>
+        </ul>
+        <p className="text-sm text-muted-foreground">
+          The full reference table, including growth-chart and milestone sources, is on the{" "}
+          <Link to="/methodology">methodology page</Link>.
         </p>
       </Article>
 

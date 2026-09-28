@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Printer } from "lucide-react";
+import { Download, Printer } from "lucide-react";
 import {
   Article,
   Breadcrumbs,
@@ -7,12 +7,12 @@ import {
   PageHeader,
   SiteLayout,
 } from "@/components/SiteLayout";
-import { MILESTONES } from "@/lib/milestones";
+import { DOMAINS, MILESTONES, milestonesToCsv } from "@/lib/milestones";
 
 export const Route = createFileRoute("/premature-baby-milestones")({
   head: () => ({
     meta: [
-      { title: "Premature Baby Milestones Chart by Corrected Age (2–36 Months) | AdjustedAge" },
+      { title: "Premature Baby Milestones Chart, Corrected Age | AdjustedAge" },
       {
         name: "description",
         content:
@@ -20,7 +20,7 @@ export const Route = createFileRoute("/premature-baby-milestones")({
       },
       {
         property: "og:title",
-        content: "Premature Baby Milestones Chart by Corrected Age | AdjustedAge",
+        content: "Premature Baby Milestones Chart, Corrected Age | AdjustedAge",
       },
       {
         property: "og:description",
@@ -37,7 +37,7 @@ export const Route = createFileRoute("/premature-baby-milestones")({
       { name: "twitter:card", content: "summary_large_image" },
       {
         name: "twitter:title",
-        content: "Premature Baby Milestones Chart by Corrected Age | AdjustedAge",
+        content: "Premature Baby Milestones Chart, Corrected Age | AdjustedAge",
       },
       {
         name: "twitter:description",
@@ -71,9 +71,21 @@ export const Route = createFileRoute("/premature-baby-milestones")({
             name: "AdjustedAge",
             logo: {
               "@type": "ImageObject",
-              url: "https://preemie.vercel.app/favicon.png",
+              url: "https://preemie.vercel.app/icon-512.png",
             },
           },
+          citation: [
+            {
+              "@type": "WebPage",
+              name: "Learn the Signs. Act Early. - CDC developmental milestones",
+              url: "https://www.cdc.gov/actearly/",
+            },
+            {
+              "@type": "WebPage",
+              name: "The 2022 CDC/AAP Revised Developmental Milestones - Pediatrics",
+              url: "https://doi.org/10.1542/peds.2021-052138",
+            },
+          ],
         }),
       },
       {
@@ -122,6 +134,19 @@ export const Route = createFileRoute("/premature-baby-milestones")({
   component: MilestonesPage,
 });
 
+/** Client-side CSV download of the chart data — no server call, no new dependency. */
+function downloadMilestonesCsv() {
+  const blob = new Blob([milestonesToCsv()], { type: "text/csv;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = "premature-baby-milestones-corrected-age.csv";
+  document.body.appendChild(anchor);
+  anchor.click();
+  anchor.remove();
+  URL.revokeObjectURL(url);
+}
+
 function MilestonesPage() {
   return (
     <SiteLayout>
@@ -134,7 +159,7 @@ function MilestonesPage() {
         intro="Standard milestone charts are indexed to the birthday. For a baby born at 29 weeks, that is the wrong column for the first two to three years. Here is the same CDC/AAP list, re-indexed — and it prints cleanly for the fridge or the next clinic visit."
       />
 
-      <div className="no-print mx-auto max-w-3xl px-5">
+      <div className="no-print mx-auto flex max-w-3xl flex-wrap items-center gap-3 px-5">
         <button
           type="button"
           onClick={() => window.print()}
@@ -142,6 +167,14 @@ function MilestonesPage() {
         >
           <Printer className="size-4" aria-hidden />
           Print this chart
+        </button>
+        <button
+          type="button"
+          onClick={downloadMilestonesCsv}
+          className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-2.5 text-sm font-medium text-foreground shadow-paper transition-colors hover:bg-surface"
+        >
+          <Download className="size-4" aria-hidden />
+          Download as CSV
         </button>
       </div>
 
@@ -166,33 +199,105 @@ function MilestonesPage() {
           shows when milestones use one age while vaccines use another.
         </p>
         <p>
-          These are <strong>surveillance prompts</strong>, taken from the 2022 CDC/AAP revised
-          milestone checklists — the behaviours about 75% of children show by that age. They are not
-          a developmental screen and they do not produce a score. Their purpose is to give you
-          specific things to raise at the next visit.
+          These are <strong>surveillance prompts</strong>, taken from the{" "}
+          <a
+            href="https://www.cdc.gov/actearly/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary underline underline-offset-4"
+          >
+            CDC&apos;s developmental milestone lists
+          </a>{" "}
+          — the behaviours about 75% of children show by that age. That milestone set was itself
+          rebuilt from an evidence review published in{" "}
+          <a
+            href="https://doi.org/10.1542/peds.2021-052138"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary underline underline-offset-4"
+          >
+            Pediatrics in 2022
+          </a>
+          . They are not a developmental screen and they do not produce a score. Their purpose is to
+          give you specific things to raise at the next visit.
         </p>
       </Article>
 
-      <div className="mx-auto max-w-3xl space-y-6 px-5 pb-4">
-        {MILESTONES.map((set) => (
-          <section
-            key={set.month}
-            className="rounded-2xl border border-border bg-card p-5 shadow-paper"
+      <section className="mx-auto max-w-5xl px-5 pb-4" aria-labelledby="milestone-chart-title">
+        <div className="rounded-2xl border border-border bg-card p-5 shadow-paper">
+          <div className="flex flex-wrap items-start justify-between gap-3">
+            <div>
+              <h2 id="milestone-chart-title" className="font-display text-lg font-semibold">
+                Milestones by corrected age, 2 to 36 months
+              </h2>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Find the corrected age in the left column, then read across the four domains.
+              </p>
+            </div>
+            <p className="text-xs text-muted-foreground sm:hidden">
+              Scroll sideways to see every column.
+            </p>
+          </div>
+
+          <div
+            role="region"
+            aria-label="Milestone chart by corrected age"
+            tabIndex={0}
+            className="mt-4 overflow-x-auto print:overflow-visible"
           >
-            <h2 className="font-display text-lg font-semibold">{set.label}</h2>
-            <ul className="mt-3 space-y-2">
-              {set.items.map((item) => (
-                <li key={item.text} className="text-sm">
-                  <span className="mr-2 rounded bg-accent px-1.5 py-0.5 text-[0.7rem] text-accent-foreground">
-                    {item.domain}
-                  </span>
-                  {item.text}
-                </li>
-              ))}
-            </ul>
-          </section>
-        ))}
-      </div>
+            <table className="w-full min-w-[52rem] border-collapse text-left text-sm print:min-w-0">
+              <caption className="sr-only">
+                Developmental surveillance prompts by corrected age, 2 to 36 months, one column per
+                domain: Social/Emotional, Language, Cognitive and Movement.
+              </caption>
+              <thead>
+                <tr className="border-b border-border text-xs uppercase tracking-wide text-muted-foreground print:border-black/20">
+                  <th scope="col" className="w-40 py-2 pr-4 align-bottom">
+                    Corrected age
+                  </th>
+                  {DOMAINS.map((domain) => (
+                    <th key={domain} scope="col" className="py-2 pr-4 align-bottom">
+                      {domain}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {MILESTONES.map((set) => (
+                  <tr
+                    key={set.month}
+                    className="border-b border-border align-top last:border-b-0 print:border-black/20 print:break-inside-avoid"
+                  >
+                    <th
+                      scope="row"
+                      className="w-40 whitespace-nowrap py-3 pr-4 font-display text-sm font-semibold text-foreground"
+                    >
+                      {set.label}
+                    </th>
+                    {DOMAINS.map((domain) => (
+                      <td key={domain} className="py-3 pr-4">
+                        <ul className="space-y-1.5">
+                          {set.items
+                            .filter((item) => item.domain === domain)
+                            .map((item) => (
+                              <li key={item.text} className="flex gap-2 leading-relaxed">
+                                <span
+                                  className="mt-2 size-1 shrink-0 rounded-full bg-primary"
+                                  aria-hidden
+                                />
+                                <span>{item.text}</span>
+                              </li>
+                            ))}
+                        </ul>
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
 
       <Article>
         <h2>Preemies do not catch up on a schedule</h2>

@@ -12,20 +12,20 @@ import {
 export const Route = createFileRoute("/pma-calculator")({
   head: () => ({
     meta: [
-      { title: "Postmenstrual Age (PMA) Calculator for Preterm Babies | AdjustedAge" },
+      { title: "Postmenstrual Age (PMA) Calculator | AdjustedAge" },
       {
         name: "description",
         content:
-          "Calculate postmenstrual age (PMA) for a preterm baby, plus corrected age and chronological age. Useful before the due date and early NICU follow-up. Reviewed by Dr. Zeeshan Islam.",
+          "Before the due date corrected age is negative, so clinicians use PMA. Enter birth date and gestational age for all three ages. Reviewed by Dr. Zeeshan Islam.",
       },
       {
         property: "og:title",
-        content: "Postmenstrual Age (PMA) Calculator for Preterm Babies | AdjustedAge",
+        content: "Postmenstrual Age (PMA) Calculator | AdjustedAge",
       },
       {
         property: "og:description",
         content:
-          "Calculate postmenstrual age (PMA) for a preterm baby, plus corrected age and chronological age. Useful before the due date and early NICU follow-up. Reviewed by Dr. Zeeshan Islam.",
+          "Before the due date corrected age is negative, so clinicians use PMA. Enter birth date and gestational age for all three ages. Reviewed by Dr. Zeeshan Islam.",
       },
       { property: "og:url", content: "https://preemie.vercel.app/pma-calculator" },
       { property: "og:type", content: "website" },
@@ -37,12 +37,12 @@ export const Route = createFileRoute("/pma-calculator")({
       { name: "twitter:card", content: "summary_large_image" },
       {
         name: "twitter:title",
-        content: "Postmenstrual Age (PMA) Calculator for Preterm Babies | AdjustedAge",
+        content: "Postmenstrual Age (PMA) Calculator | AdjustedAge",
       },
       {
         name: "twitter:description",
         content:
-          "Calculate PMA for a preterm baby, plus corrected age and chronological age. Reviewed by Dr. Zeeshan Islam.",
+          "Before the due date corrected age is negative, so clinicians use PMA. Enter birth date and gestational age for all three ages. Reviewed by Dr. Zeeshan Islam.",
       },
       { name: "twitter:image", content: "https://preemie.vercel.app/og/og-pma.png" },
       { name: "twitter:image:alt", content: "Postmenstrual age calculator for preterm babies" },
@@ -71,9 +71,26 @@ export const Route = createFileRoute("/pma-calculator")({
           publisher: {
             "@type": "Organization",
             name: "AdjustedAge",
-            logo: { "@type": "ImageObject", url: "https://preemie.vercel.app/favicon.png" },
+            logo: { "@type": "ImageObject", url: "https://preemie.vercel.app/icon-512.png" },
           },
           specialty: "Pediatrics",
+          citation: [
+            {
+              "@type": "WebPage",
+              name: "Preterm birth — World Health Organization",
+              url: "https://www.who.int/news-room/fact-sheets/detail/preterm-birth",
+            },
+            {
+              "@type": "WebPage",
+              name: "INTERGROWTH-21st — International Fetal and Newborn Growth Consortium",
+              url: "https://intergrowth21.tghn.org/",
+            },
+            {
+              "@type": "WebPage",
+              name: "Learn the Signs. Act Early. — CDC developmental milestones",
+              url: "https://www.cdc.gov/actearly/",
+            },
+          ],
         }),
       },
       {
@@ -180,23 +197,35 @@ function PmaCalculatorPage() {
           old by the calendar, the PMA is 34 weeks.
         </p>
         <p>
-          PMA is especially useful in the NICU and early follow-up because many clinical decisions
-          in very small babies are framed that way. Before the due date, corrected age is negative,
-          while PMA still moves forward in a way that is easier for neonatal teams to use.
+          PMA is the working clock for babies born before 37 completed weeks — the{" "}
+          <a
+            href="https://www.who.int/news-room/fact-sheets/detail/preterm-birth"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary underline underline-offset-4"
+          >
+            World Health Organization&apos;s definition of preterm birth
+          </a>{" "}
+          — because in the NICU many clinical decisions are framed in gestational weeks rather than
+          months since birth. Before the due date, corrected age is negative, while PMA still moves
+          forward in a way that is easier for neonatal teams to use.
         </p>
 
         <h2>PMA vs corrected age vs chronological age</h2>
-        <ul>
-          <li>
-            <strong>Chronological age:</strong> time since birth.
-          </li>
-          <li>
-            <strong>Corrected age:</strong> chronological age minus the weeks of prematurity.
-          </li>
-          <li>
-            <strong>PMA:</strong> gestational age at birth plus chronological age.
-          </li>
-        </ul>
+        <p>
+          <strong>Chronological age</strong> is time since birth. <strong>Corrected age</strong> is
+          chronological age minus the weeks of prematurity, so it counts from the due date.{" "}
+          <strong>PMA</strong> is gestational age at birth plus chronological age, so it counts
+          forward from conceptional maturity. Three numbers, three different starting points — the
+          calculator on this page keeps them side by side so none of them gets swapped.
+        </p>
+        <p>
+          For the full four-term comparison, use the{" "}
+          <Link to="/adjusted-age-vs-chronological-age">
+            adjusted age vs chronological age guide
+          </Link>
+          .
+        </p>
         <p>
           These numbers answer different questions. PMA is common in early neonatal documentation.
           Corrected age becomes more intuitive after term when you are reading developmental
@@ -207,11 +236,32 @@ function PmaCalculatorPage() {
         <p>
           PMA is most useful before <strong>term-equivalent age</strong> and in the earlier weeks
           after discharge. If your baby was born extremely or very preterm, you will often see PMA
-          in clinic letters, scan timing, hearing follow-up and growth discussions.
+          in clinic letters, scan timing, hearing follow-up and growth discussions, where size and
+          growth standards such as{" "}
+          <a
+            href="https://intergrowth21.tghn.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary underline underline-offset-4"
+          >
+            INTERGROWTH-21st
+          </a>{" "}
+          are quoted in gestational weeks rather than in months.
         </p>
         <p>
           Once the baby is further past the due date, parents usually find corrected age easier to
           use for milestones and the <Link to="/premature-baby-milestones">milestone chart</Link>.
+          The{" "}
+          <a
+            href="https://www.cdc.gov/actearly/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary underline underline-offset-4"
+          >
+            CDC&apos;s developmental milestone lists
+          </a>{" "}
+          are published by age in months, which is exactly why they need re-indexing to corrected
+          age for a baby born early.
         </p>
         <p>
           If you want to see how PMA fits beside the other age labels, compare them on the{" "}

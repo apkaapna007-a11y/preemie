@@ -1,47 +1,22 @@
 /**
- * Single guarded service-worker registration point.
- * Never registers in dev, in an iframe, or in a Lovable preview host.
+ * Service-worker cleanup only — registration is intentionally gone.
+ *
+ * The generated worker never reached production: vite-plugin-pwa resolves
+ * `swDest` from its `outDir` option, which vite.config.ts points at
+ * `.output/public`, so `/sw.js` was never part of the deployed build (it 404s
+ * on preemie.vercel.app) while `manifest.webmanifest` still ships as a Vite
+ * asset. Registering a worker that cannot load is worse than registering none,
+ * so any previously-registered worker is unregistered on load instead.
+ *
+ * Re-enabling offline support requires fixing vite.config.ts (VitePWA `outDir`)
+ * first — and the on-page "Works offline" copy that depends on it.
  */
-const SW_URL = "/sw.js";
 
-function isPreviewHost(hostname: string) {
-  return (
-    hostname.startsWith("id-preview--") ||
-    hostname.startsWith("preview--") ||
-    hostname === "lovableproject.com" ||
-    hostname.endsWith(".lovableproject.com") ||
-    hostname === "lovableproject-dev.com" ||
-    hostname.endsWith(".lovableproject-dev.com") ||
-    hostname === "beta.lovable.dev" ||
-    hostname.endsWith(".beta.lovable.dev")
-  );
-}
-
-async function unregisterExisting() {
-  if (!("serviceWorker" in navigator)) return;
-  const regs = await navigator.serviceWorker.getRegistrations();
-  await Promise.allSettled(
-    regs
-      .filter((r) => (r.active?.scriptURL ?? r.installing?.scriptURL ?? "").endsWith(SW_URL))
-      .map((r) => r.unregister()),
-  );
-}
-
-export function registerServiceWorker() {
+export function unregisterServiceWorkers() {
   if (typeof window === "undefined" || !("serviceWorker" in navigator)) return;
 
-  const refused =
-    !import.meta.env.PROD ||
-    window.self !== window.top ||
-    isPreviewHost(window.location.hostname) ||
-    new URLSearchParams(window.location.search).get("sw") === "off";
-
-  if (refused) {
-    void unregisterExisting();
-    return;
-  }
-
-  window.addEventListener("load", () => {
-    void navigator.serviceWorker.register(SW_URL, { scope: "/" }).catch(() => undefined);
-  });
+  void navigator.serviceWorker
+    .getRegistrations()
+    .then((regs) => Promise.allSettled(regs.map((r) => r.unregister())))
+    .catch(() => undefined);
 }

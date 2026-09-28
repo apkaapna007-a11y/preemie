@@ -1,5 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import type { ReactNode } from "react";
 import {
   Article,
   Breadcrumbs,
@@ -15,6 +16,19 @@ import {
   type AnalyticsSnapshot,
 } from "@/lib/analytics";
 
+function ExtLink({ href, children }: { href: string; children: ReactNode }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-primary underline underline-offset-4 break-words"
+    >
+      {children}
+    </a>
+  );
+}
+
 export const Route = createFileRoute("/privacy")({
   head: () => ({
     meta: [
@@ -22,13 +36,13 @@ export const Route = createFileRoute("/privacy")({
       {
         name: "description",
         content:
-          "AdjustedAge stores your baby's dates and measurements only in your browser. No accounts, no cookies, no data uploaded.",
+          "AdjustedAge stores your baby's dates and measurements only in your browser. No accounts, no cookies and no data uploaded. See what is kept, and how to clear it.",
       },
       { property: "og:title", content: "Privacy & Data Handling | AdjustedAge" },
       {
         property: "og:description",
         content:
-          "AdjustedAge stores your baby's dates and measurements only in your browser. No accounts, no cookies, no data uploaded.",
+          "AdjustedAge stores your baby's dates and measurements only in your browser. No accounts, no cookies and no data uploaded. See what is kept, and how to clear it.",
       },
       { property: "og:url", content: "https://preemie.vercel.app/privacy" },
       { property: "og:type", content: "article" },
@@ -42,13 +56,13 @@ export const Route = createFileRoute("/privacy")({
       {
         name: "twitter:description",
         content:
-          "AdjustedAge stores your baby's dates and measurements only in your browser. No accounts, no cookies, no data uploaded.",
+          "AdjustedAge stores your baby's dates and measurements only in your browser. No accounts, no cookies and no data uploaded. See what is kept, and how to clear it.",
       },
       { name: "twitter:image", content: "https://preemie.vercel.app/og/og-brand.png" },
       { name: "twitter:image:alt", content: "AdjustedAge privacy and local data handling" },
       { property: "og:image:alt", content: "AdjustedAge privacy and local data handling" },
       { name: "article:published_time", content: "2026-08-11T00:00:00Z" },
-      { name: "article:modified_time", content: "2026-08-26T00:00:00Z" },
+      { name: "article:modified_time", content: "2026-09-28T00:00:00Z" },
     ],
     links: [{ rel: "canonical", href: "https://preemie.vercel.app/privacy" }],
     scripts: [
@@ -59,9 +73,14 @@ export const Route = createFileRoute("/privacy")({
           "@type": "MedicalWebPage",
           name: "Privacy & Data Handling | AdjustedAge",
           description:
-            "AdjustedAge stores your baby's dates and measurements only in your browser. No accounts, no cookies, no data uploaded.",
+            "AdjustedAge stores your baby's dates and measurements only in your browser. No accounts, no cookies and no data uploaded.",
           url: "https://preemie.vercel.app/privacy",
-          dateModified: "2026-08-26",
+          dateModified: "2026-09-28",
+          citation: [
+            "https://preemie.vercel.app/methodology",
+            "https://preemie.vercel.app/about",
+            "https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage",
+          ],
           author: {
             "@id": "https://preemie.vercel.app/about#drzeeshan",
           },
@@ -111,9 +130,13 @@ function PrivacyPage() {
         <h2>What is stored, and where</h2>
         <p>
           Date of birth, gestational age at birth, visit dates, measurements and notes are written
-          to <strong>localStorage in this browser only</strong>. There is no server database, no
-          account, and no synchronisation between devices. Clearing your browser data erases
-          everything, permanently and irreversibly.
+          to <strong>localStorage in this browser only</strong> — the per-site storage area{" "}
+          <ExtLink href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage">
+            documented by MDN
+          </ExtLink>
+          , which is scoped to this site&apos;s origin. There is no server database, no account, and
+          no synchronisation between devices. Clearing your browser data erases everything,
+          permanently and irreversibly.
         </p>
 
         <h2>Privacy-first usage analytics</h2>
@@ -190,10 +213,12 @@ function PrivacyPage() {
           of the pages ranking for these searches are published by formula manufacturers.
         </p>
 
-        <h2>Contact</h2>
+        <h2>Contact and corrections</h2>
         <p>
           Questions about data handling, or a correction to the clinical content, go to Dr. Zeeshan
-          Islam, MBBS, MCPS (Pediatrics) via the about page.
+          Islam, MBBS, MCPS (Pediatrics) — see the{" "}
+          <Link to="/about">contact details and corrections log on the about page</Link>. Anything
+          we change after publication is dated and listed there rather than silently edited in.
         </p>
       </Article>
 

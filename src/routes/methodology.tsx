@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import type { ReactNode } from "react";
 import {
   Article,
   Breadcrumbs,
@@ -14,7 +15,7 @@ export const Route = createFileRoute("/methodology")({
       {
         name: "description",
         content:
-          "Technical methodology for AdjustedAge: corrected-age formula, PMA logic, milestone sources, growth-chart standards and editorial review policy. Reviewed by Dr. Zeeshan Islam.",
+          "How AdjustedAge calculates corrected age: the 280-day formula, PMA logic, Fenton vs INTERGROWTH-21st, and every linked source. Reviewed by Dr. Zeeshan Islam.",
       },
       {
         property: "og:title",
@@ -23,7 +24,7 @@ export const Route = createFileRoute("/methodology")({
       {
         property: "og:description",
         content:
-          "Technical methodology for AdjustedAge: corrected-age formula, PMA logic, milestone sources, growth-chart standards and editorial review policy. Reviewed by Dr. Zeeshan Islam.",
+          "How AdjustedAge calculates corrected age: the 280-day formula, PMA logic, Fenton vs INTERGROWTH-21st, and every linked source. Reviewed by Dr. Zeeshan Islam.",
       },
       { property: "og:url", content: "https://preemie.vercel.app/methodology" },
       { property: "og:type", content: "article" },
@@ -40,13 +41,13 @@ export const Route = createFileRoute("/methodology")({
       {
         name: "twitter:description",
         content:
-          "Technical methodology for AdjustedAge: corrected-age formula, PMA logic, milestone sources, growth-chart standards and editorial review policy. Reviewed by Dr. Zeeshan Islam.",
+          "How AdjustedAge calculates corrected age: the 280-day formula, PMA logic, the Fenton and INTERGROWTH-21st choices, and every linked reference.",
       },
       { name: "twitter:image", content: "https://preemie.vercel.app/og/og-guides.png" },
       { name: "twitter:image:alt", content: "AdjustedAge formulas and clinical references" },
       { property: "og:image:alt", content: "AdjustedAge formulas and clinical references" },
       { name: "article:published_time", content: "2026-08-11T00:00:00Z" },
-      { name: "article:modified_time", content: "2026-08-27T00:00:00Z" },
+      { name: "article:modified_time", content: "2026-09-28T00:00:00Z" },
     ],
     links: [{ rel: "canonical", href: "https://preemie.vercel.app/methodology" }],
     scripts: [
@@ -61,8 +62,21 @@ export const Route = createFileRoute("/methodology")({
           url: "https://preemie.vercel.app/methodology",
           image: "https://preemie.vercel.app/og/og-guides.png",
           datePublished: "2026-08-11",
-          dateModified: "2026-08-27",
+          dateModified: "2026-09-28",
           lastReviewed: "2026-08-27",
+          citation: [
+            "https://pubmed.ncbi.nlm.nih.gov/23601190/",
+            "https://doi.org/10.1186/1471-2431-13-59",
+            "https://pubmed.ncbi.nlm.nih.gov/26475015/",
+            "https://doi.org/10.1016/S2214-109X(15)00163-1",
+            "https://pubmed.ncbi.nlm.nih.gov/35132439/",
+            "https://doi.org/10.1542/peds.2021-052138",
+            "https://pubmed.ncbi.nlm.nih.gov/36260888/",
+            "https://www.healthychildren.org/English/ages-stages/baby/preemie/Pages/Corrected-Age-For-Preemies.aspx",
+            "https://www.aap.org/en/patient-care/newborn-infant-and-early-childhood-nutrition/newborn-and-infant-nutrition-assessment-tools/preterm-infant-growth-tools",
+            "https://www.who.int/tools/child-growth-standards",
+            "https://www.cdc.gov/act-early/milestones/index.html",
+          ],
           audience: {
             "@type": "MedicalAudience",
             audienceType: "Parents and clinicians reviewing preterm follow-up methods",
@@ -78,7 +92,7 @@ export const Route = createFileRoute("/methodology")({
             name: "AdjustedAge",
             logo: {
               "@type": "ImageObject",
-              url: "https://preemie.vercel.app/favicon.png",
+              url: "https://preemie.vercel.app/icon-512.png",
             },
           },
           specialty: "Pediatrics",
@@ -156,10 +170,16 @@ export const Route = createFileRoute("/methodology")({
 
 const SOURCES = [
   {
-    source: "AAP / HealthyChildren corrected-age guidance",
+    source: "AAP / HealthyChildren: Corrected Age for Preemies (aap.org)",
     year: "current",
     role: "Convention for correcting to about 2 years",
     limit: "A convention, not a rule; practice varies 18–36 months by domain",
+    links: [
+      {
+        label: "healthychildren.org — Corrected Age for Preemies",
+        href: "https://www.healthychildren.org/English/ages-stages/baby/preemie/Pages/Corrected-Age-For-Preemies.aspx",
+      },
+    ],
   },
   {
     source:
@@ -167,12 +187,40 @@ const SOURCES = [
     year: "2022",
     role: "Milestone content used on this site",
     limit: "Surveillance prompts, explicitly NOT a validated screening instrument",
+    links: [
+      {
+        label: "DOI — 10.1542/peds.2021-052138",
+        href: "https://doi.org/10.1542/peds.2021-052138",
+      },
+      {
+        label: "PubMed 35132439",
+        href: "https://pubmed.ncbi.nlm.nih.gov/35132439/",
+      },
+      {
+        label: "PubMed summary 36260888",
+        href: "https://pubmed.ncbi.nlm.nih.gov/36260888/",
+      },
+      {
+        label: "CDC — Learn the Signs. Act Early. milestones",
+        href: "https://www.cdc.gov/act-early/milestones/index.html",
+      },
+    ],
   },
   {
     source: "Fenton TR, Kim JH. BMC Pediatrics 2013;13:59 (PMID 23601190)",
     year: "2013",
     role: "22–50 week preterm growth reference",
     limit: "A descriptive reference of how preterm infants grew, not a prescriptive standard",
+    links: [
+      {
+        label: "PubMed 23601190",
+        href: "https://pubmed.ncbi.nlm.nih.gov/23601190/",
+      },
+      {
+        label: "DOI — 10.1186/1471-2431-13-59",
+        href: "https://doi.org/10.1186/1471-2431-13-59",
+      },
+    ],
   },
   {
     source:
@@ -180,20 +228,55 @@ const SOURCES = [
     year: "2015",
     role: "Postnatal growth standard for preterm infants",
     limit: "Disagrees with Fenton at the margins, particularly below 33 weeks PMA",
+    links: [
+      {
+        label: "PubMed 26475015",
+        href: "https://pubmed.ncbi.nlm.nih.gov/26475015/",
+      },
+      {
+        label: "DOI — 10.1016/S2214-109X(15)00163-1",
+        href: "https://doi.org/10.1016/S2214-109X(15)00163-1",
+      },
+    ],
   },
   {
     source: "AAP Preterm Infant Growth Tools",
     year: "current",
     role: "Endorses both charts",
     limit: "Links out to charts; hosts no calculator",
+    links: [
+      {
+        label: "aap.org — Preterm Infant Growth Tools",
+        href: "https://www.aap.org/en/patient-care/newborn-infant-and-early-childhood-nutrition/newborn-and-infant-nutrition-assessment-tools/preterm-infant-growth-tools",
+      },
+    ],
   },
   {
     source: "WHO Child Growth Standards",
     year: "2006",
     role: "Growth after term-equivalent age",
     limit: "Derived from term infants; a documented hand-off rule is required",
+    links: [
+      {
+        label: "who.int — Child growth standards",
+        href: "https://www.who.int/tools/child-growth-standards",
+      },
+    ],
   },
 ];
+
+function ExtLink({ href, children }: { href: string; children: ReactNode }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-primary underline underline-offset-4 break-words"
+    >
+      {children}
+    </a>
+  );
+}
 
 function MethodologyPage() {
   return (
@@ -247,8 +330,12 @@ function MethodologyPage() {
         </p>
         <ul>
           <li>
-            <strong>Term is 280 days, not “9 months”.</strong> Nine calendar months is shorter than
-            40 weeks in most month combinations.
+            <strong>Term is 280 days, not “9 months”.</strong> Forty weeks × 7 days is the same
+            40-week basis used in the{" "}
+            <ExtLink href="https://www.healthychildren.org/English/ages-stages/baby/preemie/Pages/Corrected-Age-For-Preemies.aspx">
+              AAP&rsquo;s corrected-age guidance for parents
+            </ExtLink>
+            ; nine calendar months is shorter than 40 weeks in most month combinations.
           </li>
           <li>
             <strong>Dates are normalised before subtraction.</strong> That prevents daylight-saving
@@ -263,9 +350,18 @@ function MethodologyPage() {
         <h2>Where the milestone content comes from</h2>
         <p>
           The milestone prompts on this site are based on the 2022 CDC/AAP revision to developmental
-          surveillance checklists. They are used here as <strong>conversation prompts</strong>, not
-          as a screen, diagnosis or score. That distinction matters, because parents often encounter
-          milestone content online that looks definitive when it is not.
+          surveillance checklists —{" "}
+          <ExtLink href="https://doi.org/10.1542/peds.2021-052138">
+            Zubler et al., <em>Pediatrics</em> 2022
+          </ExtLink>{" "}
+          (<ExtLink href="https://pubmed.ncbi.nlm.nih.gov/35132439/">PMID 35132439</ExtLink>), the
+          paper behind{" "}
+          <ExtLink href="https://www.cdc.gov/act-early/milestones/index.html">
+            CDC&rsquo;s Learn the Signs. Act Early. milestone checklists
+          </ExtLink>
+          . They are used here as <strong>conversation prompts</strong>, not as a screen, diagnosis
+          or score. That distinction matters, because parents often encounter milestone content
+          online that looks definitive when it is not.
         </p>
         <p>
           To see how the milestone rows are applied after the age calculation, open the{" "}
@@ -275,6 +371,11 @@ function MethodologyPage() {
         </p>
 
         <h2>Sources</h2>
+        <p>
+          Each row below links to the primary record — PubMed or DOI where one exists, otherwise the
+          official publisher page — so a reader can open the original rather than trust a
+          paraphrase.
+        </p>
         <div className="overflow-x-auto">
           <table className="w-full border-collapse text-left text-sm">
             <thead className="text-xs uppercase tracking-wide text-muted-foreground">
@@ -288,7 +389,16 @@ function MethodologyPage() {
             <tbody>
               {SOURCES.map((s) => (
                 <tr key={s.source} className="align-top">
-                  <td className="border-b border-border py-3 pr-4">{s.source}</td>
+                  <td className="border-b border-border py-3 pr-4">
+                    <span>{s.source}</span>
+                    <ul className="mt-2 space-y-1 text-xs">
+                      {s.links.map((l) => (
+                        <li key={l.href}>
+                          <ExtLink href={l.href}>{l.label}</ExtLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </td>
                   <td className="border-b border-border py-3 pr-4">{s.year}</td>
                   <td className="border-b border-border py-3 pr-4">{s.role}</td>
                   <td className="border-b border-border py-3">{s.limit}</td>
@@ -301,10 +411,13 @@ function MethodologyPage() {
         <h2>Fenton versus INTERGROWTH-21st</h2>
         <p>
           These two references disagree, and many tools quietly choose one without telling the user.
-          AdjustedAge does not treat them as interchangeable. Fenton 2013 is a meta-analytic{" "}
-          <em>reference</em> describing how preterm infants have actually grown, including those who
-          grew poorly. INTERGROWTH-21st is a prescriptive <em>standard</em> describing how healthy
-          preterm infants under optimal conditions grow.
+          AdjustedAge does not treat them as interchangeable.{" "}
+          <ExtLink href="https://pubmed.ncbi.nlm.nih.gov/23601190/">Fenton 2013</ExtLink> is a
+          meta-analytic <em>reference</em> describing how preterm infants have actually grown,
+          including those who grew poorly.{" "}
+          <ExtLink href="https://pubmed.ncbi.nlm.nih.gov/26475015/">INTERGROWTH-21st</ExtLink> is a
+          prescriptive <em>standard</em> describing how healthy preterm infants under optimal
+          conditions grow.
         </p>
         <p>
           A baby can sit on the 15th Fenton centile and below the 3rd INTERGROWTH centile at the
@@ -324,10 +437,11 @@ function MethodologyPage() {
           terminology and safety language are checked for clinical plausibility before publication.
         </p>
         <p>
-          If a formula, citation or clinical statement is found to be wrong, the correction belongs
-          on this page because this page is the site&apos;s public record of its rules. That makes
-          it different from the parent guides, which explain <em>what</em> to do, while this page
-          explains <em>why the site says it</em>.
+          If a formula, citation or clinical statement is found to be wrong, the rules governing it
+          are corrected here, and the change itself is published as a dated entry in the{" "}
+          <Link to="/about">corrections log on the about page</Link> — what was wrong, when it was
+          fixed and why. Suspected errors can be reported through the{" "}
+          <Link to="/about">contact details listed there</Link>.
         </p>
 
         <h2>What this tool deliberately will not do</h2>
@@ -340,7 +454,8 @@ function MethodologyPage() {
           <li>It will not take formula-industry or infant-nutrition sponsorship.</li>
           <li>
             It will not send your data anywhere. Entries live in your browser&apos;s local storage
-            and can be cleared by clearing site data.
+            and can be cleared by clearing site data. The <Link to="/privacy">privacy policy</Link>{" "}
+            states exactly what is stored and what is not.
           </li>
         </ul>
 

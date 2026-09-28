@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import type { ReactNode } from "react";
 import {
   Article,
   Breadcrumbs,
@@ -8,23 +9,36 @@ import {
   SiteLayout,
 } from "@/components/SiteLayout";
 
+function ExtLink({ href, children }: { href: string; children: ReactNode }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-primary underline underline-offset-4 break-words"
+    >
+      {children}
+    </a>
+  );
+}
+
 export const Route = createFileRoute("/late-preterm-baby")({
   head: () => ({
     meta: [
-      { title: "Late Preterm Baby Guide: 34 to 36 Weeks & Corrected Age | AdjustedAge" },
+      { title: "Late Preterm Baby: 34–36 Weeks, Corrected Age | AdjustedAge" },
       {
         name: "description",
         content:
-          "A late preterm baby guide for 34 to 36 weeks: corrected age, feeding, milestones, common risks and when to call the doctor. Reviewed by Dr. Zeeshan Islam.",
+          "A baby born at 34 to 36 weeks is late preterm — still preterm, and often still needing corrected age in the first year. What to expect after discharge.",
       },
       {
         property: "og:title",
-        content: "Late Preterm Baby Guide: 34 to 36 Weeks & Corrected Age | AdjustedAge",
+        content: "Late Preterm Baby: 34–36 Weeks, Corrected Age | AdjustedAge",
       },
       {
         property: "og:description",
         content:
-          "A late preterm baby guide for 34 to 36 weeks: corrected age, feeding, milestones, common risks and when to call the doctor. Reviewed by Dr. Zeeshan Islam.",
+          "A baby born at 34 to 36 weeks is late preterm — still preterm, and often still needing corrected age in the first year. What to expect after discharge.",
       },
       { property: "og:url", content: "https://preemie.vercel.app/late-preterm-baby" },
       { property: "og:type", content: "article" },
@@ -36,18 +50,18 @@ export const Route = createFileRoute("/late-preterm-baby")({
       { name: "twitter:card", content: "summary_large_image" },
       {
         name: "twitter:title",
-        content: "Late Preterm Baby Guide: 34 to 36 Weeks & Corrected Age | AdjustedAge",
+        content: "Late Preterm Baby: 34–36 Weeks, Corrected Age | AdjustedAge",
       },
       {
         name: "twitter:description",
         content:
-          "Corrected age, feeding and milestone guidance for late preterm babies born at 34 to 36 weeks. Reviewed by Dr. Zeeshan Islam.",
+          "A baby born at 34 to 36 weeks is late preterm — still preterm, and often still needing corrected age in the first year.",
       },
       { name: "twitter:image", content: "https://preemie.vercel.app/og/og-late-preterm.png" },
       { name: "twitter:image:alt", content: "Late preterm baby guide" },
       { property: "og:image:alt", content: "Late preterm baby guide" },
       { name: "article:published_time", content: "2026-08-27T00:00:00Z" },
-      { name: "article:modified_time", content: "2026-08-27T00:00:00Z" },
+      { name: "article:modified_time", content: "2026-09-28T00:00:00Z" },
     ],
     links: [{ rel: "canonical", href: "https://preemie.vercel.app/late-preterm-baby" }],
     scripts: [
@@ -56,14 +70,22 @@ export const Route = createFileRoute("/late-preterm-baby")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "MedicalWebPage",
-          name: "Late Preterm Baby Guide",
+          name: "Late Preterm Baby: 34–36 Weeks and Corrected Age",
           description:
             "Guide for late preterm babies born at 34 to 36 weeks, including corrected age, milestones, feeding concerns and common follow-up issues.",
           url: "https://preemie.vercel.app/late-preterm-baby",
           image: "https://preemie.vercel.app/og/og-late-preterm.png",
           datePublished: "2026-08-27",
-          dateModified: "2026-08-27",
+          dateModified: "2026-09-28",
           lastReviewed: "2026-08-27",
+          citation: [
+            "https://www.acog.org/clinical/clinical-guidance/committee-opinion/articles/2021/07/medically-indicated-late-preterm-and-early-term-deliveries",
+            "https://www.cdc.gov/maternal-infant-health/preterm-birth/index.html",
+            "https://www.healthychildren.org/English/ages-stages/baby/preemie/Pages/Caring-For-A-Premature-Baby.aspx",
+            "https://www.healthychildren.org/English/ages-stages/baby/preemie/Pages/Health-Issues-of-Premature-Babies.aspx",
+            "https://www.healthychildren.org/English/ages-stages/baby/preemie/Pages/Corrected-Age-For-Preemies.aspx",
+            "https://www.healthychildren.org/English/ages-stages/baby/preemie/Pages/Preemie-Milestones.aspx",
+          ],
           audience: {
             "@type": "MedicalAudience",
             audienceType: "Parents of late preterm infants",
@@ -73,7 +95,7 @@ export const Route = createFileRoute("/late-preterm-baby")({
           publisher: {
             "@type": "Organization",
             name: "AdjustedAge",
-            logo: { "@type": "ImageObject", url: "https://preemie.vercel.app/favicon.png" },
+            logo: { "@type": "ImageObject", url: "https://preemie.vercel.app/icon-512.png" },
           },
           specialty: "Pediatrics",
         }),
@@ -155,14 +177,26 @@ function LatePretermBabyPage() {
       <Article>
         <h2>What late preterm means</h2>
         <p>
-          A <strong>late preterm baby</strong> is born between 34 weeks 0 days and 36 weeks 6 days.
-          The label can sound mild, and many late preterm babies go home quickly, but they still
+          A <strong>late preterm baby</strong> is born between 34 weeks 0 days and 36 weeks 6 days,
+          the window{" "}
+          <ExtLink href="https://www.acog.org/clinical/clinical-guidance/committee-opinion/articles/2021/07/medically-indicated-late-preterm-and-early-term-deliveries">
+            ACOG defines as late preterm
+          </ExtLink>{" "}
+          and the CDC reports as part of{" "}
+          <ExtLink href="https://www.cdc.gov/maternal-infant-health/preterm-birth/index.html">
+            preterm birth in the United States
+          </ExtLink>
+          . The label can sound mild, and many late preterm babies go home quickly, but they still
           have important differences from a baby born at 39 or 40 weeks.
         </p>
         <p>
           In the first days and weeks, even a short gap in maturity can affect feeding stamina,
-          jaundice risk, sleepiness, temperature control and early weight gain. Later on, that same
-          gap can affect which milestone row should be used in a developmental conversation.
+          jaundice risk, sleepiness, temperature control and early weight gain — the{" "}
+          <ExtLink href="https://www.healthychildren.org/English/ages-stages/baby/preemie/Pages/Health-Issues-of-Premature-Babies.aspx">
+            health issues the AAP groups under premature birth
+          </ExtLink>
+          . Later on, that same gap can affect which milestone row should be used in a developmental
+          conversation.
         </p>
 
         <h2>Why corrected age still matters for a 35- or 36-week baby</h2>
@@ -179,6 +213,13 @@ function LatePretermBabyPage() {
         </p>
 
         <h2>Common late preterm concerns after discharge</h2>
+        <p>
+          The list below overlaps with what the AAP describes in{" "}
+          <ExtLink href="https://www.healthychildren.org/English/ages-stages/baby/preemie/Pages/Caring-For-A-Premature-Baby.aspx">
+            caring for a premature baby at home
+          </ExtLink>
+          .
+        </p>
         <ul>
           <li>
             <strong>Feeding fatigue:</strong> some babies tire before they take enough milk.
@@ -205,15 +246,13 @@ function LatePretermBabyPage() {
           Many late preterm babies do very well, but milestone timing in the first year should still
           be interpreted fairly. Use corrected age with the{" "}
           <Link to="/premature-baby-milestones">premature baby milestones chart</Link> rather than
-          comparing only by birthday age.
-        </p>
-
-        <h2>What age should I use for vaccines?</h2>
-        <p>
-          Vaccines are the big exception. Routine immunisations usually follow{" "}
-          <strong>chronological age</strong>, not corrected age. Read the{" "}
-          <Link to="/preemie-vaccines">preemie vaccines guide</Link> if that distinction is causing
-          confusion.
+          comparing only by birthday age; the AAP&apos;s{" "}
+          <ExtLink href="https://www.healthychildren.org/English/ages-stages/baby/preemie/Pages/Preemie-Milestones.aspx">
+            preemie milestones guidance
+          </ExtLink>{" "}
+          makes the same point. Vaccines are the one big exception — routine immunisations follow{" "}
+          <strong>chronological age</strong>, not corrected age, so see the{" "}
+          <Link to="/preemie-vaccines">preemie vaccines guide</Link> for that timing.
         </p>
 
         <h2>When to call the doctor</h2>
