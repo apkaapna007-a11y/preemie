@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  @page {
+    size: A4;
+    margin: 22mm 18mm 25mm 18mm;
+    @bottom-center {
+      content: "Page " counter(page) " of " counter(pages);
+      font-size: 9pt;
+      color: #6b7280;
+      font-family: 'DejaVu Serif', 'Times New Roman', Georgia, serif;
+    }
+    @bottom-left {
+      content: "Confidential";
+      font-size: 7pt;
+      color: #d6d3cc;
+      font-family: 'DejaVu Serif', 'Times New Roman', Georgia, serif;
+    }
+    @bottom-right {
+      content: "preemie.vercel.app Google SEO Report";
+      font-size: 8pt;
+      color: #cbd5e1;
+      font-family: 'DejaVu Serif', 'Times New Roman', Georgia, serif;
+    }
+  }
+
+  @page :first {
+    margin: 0;
+    @bottom-left { content: none; }
+    @bottom-center { content: none; }
+    @bottom-right { content: none; }
+  }
+
+  @page toc {
+    @bottom-center {
+      content: counter(page);
+      font-size: 9pt;
+      color: #6b7280;
+    }
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Times New Roman', 'DejaVu Serif', Georgia, serif;
+    font-size: 10pt;
+    line-height: 1.55;
+    color: #1e293b;
+    background: white;
+  }
+
+  /* ─── Title Page (Clean White) ─── */
+  .title-page {
+    page: first;
+    width: 210mm;
+    height: 297mm;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #1a1a2e;
+    position: relative;
+    padding: 50mm 30mm 40mm 30mm;
+    border-top: 6mm solid #1e3a5f;
+  }
+
+  .title-page .badge {
+    background: #f7f6f3;
+    border: 1px solid #d6d3cc;
+    border-radius: 20px;
+    padding: 6px 18px;
+    font-size: 9pt;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 15mm;
+    color: #1e3a5f;
+  }
+
+  .title-page h1 {
+    font-size: 28pt;
+    font-weight: bold;
+    margin-bottom: 5mm;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+    color: #1a1a2e;
+  }
+
+  .title-page .subtitle {
+    font-size: 13pt;
+    color: #6b7280;
+    margin-bottom: 12mm;
+    font-weight: 300;
+  }
+
+  .title-page .url {
+    font-size: 12pt;
+    color: #1e3a5f;
+    margin-bottom: 15mm;
+    padding: 4mm 8mm;
+    border: 1px solid #d6d3cc;
+    border-radius: 6px;
+    background: #faf9f7;
+  }
+
+  .title-page .score-box {
+    background: #faf9f7;
+    border: 2px solid #d6d3cc;
+    border-radius: 12px;
+    padding: 6mm 12mm;
+    margin-bottom: 15mm;
+  }
+
+  .title-page .score-number {
+    font-size: 42pt;
+    font-weight: bold;
+    color: #1e3a5f;
+    line-height: 1;
+  }
+
+  .title-page .score-label {
+    font-size: 10pt;
+    color: #6b7280;
+    margin-top: 2mm;
+  }
+
+  .title-page .meta {
+    font-size: 9pt;
+    color: #6b7280;
+    margin-top: 8mm;
+    padding-top: 5mm;
+    border-top: 1px solid #d6d3cc;
+  }
+
+  .title-page .meta span {
+    margin: 0 8px;
+  }
+
+  /* ─── Table of Contents ─── */
+  .toc-page {
+    page: toc;
+    page-break-before: always;
+  }
+
+  .toc-page h2 {
+    font-size: 18pt;
+    color: #1e3a5f;
+    margin-bottom: 8mm;
+    padding-bottom: 3mm;
+    border-bottom: 2px solid #1e3a5f;
+  }
+
+  .toc-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .toc-list li {
+    padding: 2mm 0;
+    border-bottom: 1px solid #f1f5f9;
+    overflow: hidden;
+  }
+
+  .toc-list li.toc-section {
+    font-weight: bold;
+    font-size: 11pt;
+    padding-top: 4mm;
+    color: #0f172a;
+  }
+
+  .toc-list li.toc-sub {
+    padding-left: 8mm;
+    font-size: 9.5pt;
+    color: #475569;
+  }
+
+  .toc-score {
+    display: inline-block;
+    float: right;
+    padding: 1px 8px;
+    border-radius: 10px;
+    font-size: 9pt;
+    font-weight: bold;
+    color: white;
+  }
+
+  .score-good { background: #2d6a4f; }
+  .score-warn { background: #d4740e; }
+  .score-bad { background: #c53030; }
+
+  /* ─── Section Styles ─── */
+  div.section {
+    page-break-before: always;
+  }
+
+  .section-header {
+    background: #faf9f7;
+    border-left: 4px solid #1e3a5f;
+    padding: 5mm 6mm;
+    margin-bottom: 6mm;
+    page-break-after: avoid;
+  }
+
+  .section-header h2 {
+    font-size: 16pt;
+    color: #0f172a;
+    margin-bottom: 1mm;
+  }
+
+  .section-header .section-score {
+    font-size: 12pt;
+    font-weight: bold;
+    float: right;
+    margin-top: -6mm;
+  }
+
+  h3 {
+    font-size: 12pt;
+    color: #1e3a5f;
+    margin-top: 6mm;
+    margin-bottom: 3mm;
+    padding-bottom: 1.5mm;
+    border-bottom: 1px solid #d6d3cc;
+    page-break-after: avoid;
+  }
+
+  h4 {
+    font-size: 10.5pt;
+    color: #334155;
+    margin-top: 4mm;
+    margin-bottom: 2mm;
+    page-break-after: avoid;
+  }
+
+  p {
+    margin-bottom: 3mm;
+    color: #334155;
+  }
+
+  .highlight {
+    background: #fef3c7;
+    border-left: 3px solid #d4740e;
+    padding: 3mm 4mm;
+    margin: 4mm 0;
+    font-size: 9.5pt;
+    /* allow page breaks to prevent white gaps */
+  }
+
+  .critical-box {
+    background: #fef2f2;
+    border-left: 3px solid #c53030;
+    padding: 3mm 4mm;
+    margin: 4mm 0;
+    font-size: 9.5pt;
+    /* allow page breaks to prevent white gaps */
+  }
+
+  .success-box {
+    background: #f0fdf4;
+    border-left: 3px solid #2d6a4f;
+    padding: 3mm 4mm;
+    margin: 4mm 0;
+    font-size: 9.5pt;
+    /* allow page breaks to prevent white gaps */
+  }
+
+  /* ─── Tables ─── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 4mm 0 6mm 0;
+    font-size: 9pt;
+  }
+
+  thead th {
+    background: #f7f6f3;
+    color: #0f172a;
+    font-weight: bold;
+    padding: 3mm 4mm;
+    text-align: left;
+    border-bottom: 2px solid #d6d3cc;
+    font-size: 9pt;
+  }
+
+  tbody td {
+    padding: 2.5mm 3mm;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: top;
+  }
+
+  tbody tr:nth-child(even) {
+    background: #fdfcfa;
+  }
+
+  .status-pass {
+    color: #2d6a4f;
+    font-weight: bold;
+  }
+
+  .status-fail {
+    color: #c53030;
+    font-weight: bold;
+  }
+
+  .status-warn {
+    color: #d4740e;
+    font-weight: bold;
+  }
+
+  .status-partial {
+    color: #4a5568;
+    font-weight: bold;
+  }
+
+  /* ─── Charts ─── */
+  .chart-container {
+    text-align: center;
+    margin: 4mm 0;
+  }
+
+  .chart-container img {
+    max-width: 100%;
+    max-height: 120mm;
+    height: auto;
+  }
+
+  .chart-caption {
+    font-size: 8.5pt;
+    color: #6b7280;
+    font-style: italic;
+    margin-top: 2mm;
+    text-align: center;
+  }
+
+  .chart-half {
+    display: inline-block;
+    width: 48%;
+    vertical-align: top;
+    text-align: center;
+    margin: 2mm 0;
+  }
+
+  .chart-half img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* ─── Two column layout ─── */
+  .two-col {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    margin: 3mm 0;
+  }
+
+  .two-col .col {
+    display: table-cell;
+    vertical-align: top;
+    padding: 0 2mm;
+  }
+
+  .four-col {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    margin: 3mm 0;
+  }
+
+  .four-col .col {
+    display: table-cell;
+    vertical-align: top;
+    padding: 0 1.5mm;
+  }
+
+  /* ─── Metric Cards ─── */
+  .metric-card {
+    background: #faf9f7;
+    border: 1px solid #d6d3cc;
+    border-radius: 6px;
+    padding: 2.5mm 3mm;
+    text-align: center;
+    margin: 2mm 0;
+  }
+
+  .metric-card .value {
+    font-size: 14pt;
+    font-weight: bold;
+    line-height: 1.2;
+  }
+
+  .metric-card .label {
+    font-size: 7.5pt;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 1mm;
+  }
+
+  /* ─── Action Plan ─── */
+  .action-item {
+    background: #faf9f7;
+    border-radius: 4px;
+    padding: 3mm 4mm;
+    margin: 3mm 0;
+    border-left: 3px solid #cbd5e1;
+    /* allow page breaks to prevent white gaps */
+  }
+
+  .action-item.critical {
+    border-left-color: #c53030;
+    background: #fdf2f2;
+  }
+
+  .action-item.high {
+    border-left-color: #d4740e;
+    background: #fdf8ef;
+  }
+
+  .action-item.medium {
+    border-left-color: #1e3a5f;
+    background: #f0f4f8;
+  }
+
+  .action-item.low {
+    border-left-color: #94a3b8;
+  }
+
+  .action-item h4 {
+    margin-top: 0;
+    margin-bottom: 1.5mm;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .action-item .effort {
+    font-size: 8.5pt;
+    color: #64748b;
+    float: right;
+  }
+
+  .priority-tag {
+    display: inline-block;
+    padding: 0.5mm 3mm;
+    border-radius: 3px;
+    font-size: 8pt;
+    font-weight: bold;
+    color: white;
+    margin-right: 2mm;
+    vertical-align: middle;
+  }
+
+  .priority-critical { background: #c53030; }
+  .priority-high { background: #d4740e; }
+  .priority-medium { background: #1e3a5f; }
+  .priority-low { background: #94a3b8; }
+
+  /* ─── Code blocks ─── */
+  .code-block {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 3mm 4mm;
+    border-radius: 4px;
+    font-family: 'DejaVu Sans Mono', monospace;
+    font-size: 8pt;
+    line-height: 1.6;
+    margin: 3mm 0;
+    white-space: pre-wrap;
+    word-break: break-all;
+    /* allow page breaks to prevent white gaps */
+  }
+
+  /* ─── Divider ─── */
+  .divider {
+    border: none;
+    border-top: 1px solid #d6d3cc;
+    margin: 5mm 0;
+  }
+
+  /* ─── Roadmap ─── */
+  .roadmap-phase {
+    background: #faf9f7;
+    border-radius: 6px;
+    padding: 4mm 5mm;
+    margin: 4mm 0;
+    border: 1px solid #d6d3cc;
+    /* allow page breaks to prevent white gaps */
+  }
+
+  .roadmap-phase h4 {
+    margin-top: 0;
+    border-bottom: none;
+    color: #1e3a5f;
+  }
+
+  .roadmap-phase ul {
+    margin: 2mm 0 0 5mm;
+    padding: 0;
+  }
+
+  .roadmap-phase li {
+    margin-bottom: 1.5mm;
+    font-size: 9.5pt;
+    color: #334155;
+  }
+
+  /* ─── Lists ─── */
+  ul {
+    margin-left: 5mm;
+    margin-bottom: 3mm;
+  }
+
+  li {
+    margin-bottom: 1.5mm;
+  }
+
+  /* ─── Data freshness ─── */
+  .data-freshness {
+    font-size: 8pt;
+    color: #6b7280;
+    font-style: italic;
+    margin-top: 4mm;
+    padding-top: 2mm;
+    border-top: 1px solid #d6d3cc;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ======================================================= TITLE PAGE === -->
+<div class="title-page">
+  <div class="badge">Full SEO Audit Report</div>
+  <h1>preemie.vercel.app</h1>
+  <div class="subtitle">Prepared by Claude SEO</div>
+  <div class="score-box">
+    <div class="score-number">77.4<span style="font-size: 20pt; color: #94a3b8;">/100</span></div>
+    <div class="score-label">SEO Health Score</div>
+  </div>
+  <div class="meta">
+    <span>September 28, 2026</span>
+    <span>Full Audit</span>
+  </div>
+</div>
+
+
+<!-- ======================================================= TABLE OF CONTENTS === -->
+<div class="toc-page">
+  <h2>Table of Contents</h2>
+  <ul class="toc-list">
+    <li class="toc-section"><span>1. Executive Summary</span></li>
+    <li class="toc-sub"><span>Key Metrics, Critical Issues &amp; Quick Wins</span></li>
+    <li class="toc-section"><span>2. Audit Categories</span></li>
+    <li class="toc-sub"><span>What Works</span></li>
+    <li class="toc-sub"><span>Findings by Severity</span></li>
+    <li class="toc-section"><span>3. Action Plan</span></li>
+    <li class="toc-sub"><span>Phased Roadmap</span></li>
+    <li class="toc-section"><span>4. Data Sources &amp; Methodology</span></li>
+  </ul>
+</div>
+
+
+<!-- ======================================================= 1. EXECUTIVE SUMMARY === -->
+<div class="section">
+  <div class="section-header">
+    <h2>1. Executive Summary</h2>
+  </div>
+
+  <p>This report presents a comprehensive SEO audit of <strong>preemie.vercel.app</strong> for a <strong>Publisher / YMYL health tool (calculator + editorial guides)</strong> site, generated on September 28, 2026. Findings combine technical, content, schema, performance, visual, and search-readiness evidence as available.</p>
+
+  <div class="two-col">
+    <div class="col">
+      <div class="metric-card">
+        <div class="value" style="color: #d4740e;">77.4/100</div>
+        <div class="label">SEO Health Score</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="critical-box">
+    <strong>Critical Issues Found:</strong>
+    <ol>
+      <li>public/favicon.png is a committed Vercel 503 timeout page served as image/png, referenced by rel=icon and WebSite.publisher.logo (regression)</li>
+      <li>Security headers absent: CSP, X-Content-Type-Options, Referrer-Policy, Permissions-Policy, X-Frame-Options</li>
+      <li>Sitemap lastmod frozen at 2026-08-26 and sitemap generator not wired into build</li>
+      <li>Google Fonts render-blocking third-party CSS on all 16 pages</li>
+      <li>Initial JS payload ~398 KB gzipped (jsPDF + Recharts) = INP risk</li>
+    </ol>
+  </div>
+
+  <div class="success-box">
+    <strong>Quick Wins:</strong>
+    <ol>
+      <li>Replace favicon.png with a real 32x32/180x180 icon set and add favicon.ico</li>
+      <li>Wire scripts/generate-sitemap.mjs into the build script</li>
+      <li>Set noindex on the 404 route and give it its own title</li>
+      <li>Self-host the Google Fonts stylesheet</li>
+    </ol>
+  </div>
+
+</div>
+
+<!-- ======================================================= 2. AUDIT CATEGORIES === -->
+<div class="section">
+  <div class="section-header">
+    <h2>2. Audit Categories</h2>
+  </div>
+
+  <h3>2.1 Technical SEO</h3>
+  <p><strong>Score:</strong> <span class="status-pass">85/100</span></p>
+  <h4>What Works</h4>
+  <ul>
+    <li>All 16 sitemap URLs return 200 with exact self-canonical and index,follow</li>
+    <li>16 unique titles and H1s; no noindex anywhere in src/</li>
+    <li>Sitemap valid and declared in robots.txt</li>
+    <li>HTTP to HTTPS single 308; HSTS max-age=63072000 includeSubDomains preload on every response</li>
+    <li>No redirect chain longer than 1 hop; no indexable parameter/case/dot-segment variants</li>
+    <li>0 images missing width/height across 16 pages (no CLS from images)</li>
+    <li>Module scripts + modulepreload; immutable caching on hashed assets</li>
+  </ul>
+  <h4>Findings</h4>
+  <div class="action-item medium">
+    <h4>public/favicon.png is a Vercel 503 error page served as image/png <span class="status-warn">High</span></h4>
+    <p>public/favicon.png is a committed 447-byte XHTML &#x27;503 first byte timeout&#x27; document served with Content-Type image/png. It is referenced by rel=icon and by WebSite.publisher.logo JSON-LD. /favicon.ico returns 404. This is a regression versus the 2026-08-26 audit, which recorded a 4 KB icon.</p>
+    <p><strong>Recommendation:</strong> Replace public/favicon.png with a real rendered icon (32x32 PNG plus 180x180 apple-touch-icon), add a /favicon.ico, and verify WebSite.publisher.logo points at a valid logo image.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Security response headers missing <span class="status-warn">Medium</span></h4>
+    <p>No Content-Security-Policy, X-Content-Type-Options, Referrer-Policy, Permissions-Policy or X-Frame-Options on any response; no vercel.json in the repo to set them.</p>
+    <p><strong>Recommendation:</strong> Add a vercel.json headers block setting X-Content-Type-Options: nosniff, Referrer-Policy: strict-origin-when-cross-origin, X-Frame-Options: DENY, a conservative Permissions-Policy, and a CSP appropriate for the TanStack Start build.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Sitemap lastmod uniformly 2026-08-26 and generator not part of build <span class="status-warn">Medium</span></h4>
+    <p>Every sitemap entry reports lastmod 2026-08-26 although content shipped on 2026-08-27. scripts/generate-sitemap.mjs is not invoked by the build script, so public/sitemap.xml drifts whenever routes change.</p>
+    <p><strong>Recommendation:</strong> Wire generate-sitemap.mjs into the build (or a prebuild step) and derive lastmod from actual content modification dates.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Google Fonts render-blocking third-party CSS on all 16 pages <span class="status-warn">Medium</span></h4>
+    <p>Fonts load via third-party Google Fonts CSS plus 6 woff2 files (approx 299 KB), render-blocking on every route. Still open from the 2026-08-26 audit.</p>
+    <p><strong>Recommendation:</strong> Self-host the font CSS and preconnect/preload the woff2 files, or system-font stack the critical path.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Large initial JavaScript payload (INP risk) <span class="status-warn">Medium</span></h4>
+    <p>The homepage preloads a 257 KB gzipped chunk containing jsPDF (86 refs) and Recharts (74 refs); total initial JS is approximately 398 KB gzipped. Field INP is not measurable (no CrUX/PageSpeed credentials).</p>
+    <p><strong>Recommendation:</strong> Code-split jsPDF (export/print) and Recharts (chart view) behind dynamic import so the calculator path ships neither.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>404 route is indexable and inherits homepage metadata <span class="status-warn">Low</span></h4>
+    <p>The 404 response returns status 404 but serves meta robots index,follow, no canonical, and the homepage title/og:url.</p>
+    <p><strong>Recommendation:</strong> Serve a dedicated 404 title, keep the status 404, and add meta robots noindex to the not-found route.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Case-variant URLs return 200 <span class="status-warn">Low</span></h4>
+    <p>Paths such as /About return 200 rather than 308 to the lowercase canonical. Canonical tags currently prevent duplicate indexing.</p>
+    <p><strong>Recommendation:</strong> Normalise path case at the edge or route layer with a 308 to the canonical URL.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Trailing-slash variants redirect with 307 instead of 308 <span class="status-warn">Low</span></h4>
+    <p>Trailing-slash variants answer 307 (cacheable temporary redirect) rather than 308 (permanent), so crawlers may re-evaluate them indefinitely.</p>
+    <p><strong>Recommendation:</strong> Change trailing-slash redirects to 308.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Service worker path 404s while the PWA registers it <span class="status-warn">Low</span></h4>
+    <p>/sw.js returns 404 although src/pwa.ts registers it, so the visible &#x27;Works offline&#x27; badge is not backed by a working offline path.</p>
+    <p><strong>Recommendation:</strong> Ship the built service worker at /sw.js or remove the offline claim and the registration.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>www subdomain fails TLS with no redirect <span class="status-warn">Low</span></h4>
+    <p>www.preemie.vercel.app has no valid certificate and no redirect to the apex host.</p>
+    <p><strong>Recommendation:</strong> Add a certificate/redirect for www, or leave intentionally disabled and document it.</p>
+  </div>
+  <hr class="divider">
+  <h3>2.2 Content Quality</h3>
+  <p><strong>Score:</strong> <span class="status-warn">70/100</span></p>
+  <h4>What Works</h4>
+  <ul>
+    <li>Byline + dated review line on 16/16 pages, real physician headshot, Physician/sameAs/reviewedBy schema</li>
+    <li>Editorial policy, funding/COI policy, sitewide medical disclaimer, red-flag cross-links on 16/16</li>
+    <li>Internal linking strong (84): every page links forward into the calculator cluster</li>
+    <li>Answer-first &#x27;Quick answers&#x27; blocks and a 7-question FAQ on the homepage</li>
+  </ul>
+  <h4>Findings</h4>
+  <div class="action-item medium">
+    <h4>No outbound citation links on 15 of 16 pages <span class="status-warn">High</span></h4>
+    <p>CDC/AAP/WHO/Fenton/INTERGROWTH appear as bare text only. The /methodology Sources table (Fenton PMID 23601190, INTERGROWTH, Zubler 2022) is plain text and unlinked, and JSON-LD carries no citation property. YMYL claims are therefore unverifiable from the page itself.</p>
+    <p><strong>Recommendation:</strong> Link every named authority and each methodology source to its primary URL (target/PubMed/DOI) and add matching &#x27;citation&#x27; entries to the MedicalWebPage/Article JSON-LD.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Thin content: 11 of 16 pages under 800 words in &lt;main&gt; <span class="status-warn">High</span></h4>
+    <p>Median page is 630 words. /red-flags has 526 total words of which only 166 are prose; /how-to-calculate-corrected-age has 559; /nicu-follow-up-schedule 585. For a YMYL competitive query set this is below the depth peers publish.</p>
+    <p><strong>Recommendation:</strong> Expand /red-flags, /how-to-calculate-corrected-age and /nicu-follow-up-schedule first with concrete worked examples, source-backed detail and unique first-hand clinical context; do not pad thin utility pages with filler.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Readability below grade-8 target on 15 of 16 pages <span class="status-warn">Medium</span></h4>
+    <p>Median prose Flesch 46.8 (about grade 10). Worst: /nicu-follow-up-schedule 41.1, /preemie-vaccines 41.2, /about 42.3. Audience is anxious parents reading on mobile at night.</p>
+    <p><strong>Recommendation:</strong> Shorten sentences and unpack clinical terms on the parent-facing pages; keep the clinician register on /pma-calculator and /methodology.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Keyword cannibalization across calculator and comparison pages <span class="status-warn">Medium</span></h4>
+    <p>Cosine overlap: / vs /adjusted-age-calculator 0.64, / vs /pma-calculator 0.64; the age-comparison topic is spread over 4 pages (0.49-0.55); vaccines appear on 6 pages (0.52 vs /preemie-vaccines); stop-correcting covered by 4 pages.</p>
+    <p><strong>Recommendation:</strong> Assign one canonical URL per query cluster, trim the overlapping sections on the secondary pages and point their internal links at the canonical - consolidate sections, do not delete pages.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Titles and meta descriptions exceed recommended lengths <span class="status-warn">Medium</span></h4>
+    <p>7 titles over 60 characters and 8 meta descriptions over 160 characters, risking SERP truncation; &#x27;| AdjustedAge&#x27; brand suffix is missing on /when-to-stop-correcting.</p>
+    <p><strong>Recommendation:</strong> Rewrite the 7 titles and 8 descriptions to fit 50-60 / 150-160 characters with the primary keyword front-loaded and a consistent brand suffix.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>No direct contact or corrections channel <span class="status-warn">Medium</span></h4>
+    <p>Contact is described as &#x27;via the about page&#x27; with no email/form, and there is no corrections log - both are trust signals Google&#x27;s quality rater guidelines expect for YMYL health sites.</p>
+    <p><strong>Recommendation:</strong> Publish a contact address or form on /about and add a dated corrections log.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Milestone &#x27;chart&#x27; has no tabular or downloadable artifact <span class="status-warn">Medium</span></h4>
+    <p>The page called a chart renders 72 list items; the whole site has only 3 &lt;table&gt; elements and no CSV/PDF download.</p>
+    <p><strong>Recommendation:</strong> Render the milestones as a real table with a CSV/print export to match the &#x27;chart&#x27; query intent and earn citations.</p>
+  </div>
+  <hr class="divider">
+  <h3>2.3 On-Page SEO</h3>
+  <p><strong>Score:</strong> <span class="status-pass">85/100</span></p>
+  <h4>What Works</h4>
+  <ul>
+    <li>16/16 pages return 200 with exactly one H1, a self-referencing canonical, viewport meta and no heading-level skips</li>
+    <li>16/16 carry complete Open Graph (title, description, image, url, type) and Twitter card tags</li>
+    <li>256 internal links across 16 pages (avg 16/page) with descriptive anchor text into the calculator cluster</li>
+    <li>Every page has a unique title and unique meta description (no templates or duplicates detected)</li>
+  </ul>
+  <h4>Findings</h4>
+  <div class="action-item medium">
+    <h4>7 titles exceed 60 characters <span class="status-warn">Medium</span></h4>
+    <p>Independent crawl of all 16 sitemap URLs found 7 titles over 60 characters, which Google will truncate in the SERP, hiding the brand suffix and possibly the primary keyword.</p>
+    <p><strong>Recommendation:</strong> Cut each to 50-60 characters, front-loading the primary keyword and keeping &#x27;| AdjustedAge&#x27; at the end.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>8 meta descriptions exceed 160 characters and 1 is short <span class="status-warn">Medium</span></h4>
+    <p>8 descriptions run past 160 characters (truncated mid-sentence in SERPs) and 1 is under 120 characters, wasting the click-through opportunity.</p>
+    <p><strong>Recommendation:</strong> Rewrite to 150-160 characters opening with the answer, not a restatement of the title, and closing on a concrete benefit rather than a stock CTA.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Brand suffix missing on /when-to-stop-correcting <span class="status-warn">Low</span></h4>
+    <p>The only title in the set without the &#x27;| AdjustedAge&#x27; suffix, breaking brand consistency in SERPs and OG previews.</p>
+    <p><strong>Recommendation:</strong> Restore the suffix to match the other 15 titles.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Thinnest page carries only 599 words <span class="status-warn">Low</span></h4>
+    <p>Minimum word count across the 16 URLs is 599 (median 859), so at least one page sits under the depth expected for its query class.</p>
+    <p><strong>Recommendation:</strong> Identify the sub-600-word page in onpage.json and expand it with source-backed, unique content.</p>
+  </div>
+  <hr class="divider">
+  <h3>2.4 Schema / Structured Data</h3>
+  <p><strong>Score:</strong> <span class="status-warn">74/100</span></p>
+  <h4>What Works</h4>
+  <ul>
+    <li>16/16 sitemap URLs emit JSON-LD: 82 blocks, 82/82 parse-valid, 0 truncated, all @context https, all URLs absolute, all dates ISO-8601</li>
+    <li>Physician @id resolves on 16/16 pages; every author/reviewedBy/copyrightHolder/creator reference resolves</li>
+    <li>WebApplication emitted on exactly the 4 tool routes, with applicationCategory HealthApplication and offers price 0</li>
+    <li>All 11 og/*.png URLs referenced by schema return 200 as real 1200x630 PNGs; Physician.image claims 709x585 and the live PNG is 709x585</li>
+    <li>No fabricated aggregateRating or Review markup</li>
+  </ul>
+  <h4>Findings</h4>
+  <div class="action-item medium">
+    <h4>Organization.logo points at a file that is not an image (16/16 pages) <span class="status-warn">High</span></h4>
+    <p>Organization.logo resolves to the 447-byte Vercel 503 XHTML page served as image/png, so every logo/organization validation fails sitewide. Same root asset as the technical F1.</p>
+    <p><strong>Recommendation:</strong> Regenerate public/favicon.png as a real PNG and point Organization.logo at public/icons/icon-192.png (verified 192x192, 32 KB).</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Duplicate, conflicting Physician node on /about <span class="status-warn">High</span></h4>
+    <p>about.tsx emits a second Physician with the same @id already defined in __root.tsx, with different description and extra properties, so JSON-LD merging is order-dependent.</p>
+    <p><strong>Recommendation:</strong> Fold the richer property set into the single __root.tsx node and delete the duplicate block in about.tsx.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>/about has no page-level schema node at all <span class="status-warn">High</span></h4>
+    <p>/about emits only WebSite, two Physician copies and BreadcrumbList: no WebPage/ProfilePage, no dates, no publisher, on the page carrying all YMYL identity weight.</p>
+    <p><strong>Recommendation:</strong> Add a single ProfilePage (or WebPage) node with dates and publisher, after resolving the duplicate Physician.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Organization exists only as 31 anonymous inline copies <span class="status-warn">Medium</span></h4>
+    <p>31 Organization nodes sitewide carry no @id, so they can never be referenced, merged or enriched; MedicalWebPage.copyrightHolder points at the physician rather than the publisher.</p>
+    <p><strong>Recommendation:</strong> Define one @id-keyed Organization with sameAs and url, and replace the anonymous copies with references.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>medicalSpecialty value &#x27;Pediatrics&#x27; is not a valid enum member <span class="status-warn">Medium</span></h4>
+    <p>schema.org&#x27;s MedicalSpecialty enumeration member is &#x27;Pediatric&#x27;; the string &#x27;Pediatrics&#x27; is used in 14 source locations and therefore renders on all 16 pages.</p>
+    <p><strong>Recommendation:</strong> Replace with &#x27;Pediatric&#x27; (or the full https://schema.org/Pediatric URL) in all 14 spots; free-text knowsAbout is fine as-is.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>image missing from 9 page nodes <span class="status-warn">Medium</span></h4>
+    <p>MedicalWebPage.image missing on 7 URLs and Article.image on the 2 guide pages, even though every one already has an og:image meta tag and a live 1200x630 card.</p>
+    <p><strong>Recommendation:</strong> Point each node&#x27;s image at the OG card that already exists for that page.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Two guide pages use Article only, with no medical review wiring <span class="status-warn">Medium</span></h4>
+    <p>/premature-baby-milestones and /how-to-calculate-corrected-age emit Article with author and publisher but no lastReviewed, reviewedBy, audience or specialty, despite a visible review line, violating the repo&#x27;s own SEO-AUDIT.md rule.</p>
+    <p><strong>Recommendation:</strong> Add the MedicalWebPage node plus reviewedBy/lastReviewed to match the site-wide pattern.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>/privacy is typed MedicalWebPage <span class="status-warn">Medium</span></h4>
+    <p>A privacy policy is declared as MedicalWebPage with no medical audience, specialty or reviewer.</p>
+    <p><strong>Recommendation:</strong> Retype as WebPage.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Schema dates drift from sitemap lastmod on 13 pages <span class="status-warn">Low</span></h4>
+    <p>dateModified/lastReviewed read 2026-08-27 while sitemap lastmod was frozen at 2026-08-26, so crawlers saw two competing current dates.</p>
+    <p><strong>Recommendation:</strong> Regenerate the sitemap at build time and keep schema dates in sync with the visible review line.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Breadcrumb name differs from the visible label on 13/16 pages <span class="status-warn">Low</span></h4>
+    <p>Case-only differences on 10 pages and wording differences on 3 (e.g. schema &#x27;Premature Baby Milestones&#x27; vs visible &#x27;Premature baby milestones chart&#x27;).</p>
+    <p><strong>Recommendation:</strong> Make each BreadcrumbList name match the visible breadcrumb text exactly.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>FAQPage markup does not match the visible copy <span class="status-warn">Low</span></h4>
+    <p>Of 46 marked-up questions only 13 appear verbatim on-page, and 5 pages carry FAQPage with no visible Q&amp;A section. Recorded as integrity only: Google retired FAQ rich results on 2026-05-07, so there is no SERP feature at stake and this is NOT a recommendation to add or remove FAQPage.</p>
+    <p><strong>Recommendation:</strong> Regenerate the JSON-LD strings from the copy already on the page, or render the marked-up Q&amp;A visibly. Info priority, no new FAQPage.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>HowTo block on /how-to-calculate-corrected-age earns nothing <span class="status-warn">Low</span></h4>
+    <p>Google removed how-to rich results in September 2023; the steps are honest visible copy but the markup has no SERP value.</p>
+    <p><strong>Recommendation:</strong> Optional cleanup: remove the block. Never add HowTo anywhere else.</p>
+  </div>
+  <hr class="divider">
+  <h3>2.5 Performance (CWV)</h3>
+  <p><strong>Score:</strong> <span class="status-warn">71/100</span></p>
+  <h4>What Works</h4>
+  <ul>
+    <li>Viewport meta, html lang and explicit image width/height on all 16 pages (zero CLS risk from images)</li>
+    <li>Module scripts plus modulepreload; hashed /assets/* served with Cache-Control public, max-age=31536000, immutable</li>
+    <li>True SSR: h1, FAQ text and 6 JSON-LD blocks present in the raw response, so LCP is server-delivered HTML rather than client render</li>
+    <li>13 OG cards are fixed 1200x630 PNGs with og:image:width/height declared</li>
+  </ul>
+  <h4>Findings</h4>
+  <div class="action-item medium">
+    <h4>Google Fonts render-blocking third-party CSS on all 16 pages <span class="status-warn">Medium</span></h4>
+    <p>Two serialized round-trips (Google CSS then gstatic font files) sit on the LCP path; the homepage h1 is set in font-display Newsreader, so LCP text stays invisible until the webfont resolves. Still open from the 2026-08-26 audit.</p>
+    <p><strong>Recommendation:</strong> Self-host via @fontsource-variable/newsreader and @fontsource-variable/public-sans (both OFL), preload only the LCP weight, drop both preconnects.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Large initial JavaScript payload (INP risk) <span class="status-warn">Medium</span></h4>
+    <p>The homepage preloads a 257 KB gzipped chunk containing jsPDF (86 refs) and Recharts (74 refs); total initial JS is about 398 KB gzipped, pressuring INP on mid-range mobile — the device a parent uses at 3 a.m.</p>
+    <p><strong>Recommendation:</strong> Code-split jsPDF (export/print) and Recharts (chart) behind dynamic import so the calculator path ships neither.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Three avatar images compete with the LCP element at high priority <span class="status-warn">Low</span></h4>
+    <p>Hero, sidebar and footer avatars all carry fetchPriority=high and loading=eager, including a 64 px footer image below the fold; all three contend with the h1 for the limited-connection priority queue.</p>
+    <p><strong>Recommendation:</strong> Reserve fetchPriority=high for the LCP candidate and lazy-load the footer avatar.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Public images are served with Cache-Control max-age=0, must-revalidate <span class="status-warn">Low</span></h4>
+    <p>Author photo, OG art, favicon and manifest revalidate on every load, while hashed assets are immutable.</p>
+    <p><strong>Recommendation:</strong> Give public/ images a real TTL such as max-age=604800, stale-while-revalidate=86400.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>No field Core Web Vitals available <span class="status-warn">Medium</span></h4>
+    <p>No CrUX, PageSpeed or GSC credentials are configured, so INP and LCP cannot be confirmed against the 2.5 s / 200 ms thresholds.</p>
+    <p><strong>Recommendation:</strong> Verify the property in Search Console and enable the PageSpeed Insights API so the next audit reports measured CWV instead of inference.</p>
+  </div>
+  <hr class="divider">
+  <h3>2.6 AI Search Readiness</h3>
+  <p><strong>Score:</strong> <span class="status-warn">76/100</span></p>
+  <h4>What Works</h4>
+  <ul>
+    <li>Every major AI crawler (GPTBot, ClaudeBot, Claude-Web, PerplexityBot, Google-Extended, CCBot, bingbot, msnbot, OAI-SearchBot) receives 200 with a byte-identical 55,643-byte body - no blocking, no cloaking, no X-Robots-Tag</li>
+    <li>robots.txt permissive (Allow: /) with sitemap declared; only /mcp, /.mcp/, /.well-known/, /~oauth/ disallowed</li>
+    <li>llm.txt and llms.txt both live and byte-identical (4,088 B), covering 16/16 sitemap URLs</li>
+    <li>Answer-first structure: &#x27;Quick answers&#x27; / &#x27;The short answer&#x27; blocks, 7-question FAQ, Physician + reviewedBy + sameAs graph on every page, datePublished/dateModified/lastReviewed, true SSR</li>
+    <li>Brand consistency: AdjustedAge + preemie.vercel.app identical across og:url, canonical and site_name on 16/16 pages</li>
+  </ul>
+  <h4>Findings</h4>
+  <div class="action-item medium">
+    <h4>llms.txt entries are not links and not absolute URLs <span class="status-warn">High</span></h4>
+    <p>Entries are formatted as &#x27;**/path** - description&#x27; rather than markdown links with absolute URLs, so link-extracting AI parsers recover zero URLs from the file.</p>
+    <p><strong>Recommendation:</strong> Regenerate llms.txt with &#x27;[Title](https://preemie.vercel.app/path)&#x27; link syntax for all 16 pages.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Zero outbound source links citable by AI systems <span class="status-warn">High</span></h4>
+    <p>Authority sources are named as plain text only across all 16 pages, so an answer engine extracting claims cannot cite a verifiable source from this site. Same root cause as the content-side citation gap.</p>
+    <p><strong>Recommendation:</strong> Add primary-source links to CDC/AAP/WHO/Fenton/INTERGROWTH references and mirror them in JSON-LD &#x27;citation&#x27;.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Article schema missing reviewedBy and lastReviewed on two spoke pages <span class="status-warn">Medium</span></h4>
+    <p>/premature-baby-milestones and /how-to-calculate-corrected-age carry Article schema without reviewedBy/lastReviewed, unlike the rest of the site.</p>
+    <p><strong>Recommendation:</strong> Add reviewedBy (Physician @id) and lastReviewed dates to match the site-wide pattern.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Organization.logo points at the broken 447-byte favicon <span class="status-warn">Medium</span></h4>
+    <p>Organization.logo still references the invalid favicon asset identified in the technical pass, weakening entity recognition.</p>
+    <p><strong>Recommendation:</strong> Point Organization.logo at a real 1148x1148 (or larger) logo image and keep it referenced by ImageObject.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Title brand drift on one page <span class="status-warn">Low</span></h4>
+    <p>/when-to-stop-correcting omits the AdjustedAge brand suffix present on the other 15 titles.</p>
+    <p><strong>Recommendation:</strong> Restore the consistent &#x27;| AdjustedAge&#x27; suffix.</p>
+  </div>
+  <hr class="divider">
+  <h3>2.7 Images</h3>
+  <p><strong>Score:</strong> <span class="status-warn">70/100</span></p>
+  <h4>What Works</h4>
+  <ul>
+    <li>0 images missing alt text across all 16 pages</li>
+    <li>0 images missing explicit width/height across all 16 pages, so images contribute no CLS</li>
+    <li>Author photo served as &lt;picture&gt; with a 31,112 B WebP source ahead of the 498,507 B PNG</li>
+    <li>All 13 social cards return 200 image/png at 1200x630 with og:image:width/height and twitter:image:alt present</li>
+  </ul>
+  <h4>Findings</h4>
+  <div class="action-item medium">
+    <h4>public/favicon.png is not an image <span class="status-warn">High</span></h4>
+    <p>The favicon is a 447-byte Vercel 503 XHTML page served as image/png and /favicon.ico returns 404, so the browser tab and search sitelink favicon are broken sitewide.</p>
+    <p><strong>Recommendation:</strong> Regenerate a proper favicon set: 32x32 favicon.png, 180x180 apple-touch-icon.png, 512x512 icon and a multi-size favicon.ico.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Only one crawlable content image on the whole site <span class="status-warn">Medium</span></h4>
+    <p>Across 16 pages there is a single crawlable content image (the rest are avatars, OG art and icons), so image search brings no traffic and visual results give the site nothing to show for the milestones and growth-chart queries.</p>
+    <p><strong>Recommendation:</strong> Add bespoke diagrams — a corrected-age timeline, the milestones chart as an image, and a growth-curve explainer — each with descriptive filenames, alt text and matching schema image.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>498 KB PNG fallback behind the author photo <span class="status-warn">Low</span></h4>
+    <p>Browsers without WebP support download a 498,507 B PNG for a headshot rendered at 40-96 px.</p>
+    <p><strong>Recommendation:</strong> Resize the PNG fallback to at most 2x its largest rendered size.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Avatar images use fetchPriority=high and eager loading below the fold <span class="status-warn">Low</span></h4>
+    <p>Three avatars including the 64 px footer image request high priority, competing with the LCP element.</p>
+    <p><strong>Recommendation:</strong> Keep high priority for the LCP candidate only; lazy-load the rest.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Public images revalidate on every request <span class="status-warn">Low</span></h4>
+    <p>Cache-Control max-age=0, must-revalidate on public/ images means repeat visits re-fetch the author photo and OG art.</p>
+    <p><strong>Recommendation:</strong> Set a one-week TTL with stale-while-revalidate.</p>
+  </div>
+  <hr class="divider">
+</div>
+
+<!-- ======================================================= 3. ACTION PLAN === -->
+<div class="section">
+  <div class="section-header">
+    <h2>3. Action Plan</h2>
+  </div>
+
+  <div class="roadmap-phase">
+    <h4>Phase 1: Critical Fixes <span class="effort">Week 1</span></h4>
+    <ul>
+      <li>Replace the 447-byte Vercel error-page favicon with a real icon set (favicon.png, apple-touch-icon.png, icon-512.png, favicon.ico) and repoint rel=icon plus WebSite.publisher.logo / Organization.logo</li>
+      <li>Wire scripts/generate-sitemap.mjs into the build script and derive lastmod from the last commit touching each route (mtime only for uncommitted edits)</li>
+      <li>Add vercel.json security headers: X-Content-Type-Options, Referrer-Policy, X-Frame-Options, Permissions-Policy</li>
+      <li>Give the 404 route its own title and meta robots noindex while keeping HTTP 404</li>
+      <li>Regenerate llm.txt and llms.txt as absolute markdown links covering all 16 URLs, kept byte-identical</li>
+      <li>Resolve the service-worker registration that points at a /sw.js which 404s</li>
+      <li>Add genuine outbound citation links plus JSON-LD citation arrays across all 16 pages</li>
+      <li>Expand the thin pages: /red-flags (166 to 508 prose words), /nicu-follow-up-schedule, /how-to-calculate-corrected-age</li>
+      <li>Render /premature-baby-milestones as a real semantic table with CSV export</li>
+      <li>Rewrite titles to &lt;=60 chars and descriptions to 150-160 chars on all 16 URLs; restore the brand suffix on /when-to-stop-correcting</li>
+      <li>Add a contact channel and a dated corrections log to /about</li>
+      <li>Make /when-to-stop-correcting evidence-led (PMC12221983, Nature Pediatric Research 2024 n=656,986, Emory no-consensus)</li>
+    </ul>
+  </div>
+  <div class="roadmap-phase">
+    <h4>Phase 2: High-Impact Improvements <span class="effort">Weeks 2-3</span></h4>
+    <ul>
+      <li>Self-host the Google Fonts CSS via @fontsource-variable, preload only the LCP weight, drop both preconnects</li>
+      <li>Code-split jsPDF and Recharts behind dynamic import to cut the ~398 KB gzipped initial payload and relieve INP</li>
+      <li>Schema repair: one @id-keyed Organization replacing 31 anonymous copies, dedupe the Physician node on /about, add ProfilePage to /about</li>
+      <li>Fix medicalSpecialty &#x27;Pediatrics&#x27; to the &#x27;Pediatric&#x27; enum in all 14 source locations</li>
+      <li>Add image to the 9 page nodes that lack it, retype /privacy as WebPage, add MedicalWebPage + reviewedBy to the 2 Article guides</li>
+      <li>Align every BreadcrumbList name with the visible breadcrumb text</li>
+      <li>Expand header navigation so the 10 routes with no header presence are reachable in one click</li>
+      <li>De-duplicate the calculator trio: unique intro and FAQ sets, hub/spoke section split, no page deletions</li>
+      <li>Readability pass on the 8 parent-facing guides toward Flesch &gt;= 60</li>
+      <li>Implement internal query-string prefill links (SEO-AUDIT section 3.3)</li>
+      <li>Give public/ images a real cache TTL and drop fetchPriority=high from non-LCP avatars</li>
+    </ul>
+  </div>
+  <div class="roadmap-phase">
+    <h4>Phase 3: Content &amp; Authority <span class="effort">Month 2</span></h4>
+    <ul>
+      <li>Ship the growth-chart page still open from the 2026-08-26 audit</li>
+      <li>Ship the twins, discharge and sleep guides identified as topical gaps</li>
+      <li>Add homepage FAQ 8-10</li>
+      <li>Produce bespoke visual assets: corrected-age timeline, milestones chart image, growth-curve explainer</li>
+      <li>Verify the property in Google Search Console and Bing Webmaster Tools (still open from the prior audit)</li>
+      <li>Begin backlink acquisition; execute the domain cutover checklist (decided, deliberately not this week)</li>
+    </ul>
+  </div>
+  <div class="roadmap-phase">
+    <h4>Phase 4: Monitoring &amp; Iteration <span class="effort">Ongoing</span></h4>
+    <ul>
+      <li>Drift baseline id 1 captured 2026-09-28; re-run monthly and compare against it</li>
+      <li>Report measured Core Web Vitals once CrUX/GSC credentials exist (current CWV evidence is code-level only)</li>
+      <li>Track rankings for the target query set and watch the calculator-cluster cannibalization scores</li>
+      <li>Maintain the /about corrections log on every substantive content change</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ======================================================= DATA SOURCES & METHODOLOGY === -->
+<div class="section" style="text-align: center; padding-top: 15mm;">
+  <hr class="divider">
+  <h3 style="text-align: left;">Data Sources &amp; Methodology</h3>
+  <table>
+    <thead>
+      <tr><th>Source</th><th>Description</th><th>Update Frequency</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>PageSpeed Insights API</td>
+          <td>Lighthouse lab audit (mobile emulation, Moto G Power, slow 4G)</td>
+          <td>Real-time</td></tr>
+      <tr><td>Chrome UX Report (CrUX)</td>
+          <td>28-day rolling field data from real Chrome users</td>
+          <td>Daily ~04:00 UTC</td></tr>
+      <tr><td>CrUX History API</td>
+          <td>25-week p75 trend data per metric</td>
+          <td>Weekly</td></tr>
+      <tr><td>Google Search Console</td>
+          <td>Search Analytics (clicks, impressions, CTR, position)</td>
+          <td>2-3 day lag</td></tr>
+      <tr><td>URL Inspection API</td>
+          <td>Per-URL index status, coverage state, crawl info</td>
+          <td>Real-time (2,000/day)</td></tr>
+    </tbody>
+  </table>
+  <p style="color: #94a3b8; font-size: 9pt; margin-top: 5mm;">
+    Report generated by Claude SEO &mdash; Google SEO Intelligence Skill &mdash; September 28, 2026<br>
+    Methodology based on Google Web Vitals thresholds, Search Console documentation, and Lighthouse scoring algorithms.
+  </p>
+</div>
+
+</body>
+</html>
