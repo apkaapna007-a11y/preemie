@@ -1,0 +1,192 @@
+﻿======================================================================
+/
+  title: Corrected Age Calculator for Premature Babies | AdjustedAge
+  desc : Calculate corrected age for a premature baby from birth date and gestational age, plus chronological age, PMA, milestones and follow-up planning. Reviewed by Dr. Zeeshan Islam.
+  canon: https://preemie.vercel.app/ | robots: index, follow
+  h1   : ['Corrected age calculator for premature babies']
+  ogurl: None | sitename: None | ogtitle: None
+  ld   : ['WebSite', 'Physician', 'MedicalWebPage', 'WebApplication', 'FAQPage', 'BreadcrumbList']
+  imgs : ['https://preemie.vercel.app/og/og-brand.png', 'https://preemie.vercel.app/og/og-home.png']
+  textlen: 11613 | citations: 11 | years: ['2026']
+  review: True ['Skip to main content Clinically reviewed by Dr.', ' Medically reviewed by Dr.']
+  h2/h3: ['h2|One input set, every age', 'h2|Built for trust', 'h2|For parents and clinicians', 'h2|Keeps the follow-up record', 'h2|Enter the birth details once', 'h2|Quick answers parents usually need first', 'h2|Parents usually search these next', 'h3|Late preterm baby guide', 'h3|NICU follow-up schedule', 'h3|When can my preemie start solids?', 'h3|Adjusted age vs chronological age', 'h2|Featured follow-up guides', 'h3|How to calculate corrected age', 'h3|Premature baby milestones chart']
+======================================================================
+/adjusted-age-calculator
+  title: Adjusted Age Calculator for Premature Babies | AdjustedAge
+  desc : Use this adjusted age calculator for premature babies. Adjusted age and corrected age mean the same thing. Includes PMA, milestones and follow-up planning, reviewed by Dr. Zeeshan Islam.
+  canon: https://preemie.vercel.app/adjusted-age-calculator | robots: index, follow
+  h1   : ['Adjusted age calculator for premature babies']
+  ogurl: None | sitename: None | ogtitle: None
+  ld   : ['WebSite', 'Physician', 'MedicalWebPage', 'WebApplication', 'FAQPage', 'BreadcrumbList']
+  imgs : ['https://preemie.vercel.app/og/og-brand.png', 'https://preemie.vercel.app/og/og-home.png']
+  textlen: 7508 | citations: 6 | years: ['2026']
+  review: True ['Skip to main content Clinically reviewed by Dr.', ' Medically reviewed by Dr.']
+  h2/h3: ['h2|Enter the birth details once', 'h2|Quick answers', 'h2|What adjusted age means', 'h2|Adjusted age vs corrected age vs chronological age', 'h2|How to calculate adjusted age', 'h2|When should adjusted age be used?', 'h2|When should adjusted age not be used?', 'h2|Adjusted age questions parents ask most often', 'h3|Is adjusted age the same as corrected age?', 'h3|Should I use adjusted age for milestones?', 'h3|Should vaccines use adjusted age?', 'h3|Does a 35- or 36-week baby still need adjusted age?', 'h3|When do you stop using adjusted age?', 'h2|Use the adjusted age result safely']
+======================================================================
+/pma-calculator
+  title: Postmenstrual Age (PMA) Calculator for Preterm Babies | AdjustedAge
+  desc : Calculate postmenstrual age (PMA) for a preterm baby, plus corrected age and chronological age. Useful before the due date and early NICU follow-up. Reviewed by Dr. Zeeshan Islam.
+  canon: https://preemie.vercel.app/pma-calculator | robots: index, follow
+  h1   : ['Postmenstrual age (PMA) calculator for preterm babies']
+  ogurl: None | sitename: None | ogtitle: None
+  ld   : ['WebSite', 'Physician', 'MedicalWebPage', 'WebApplication', 'FAQPage', 'BreadcrumbList']
+  imgs : ['https://preemie.vercel.app/og/og-brand.png', 'https://preemie.vercel.app/og/og-pma.png']
+  textlen: 5887 | citations: 6 | years: ['2026']
+  review: True ['Skip to main content Clinically reviewed by Dr.', ' Medically reviewed by Dr.']
+  h2/h3: ['h2|Enter the birth details once', 'h2|Quick answers', 'h2|What PMA means', 'h2|PMA vs corrected age vs chronological age', 'h2|When PMA matters most', 'h2|Common PMA questions', 'h3|Is PMA the same as corrected age?', 'h3|Why is corrected age negative before the due date?', 'h3|Should parents track PMA at home?', 'h2|Use PMA with the rest of the follow-up toolkit', 'h2|Related preemie follow-up pages', 'h3|Corrected age calculator', 'h3|Adjusted age calculator', 'h3|Adjusted age vs chronological age']
+======================================================================
+/preemie-weight-gain
+  title: Preemie Weight Gain Calculator (g/day & g/kg/day) | AdjustedAge
+  desc : Calculate preemie weight gain between two dates in grams per day and grams per kilogram per day. Built for NICU follow-up and reviewed by Dr. Zeeshan Islam.
+  canon: https://preemie.vercel.app/preemie-weight-gain | robots: index, follow
+  h1   : ['Preemie weight gain calculator']
+  ogurl: None | sitename: None | ogtitle: None
+  ld   : ['WebSite', 'Physician', 'MedicalWebPage', 'WebApplication', 'FAQPage', 'BreadcrumbList']
+  imgs : ['https://preemie.vercel.app/og/og-brand.png', 'https://preemie.vercel.app/og/og-weight-gain.png']
+  textlen: 5530 | citations: 6 | years: ['2026']
+  review: True ['Skip to main content Clinically reviewed by Dr.', ' Medically reviewed by Dr.']
+  h2/h3: ['h2|Preemie weight gain calculator', 'h2|Quick answers', 'h2|Why preemie weight gain is tracked differently', 'h2|How this calculator works', 'h2|What parents should not do with weight-gain numbers', 'h2|When poor weight gain matters urgently', 'h2|Use this with corrected age and PMA', 'h2|Related growth and follow-up pages', 'h3|Corrected age calculator', 'h3|PMA calculator', 'h3|NICU follow-up schedule', 'h3|Late preterm baby guide', 'h3|When can my preemie start solids?', 'h3|Premature baby milestones chart']
+======================================================================
+/preemie-vaccines
+  title: Do Preemies Get Vaccines by Corrected Age? | AdjustedAge
+  desc : Preemie vaccine timing usually follows chronological age, not corrected age. A clear guide for parents of premature babies, reviewed by Dr. Zeeshan Islam.
+  canon: https://preemie.vercel.app/preemie-vaccines | robots: index, follow
+  h1   : ['Do preemies get vaccines by corrected age?']
+  ogurl: None | sitename: None | ogtitle: None
+  ld   : ['WebSite', 'Physician', 'MedicalWebPage', 'FAQPage', 'BreadcrumbList']
+  imgs : ['https://preemie.vercel.app/og/og-brand.png']
+  textlen: 5412 | citations: 6 | years: ['2026']
+  review: True ['Skip to main content Clinically reviewed by Dr.', ' Medically reviewed by Dr.']
+  h2/h3: ['h2|Quick answers', 'h2|The short answer', 'h2|Why corrected age is not used for vaccines', 'h2|What parents often hear, and what it means', 'h2|Are there exceptions?', 'h2|How to avoid the common mistake', 'h2|Related questions parents search', 'h3|Do preemies get vaccines later than term babies?', 'h3|Can corrected age delay vaccines?', 'h3|What age should I use for milestones instead?', 'h3|What if my baby was late preterm?', 'h2|Pages that help with this confusion', 'h3|Corrected age calculator', 'h3|Adjusted age calculator']
+======================================================================
+/late-preterm-baby
+  title: Late Preterm Baby Guide: 34 to 36 Weeks & Corrected Age | AdjustedAge
+  desc : A late preterm baby guide for 34 to 36 weeks: corrected age, feeding, milestones, common risks and when to call the doctor. Reviewed by Dr. Zeeshan Islam.
+  canon: https://preemie.vercel.app/late-preterm-baby | robots: index, follow
+  h1   : ['Late preterm baby guide']
+  ogurl: None | sitename: None | ogtitle: None
+  ld   : ['WebSite', 'Physician', 'MedicalWebPage', 'FAQPage', 'BreadcrumbList']
+  imgs : ['https://preemie.vercel.app/og/og-brand.png', 'https://preemie.vercel.app/og/og-late-preterm.png']
+  textlen: 5063 | citations: 6 | years: ['2026']
+  review: True ['Skip to main content Clinically reviewed by Dr.', ' Medically reviewed by Dr.']
+  h2/h3: ['h2|Quick answers', 'h2|What late preterm means', 'h2|Why corrected age still matters for a 35- or 36-week baby', 'h2|Common late preterm concerns after discharge', 'h2|Milestones in late preterm babies', 'h2|What age should I use for vaccines?', 'h2|When to call the doctor', 'h2|Useful pages for late-preterm follow-up', 'h3|Corrected age calculator', 'h3|Adjusted age vs chronological age', 'h3|Premature baby milestones chart', 'h3|Preemie weight gain calculator', 'h3|NICU follow-up schedule', 'h3|Preemie red flags']
+======================================================================
+/nicu-follow-up-schedule
+  title: NICU Follow-Up Schedule for Preterm Babies | AdjustedAge
+  desc : A NICU follow-up schedule by corrected age: common visits at 4, 8, 12, 18, 24 and 36 months, what each visit looks for, and why timing uses corrected age. Reviewed by Dr. Zeeshan Islam.
+  canon: https://preemie.vercel.app/nicu-follow-up-schedule | robots: index, follow
+  h1   : ['NICU follow-up schedule for preterm babies']
+  ogurl: None | sitename: None | ogtitle: None
+  ld   : ['WebSite', 'Physician', 'MedicalWebPage', 'FAQPage', 'BreadcrumbList']
+  imgs : ['https://preemie.vercel.app/og/og-brand.png', 'https://preemie.vercel.app/og/og-followup.png']
+  textlen: 5275 | citations: 6 | years: ['2026']
+  review: True ['Skip to main content Clinically reviewed by Dr.', ' Medically reviewed by Dr.']
+  h2/h3: ['h2|Quick answers', 'h2|Why follow-up timing uses corrected age', 'h2|A common NICU follow-up schedule', 'h3|4 months corrected', 'h3|8 months corrected', 'h3|12 months corrected', 'h3|18 months corrected', 'h3|24 months corrected', 'h3|36 months corrected', 'h2|What these visits are really checking', 'h2|When the schedule differs', 'h2|Questions parents ask most', 'h3|Does every preemie need long NICU follow-up?', 'h3|What age should I write on the appointment notes?']
+======================================================================
+/when-can-my-preemie-start-solids
+  title: When Can My Preemie Start Solids? Corrected Age Guide | AdjustedAge
+  desc : When can a preemie start solids? A corrected-age guide to readiness, timing, feeding safety and the questions to ask your clinician. Reviewed by Dr. Zeeshan Islam.
+  canon: https://preemie.vercel.app/when-can-my-preemie-start-solids | robots: index, follow
+  h1   : ['When can my preemie start solids?']
+  ogurl: None | sitename: None | ogtitle: None
+  ld   : ['WebSite', 'Physician', 'MedicalWebPage', 'FAQPage', 'BreadcrumbList']
+  imgs : ['https://preemie.vercel.app/og/og-brand.png', 'https://preemie.vercel.app/og/og-solids.png']
+  textlen: 5259 | citations: 6 | years: ['2026']
+  review: True ['Skip to main content Clinically reviewed by Dr.', ' Medically reviewed by Dr.']
+  h2/h3: ['h2|Quick answers', 'h2|The short answer', 'h2|Why corrected age matters for solids', 'h2|Readiness signs matter as much as the calendar', 'h2|When the answer is more individual', 'h2|What parents should not do', 'h2|Questions parents often ask', 'h3|Should I use corrected age or chronological age?', 'h3|My baby looks interested in food. Is that enough?', 'h3|What if my baby was late preterm?', 'h2|Use this page with the rest of the follow-up toolkit', 'h2|Related feeding and development pages', 'h3|Corrected age calculator', 'h3|Adjusted age vs chronological age']
+======================================================================
+/adjusted-age-vs-chronological-age
+  title: Adjusted Age vs Chronological Age for Preemies | AdjustedAge
+  desc : What is the difference between adjusted age and chronological age in a preemie? A clear comparison for milestones, vaccines, PMA and follow-up. Reviewed by Dr. Zeeshan Islam.
+  canon: https://preemie.vercel.app/adjusted-age-vs-chronological-age | robots: index, follow
+  h1   : ['Adjusted age vs chronological age']
+  ogurl: None | sitename: None | ogtitle: None
+  ld   : ['WebSite', 'Physician', 'MedicalWebPage', 'FAQPage', 'BreadcrumbList']
+  imgs : ['https://preemie.vercel.app/og/og-age-difference.png', 'https://preemie.vercel.app/og/og-brand.png']
+  textlen: 5050 | citations: 6 | years: ['2026']
+  review: True ['Skip to main content Clinically reviewed by Dr.', ' Medically reviewed by Dr.']
+  h2/h3: ['h2|Quick answers', 'h2|The simple definitions', 'h2|Which age should I use?', 'h2|Why the difference matters', 'h2|What adjusted age actually changes', 'h2|Common questions', 'h3|Is adjusted age the same as corrected age?', 'h3|What is chronological age?', 'h3|Which age should I use for milestones?', 'h3|Which age should I use for vaccines?', 'h2|Use the right age on the right page', 'h3|Corrected age calculator', 'h3|Adjusted age calculator', 'h3|PMA calculator']
+======================================================================
+/premature-baby-milestones
+  title: Premature Baby Milestones Chart by Corrected Age (2û36 Months) | AdjustedAge
+  desc : Printable premature baby milestones chart by corrected age, 2 to 36 months, using CDC/AAP surveillance prompts. Free to print, reviewed by Dr. Zeeshan Islam.
+  canon: https://preemie.vercel.app/premature-baby-milestones | robots: index, follow
+  h1   : ['Premature baby milestones chart, by corrected age']
+  ogurl: None | sitename: None | ogtitle: None
+  ld   : ['WebSite', 'Physician', 'Article', 'FAQPage', 'BreadcrumbList']
+  imgs : ['https://preemie.vercel.app/og/og-brand.png']
+  textlen: 7994 | citations: 11 | years: ['2022', '2026']
+  review: True ['Skip to main content Clinically reviewed by Dr.', ' Medically reviewed by Dr.']
+  h2/h3: ['h2|2 months corrected', 'h2|4 months corrected', 'h2|6 months corrected', 'h2|9 months corrected', 'h2|12 months corrected', 'h2|15 months corrected', 'h2|18 months corrected', 'h2|24 months corrected', 'h2|30 months corrected', 'h2|36 months corrected', 'h2|Preemies do not catch up on a schedule', 'h2|Use the chart with the rest of the follow-up toolkit', 'h3|Corrected age calculator', 'h3|Adjusted age calculator']
+======================================================================
+/how-to-calculate-corrected-age
+  title: How to Calculate Corrected Age for a Premature Baby | AdjustedAge
+  desc : Learn how to calculate corrected age for a premature baby using gestational age, chronological age and three worked examples. Reviewed by Dr. Zeeshan Islam.
+  canon: https://preemie.vercel.app/how-to-calculate-corrected-age | robots: index, follow
+  h1   : ['How to calculate corrected age']
+  ogurl: None | sitename: None | ogtitle: None
+  ld   : ['WebSite', 'Physician', 'Article', 'HowTo', 'FAQPage', 'BreadcrumbList']
+  imgs : ['https://preemie.vercel.app/og/og-brand.png']
+  textlen: 5196 | citations: 6 | years: ['2026']
+  review: True ['Skip to main content Clinically reviewed by Dr.', ' Medically reviewed by Dr.']
+  h2/h3: ['h2|The formula', 'h3|Worked example 1 ù 28 weeks, now 6 months old', 'h3|Worked example 2 ù 34+3 weeks, now 10 weeks old', 'h3|Worked example 3 ù 25 weeks, still before the due date', 'h2|Common questions about corrected age', 'h3|Do you correct a premature babyÆs vaccine schedule?', 'h3|What if corrected age is negative?', 'h3|When should corrected-age calculations stop?', 'h2|The mistakes that actually happen', 'h2|Related preterm follow-up guides', 'h2|Continue with the calculator and follow-up pages', 'h3|Corrected age calculator', 'h3|Adjusted age calculator', 'h3|Adjusted age vs chronological age']
+======================================================================
+/when-to-stop-correcting
+  title: When to Stop Correcting Age for a Preemie | Milestones, Growth & Vaccines
+  desc : When do you stop correcting age for a preemie? Usually around 24 months for development, but growth, vaccines and late-preterm follow-up use different rules. Reviewed by Dr. Zeeshan Islam.
+  canon: https://preemie.vercel.app/when-to-stop-correcting | robots: index, follow
+  h1   : ['When do you stop correcting age for a preemie?']
+  ogurl: None | sitename: None | ogtitle: None
+  ld   : ['WebSite', 'Physician', 'MedicalWebPage', 'FAQPage', 'BreadcrumbList']
+  imgs : ['https://preemie.vercel.app/og/og-brand.png', 'https://preemie.vercel.app/og/og-guides.png']
+  textlen: 6583 | citations: 6 | years: ['2026']
+  review: True ['Skip to main content Clinically reviewed by Dr.', ' Medically reviewed by Dr.']
+  h2/h3: ['h2|The short answer', 'h2|The better question is: correcting what?', 'h2|Why 24 months became the default answer', 'h2|When 24 months is too blunt', 'h2|Late preterm babies often get dropped too early', 'h2|Stopping correction is not the same as expecting catch-up', 'h2|What this page should change in practice', 'h2|Related pages for this decision point', 'h3|Corrected age calculator', 'h3|Adjusted age vs chronological age', 'h3|How to calculate corrected age', 'h3|Late preterm baby guide', 'h3|NICU follow-up schedule', 'h3|Premature baby milestones chart']
+======================================================================
+/red-flags
+  title: Preemie Red Flags: When to Call the Doctor | AdjustedAge
+  desc : Developmental and clinical red flags in premature babies that need a same-week call, whatever the corrected age. Reviewed by Dr. Zeeshan Islam.
+  canon: https://preemie.vercel.app/red-flags | robots: index, follow
+  h1   : ['Preemie red flags: when to call the doctor']
+  ogurl: None | sitename: None | ogtitle: None
+  ld   : ['WebSite', 'Physician', 'MedicalWebPage', 'BreadcrumbList']
+  imgs : ['https://preemie.vercel.app/og/og-brand.png']
+  textlen: 4499 | citations: 6 | years: ['2026']
+  review: True ['Skip to main content Clinically reviewed by Dr.', ' Medically reviewed by Dr.']
+  h2/h3: ['h2|Call today ù do not wait for the next visit', 'h2|Emergency ù seek immediate care', 'h2|Same-week call to your paediatrician', 'h2|Things that are usually not a problem', 'h2|A note on trusting yourself', 'h2|Use this safety page with the rest of the tool', 'h3|Corrected age calculator', 'h3|Adjusted age calculator', 'h3|Premature baby milestones chart', 'h3|How to calculate corrected age', 'h3|When to stop correcting', 'h3|Methodology and references']
+======================================================================
+/methodology
+  title: Corrected Age Methodology, PMA & References | AdjustedAge
+  desc : Technical methodology for AdjustedAge: corrected-age formula, PMA logic, milestone sources, growth-chart standards and editorial review policy. Reviewed by Dr. Zeeshan Islam.
+  canon: https://preemie.vercel.app/methodology | robots: index, follow
+  h1   : ['Corrected age methodology, PMA and references']
+  ogurl: None | sitename: None | ogtitle: None
+  ld   : ['WebSite', 'Physician', 'MedicalWebPage', 'FAQPage', 'BreadcrumbList']
+  imgs : ['https://preemie.vercel.app/og/og-brand.png', 'https://preemie.vercel.app/og/og-guides.png']
+  textlen: 8903 | citations: 27 | years: ['2006', '2013', '2015', '2022', '2026']
+  review: True ['Skip to main content Clinically reviewed by Dr.', ' Medically reviewed by Dr.']
+  h2/h3: ['h2|What this page is for', 'h2|The arithmetic, exactly as implemented', 'h2|Why 280 days and UTC-normalised dates are explicit choices', 'h2|Where the milestone content comes from', 'h2|Sources', 'h2|Fenton versus INTERGROWTH-21st', 'h2|Editorial review and correction policy', 'h2|What this tool deliberately will not do', 'h2|How this page differs from the worked formula guide', 'h2|Use the methodology with the calculator', 'h2|Pages this methodology supports', 'h3|Corrected age calculator', 'h3|How to calculate corrected age', 'h3|Adjusted age vs chronological age']
+======================================================================
+/about
+  title: About Dr. Zeeshan Islam | AdjustedAge
+  desc : AdjustedAge is written and reviewed by Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics), a pediatrician, medical writer and digital health creator in Pakistan.
+  canon: https://preemie.vercel.app/about | robots: index, follow
+  h1   : ['Dr. Zeeshan Islam']
+  ogurl: None | sitename: None | ogtitle: None
+  ld   : ['WebSite', 'Physician', 'Physician', 'BreadcrumbList']
+  imgs : ['https://preemie.vercel.app/og/og-brand.png']
+  textlen: 5234 | citations: 7 | years: ['2026']
+  review: True ['Skip to main content Clinically reviewed by Dr.', ' Written and clinically reviewed by Dr.']
+  h2/h3: ['h2|Qualifications', 'h2|Why I built this', 'h2|Editorial policy', 'h2|Identity card and elsewhere', 'h2|Funding and conflicts of interest', 'h2|Scope and limits of this site', 'h2|Read the pages this review supports', 'h3|Corrected age calculator', 'h3|Adjusted age calculator', 'h3|Premature baby milestones chart', 'h3|How to calculate corrected age', 'h3|Preemie red flags', 'h3|Methodology and references']
+======================================================================
+/privacy
+  title: Privacy & Data Handling | AdjustedAge
+  desc : AdjustedAge stores your baby's dates and measurements only in your browser. No accounts, no cookies, no data uploaded.
+  canon: https://preemie.vercel.app/privacy | robots: index, follow
+  h1   : ['Privacy and data handling']
+  ogurl: None | sitename: None | ogtitle: None
+  ld   : ['WebSite', 'Physician', 'MedicalWebPage', 'BreadcrumbList']
+  imgs : ['https://preemie.vercel.app/og/og-brand.png']
+  textlen: 3789 | citations: 7 | years: ['2026']
+  review: True ['Skip to main content Clinically reviewed by Dr.', ' Medically reviewed by Dr.']
+  h2/h3: ['h2|What is stored, and where', 'h2|Privacy-first usage analytics', 'h2|Offline use', 'h2|No advertising, no sponsorship', 'h2|Contact', 'h2|Trust pages and core tools', 'h3|Corrected age calculator', 'h3|Adjusted age calculator', 'h3|Methodology and references', 'h3|About the author', 'h3|Premature baby milestones chart', 'h3|Preemie red flags']

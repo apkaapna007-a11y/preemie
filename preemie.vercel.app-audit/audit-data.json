@@ -1,0 +1,282 @@
+{
+  "summary": {
+    "health_score": 0,
+    "business_type": "Publisher / YMYL health tool (calculator + editorial guides)",
+    "top_findings": [
+      "public/favicon.png is a committed Vercel 503 timeout page served as image/png, referenced by rel=icon and WebSite.publisher.logo (regression)",
+      "Security headers absent: CSP, X-Content-Type-Options, Referrer-Policy, Permissions-Policy, X-Frame-Options",
+      "Sitemap lastmod frozen at 2026-08-26 and sitemap generator not wired into build",
+      "Google Fonts render-blocking third-party CSS on all 16 pages",
+      "Initial JS payload ~398 KB gzipped (jsPDF + Recharts) = INP risk"
+    ],
+    "quick_wins": [
+      "Replace favicon.png with a real 32x32/180x180 icon set and add favicon.ico",
+      "Wire scripts/generate-sitemap.mjs into the build script",
+      "Set noindex on the 404 route and give it its own title",
+      "Self-host the Google Fonts stylesheet"
+    ]
+  },
+  "categories": [
+    {
+      "name": "Technical SEO",
+      "score": 85,
+      "weight": 0.22,
+      "what_works": [
+        "All 16 sitemap URLs return 200 with exact self-canonical and index,follow",
+        "16 unique titles and H1s; no noindex anywhere in src/",
+        "Sitemap valid and declared in robots.txt",
+        "HTTP to HTTPS single 308; HSTS max-age=63072000 includeSubDomains preload on every response",
+        "No redirect chain longer than 1 hop; no indexable parameter/case/dot-segment variants",
+        "0 images missing width/height across 16 pages (no CLS from images)",
+        "Module scripts + modulepreload; immutable caching on hashed assets"
+      ],
+      "findings": [
+        {
+          "title": "public/favicon.png is a Vercel 503 error page served as image/png",
+          "severity": "High",
+          "description": "public/favicon.png is a committed 447-byte XHTML '503 first byte timeout' document served with Content-Type image/png. It is referenced by rel=icon and by WebSite.publisher.logo JSON-LD. /favicon.ico returns 404. This is a regression versus the 2026-08-26 audit, which recorded a 4 KB icon.",
+          "recommendation": "Replace public/favicon.png with a real rendered icon (32x32 PNG plus 180x180 apple-touch-icon), add a /favicon.ico, and verify WebSite.publisher.logo points at a valid logo image."
+        },
+        {
+          "title": "Security response headers missing",
+          "severity": "Medium",
+          "description": "No Content-Security-Policy, X-Content-Type-Options, Referrer-Policy, Permissions-Policy or X-Frame-Options on any response; no vercel.json in the repo to set them.",
+          "recommendation": "Add a vercel.json headers block setting X-Content-Type-Options: nosniff, Referrer-Policy: strict-origin-when-cross-origin, X-Frame-Options: DENY, a conservative Permissions-Policy, and a CSP appropriate for the TanStack Start build."
+        },
+        {
+          "title": "Sitemap lastmod uniformly 2026-08-26 and generator not part of build",
+          "severity": "Medium",
+          "description": "Every sitemap entry reports lastmod 2026-08-26 although content shipped on 2026-08-27. scripts/generate-sitemap.mjs is not invoked by the build script, so public/sitemap.xml drifts whenever routes change.",
+          "recommendation": "Wire generate-sitemap.mjs into the build (or a prebuild step) and derive lastmod from actual content modification dates."
+        },
+        {
+          "title": "Google Fonts render-blocking third-party CSS on all 16 pages",
+          "severity": "Medium",
+          "description": "Fonts load via third-party Google Fonts CSS plus 6 woff2 files (approx 299 KB), render-blocking on every route. Still open from the 2026-08-26 audit.",
+          "recommendation": "Self-host the font CSS and preconnect/preload the woff2 files, or system-font stack the critical path."
+        },
+        {
+          "title": "Large initial JavaScript payload (INP risk)",
+          "severity": "Medium",
+          "description": "The homepage preloads a 257 KB gzipped chunk containing jsPDF (86 refs) and Recharts (74 refs); total initial JS is approximately 398 KB gzipped. Field INP is not measurable (no CrUX/PageSpeed credentials).",
+          "recommendation": "Code-split jsPDF (export/print) and Recharts (chart view) behind dynamic import so the calculator path ships neither."
+        },
+        {
+          "title": "404 route is indexable and inherits homepage metadata",
+          "severity": "Low",
+          "description": "The 404 response returns status 404 but serves meta robots index,follow, no canonical, and the homepage title/og:url.",
+          "recommendation": "Serve a dedicated 404 title, keep the status 404, and add meta robots noindex to the not-found route."
+        },
+        {
+          "title": "Case-variant URLs return 200",
+          "severity": "Low",
+          "description": "Paths such as /About return 200 rather than 308 to the lowercase canonical. Canonical tags currently prevent duplicate indexing.",
+          "recommendation": "Normalise path case at the edge or route layer with a 308 to the canonical URL."
+        },
+        {
+          "title": "Trailing-slash variants redirect with 307 instead of 308",
+          "severity": "Low",
+          "description": "Trailing-slash variants answer 307 (cacheable temporary redirect) rather than 308 (permanent), so crawlers may re-evaluate them indefinitely.",
+          "recommendation": "Change trailing-slash redirects to 308."
+        },
+        {
+          "title": "Service worker path 404s while the PWA registers it",
+          "severity": "Low",
+          "description": "/sw.js returns 404 although src/pwa.ts registers it, so the visible 'Works offline' badge is not backed by a working offline path.",
+          "recommendation": "Ship the built service worker at /sw.js or remove the offline claim and the registration."
+        },
+        {
+          "title": "www subdomain fails TLS with no redirect",
+          "severity": "Low",
+          "description": "www.preemie.vercel.app has no valid certificate and no redirect to the apex host.",
+          "recommendation": "Add a certificate/redirect for www, or leave intentionally disabled and document it."
+        }
+      ]
+    },
+    {
+      "name": "Content Quality",
+      "score": 70,
+      "weight": 0.23,
+      "subscores": {
+        "eeat": 82,
+        "depth": 58,
+        "readability": 48,
+        "keyword": 70,
+        "cannibalization": 60,
+        "freshness": 65,
+        "internal_links": 84,
+        "ai_readiness": 74
+      },
+      "what_works": [
+        "Byline + dated review line on 16/16 pages, real physician headshot, Physician/sameAs/reviewedBy schema",
+        "Editorial policy, funding/COI policy, sitewide medical disclaimer, red-flag cross-links on 16/16",
+        "Internal linking strong (84): every page links forward into the calculator cluster",
+        "Answer-first 'Quick answers' blocks and a 7-question FAQ on the homepage"
+      ],
+      "findings": [
+        {
+          "title": "No outbound citation links on 15 of 16 pages",
+          "severity": "High",
+          "description": "CDC/AAP/WHO/Fenton/INTERGROWTH appear as bare text only. The /methodology Sources table (Fenton PMID 23601190, INTERGROWTH, Zubler 2022) is plain text and unlinked, and JSON-LD carries no citation property. YMYL claims are therefore unverifiable from the page itself.",
+          "recommendation": "Link every named authority and each methodology source to its primary URL (target/PubMed/DOI) and add matching 'citation' entries to the MedicalWebPage/Article JSON-LD."
+        },
+        {
+          "title": "Thin content: 11 of 16 pages under 800 words in <main>",
+          "severity": "High",
+          "description": "Median page is 630 words. /red-flags has 526 total words of which only 166 are prose; /how-to-calculate-corrected-age has 559; /nicu-follow-up-schedule 585. For a YMYL competitive query set this is below the depth peers publish.",
+          "recommendation": "Expand /red-flags, /how-to-calculate-corrected-age and /nicu-follow-up-schedule first with concrete worked examples, source-backed detail and unique first-hand clinical context; do not pad thin utility pages with filler."
+        },
+        {
+          "title": "Readability below grade-8 target on 15 of 16 pages",
+          "severity": "Medium",
+          "description": "Median prose Flesch 46.8 (about grade 10). Worst: /nicu-follow-up-schedule 41.1, /preemie-vaccines 41.2, /about 42.3. Audience is anxious parents reading on mobile at night.",
+          "recommendation": "Shorten sentences and unpack clinical terms on the parent-facing pages; keep the clinician register on /pma-calculator and /methodology."
+        },
+        {
+          "title": "Keyword cannibalization across calculator and comparison pages",
+          "severity": "Medium",
+          "description": "Cosine overlap: / vs /adjusted-age-calculator 0.64, / vs /pma-calculator 0.64; the age-comparison topic is spread over 4 pages (0.49-0.55); vaccines appear on 6 pages (0.52 vs /preemie-vaccines); stop-correcting covered by 4 pages.",
+          "recommendation": "Assign one canonical URL per query cluster, trim the overlapping sections on the secondary pages and point their internal links at the canonical - consolidate sections, do not delete pages."
+        },
+        {
+          "title": "Titles and meta descriptions exceed recommended lengths",
+          "severity": "Medium",
+          "description": "7 titles over 60 characters and 8 meta descriptions over 160 characters, risking SERP truncation; '| AdjustedAge' brand suffix is missing on /when-to-stop-correcting.",
+          "recommendation": "Rewrite the 7 titles and 8 descriptions to fit 50-60 / 150-160 characters with the primary keyword front-loaded and a consistent brand suffix."
+        },
+        {
+          "title": "No direct contact or corrections channel",
+          "severity": "Medium",
+          "description": "Contact is described as 'via the about page' with no email/form, and there is no corrections log - both are trust signals Google's quality rater guidelines expect for YMYL health sites.",
+          "recommendation": "Publish a contact address or form on /about and add a dated corrections log."
+        },
+        {
+          "title": "Milestone 'chart' has no tabular or downloadable artifact",
+          "severity": "Medium",
+          "description": "The page called a chart renders 72 list items; the whole site has only 3 <table> elements and no CSV/PDF download.",
+          "recommendation": "Render the milestones as a real table with a CSV/print export to match the 'chart' query intent and earn citations."
+        }
+      ]
+    },
+    {
+      "name": "On-Page SEO",
+      "score": 85,
+      "weight": 0.2,
+      "what_works": [
+        "16/16 pages return 200 with exactly one H1, a self-referencing canonical, viewport meta and no heading-level skips",
+        "16/16 carry complete Open Graph (title, description, image, url, type) and Twitter card tags",
+        "256 internal links across 16 pages (avg 16/page) with descriptive anchor text into the calculator cluster",
+        "Every page has a unique title and unique meta description (no templates or duplicates detected)"
+      ],
+      "findings": [
+        {
+          "title": "7 titles exceed 60 characters",
+          "severity": "Medium",
+          "description": "Independent crawl of all 16 sitemap URLs found 7 titles over 60 characters, which Google will truncate in the SERP, hiding the brand suffix and possibly the primary keyword.",
+          "recommendation": "Cut each to 50-60 characters, front-loading the primary keyword and keeping '| AdjustedAge' at the end."
+        },
+        {
+          "title": "8 meta descriptions exceed 160 characters and 1 is short",
+          "severity": "Medium",
+          "description": "8 descriptions run past 160 characters (truncated mid-sentence in SERPs) and 1 is under 120 characters, wasting the click-through opportunity.",
+          "recommendation": "Rewrite to 150-160 characters opening with the answer, not a restatement of the title, and closing on a concrete benefit rather than a stock CTA."
+        },
+        {
+          "title": "Brand suffix missing on /when-to-stop-correcting",
+          "severity": "Low",
+          "description": "The only title in the set without the '| AdjustedAge' suffix, breaking brand consistency in SERPs and OG previews.",
+          "recommendation": "Restore the suffix to match the other 15 titles."
+        },
+        {
+          "title": "Thinnest page carries only 599 words",
+          "severity": "Low",
+          "description": "Minimum word count across the 16 URLs is 599 (median 859), so at least one page sits under the depth expected for its query class.",
+          "recommendation": "Identify the sub-600-word page in onpage.json and expand it with source-backed, unique content."
+        }
+      ]
+    },
+    {
+      "name": "Schema / Structured Data",
+      "score": 0,
+      "weight": 0.1,
+      "what_works": [],
+      "findings": []
+    },
+    {
+      "name": "Performance (CWV)",
+      "score": 0,
+      "weight": 0.1,
+      "what_works": [],
+      "findings": []
+    },
+    {
+      "name": "AI Search Readiness",
+      "score": 76,
+      "weight": 0.1,
+      "what_works": [
+        "Every major AI crawler (GPTBot, ClaudeBot, Claude-Web, PerplexityBot, Google-Extended, CCBot, bingbot, msnbot, OAI-SearchBot) receives 200 with a byte-identical 55,643-byte body - no blocking, no cloaking, no X-Robots-Tag",
+        "robots.txt permissive (Allow: /) with sitemap declared; only /mcp, /.mcp/, /.well-known/, /~oauth/ disallowed",
+        "llm.txt and llms.txt both live and byte-identical (4,088 B), covering 16/16 sitemap URLs",
+        "Answer-first structure: 'Quick answers' / 'The short answer' blocks, 7-question FAQ, Physician + reviewedBy + sameAs graph on every page, datePublished/dateModified/lastReviewed, true SSR",
+        "Brand consistency: AdjustedAge + preemie.vercel.app identical across og:url, canonical and site_name on 16/16 pages"
+      ],
+      "findings": [
+        {
+          "title": "llms.txt entries are not links and not absolute URLs",
+          "severity": "High",
+          "description": "Entries are formatted as '**/path** - description' rather than markdown links with absolute URLs, so link-extracting AI parsers recover zero URLs from the file.",
+          "recommendation": "Regenerate llms.txt with '[Title](https://preemie.vercel.app/path)' link syntax for all 16 pages."
+        },
+        {
+          "title": "Zero outbound source links citable by AI systems",
+          "severity": "High",
+          "description": "Authority sources are named as plain text only across all 16 pages, so an answer engine extracting claims cannot cite a verifiable source from this site. Same root cause as the content-side citation gap.",
+          "recommendation": "Add primary-source links to CDC/AAP/WHO/Fenton/INTERGROWTH references and mirror them in JSON-LD 'citation'."
+        },
+        {
+          "title": "Article schema missing reviewedBy and lastReviewed on two spoke pages",
+          "severity": "Medium",
+          "description": "/premature-baby-milestones and /how-to-calculate-corrected-age carry Article schema without reviewedBy/lastReviewed, unlike the rest of the site.",
+          "recommendation": "Add reviewedBy (Physician @id) and lastReviewed dates to match the site-wide pattern."
+        },
+        {
+          "title": "Organization.logo points at the broken 447-byte favicon",
+          "severity": "Medium",
+          "description": "Organization.logo still references the invalid favicon asset identified in the technical pass, weakening entity recognition.",
+          "recommendation": "Point Organization.logo at a real 1148x1148 (or larger) logo image and keep it referenced by ImageObject."
+        },
+        {
+          "title": "Title brand drift on one page",
+          "severity": "Low",
+          "description": "/when-to-stop-correcting omits the AdjustedAge brand suffix present on the other 15 titles.",
+          "recommendation": "Restore the consistent '| AdjustedAge' suffix."
+        }
+      ]
+    },
+    {
+      "name": "Images",
+      "score": 0,
+      "weight": 0.05,
+      "what_works": [],
+      "findings": []
+    }
+  ],
+  "action_plan": {
+    "phases": [
+      { "name": "Phase 1: Critical Fixes", "timeframe": "Week 1", "items": [] },
+      { "name": "Phase 2: High-Impact Improvements", "timeframe": "Weeks 2-3", "items": [] },
+      { "name": "Phase 3: Content & Authority", "timeframe": "Month 2", "items": [] },
+      { "name": "Phase 4: Monitoring & Iteration", "timeframe": "Ongoing", "items": [] }
+    ]
+  },
+  "artifacts": {
+    "findings_dir": "findings/",
+    "screenshots_dir": "screenshots/"
+  },
+  "notes": [
+    "Google API credentials not configured: no CrUX field CWV, no GSC indexation status, no GA4 traffic (seo-google agent not spawned).",
+    "Moz/Bing/Keywords Everywhere keys not configured: backlink tier is Common Crawl only (0 cached domains at audit time).",
+    "No prior drift baseline existed; one is being captured during this audit so future runs can compare.",
+    "PageSpeed Insights returned rate-limited during the technical pass; lab evidence is structural (HTML/JS/CSS analysis), not field data."
+  ]
+}

@@ -1,0 +1,17 @@
+import urllib.request, json, re
+def g(p):
+    return urllib.request.urlopen(urllib.request.Request("https://preemie.vercel.app"+p, headers={"User-Agent":"Mozilla/5.0"}), timeout=30).read().decode("utf-8","replace")
+d = g("/")
+print("SearchAction:", "SearchAction" in d)
+print("speakable:", "speakable" in d)
+print("citation-schema:", '"citation"' in d)
+print("GoogleFonts head:", "fonts.googleapis.com/css2" in d)
+print("faq Question count:", d.count('"@type":"Question"'))
+print("og:image:alt count:", d.count("og:image:alt"), "twitter:image:alt:", d.count("twitter:image:alt"))
+d2 = g("/premature-baby-milestones")
+print("milestones og:image:alt:", d2.count("og:image:alt"), "twitter:image:alt:", d2.count("twitter:image:alt"))
+print("milestones headline:", re.findall(r'"headline":"([^"]+)"', d2))
+print("milestones has CSV export:", "CSV" in d2, "| jsPDF:", "jsPDF" in d2, "| Print:", "Print" in d2)
+print("milestones tables:", d2.count("<table"))
+d3 = g("/about")
+print("about og:image:alt:", d3.count("og:image:alt"))

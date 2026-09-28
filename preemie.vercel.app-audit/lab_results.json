@@ -1,0 +1,2125 @@
+[
+  {
+    "name": "home",
+    "url": "https://preemie.vercel.app/",
+    "perf": {
+      "nav": {
+        "ttfb": 1206,
+        "dcl": 3103,
+        "load": 4312,
+        "transfer": 11182,
+        "encoded": 55643
+      },
+      "lcp": [
+        {
+          "size": 77050,
+          "startTime": 3292,
+          "tag": "H1.mt-3 max-w-3xl font-display text-4xl font-semibold leading-tight text-foreground",
+          "url": null,
+          "id": null
+        }
+      ],
+      "lcp_at_load": [
+        {
+          "size": 77050,
+          "startTime": 3292,
+          "tag": "H1.mt-3 max-w-3xl font-display text-4xl font-semibold leading-tight text-foreground",
+          "url": null,
+          "id": null
+        }
+      ],
+      "cls": 0.0882,
+      "cls_at_load": 0.0882,
+      "bytes_by_type": {
+        "js": 398084,
+        "css": 14233,
+        "font": 913,
+        "img": 31412,
+        "doc": 392504
+      },
+      "counts": {
+        "js": 9,
+        "css": 1,
+        "font": 0,
+        "img": 1
+      },
+      "total_transfer": 444642,
+      "resources": [
+        {
+          "name": "https://preemie.vercel.app/assets/CorrectedAgeTool-BlR0os1J.js",
+          "type": "other",
+          "size": 260288,
+          "encoded": 259988,
+          "dur": 875,
+          "start": 1503
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/index-ZZrkWfoq.js",
+          "type": "other",
+          "size": 120585,
+          "encoded": 120285,
+          "dur": 504,
+          "start": 1501
+        },
+        {
+          "name": "https://preemie.vercel.app/dr-zeeshan-islam.webp",
+          "type": "img",
+          "size": 31412,
+          "encoded": 31112,
+          "dur": 512,
+          "start": 1504
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/styles-DQ4i2EjI.css",
+          "type": "link",
+          "size": 14233,
+          "encoded": 13933,
+          "dur": 282,
+          "start": 1499
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/routes-Dd24cvZZ.js",
+          "type": "other",
+          "size": 5882,
+          "encoded": 5582,
+          "dur": 337,
+          "start": 1502
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/SiteLayout-OgAXhYpm.js",
+          "type": "other",
+          "size": 4755,
+          "encoded": 4455,
+          "dur": 534,
+          "start": 1503
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/milestones-51FnBO1A.js",
+          "type": "script",
+          "size": 2236,
+          "encoded": 1936,
+          "dur": 295,
+          "start": 3338
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/weight-velocity-DqymxTUm.js",
+          "type": "script",
+          "size": 1592,
+          "encoded": 1292,
+          "dur": 293,
+          "start": 3336
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/analytics-B6M4O7tc.js",
+          "type": "script",
+          "size": 1139,
+          "encoded": 839,
+          "dur": 290,
+          "start": 3339
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/rolldown-runtime-QTnfLwEv.js",
+          "type": "other",
+          "size": 994,
+          "encoded": 694,
+          "dur": 501,
+          "start": 1502
+        },
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Public+Sans:wght@400;500;600&display=swap",
+          "type": "link",
+          "size": 913,
+          "encoded": 613,
+          "dur": 660,
+          "start": 1501
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/printer-tyaQ-8Mx.js",
+          "type": "script",
+          "size": 613,
+          "encoded": 313,
+          "dur": 296,
+          "start": 3335
+        }
+      ],
+      "images": [
+        {
+          "src": "/dr-zeeshan-islam.png",
+          "current": "https://preemie.vercel.app/dr-zeeshan-islam.webp",
+          "nat": "709x585",
+          "disp": "40x40",
+          "loading": "eager",
+          "fetchp": "high",
+          "wh": "709x585",
+          "picture": true,
+          "alt": "Dr. Zeeshan Islam, MBBS, MCPS (Pediatric",
+          "bytes_transferred": 31412
+        },
+        {
+          "src": "/dr-zeeshan-islam.png",
+          "current": "https://preemie.vercel.app/dr-zeeshan-islam.webp",
+          "nat": "709x585",
+          "disp": "80x96",
+          "loading": "eager",
+          "fetchp": "high",
+          "wh": "709x585",
+          "picture": true,
+          "alt": "Dr. Zeeshan Islam, MBBS, MCPS (Pediatric",
+          "bytes_transferred": 31412
+        },
+        {
+          "src": "/dr-zeeshan-islam.png",
+          "current": "https://preemie.vercel.app/dr-zeeshan-islam.webp",
+          "nat": "709x585",
+          "disp": "63x64",
+          "loading": "eager",
+          "fetchp": "high",
+          "wh": "709x585",
+          "picture": true,
+          "alt": "Dr. Zeeshan Islam, MBBS, MCPS (Pediatric",
+          "bytes_transferred": 31412
+        }
+      ],
+      "long_tasks_slowest": [
+        {
+          "name": "https://preemie.vercel.app/assets/CorrectedAgeTool-BlR0os1J.js",
+          "type": "other",
+          "size": 260288,
+          "encoded": 259988,
+          "dur": 875,
+          "start": 1503
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/SiteLayout-OgAXhYpm.js",
+          "type": "other",
+          "size": 4755,
+          "encoded": 4455,
+          "dur": 534,
+          "start": 1503
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/index-ZZrkWfoq.js",
+          "type": "other",
+          "size": 120585,
+          "encoded": 120285,
+          "dur": 504,
+          "start": 1501
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/rolldown-runtime-QTnfLwEv.js",
+          "type": "other",
+          "size": 994,
+          "encoded": 694,
+          "dur": 501,
+          "start": 1502
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/routes-Dd24cvZZ.js",
+          "type": "other",
+          "size": 5882,
+          "encoded": 5582,
+          "dur": 337,
+          "start": 1502
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/printer-tyaQ-8Mx.js",
+          "type": "script",
+          "size": 613,
+          "encoded": 313,
+          "dur": 296,
+          "start": 3335
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/milestones-51FnBO1A.js",
+          "type": "script",
+          "size": 2236,
+          "encoded": 1936,
+          "dur": 295,
+          "start": 3338
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/weight-velocity-DqymxTUm.js",
+          "type": "script",
+          "size": 1592,
+          "encoded": 1292,
+          "dur": 293,
+          "start": 3336
+        }
+      ]
+    },
+    "mobile": {
+      "vw": 375,
+      "vh": 812,
+      "scrollW": 375,
+      "scrollH": 12278,
+      "hScroll": false,
+      "interstitials": [],
+      "smallTargets": [
+        {
+          "tag": "A",
+          "txt": "Skip to main content",
+          "w": 32,
+          "h": 16,
+          "y": 15
+        },
+        {
+          "tag": "A",
+          "txt": "A\nAdjustedAge\nPREEMIE FOLLOW-UP",
+          "w": 192,
+          "h": 41,
+          "y": 58
+        },
+        {
+          "tag": "BUTTON",
+          "txt": "Open menu",
+          "w": 40,
+          "h": 40,
+          "y": 58
+        },
+        {
+          "tag": "A",
+          "txt": "Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics)",
+          "w": 229,
+          "h": 34,
+          "y": 582
+        },
+        {
+          "tag": "A",
+          "txt": "Formulas and sources",
+          "w": 236,
+          "h": 34,
+          "y": 621
+        },
+        {
+          "tag": "A",
+          "txt": "Adjusted age calculator",
+          "w": 195,
+          "h": 40,
+          "y": 787
+        },
+        {
+          "tag": "A",
+          "txt": "PMA calculator",
+          "w": 142,
+          "h": 42,
+          "y": 839
+        },
+        {
+          "tag": "A",
+          "txt": "Milestones chart",
+          "w": 151,
+          "h": 42,
+          "y": 839
+        },
+        {
+          "tag": "A",
+          "txt": "NICU follow-up schedule",
+          "w": 205,
+          "h": 42,
+          "y": 893
+        }
+      ],
+      "aboveFold": {
+        "h1": {
+          "text": "Corrected age calculator for premature babies",
+          "box": {
+            "x": 20,
+            "y": 188,
+            "w": 335,
+            "h": 135
+          }
+        },
+        "h2s": [],
+        "cta": [
+          {
+            "txt": "A\nAdjustedAge\nPREEMIE FOLLOW-UP",
+            "y": 58
+          },
+          {
+            "txt": "",
+            "y": 58
+          },
+          {
+            "txt": "Adjusted age calculator",
+            "y": 787
+          }
+        ],
+        "textBlocks": 6,
+        "jsonld": 6,
+        "imgs": [
+          {
+            "src": "dr-zeeshan-islam.webp",
+            "disp": "28x40",
+            "nat": "709x585",
+            "y": 599
+          }
+        ]
+      },
+      "contrast": [],
+      "smallText": [],
+      "bodyFont": 16,
+      "docLang": "en",
+      "lcp": [
+        {
+          "size": 64476,
+          "startTime": 2272,
+          "tag": "P.mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground",
+          "url": null,
+          "id": null
+        }
+      ],
+      "cls": 0.0012,
+      "dialogs": []
+    },
+    "desktop_visual": {
+      "vw": 1440,
+      "vh": 900,
+      "scrollW": 1440,
+      "scrollH": 6934,
+      "hScroll": false,
+      "interstitials": [],
+      "smallTargets": [
+        {
+          "tag": "A",
+          "txt": "Skip to main content",
+          "w": 32,
+          "h": 16,
+          "y": 15
+        },
+        {
+          "tag": "A",
+          "txt": "A\nAdjustedAge\nPREEMIE FOLLOW-UP",
+          "w": 192,
+          "h": 41,
+          "y": 40
+        },
+        {
+          "tag": "A",
+          "txt": "Milestones",
+          "w": 95,
+          "h": 32,
+          "y": 45
+        },
+        {
+          "tag": "A",
+          "txt": "How it works",
+          "w": 108,
+          "h": 32,
+          "y": 45
+        },
+        {
+          "tag": "A",
+          "txt": "When to stop",
+          "w": 110,
+          "h": 32,
+          "y": 45
+        },
+        {
+          "tag": "A",
+          "txt": "Red flags",
+          "w": 86,
+          "h": 32,
+          "y": 45
+        },
+        {
+          "tag": "A",
+          "txt": "Methodology",
+          "w": 110,
+          "h": 32,
+          "y": 45
+        },
+        {
+          "tag": "A",
+          "txt": "About the author",
+          "w": 135,
+          "h": 32,
+          "y": 45
+        },
+        {
+          "tag": "A",
+          "txt": "Open the tool",
+          "w": 121,
+          "h": 36,
+          "y": 43
+        },
+        {
+          "tag": "A",
+          "txt": "Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics)",
+          "w": 247,
+          "h": 14,
+          "y": -309
+        },
+        {
+          "tag": "A",
+          "txt": "Formulas and sources",
+          "w": 122,
+          "h": 14,
+          "y": -289
+        },
+        {
+          "tag": "A",
+          "txt": "Adjusted age calculator",
+          "w": 195,
+          "h": 42,
+          "y": -180
+        },
+        {
+          "tag": "A",
+          "txt": "PMA calculator",
+          "w": 142,
+          "h": 42,
+          "y": -180
+        },
+        {
+          "tag": "A",
+          "txt": "Milestones chart",
+          "w": 151,
+          "h": 42,
+          "y": -180
+        },
+        {
+          "tag": "A",
+          "txt": "NICU follow-up schedule",
+          "w": 205,
+          "h": 42,
+          "y": -126
+        },
+        {
+          "tag": "A",
+          "txt": "What is PMA and when should I use it?",
+          "w": 249,
+          "h": 16,
+          "y": -302
+        },
+        {
+          "tag": "A",
+          "txt": "Does a 35- or 36-week baby still need corrected ag",
+          "w": 243,
+          "h": 36,
+          "y": -274
+        },
+        {
+          "tag": "A",
+          "txt": "What is a typical NICU follow-up schedule?",
+          "w": 209,
+          "h": 36,
+          "y": -226
+        },
+        {
+          "tag": "A",
+          "txt": "When can my preemie start solids?",
+          "w": 226,
+          "h": 16,
+          "y": -178
+        },
+        {
+          "tag": "A",
+          "txt": "Which age should I use for milestones or vaccines?",
+          "w": 261,
+          "h": 36,
+          "y": -150
+        },
+        {
+          "tag": "A",
+          "txt": "Which concerns should make me call today?",
+          "w": 239,
+          "h": 36,
+          "y": -102
+        },
+        {
+          "tag": "INPUT",
+          "txt": "date",
+          "w": 327,
+          "h": 42,
+          "y": 429
+        },
+        {
+          "tag": "INPUT",
+          "txt": "date",
+          "w": 327,
+          "h": 42,
+          "y": 429
+        },
+        {
+          "tag": "SELECT",
+          "txt": "22 weeks\n23 weeks\n24 weeks\n25 weeks\n26 weeks\n27 we",
+          "w": 160,
+          "h": 39,
+          "y": 515
+        },
+        {
+          "tag": "SELECT",
+          "txt": "0 days\n1 days\n2 days\n3 days\n4 days\n5 days\n6 days",
+          "w": 160,
+          "h": 39,
+          "y": 515
+        }
+      ],
+      "aboveFold": {
+        "h1": {
+          "text": "Corrected age calculator for premature babies",
+          "box": {
+            "x": 164,
+            "y": -572,
+            "w": 728,
+            "h": 120
+          }
+        },
+        "h2s": [
+          "One input set, every age",
+          "Built for trust",
+          "For parents and clinicians",
+          "Keeps the follow-up record",
+          "Enter the birth details once",
+          "Quick answers parents usually need first"
+        ],
+        "cta": [
+          {
+            "txt": "A\nAdjustedAge\nPREEMIE FOLLOW-UP",
+            "y": 40
+          },
+          {
+            "txt": "Open the tool",
+            "y": 43
+          },
+          {
+            "txt": "Adjusted age calculator",
+            "y": -180
+          },
+          {
+            "txt": "PMA calculator",
+            "y": -180
+          },
+          {
+            "txt": "Milestones chart",
+            "y": -180
+          },
+          {
+            "txt": "NICU follow-up schedule",
+            "y": -126
+          },
+          {
+            "txt": "Does a 35- or 36-week baby still need corrected ag",
+            "y": -274
+          },
+          {
+            "txt": "What is a typical NICU follow-up schedule?",
+            "y": -226
+          },
+          {
+            "txt": "Which age should I use for milestones or vaccines?",
+            "y": -150
+          },
+          {
+            "txt": "Which concerns should make me call today?",
+            "y": -102
+          }
+        ],
+        "textBlocks": 16,
+        "jsonld": 6,
+        "imgs": [
+          {
+            "src": "dr-zeeshan-islam.webp",
+            "disp": "40x40",
+            "nat": "709x585",
+            "y": -311
+          },
+          {
+            "src": "dr-zeeshan-islam.webp",
+            "disp": "80x96",
+            "nat": "709x585",
+            "y": -575
+          }
+        ]
+      },
+      "contrast": [],
+      "smallText": [],
+      "bodyFont": 16,
+      "docLang": "en",
+      "dialogs": []
+    },
+    "nojs": {
+      "textLen": 11600,
+      "h1": "Corrected age calculator for premature babies",
+      "h2count": 15,
+      "jsonld": 6,
+      "imgs": 3,
+      "inputs": 4,
+      "forms": 0,
+      "mainTextSample": "Skip to main content Clinically reviewed by Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics) A AdjustedAge PREEMIE FOLLOW-UP Milestones How it works When to stop Red flags Methodology About the author Open the tool FOR NICU GRADUATES, BIRTH TO 3 YEARS Corrected age calculator for premature babies Enter th",
+      "visible": "visible"
+    }
+  },
+  {
+    "name": "adjusted-age-calculator",
+    "url": "https://preemie.vercel.app/adjusted-age-calculator",
+    "perf": {
+      "nav": {
+        "ttfb": 1442,
+        "dcl": 3506,
+        "load": 4617,
+        "transfer": 8992,
+        "encoded": 34681
+      },
+      "lcp": [
+        {
+          "size": 59254,
+          "startTime": 3656,
+          "tag": "H1.mt-2 font-display text-3xl font-semibold leading-tight text-foreground sm:text-4",
+          "url": null,
+          "id": null
+        }
+      ],
+      "lcp_at_load": [
+        {
+          "size": 59254,
+          "startTime": 3656,
+          "tag": "H1.mt-2 font-display text-3xl font-semibold leading-tight text-foreground sm:text-4",
+          "url": null,
+          "id": null
+        }
+      ],
+      "cls": 0.0184,
+      "cls_at_load": 0.0184,
+      "bytes_by_type": {
+        "js": 395362,
+        "css": 14233,
+        "font": 913,
+        "img": 31412,
+        "doc": 389782
+      },
+      "counts": {
+        "js": 9,
+        "css": 1,
+        "font": 0,
+        "img": 1
+      },
+      "total_transfer": 441920,
+      "resources": [
+        {
+          "name": "https://preemie.vercel.app/assets/CorrectedAgeTool-BlR0os1J.js",
+          "type": "other",
+          "size": 260288,
+          "encoded": 259988,
+          "dur": 1245,
+          "start": 1843
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/index-ZZrkWfoq.js",
+          "type": "other",
+          "size": 120585,
+          "encoded": 120285,
+          "dur": 603,
+          "start": 1841
+        },
+        {
+          "name": "https://preemie.vercel.app/dr-zeeshan-islam.webp",
+          "type": "img",
+          "size": 31412,
+          "encoded": 31112,
+          "dur": 952,
+          "start": 1844
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/styles-DQ4i2EjI.css",
+          "type": "link",
+          "size": 14233,
+          "encoded": 13933,
+          "dur": 345,
+          "start": 1840
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/SiteLayout-OgAXhYpm.js",
+          "type": "other",
+          "size": 4755,
+          "encoded": 4455,
+          "dur": 1249,
+          "start": 1844
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/adjusted-age-calculator-XdhNLT-Y.js",
+          "type": "other",
+          "size": 3160,
+          "encoded": 2860,
+          "dur": 441,
+          "start": 1842
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/milestones-51FnBO1A.js",
+          "type": "script",
+          "size": 2236,
+          "encoded": 1936,
+          "dur": 292,
+          "start": 3830
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/weight-velocity-DqymxTUm.js",
+          "type": "script",
+          "size": 1592,
+          "encoded": 1292,
+          "dur": 286,
+          "start": 3829
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/analytics-B6M4O7tc.js",
+          "type": "script",
+          "size": 1139,
+          "encoded": 839,
+          "dur": 286,
+          "start": 3831
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/rolldown-runtime-QTnfLwEv.js",
+          "type": "other",
+          "size": 994,
+          "encoded": 694,
+          "dur": 440,
+          "start": 1842
+        },
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Public+Sans:wght@400;500;600&display=swap",
+          "type": "link",
+          "size": 913,
+          "encoded": 613,
+          "dur": 779,
+          "start": 1841
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/printer-tyaQ-8Mx.js",
+          "type": "script",
+          "size": 613,
+          "encoded": 313,
+          "dur": 292,
+          "start": 3827
+        }
+      ],
+      "images": [
+        {
+          "src": "/dr-zeeshan-islam.png",
+          "current": "https://preemie.vercel.app/dr-zeeshan-islam.webp",
+          "nat": "709x585",
+          "disp": "40x40",
+          "loading": "eager",
+          "fetchp": "high",
+          "wh": "709x585",
+          "picture": true,
+          "alt": "Dr. Zeeshan Islam, MBBS, MCPS (Pediatric",
+          "bytes_transferred": 31412
+        },
+        {
+          "src": "/dr-zeeshan-islam.png",
+          "current": "https://preemie.vercel.app/dr-zeeshan-islam.webp",
+          "nat": "709x585",
+          "disp": "63x64",
+          "loading": "eager",
+          "fetchp": "high",
+          "wh": "709x585",
+          "picture": true,
+          "alt": "Dr. Zeeshan Islam, MBBS, MCPS (Pediatric",
+          "bytes_transferred": 31412
+        }
+      ],
+      "long_tasks_slowest": [
+        {
+          "name": "https://preemie.vercel.app/assets/SiteLayout-OgAXhYpm.js",
+          "type": "other",
+          "size": 4755,
+          "encoded": 4455,
+          "dur": 1249,
+          "start": 1844
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/CorrectedAgeTool-BlR0os1J.js",
+          "type": "other",
+          "size": 260288,
+          "encoded": 259988,
+          "dur": 1245,
+          "start": 1843
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/index-ZZrkWfoq.js",
+          "type": "other",
+          "size": 120585,
+          "encoded": 120285,
+          "dur": 603,
+          "start": 1841
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/adjusted-age-calculator-XdhNLT-Y.js",
+          "type": "other",
+          "size": 3160,
+          "encoded": 2860,
+          "dur": 441,
+          "start": 1842
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/rolldown-runtime-QTnfLwEv.js",
+          "type": "other",
+          "size": 994,
+          "encoded": 694,
+          "dur": 440,
+          "start": 1842
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/printer-tyaQ-8Mx.js",
+          "type": "script",
+          "size": 613,
+          "encoded": 313,
+          "dur": 292,
+          "start": 3827
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/milestones-51FnBO1A.js",
+          "type": "script",
+          "size": 2236,
+          "encoded": 1936,
+          "dur": 292,
+          "start": 3830
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/weight-velocity-DqymxTUm.js",
+          "type": "script",
+          "size": 1592,
+          "encoded": 1292,
+          "dur": 286,
+          "start": 3829
+        }
+      ]
+    },
+    "mobile": {
+      "vw": 375,
+      "vh": 812,
+      "scrollW": 375,
+      "scrollH": 7704,
+      "hScroll": false,
+      "interstitials": [],
+      "smallTargets": [
+        {
+          "tag": "A",
+          "txt": "Skip to main content",
+          "w": 32,
+          "h": 16,
+          "y": 15
+        },
+        {
+          "tag": "A",
+          "txt": "A\nAdjustedAge\nPREEMIE FOLLOW-UP",
+          "w": 192,
+          "h": 41,
+          "y": 58
+        },
+        {
+          "tag": "BUTTON",
+          "txt": "Open menu",
+          "w": 40,
+          "h": 40,
+          "y": 58
+        },
+        {
+          "tag": "A",
+          "txt": "Home",
+          "w": 39,
+          "h": 20,
+          "y": 144
+        },
+        {
+          "tag": "A",
+          "txt": "Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics)",
+          "w": 229,
+          "h": 34,
+          "y": 582
+        },
+        {
+          "tag": "A",
+          "txt": "Formulas and sources",
+          "w": 236,
+          "h": 34,
+          "y": 621
+        },
+        {
+          "tag": "INPUT",
+          "txt": "date",
+          "w": 293,
+          "h": 42,
+          "y": 892
+        },
+        {
+          "tag": "INPUT",
+          "txt": "date",
+          "w": 293,
+          "h": 42,
+          "y": 978
+        },
+        {
+          "tag": "SELECT",
+          "txt": "22 weeks\n23 weeks\n24 weeks\n25 weeks\n26 weeks\n27 we",
+          "w": 143,
+          "h": 39,
+          "y": 1064
+        },
+        {
+          "tag": "SELECT",
+          "txt": "0 days\n1 days\n2 days\n3 days\n4 days\n5 days\n6 days",
+          "w": 143,
+          "h": 39,
+          "y": 1064
+        }
+      ],
+      "aboveFold": {
+        "h1": {
+          "text": "Adjusted age calculator for premature babies",
+          "box": {
+            "x": 20,
+            "y": 252,
+            "w": 335,
+            "h": 75
+          }
+        },
+        "h2s": [
+          "Enter the birth details once"
+        ],
+        "cta": [
+          {
+            "txt": "A\nAdjustedAge\nPREEMIE FOLLOW-UP",
+            "y": 58
+          },
+          {
+            "txt": "",
+            "y": 58
+          }
+        ],
+        "textBlocks": 8,
+        "jsonld": 6,
+        "imgs": [
+          {
+            "src": "dr-zeeshan-islam.webp",
+            "disp": "28x40",
+            "nat": "709x585",
+            "y": 599
+          }
+        ]
+      },
+      "contrast": [],
+      "smallText": [],
+      "bodyFont": 16,
+      "docLang": "en",
+      "lcp": [
+        {
+          "size": 65400,
+          "startTime": 2544,
+          "tag": "P.mt-4 text-lg leading-relaxed text-muted-foreground",
+          "url": null,
+          "id": null
+        }
+      ],
+      "cls": 0.0256,
+      "dialogs": []
+    },
+    "desktop_visual": {
+      "vw": 1440,
+      "vh": 900,
+      "scrollW": 1440,
+      "scrollH": 4721,
+      "hScroll": false,
+      "interstitials": [],
+      "smallTargets": [
+        {
+          "tag": "A",
+          "txt": "Skip to main content",
+          "w": 32,
+          "h": 16,
+          "y": 15
+        },
+        {
+          "tag": "A",
+          "txt": "A\nAdjustedAge\nPREEMIE FOLLOW-UP",
+          "w": 192,
+          "h": 41,
+          "y": 40
+        },
+        {
+          "tag": "A",
+          "txt": "Milestones",
+          "w": 95,
+          "h": 32,
+          "y": 45
+        },
+        {
+          "tag": "A",
+          "txt": "How it works",
+          "w": 108,
+          "h": 32,
+          "y": 45
+        },
+        {
+          "tag": "A",
+          "txt": "When to stop",
+          "w": 110,
+          "h": 32,
+          "y": 45
+        },
+        {
+          "tag": "A",
+          "txt": "Red flags",
+          "w": 86,
+          "h": 32,
+          "y": 45
+        },
+        {
+          "tag": "A",
+          "txt": "Methodology",
+          "w": 110,
+          "h": 32,
+          "y": 45
+        },
+        {
+          "tag": "A",
+          "txt": "About the author",
+          "w": 135,
+          "h": 32,
+          "y": 45
+        },
+        {
+          "tag": "A",
+          "txt": "Open the tool",
+          "w": 121,
+          "h": 36,
+          "y": 43
+        },
+        {
+          "tag": "A",
+          "txt": "Home",
+          "w": 39,
+          "h": 20,
+          "y": 126
+        },
+        {
+          "tag": "A",
+          "txt": "Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics)",
+          "w": 247,
+          "h": 14,
+          "y": 402
+        },
+        {
+          "tag": "A",
+          "txt": "Formulas and sources",
+          "w": 122,
+          "h": 14,
+          "y": 422
+        },
+        {
+          "tag": "INPUT",
+          "txt": "date",
+          "w": 327,
+          "h": 42,
+          "y": 642
+        },
+        {
+          "tag": "INPUT",
+          "txt": "date",
+          "w": 327,
+          "h": 42,
+          "y": 642
+        },
+        {
+          "tag": "SELECT",
+          "txt": "22 weeks\n23 weeks\n24 weeks\n25 weeks\n26 weeks\n27 we",
+          "w": 160,
+          "h": 39,
+          "y": 728
+        },
+        {
+          "tag": "SELECT",
+          "txt": "0 days\n1 days\n2 days\n3 days\n4 days\n5 days\n6 days",
+          "w": 160,
+          "h": 39,
+          "y": 728
+        }
+      ],
+      "aboveFold": {
+        "h1": {
+          "text": "Adjusted age calculator for premature babies",
+          "box": {
+            "x": 356,
+            "y": 218,
+            "w": 728,
+            "h": 45
+          }
+        },
+        "h2s": [
+          "Enter the birth details once",
+          "Quick answers"
+        ],
+        "cta": [
+          {
+            "txt": "A\nAdjustedAge\nPREEMIE FOLLOW-UP",
+            "y": 40
+          },
+          {
+            "txt": "Open the tool",
+            "y": 43
+          }
+        ],
+        "textBlocks": 10,
+        "jsonld": 6,
+        "imgs": [
+          {
+            "src": "dr-zeeshan-islam.webp",
+            "disp": "40x40",
+            "nat": "709x585",
+            "y": 400
+          }
+        ]
+      },
+      "contrast": [],
+      "smallText": [],
+      "bodyFont": 16,
+      "docLang": "en",
+      "dialogs": []
+    },
+    "nojs": {
+      "textLen": 7502,
+      "h1": "Adjusted age calculator for premature babies",
+      "h2count": 10,
+      "jsonld": 6,
+      "imgs": 2,
+      "inputs": 4,
+      "forms": 0,
+      "mainTextSample": "Skip to main content Clinically reviewed by Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics) A AdjustedAge PREEMIE FOLLOW-UP Milestones How it works When to stop Red flags Methodology About the author Open the tool Home Adjusted age calculator SAME CLINICAL CONCEPT, DIFFERENT SEARCH PHRASE Adjusted age ca",
+      "visible": "visible"
+    }
+  },
+  {
+    "name": "premature-baby-milestones",
+    "url": "https://preemie.vercel.app/premature-baby-milestones",
+    "perf": {
+      "nav": {
+        "ttfb": 493,
+        "dcl": 3168,
+        "load": 4007,
+        "transfer": 9223,
+        "encoded": 41715
+      },
+      "lcp": [
+        {
+          "size": 59594,
+          "startTime": 3328,
+          "tag": "P.mt-4 text-lg leading-relaxed text-muted-foreground",
+          "url": null,
+          "id": null
+        }
+      ],
+      "lcp_at_load": [
+        {
+          "size": 59594,
+          "startTime": 3328,
+          "tag": "P.mt-4 text-lg leading-relaxed text-muted-foreground",
+          "url": null,
+          "id": null
+        }
+      ],
+      "cls": 0.0932,
+      "cls_at_load": 0.0932,
+      "bytes_by_type": {
+        "js": 131830,
+        "css": 14233,
+        "font": 913,
+        "img": 31412,
+        "doc": 131830
+      },
+      "counts": {
+        "js": 6,
+        "css": 1,
+        "font": 0,
+        "img": 1
+      },
+      "total_transfer": 178388,
+      "resources": [
+        {
+          "name": "https://preemie.vercel.app/assets/index-ZZrkWfoq.js",
+          "type": "other",
+          "size": 120585,
+          "encoded": 120285,
+          "dur": 558,
+          "start": 764
+        },
+        {
+          "name": "https://preemie.vercel.app/dr-zeeshan-islam.webp",
+          "type": "img",
+          "size": 31412,
+          "encoded": 31112,
+          "dur": 626,
+          "start": 768
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/styles-DQ4i2EjI.css",
+          "type": "link",
+          "size": 14233,
+          "encoded": 13933,
+          "dur": 241,
+          "start": 762
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/SiteLayout-OgAXhYpm.js",
+          "type": "other",
+          "size": 4755,
+          "encoded": 4455,
+          "dur": 576,
+          "start": 766
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/premature-baby-milestones-DycpJgGt.js",
+          "type": "other",
+          "size": 2647,
+          "encoded": 2347,
+          "dur": 595,
+          "start": 765
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/milestones-51FnBO1A.js",
+          "type": "other",
+          "size": 2236,
+          "encoded": 1936,
+          "dur": 597,
+          "start": 767
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/rolldown-runtime-QTnfLwEv.js",
+          "type": "other",
+          "size": 994,
+          "encoded": 694,
+          "dur": 574,
+          "start": 765
+        },
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Public+Sans:wght@400;500;600&display=swap",
+          "type": "link",
+          "size": 913,
+          "encoded": 613,
+          "dur": 1123,
+          "start": 764
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/printer-tyaQ-8Mx.js",
+          "type": "other",
+          "size": 613,
+          "encoded": 313,
+          "dur": 596,
+          "start": 766
+        }
+      ],
+      "images": [
+        {
+          "src": "/dr-zeeshan-islam.png",
+          "current": "https://preemie.vercel.app/dr-zeeshan-islam.webp",
+          "nat": "709x585",
+          "disp": "40x40",
+          "loading": "eager",
+          "fetchp": "high",
+          "wh": "709x585",
+          "picture": true,
+          "alt": "Dr. Zeeshan Islam, MBBS, MCPS (Pediatric",
+          "bytes_transferred": 31412
+        },
+        {
+          "src": "/dr-zeeshan-islam.png",
+          "current": "https://preemie.vercel.app/dr-zeeshan-islam.webp",
+          "nat": "709x585",
+          "disp": "63x64",
+          "loading": "eager",
+          "fetchp": "high",
+          "wh": "709x585",
+          "picture": true,
+          "alt": "Dr. Zeeshan Islam, MBBS, MCPS (Pediatric",
+          "bytes_transferred": 31412
+        }
+      ],
+      "long_tasks_slowest": [
+        {
+          "name": "https://preemie.vercel.app/assets/milestones-51FnBO1A.js",
+          "type": "other",
+          "size": 2236,
+          "encoded": 1936,
+          "dur": 597,
+          "start": 767
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/printer-tyaQ-8Mx.js",
+          "type": "other",
+          "size": 613,
+          "encoded": 313,
+          "dur": 596,
+          "start": 766
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/premature-baby-milestones-DycpJgGt.js",
+          "type": "other",
+          "size": 2647,
+          "encoded": 2347,
+          "dur": 595,
+          "start": 765
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/SiteLayout-OgAXhYpm.js",
+          "type": "other",
+          "size": 4755,
+          "encoded": 4455,
+          "dur": 576,
+          "start": 766
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/rolldown-runtime-QTnfLwEv.js",
+          "type": "other",
+          "size": 994,
+          "encoded": 694,
+          "dur": 574,
+          "start": 765
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/index-ZZrkWfoq.js",
+          "type": "other",
+          "size": 120585,
+          "encoded": 120285,
+          "dur": 558,
+          "start": 764
+        }
+      ]
+    },
+    "mobile": {
+      "vw": 375,
+      "vh": 812,
+      "scrollW": 375,
+      "scrollH": 8634,
+      "hScroll": false,
+      "interstitials": [],
+      "smallTargets": [
+        {
+          "tag": "A",
+          "txt": "Skip to main content",
+          "w": 32,
+          "h": 16,
+          "y": 15
+        },
+        {
+          "tag": "A",
+          "txt": "A\nAdjustedAge\nPREEMIE FOLLOW-UP",
+          "w": 192,
+          "h": 41,
+          "y": 58
+        },
+        {
+          "tag": "BUTTON",
+          "txt": "Open menu",
+          "w": 40,
+          "h": 40,
+          "y": 58
+        },
+        {
+          "tag": "A",
+          "txt": "Home",
+          "w": 39,
+          "h": 20,
+          "y": 144
+        },
+        {
+          "tag": "A",
+          "txt": "Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics)",
+          "w": 229,
+          "h": 34,
+          "y": 604
+        },
+        {
+          "tag": "A",
+          "txt": "Formulas and sources",
+          "w": 236,
+          "h": 34,
+          "y": 643
+        },
+        {
+          "tag": "BUTTON",
+          "txt": "Print this chart",
+          "w": 161,
+          "h": 40,
+          "y": 693
+        },
+        {
+          "tag": "A",
+          "txt": "the corrected age calculator",
+          "w": 205,
+          "h": 19,
+          "y": 785
+        },
+        {
+          "tag": "A",
+          "txt": "corrected-age worked examples",
+          "w": 233,
+          "h": 19,
+          "y": 965
+        }
+      ],
+      "aboveFold": {
+        "h1": {
+          "text": "Premature baby milestones chart, by corrected age",
+          "box": {
+            "x": 20,
+            "y": 236,
+            "w": 335,
+            "h": 113
+          }
+        },
+        "h2s": [],
+        "cta": [
+          {
+            "txt": "A\nAdjustedAge\nPREEMIE FOLLOW-UP",
+            "y": 58
+          },
+          {
+            "txt": "",
+            "y": 58
+          },
+          {
+            "txt": "Print this chart",
+            "y": 693
+          }
+        ],
+        "textBlocks": 8,
+        "jsonld": 5,
+        "imgs": [
+          {
+            "src": "dr-zeeshan-islam.webp",
+            "disp": "28x40",
+            "nat": "709x585",
+            "y": 621
+          }
+        ]
+      },
+      "contrast": [],
+      "smallText": [],
+      "bodyFont": 16,
+      "docLang": "en",
+      "lcp": [
+        {
+          "size": 56780,
+          "startTime": 1848,
+          "tag": "P.mt-4 text-lg leading-relaxed text-muted-foreground",
+          "url": null,
+          "id": null
+        }
+      ],
+      "cls": 0.0128,
+      "dialogs": []
+    },
+    "desktop_visual": {
+      "vw": 1440,
+      "vh": 900,
+      "scrollW": 1440,
+      "scrollH": 5640,
+      "hScroll": false,
+      "interstitials": [],
+      "smallTargets": [
+        {
+          "tag": "A",
+          "txt": "Skip to main content",
+          "w": 32,
+          "h": 16,
+          "y": 15
+        },
+        {
+          "tag": "A",
+          "txt": "A\nAdjustedAge\nPREEMIE FOLLOW-UP",
+          "w": 192,
+          "h": 41,
+          "y": 40
+        },
+        {
+          "tag": "A",
+          "txt": "Milestones",
+          "w": 96,
+          "h": 32,
+          "y": 45
+        },
+        {
+          "tag": "A",
+          "txt": "How it works",
+          "w": 108,
+          "h": 32,
+          "y": 45
+        },
+        {
+          "tag": "A",
+          "txt": "When to stop",
+          "w": 110,
+          "h": 32,
+          "y": 45
+        },
+        {
+          "tag": "A",
+          "txt": "Red flags",
+          "w": 86,
+          "h": 32,
+          "y": 45
+        },
+        {
+          "tag": "A",
+          "txt": "Methodology",
+          "w": 110,
+          "h": 32,
+          "y": 45
+        },
+        {
+          "tag": "A",
+          "txt": "About the author",
+          "w": 135,
+          "h": 32,
+          "y": 45
+        },
+        {
+          "tag": "A",
+          "txt": "Open the tool",
+          "w": 121,
+          "h": 36,
+          "y": 43
+        },
+        {
+          "tag": "A",
+          "txt": "Home",
+          "w": 39,
+          "h": 20,
+          "y": 126
+        },
+        {
+          "tag": "A",
+          "txt": "Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics)",
+          "w": 247,
+          "h": 14,
+          "y": 447
+        },
+        {
+          "tag": "A",
+          "txt": "Formulas and sources",
+          "w": 122,
+          "h": 14,
+          "y": 467
+        },
+        {
+          "tag": "BUTTON",
+          "txt": "Print this chart",
+          "w": 161,
+          "h": 40,
+          "y": 498
+        },
+        {
+          "tag": "A",
+          "txt": "the corrected age calculator",
+          "w": 205,
+          "h": 19,
+          "y": 590
+        },
+        {
+          "tag": "A",
+          "txt": "corrected-age worked examples",
+          "w": 233,
+          "h": 19,
+          "y": 688
+        },
+        {
+          "tag": "A",
+          "txt": "the methodology page",
+          "w": 163,
+          "h": 19,
+          "y": 715
+        },
+        {
+          "tag": "A",
+          "txt": "late preterm baby guide",
+          "w": 173,
+          "h": 19,
+          "y": 758
+        }
+      ],
+      "aboveFold": {
+        "h1": {
+          "text": "Premature baby milestones chart, by corrected age",
+          "box": {
+            "x": 356,
+            "y": 218,
+            "w": 728,
+            "h": 90
+          }
+        },
+        "h2s": [],
+        "cta": [
+          {
+            "txt": "A\nAdjustedAge\nPREEMIE FOLLOW-UP",
+            "y": 40
+          },
+          {
+            "txt": "Open the tool",
+            "y": 43
+          },
+          {
+            "txt": "Print this chart",
+            "y": 498
+          },
+          {
+            "txt": "adjusted age vs chronological age guide",
+            "y": 785
+          }
+        ],
+        "textBlocks": 16,
+        "jsonld": 5,
+        "imgs": [
+          {
+            "src": "dr-zeeshan-islam.webp",
+            "disp": "40x40",
+            "nat": "709x585",
+            "y": 445
+          }
+        ]
+      },
+      "contrast": [],
+      "smallText": [],
+      "bodyFont": 16,
+      "docLang": "en",
+      "dialogs": []
+    },
+    "nojs": {
+      "textLen": 7918,
+      "h1": "Premature baby milestones chart, by corrected age",
+      "h2count": 12,
+      "jsonld": 5,
+      "imgs": 2,
+      "inputs": 0,
+      "forms": 0,
+      "mainTextSample": "Skip to main content Clinically reviewed by Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics) A AdjustedAge PREEMIE FOLLOW-UP Milestones How it works When to stop Red flags Methodology About the author Open the tool Home Premature baby milestones chart PRINTABLE MILESTONE CHART Premature baby milestones ch",
+      "visible": "visible"
+    }
+  },
+  {
+    "name": "red-flags",
+    "url": "https://preemie.vercel.app/red-flags",
+    "perf": {
+      "nav": {
+        "ttfb": 447,
+        "dcl": 1722,
+        "load": 2438,
+        "transfer": 7236,
+        "encoded": 25102
+      },
+      "lcp": [
+        {
+          "size": 53234,
+          "startTime": 1848,
+          "tag": "H1.mt-2 font-display text-3xl font-semibold leading-tight text-foreground sm:text-4",
+          "url": null,
+          "id": null
+        }
+      ],
+      "lcp_at_load": [
+        {
+          "size": 53234,
+          "startTime": 1848,
+          "tag": "H1.mt-2 font-display text-3xl font-semibold leading-tight text-foreground sm:text-4",
+          "url": null,
+          "id": null
+        }
+      ],
+      "cls": 0.0116,
+      "cls_at_load": 0.0116,
+      "bytes_by_type": {
+        "js": 130796,
+        "css": 14233,
+        "font": 913,
+        "img": 31412,
+        "doc": 130796
+      },
+      "counts": {
+        "js": 5,
+        "css": 1,
+        "font": 0,
+        "img": 1
+      },
+      "total_transfer": 177354,
+      "resources": [
+        {
+          "name": "https://preemie.vercel.app/assets/index-ZZrkWfoq.js",
+          "type": "other",
+          "size": 120585,
+          "encoded": 120285,
+          "dur": 481,
+          "start": 717
+        },
+        {
+          "name": "https://preemie.vercel.app/dr-zeeshan-islam.webp",
+          "type": "img",
+          "size": 31412,
+          "encoded": 31112,
+          "dur": 297,
+          "start": 719
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/styles-DQ4i2EjI.css",
+          "type": "link",
+          "size": 14233,
+          "encoded": 13933,
+          "dur": 178,
+          "start": 716
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/SiteLayout-OgAXhYpm.js",
+          "type": "other",
+          "size": 4755,
+          "encoded": 4455,
+          "dur": 315,
+          "start": 718
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/milestones-51FnBO1A.js",
+          "type": "other",
+          "size": 2236,
+          "encoded": 1936,
+          "dur": 175,
+          "start": 718
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/red-flags-DHhOyfwi.js",
+          "type": "other",
+          "size": 2226,
+          "encoded": 1926,
+          "dur": 174,
+          "start": 718
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/rolldown-runtime-QTnfLwEv.js",
+          "type": "other",
+          "size": 994,
+          "encoded": 694,
+          "dur": 172,
+          "start": 717
+        },
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Public+Sans:wght@400;500;600&display=swap",
+          "type": "link",
+          "size": 913,
+          "encoded": 613,
+          "dur": 510,
+          "start": 717
+        }
+      ],
+      "images": [
+        {
+          "src": "/dr-zeeshan-islam.png",
+          "current": "https://preemie.vercel.app/dr-zeeshan-islam.webp",
+          "nat": "709x585",
+          "disp": "40x40",
+          "loading": "eager",
+          "fetchp": "high",
+          "wh": "709x585",
+          "picture": true,
+          "alt": "Dr. Zeeshan Islam, MBBS, MCPS (Pediatric",
+          "bytes_transferred": 31412
+        },
+        {
+          "src": "/dr-zeeshan-islam.png",
+          "current": "https://preemie.vercel.app/dr-zeeshan-islam.webp",
+          "nat": "709x585",
+          "disp": "63x64",
+          "loading": "eager",
+          "fetchp": "high",
+          "wh": "709x585",
+          "picture": true,
+          "alt": "Dr. Zeeshan Islam, MBBS, MCPS (Pediatric",
+          "bytes_transferred": 31412
+        }
+      ],
+      "long_tasks_slowest": [
+        {
+          "name": "https://preemie.vercel.app/assets/index-ZZrkWfoq.js",
+          "type": "other",
+          "size": 120585,
+          "encoded": 120285,
+          "dur": 481,
+          "start": 717
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/SiteLayout-OgAXhYpm.js",
+          "type": "other",
+          "size": 4755,
+          "encoded": 4455,
+          "dur": 315,
+          "start": 718
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/milestones-51FnBO1A.js",
+          "type": "other",
+          "size": 2236,
+          "encoded": 1936,
+          "dur": 175,
+          "start": 718
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/red-flags-DHhOyfwi.js",
+          "type": "other",
+          "size": 2226,
+          "encoded": 1926,
+          "dur": 174,
+          "start": 718
+        },
+        {
+          "name": "https://preemie.vercel.app/assets/rolldown-runtime-QTnfLwEv.js",
+          "type": "other",
+          "size": 994,
+          "encoded": 694,
+          "dur": 172,
+          "start": 717
+        }
+      ]
+    },
+    "mobile": {
+      "vw": 375,
+      "vh": 812,
+      "scrollW": 375,
+      "scrollH": 5026,
+      "hScroll": false,
+      "interstitials": [],
+      "smallTargets": [
+        {
+          "tag": "A",
+          "txt": "Skip to main content",
+          "w": 32,
+          "h": 16,
+          "y": 15
+        },
+        {
+          "tag": "A",
+          "txt": "A\nAdjustedAge\nPREEMIE FOLLOW-UP",
+          "w": 192,
+          "h": 41,
+          "y": 58
+        },
+        {
+          "tag": "BUTTON",
+          "txt": "Open menu",
+          "w": 40,
+          "h": 40,
+          "y": 58
+        },
+        {
+          "tag": "A",
+          "txt": "Home",
+          "w": 39,
+          "h": 20,
+          "y": 144
+        },
+        {
+          "tag": "A",
+          "txt": "Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics)",
+          "w": 229,
+          "h": 34,
+          "y": 479
+        },
+        {
+          "tag": "A",
+          "txt": "Formulas and sources",
+          "w": 236,
+          "h": 34,
+          "y": 518
+        }
+      ],
+      "aboveFold": {
+        "h1": {
+          "text": "Preemie red flags: when to call the doctor",
+          "box": {
+            "x": 20,
+            "y": 236,
+            "w": 335,
+            "h": 75
+          }
+        },
+        "h2s": [
+          "Call today \u2014 do not wait for the next visit"
+        ],
+        "cta": [
+          {
+            "txt": "A\nAdjustedAge\nPREEMIE FOLLOW-UP",
+            "y": 58
+          },
+          {
+            "txt": "",
+            "y": 58
+          }
+        ],
+        "textBlocks": 10,
+        "jsonld": 4,
+        "imgs": [
+          {
+            "src": "dr-zeeshan-islam.webp",
+            "disp": "28x40",
+            "nat": "709x585",
+            "y": 496
+          }
+        ]
+      },
+      "contrast": [],
+      "smallText": [],
+      "bodyFont": 16,
+      "docLang": "en",
+      "lcp": [
+        {
+          "size": 34944,
+          "startTime": 1936,
+          "tag": "P.mt-4 text-lg leading-relaxed text-muted-foreground",
+          "url": null,
+          "id": null
+        }
+      ],
+      "cls": 0.0272,
+      "dialogs": []
+    },
+    "desktop_visual": {
+      "vw": 1440,
+      "vh": 900,
+      "scrollW": 1440,
+      "scrollH": 2857,
+      "hScroll": false,
+      "interstitials": [],
+      "smallTargets": [
+        {
+          "tag": "A",
+          "txt": "Skip to main content",
+          "w": 32,
+          "h": 16,
+          "y": 15
+        },
+        {
+          "tag": "A",
+          "txt": "A\nAdjustedAge\nPREEMIE FOLLOW-UP",
+          "w": 192,
+          "h": 41,
+          "y": 40
+        },
+        {
+          "tag": "A",
+          "txt": "Milestones",
+          "w": 95,
+          "h": 32,
+          "y": 45
+        },
+        {
+          "tag": "A",
+          "txt": "How it works",
+          "w": 108,
+          "h": 32,
+          "y": 45
+        },
+        {
+          "tag": "A",
+          "txt": "When to stop",
+          "w": 110,
+          "h": 32,
+          "y": 45
+        },
+        {
+          "tag": "A",
+          "txt": "Red flags",
+          "w": 86,
+          "h": 32,
+          "y": 45
+        },
+        {
+          "tag": "A",
+          "txt": "Methodology",
+          "w": 110,
+          "h": 32,
+          "y": 45
+        },
+        {
+          "tag": "A",
+          "txt": "About the author",
+          "w": 135,
+          "h": 32,
+          "y": 45
+        },
+        {
+          "tag": "A",
+          "txt": "Open the tool",
+          "w": 121,
+          "h": 36,
+          "y": 43
+        },
+        {
+          "tag": "A",
+          "txt": "Home",
+          "w": 39,
+          "h": 20,
+          "y": 126
+        },
+        {
+          "tag": "A",
+          "txt": "Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics)",
+          "w": 247,
+          "h": 14,
+          "y": 373
+        },
+        {
+          "tag": "A",
+          "txt": "Formulas and sources",
+          "w": 122,
+          "h": 14,
+          "y": 393
+        }
+      ],
+      "aboveFold": {
+        "h1": {
+          "text": "Preemie red flags: when to call the doctor",
+          "box": {
+            "x": 356,
+            "y": 218,
+            "w": 728,
+            "h": 45
+          }
+        },
+        "h2s": [
+          "Call today \u2014 do not wait for the next visit",
+          "Emergency \u2014 seek immediate care"
+        ],
+        "cta": [
+          {
+            "txt": "A\nAdjustedAge\nPREEMIE FOLLOW-UP",
+            "y": 40
+          },
+          {
+            "txt": "Open the tool",
+            "y": 43
+          }
+        ],
+        "textBlocks": 17,
+        "jsonld": 4,
+        "imgs": [
+          {
+            "src": "dr-zeeshan-islam.webp",
+            "disp": "40x40",
+            "nat": "709x585",
+            "y": 371
+          }
+        ]
+      },
+      "contrast": [],
+      "smallText": [],
+      "bodyFont": 16,
+      "docLang": "en",
+      "dialogs": []
+    },
+    "nojs": {
+      "textLen": 4499,
+      "h1": "Preemie red flags: when to call the doctor",
+      "h2count": 6,
+      "jsonld": 4,
+      "imgs": 2,
+      "inputs": 0,
+      "forms": 0,
+      "mainTextSample": "Skip to main content Clinically reviewed by Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics) A AdjustedAge PREEMIE FOLLOW-UP Milestones How it works When to stop Red flags Methodology About the author Open the tool Home Preemie red flags SAFETY PAGE Preemie red flags: when to call the doctor This site exi",
+      "visible": "visible"
+    }
+  }
+]

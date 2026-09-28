@@ -1,0 +1,240 @@
+============================================================
+/
+  ld types: ['WebSite', 'Physician', 'MedicalWebPage', 'WebApplication', 'FAQPage', 'BreadcrumbList']
+  headline: []
+  author: [{}, {}]
+  reviewedBy: [{}]
+  publisher: [{"@type": "Organization", "name": "AdjustedAge", "logo": {"@type": "ImageObject", "url": "https://preemie.vercel.app/favicon.png"}}, {"@type": "Organization", "name": "AdjustedAge", "logo": {"@type": "ImageObject", "url": "https://preemie.vercel.app/favicon.png"}}]
+  datePublished: ['2026-08-11'] dateModified: ['2026-08-27'] lastReviewed: ['2026-08-27']
+  sameAs: [['https://drzeeshanislam.blog', 'https://www.linkedin.com/in/dr-zeeshan-islam-b81b0b373', 'https://drzeewrites.com']]
+  image: ["https://preemie.vercel.app/og/og-brand.png", {"@type": "ImageObject", "url": "https://preemie.vercel.app/dr-zeeshan-islam.png", "width": 709, "height": 585}, "https://preemie.vercel.app/og/og-home.png"]
+  mainEntity/about: []
+  og: published=None modified=None image=https://preemie.vercel.app/og/og-home.png site_name=AdjustedAge type=website
+  twitter:image=https://preemie.vercel.app/og/og-home.png card=summary_large_image
+  inLanguage/format: ['en', 'en', 'en']
+  vocab size: 6 blocks, bytes=5040
+============================================================
+/adjusted-age-calculator
+  ld types: ['WebSite', 'Physician', 'MedicalWebPage', 'WebApplication', 'FAQPage', 'BreadcrumbList']
+  headline: []
+  author: [{}, {}]
+  reviewedBy: [{}]
+  publisher: [{"@type": "Organization", "name": "AdjustedAge", "logo": {"@type": "ImageObject", "url": "https://preemie.vercel.app/favicon.png"}}, {"@type": "Organization", "name": "AdjustedAge", "logo": {"@type": "ImageObject", "url": "https://preemie.vercel.app/favicon.png"}}]
+  datePublished: ['2026-08-26'] dateModified: ['2026-08-27'] lastReviewed: ['2026-08-27']
+  sameAs: [['https://drzeeshanislam.blog', 'https://www.linkedin.com/in/dr-zeeshan-islam-b81b0b373', 'https://drzeewrites.com']]
+  image: ["https://preemie.vercel.app/og/og-brand.png", {"@type": "ImageObject", "url": "https://preemie.vercel.app/dr-zeeshan-islam.png", "width": 709, "height": 585}, "https://preemie.vercel.app/og/og-home.png"]
+  mainEntity/about: []
+  og: published=None modified=None image=https://preemie.vercel.app/og/og-home.png site_name=AdjustedAge type=website
+  twitter:image=https://preemie.vercel.app/og/og-home.png card=summary_large_image
+  inLanguage/format: ['en', 'en', 'en']
+  vocab size: 6 blocks, bytes=4132
+============================================================
+/pma-calculator
+  ld types: ['WebSite', 'Physician', 'MedicalWebPage', 'WebApplication', 'FAQPage', 'BreadcrumbList']
+  headline: []
+  author: [{}, {}]
+  reviewedBy: [{}]
+  publisher: [{"@type": "Organization", "name": "AdjustedAge", "logo": {"@type": "ImageObject", "url": "https://preemie.vercel.app/favicon.png"}}, {"@type": "Organization", "name": "AdjustedAge", "logo": {"@type": "ImageObject", "url": "https://preemie.vercel.app/favicon.png"}}]
+  datePublished: ['2026-08-26'] dateModified: ['2026-08-27'] lastReviewed: ['2026-08-27']
+  sameAs: [['https://drzeeshanislam.blog', 'https://www.linkedin.com/in/dr-zeeshan-islam-b81b0b373', 'https://drzeewrites.com']]
+  image: ["https://preemie.vercel.app/og/og-brand.png", {"@type": "ImageObject", "url": "https://preemie.vercel.app/dr-zeeshan-islam.png", "width": 709, "height": 585}, "https://preemie.vercel.app/og/og-pma.png"]
+  mainEntity/about: []
+  og: published=None modified=None image=https://preemie.vercel.app/og/og-pma.png site_name=AdjustedAge type=website
+  twitter:image=https://preemie.vercel.app/og/og-pma.png card=summary_large_image
+  inLanguage/format: ['en', 'en', 'en']
+  vocab size: 6 blocks, bytes=3916
+============================================================
+/preemie-weight-gain
+  ld types: ['WebSite', 'Physician', 'MedicalWebPage', 'WebApplication', 'FAQPage', 'BreadcrumbList']
+  headline: []
+  author: [{}, {}]
+  reviewedBy: [{}]
+  publisher: [{"@type": "Organization", "name": "AdjustedAge", "logo": {"@type": "ImageObject", "url": "https://preemie.vercel.app/favicon.png"}}, {"@type": "Organization", "name": "AdjustedAge", "logo": {"@type": "ImageObject", "url": "https://preemie.vercel.app/favicon.png"}}]
+  datePublished: ['2026-08-26'] dateModified: ['2026-08-27'] lastReviewed: ['2026-08-27']
+  sameAs: [['https://drzeeshanislam.blog', 'https://www.linkedin.com/in/dr-zeeshan-islam-b81b0b373', 'https://drzeewrites.com']]
+  image: ["https://preemie.vercel.app/og/og-brand.png", {"@type": "ImageObject", "url": "https://preemie.vercel.app/dr-zeeshan-islam.png", "width": 709, "height": 585}, "https://preemie.vercel.app/og/og-weight-gain.png"]
+  mainEntity/about: []
+  og: published=None modified=None image=https://preemie.vercel.app/og/og-weight-gain.png site_name=AdjustedAge type=website
+  twitter:image=https://preemie.vercel.app/og/og-weight-gain.png card=summary_large_image
+  inLanguage/format: ['en', 'en', 'en']
+  vocab size: 6 blocks, bytes=4036
+============================================================
+/preemie-vaccines
+  ld types: ['WebSite', 'Physician', 'MedicalWebPage', 'FAQPage', 'BreadcrumbList']
+  headline: []
+  author: [{}, {}]
+  reviewedBy: [{}]
+  publisher: [{"@type": "Organization", "name": "AdjustedAge", "logo": {"@type": "ImageObject", "url": "https://preemie.vercel.app/favicon.png"}}, {"@type": "Organization", "name": "AdjustedAge", "logo": {"@type": "ImageObject", "url": "https://preemie.vercel.app/favicon.png"}}]
+  datePublished: ['2026-08-26'] dateModified: ['2026-08-27'] lastReviewed: ['2026-08-27']
+  sameAs: [['https://drzeeshanislam.blog', 'https://www.linkedin.com/in/dr-zeeshan-islam-b81b0b373', 'https://drzeewrites.com']]
+  image: ["https://preemie.vercel.app/og/og-brand.png", {"@type": "ImageObject", "url": "https://preemie.vercel.app/dr-zeeshan-islam.png", "width": 709, "height": 585}]
+  mainEntity/about: []
+  og: published=2026-08-26T00:00:00Z modified=2026-08-27T00:00:00Z image=https://preemie.vercel.app/og/og-vaccines.png site_name=AdjustedAge type=article
+  twitter:image=https://preemie.vercel.app/og/og-vaccines.png card=summary_large_image
+  inLanguage/format: ['en', 'en']
+  vocab size: 5 blocks, bytes=3363
+============================================================
+/late-preterm-baby
+  ld types: ['WebSite', 'Physician', 'MedicalWebPage', 'FAQPage', 'BreadcrumbList']
+  headline: []
+  author: [{}, {}]
+  reviewedBy: [{}]
+  publisher: [{"@type": "Organization", "name": "AdjustedAge", "logo": {"@type": "ImageObject", "url": "https://preemie.vercel.app/favicon.png"}}, {"@type": "Organization", "name": "AdjustedAge", "logo": {"@type": "ImageObject", "url": "https://preemie.vercel.app/favicon.png"}}]
+  datePublished: ['2026-08-27'] dateModified: ['2026-08-27'] lastReviewed: ['2026-08-27']
+  sameAs: [['https://drzeeshanislam.blog', 'https://www.linkedin.com/in/dr-zeeshan-islam-b81b0b373', 'https://drzeewrites.com']]
+  image: ["https://preemie.vercel.app/og/og-brand.png", {"@type": "ImageObject", "url": "https://preemie.vercel.app/dr-zeeshan-islam.png", "width": 709, "height": 585}, "https://preemie.vercel.app/og/og-late-preterm.png"]
+  mainEntity/about: []
+  og: published=2026-08-27T00:00:00Z modified=2026-08-27T00:00:00Z image=https://preemie.vercel.app/og/og-late-preterm.png site_name=AdjustedAge type=article
+  twitter:image=https://preemie.vercel.app/og/og-late-preterm.png card=summary_large_image
+  inLanguage/format: ['en', 'en']
+  vocab size: 5 blocks, bytes=3346
+============================================================
+/nicu-follow-up-schedule
+  ld types: ['WebSite', 'Physician', 'MedicalWebPage', 'FAQPage', 'BreadcrumbList']
+  headline: []
+  author: [{}, {}]
+  reviewedBy: [{}]
+  publisher: [{"@type": "Organization", "name": "AdjustedAge", "logo": {"@type": "ImageObject", "url": "https://preemie.vercel.app/favicon.png"}}, {"@type": "Organization", "name": "AdjustedAge", "logo": {"@type": "ImageObject", "url": "https://preemie.vercel.app/favicon.png"}}]
+  datePublished: ['2026-08-27'] dateModified: ['2026-08-27'] lastReviewed: ['2026-08-27']
+  sameAs: [['https://drzeeshanislam.blog', 'https://www.linkedin.com/in/dr-zeeshan-islam-b81b0b373', 'https://drzeewrites.com']]
+  image: ["https://preemie.vercel.app/og/og-brand.png", {"@type": "ImageObject", "url": "https://preemie.vercel.app/dr-zeeshan-islam.png", "width": 709, "height": 585}, "https://preemie.vercel.app/og/og-followup.png"]
+  mainEntity/about: []
+  og: published=2026-08-27T00:00:00Z modified=2026-08-27T00:00:00Z image=https://preemie.vercel.app/og/og-followup.png site_name=AdjustedAge type=article
+  twitter:image=https://preemie.vercel.app/og/og-followup.png card=summary_large_image
+  inLanguage/format: ['en', 'en']
+  vocab size: 5 blocks, bytes=3447
+============================================================
+/when-can-my-preemie-start-solids
+  ld types: ['WebSite', 'Physician', 'MedicalWebPage', 'FAQPage', 'BreadcrumbList']
+  headline: []
+  author: [{}, {}]
+  reviewedBy: [{}]
+  publisher: [{"@type": "Organization", "name": "AdjustedAge", "logo": {"@type": "ImageObject", "url": "https://preemie.vercel.app/favicon.png"}}, {"@type": "Organization", "name": "AdjustedAge", "logo": {"@type": "ImageObject", "url": "https://preemie.vercel.app/favicon.png"}}]
+  datePublished: ['2026-08-27'] dateModified: ['2026-08-27'] lastReviewed: ['2026-08-27']
+  sameAs: [['https://drzeeshanislam.blog', 'https://www.linkedin.com/in/dr-zeeshan-islam-b81b0b373', 'https://drzeewrites.com']]
+  image: ["https://preemie.vercel.app/og/og-brand.png", {"@type": "ImageObject", "url": "https://preemie.vercel.app/dr-zeeshan-islam.png", "width": 709, "height": 585}, "https://preemie.vercel.app/og/og-solids.png"]
+  mainEntity/about: []
+  og: published=2026-08-27T00:00:00Z modified=2026-08-27T00:00:00Z image=https://preemie.vercel.app/og/og-solids.png site_name=AdjustedAge type=article
+  twitter:image=https://preemie.vercel.app/og/og-solids.png card=summary_large_image
+  inLanguage/format: ['en', 'en']
+  vocab size: 5 blocks, bytes=3594
+============================================================
+/adjusted-age-vs-chronological-age
+  ld types: ['WebSite', 'Physician', 'MedicalWebPage', 'FAQPage', 'BreadcrumbList']
+  headline: []
+  author: [{}, {}]
+  reviewedBy: [{}]
+  publisher: [{"@type": "Organization", "name": "AdjustedAge", "logo": {"@type": "ImageObject", "url": "https://preemie.vercel.app/favicon.png"}}, {"@type": "Organization", "name": "AdjustedAge", "logo": {"@type": "ImageObject", "url": "https://preemie.vercel.app/favicon.png"}}]
+  datePublished: ['2026-08-27'] dateModified: ['2026-08-27'] lastReviewed: ['2026-08-27']
+  sameAs: [['https://drzeeshanislam.blog', 'https://www.linkedin.com/in/dr-zeeshan-islam-b81b0b373', 'https://drzeewrites.com']]
+  image: ["https://preemie.vercel.app/og/og-brand.png", {"@type": "ImageObject", "url": "https://preemie.vercel.app/dr-zeeshan-islam.png", "width": 709, "height": 585}, "https://preemie.vercel.app/og/og-age-difference.png"]
+  mainEntity/about: []
+  og: published=2026-08-27T00:00:00Z modified=2026-08-27T00:00:00Z image=https://preemie.vercel.app/og/og-age-difference.png site_name=AdjustedAge type=article
+  twitter:image=https://preemie.vercel.app/og/og-age-difference.png card=summary_large_image
+  inLanguage/format: ['en', 'en']
+  vocab size: 5 blocks, bytes=3327
+============================================================
+/premature-baby-milestones
+  ld types: ['WebSite', 'Physician', 'Article', 'FAQPage', 'BreadcrumbList']
+  headline: ['Premature Baby Milestones Chart by Corrected Age']
+  author: [{}, {}]
+  reviewedBy: []
+  publisher: [{"@type": "Organization", "name": "AdjustedAge", "logo": {"@type": "ImageObject", "url": "https://preemie.vercel.app/favicon.png"}}, {"@type": "Organization", "name": "AdjustedAge", "logo": {"@type": "ImageObject", "url": "https://preemie.vercel.app/favicon.png"}}]
+  datePublished: ['2026-08-11'] dateModified: ['2026-08-27'] lastReviewed: []
+  sameAs: [['https://drzeeshanislam.blog', 'https://www.linkedin.com/in/dr-zeeshan-islam-b81b0b373', 'https://drzeewrites.com']]
+  image: ["https://preemie.vercel.app/og/og-brand.png", {"@type": "ImageObject", "url": "https://preemie.vercel.app/dr-zeeshan-islam.png", "width": 709, "height": 585}]
+  mainEntity/about: []
+  og: published=2026-08-11T00:00:00Z modified=2026-08-27T00:00:00Z image=https://preemie.vercel.app/og/og-milestones.png site_name=AdjustedAge type=article
+  twitter:image=https://preemie.vercel.app/og/og-milestones.png card=summary_large_image
+  inLanguage/format: ['en', 'en']
+  vocab size: 5 blocks, bytes=2982
+============================================================
+/how-to-calculate-corrected-age
+  ld types: ['WebSite', 'Physician', 'Article', 'HowTo', 'FAQPage', 'BreadcrumbList']
+  headline: ['How to Calculate Corrected Age for Premature Babies']
+  author: [{}, {}, {}]
+  reviewedBy: []
+  publisher: [{"@type": "Organization", "name": "AdjustedAge", "logo": {"@type": "ImageObject", "url": "https://preemie.vercel.app/favicon.png"}}, {"@type": "Organization", "name": "AdjustedAge", "logo": {"@type": "ImageObject", "url": "https://preemie.vercel.app/favicon.png"}}]
+  datePublished: ['2026-08-11'] dateModified: ['2026-08-27'] lastReviewed: []
+  sameAs: [['https://drzeeshanislam.blog', 'https://www.linkedin.com/in/dr-zeeshan-islam-b81b0b373', 'https://drzeewrites.com']]
+  image: ["https://preemie.vercel.app/og/og-brand.png", {"@type": "ImageObject", "url": "https://preemie.vercel.app/dr-zeeshan-islam.png", "width": 709, "height": 585}]
+  mainEntity/about: []
+  og: published=2026-08-11T00:00:00Z modified=2026-08-27T00:00:00Z image=https://preemie.vercel.app/og/og-guides.png site_name=AdjustedAge type=article
+  twitter:image=https://preemie.vercel.app/og/og-guides.png card=summary_large_image
+  inLanguage/format: ['en', 'en']
+  vocab size: 6 blocks, bytes=3914
+============================================================
+/when-to-stop-correcting
+  ld types: ['WebSite', 'Physician', 'MedicalWebPage', 'FAQPage', 'BreadcrumbList']
+  headline: []
+  author: [{}, {}]
+  reviewedBy: [{}]
+  publisher: [{"@type": "Organization", "name": "AdjustedAge", "logo": {"@type": "ImageObject", "url": "https://preemie.vercel.app/favicon.png"}}, {"@type": "Organization", "name": "AdjustedAge", "logo": {"@type": "ImageObject", "url": "https://preemie.vercel.app/favicon.png"}}]
+  datePublished: ['2026-08-11'] dateModified: ['2026-08-27'] lastReviewed: ['2026-08-27']
+  sameAs: [['https://drzeeshanislam.blog', 'https://www.linkedin.com/in/dr-zeeshan-islam-b81b0b373', 'https://drzeewrites.com']]
+  image: ["https://preemie.vercel.app/og/og-brand.png", {"@type": "ImageObject", "url": "https://preemie.vercel.app/dr-zeeshan-islam.png", "width": 709, "height": 585}, "https://preemie.vercel.app/og/og-guides.png"]
+  mainEntity/about: []
+  og: published=2026-08-11T00:00:00Z modified=2026-08-27T00:00:00Z image=https://preemie.vercel.app/og/og-guides.png site_name=AdjustedAge type=article
+  twitter:image=https://preemie.vercel.app/og/og-guides.png card=summary_large_image
+  inLanguage/format: ['en', 'en']
+  vocab size: 5 blocks, bytes=3797
+============================================================
+/red-flags
+  ld types: ['WebSite', 'Physician', 'MedicalWebPage', 'BreadcrumbList']
+  headline: []
+  author: [{}, {}]
+  reviewedBy: [{}]
+  publisher: [{"@type": "Organization", "name": "AdjustedAge", "logo": {"@type": "ImageObject", "url": "https://preemie.vercel.app/favicon.png"}}, {"@type": "Organization", "name": "AdjustedAge", "logo": {"@type": "ImageObject", "url": "https://preemie.vercel.app/favicon.png"}}]
+  datePublished: ['2026-08-11'] dateModified: ['2026-08-26'] lastReviewed: ['2026-08-26']
+  sameAs: [['https://drzeeshanislam.blog', 'https://www.linkedin.com/in/dr-zeeshan-islam-b81b0b373', 'https://drzeewrites.com']]
+  image: ["https://preemie.vercel.app/og/og-brand.png", {"@type": "ImageObject", "url": "https://preemie.vercel.app/dr-zeeshan-islam.png", "width": 709, "height": 585}]
+  mainEntity/about: []
+  og: published=2026-08-11T00:00:00Z modified=2026-08-26T00:00:00Z image=https://preemie.vercel.app/og/og-red-flags.png site_name=AdjustedAge type=article
+  twitter:image=https://preemie.vercel.app/og/og-red-flags.png card=summary_large_image
+  inLanguage/format: ['en', 'en']
+  vocab size: 4 blocks, bytes=2428
+============================================================
+/methodology
+  ld types: ['WebSite', 'Physician', 'MedicalWebPage', 'FAQPage', 'BreadcrumbList']
+  headline: []
+  author: [{}, {}]
+  reviewedBy: [{}]
+  publisher: [{"@type": "Organization", "name": "AdjustedAge", "logo": {"@type": "ImageObject", "url": "https://preemie.vercel.app/favicon.png"}}, {"@type": "Organization", "name": "AdjustedAge", "logo": {"@type": "ImageObject", "url": "https://preemie.vercel.app/favicon.png"}}]
+  datePublished: ['2026-08-11'] dateModified: ['2026-08-27'] lastReviewed: ['2026-08-27']
+  sameAs: [['https://drzeeshanislam.blog', 'https://www.linkedin.com/in/dr-zeeshan-islam-b81b0b373', 'https://drzeewrites.com']]
+  image: ["https://preemie.vercel.app/og/og-brand.png", {"@type": "ImageObject", "url": "https://preemie.vercel.app/dr-zeeshan-islam.png", "width": 709, "height": 585}, "https://preemie.vercel.app/og/og-guides.png"]
+  mainEntity/about: []
+  og: published=2026-08-11T00:00:00Z modified=2026-08-27T00:00:00Z image=https://preemie.vercel.app/og/og-guides.png site_name=AdjustedAge type=article
+  twitter:image=https://preemie.vercel.app/og/og-guides.png card=summary_large_image
+  inLanguage/format: ['en', 'en']
+  vocab size: 5 blocks, bytes=4246
+============================================================
+/about
+  ld types: ['WebSite', 'Physician', 'Physician', 'BreadcrumbList']
+  headline: []
+  author: [{}]
+  reviewedBy: []
+  publisher: [{"@type": "Organization", "name": "AdjustedAge", "logo": {"@type": "ImageObject", "url": "https://preemie.vercel.app/favicon.png"}}]
+  datePublished: [] dateModified: [] lastReviewed: []
+  sameAs: [['https://drzeeshanislam.blog', 'https://www.linkedin.com/in/dr-zeeshan-islam-b81b0b373', 'https://drzeewrites.com'], ['https://drzeeshanislam.blog', 'https://www.linkedin.com/in/dr-zeeshan-islam-b81b0b373', 'https://drzeewrites.com']]
+  image: ["https://preemie.vercel.app/og/og-brand.png", {"@type": "ImageObject", "url": "https://preemie.vercel.app/dr-zeeshan-islam.png", "width": 709, "height": 585}, {"@type": "ImageObject", "url": "https://preemie.vercel.app/dr-zeeshan-islam.png", "width": 709, "height": 585}]
+  mainEntity/about: []
+  og: published=2026-08-11T00:00:00Z modified=2026-08-26T00:00:00Z image=https://preemie.vercel.app/og/og-about.png site_name=AdjustedAge type=profile
+  twitter:image=https://preemie.vercel.app/og/og-about.png card=summary_large_image
+  inLanguage/format: ['en', 'en']
+  vocab size: 4 blocks, bytes=3241
+============================================================
+/privacy
+  ld types: ['WebSite', 'Physician', 'MedicalWebPage', 'BreadcrumbList']
+  headline: []
+  author: [{}, {}]
+  reviewedBy: []
+  publisher: [{"@type": "Organization", "name": "AdjustedAge", "logo": {"@type": "ImageObject", "url": "https://preemie.vercel.app/favicon.png"}}]
+  datePublished: [] dateModified: ['2026-08-26'] lastReviewed: []
+  sameAs: [['https://drzeeshanislam.blog', 'https://www.linkedin.com/in/dr-zeeshan-islam-b81b0b373', 'https://drzeewrites.com']]
+  image: ["https://preemie.vercel.app/og/og-brand.png", {"@type": "ImageObject", "url": "https://preemie.vercel.app/dr-zeeshan-islam.png", "width": 709, "height": 585}]
+  mainEntity/about: []
+  og: published=2026-08-11T00:00:00Z modified=2026-08-26T00:00:00Z image=https://preemie.vercel.app/og/og-brand.png site_name=AdjustedAge type=article
+  twitter:image=https://preemie.vercel.app/og/og-brand.png card=summary_large_image
+  inLanguage/format: ['en', 'en']
+  vocab size: 4 blocks, bytes=2031

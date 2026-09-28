@@ -1,0 +1,96 @@
+/ | title=Corrected Age Calculator for Premature Babies | AdjustedAge
+   og:url=https://preemie.vercel.app/ site_name=AdjustedAge type=website
+   canon=https://preemie.vercel.app/
+   ld_domains=['drzeeshanislam.blog', 'drzeewrites.com', 'preemie.vercel.app', 'schema.org', 'www.linkedin.com'] ext=['drzeeshanislam.blog', 'drzeewrites.com', 'fonts.googleapis.com', 'fonts.gstatic.com', 'preemie.vercel.app', 'schema.org', 'www.linkedin.com', 'www.w3.org']
+   dateMod=[] datePub=[] sameAs=True reviewedBy=True author=True
+   drzeewrites=True identity=True brand_in_title=True org=[] person=[]
+/adjusted-age-calculator | title=Adjusted Age Calculator for Premature Babies | AdjustedAge
+   og:url=https://preemie.vercel.app/adjusted-age-calculator site_name=AdjustedAge type=website
+   canon=https://preemie.vercel.app/adjusted-age-calculator
+   ld_domains=['drzeeshanislam.blog', 'drzeewrites.com', 'preemie.vercel.app', 'schema.org', 'www.linkedin.com'] ext=['drzeeshanislam.blog', 'drzeewrites.com', 'fonts.googleapis.com', 'fonts.gstatic.com', 'preemie.vercel.app', 'schema.org', 'www.linkedin.com', 'www.w3.org']
+   dateMod=[] datePub=[] sameAs=True reviewedBy=True author=True
+   drzeewrites=True identity=True brand_in_title=True org=[] person=[]
+/pma-calculator | title=Postmenstrual Age (PMA) Calculator for Preterm Babies | AdjustedAge
+   og:url=https://preemie.vercel.app/pma-calculator site_name=AdjustedAge type=website
+   canon=https://preemie.vercel.app/pma-calculator
+   ld_domains=['drzeeshanislam.blog', 'drzeewrites.com', 'preemie.vercel.app', 'schema.org', 'www.linkedin.com'] ext=['drzeeshanislam.blog', 'drzeewrites.com', 'fonts.googleapis.com', 'fonts.gstatic.com', 'preemie.vercel.app', 'schema.org', 'www.linkedin.com', 'www.w3.org']
+   dateMod=[] datePub=[] sameAs=True reviewedBy=True author=True
+   drzeewrites=True identity=True brand_in_title=True org=[] person=[]
+/preemie-weight-gain | title=Preemie Weight Gain Calculator (g/day & g/kg/day) | AdjustedAge
+   og:url=https://preemie.vercel.app/preemie-weight-gain site_name=AdjustedAge type=website
+   canon=https://preemie.vercel.app/preemie-weight-gain
+   ld_domains=['drzeeshanislam.blog', 'drzeewrites.com', 'preemie.vercel.app', 'schema.org', 'www.linkedin.com'] ext=['drzeeshanislam.blog', 'drzeewrites.com', 'fonts.googleapis.com', 'fonts.gstatic.com', 'preemie.vercel.app', 'schema.org', 'www.linkedin.com', 'www.w3.org']
+   dateMod=[] datePub=[] sameAs=True reviewedBy=True author=True
+   drzeewrites=True identity=True brand_in_title=True org=[] person=[]
+/preemie-vaccines | title=Do Preemies Get Vaccines by Corrected Age? | AdjustedAge
+   og:url=https://preemie.vercel.app/preemie-vaccines site_name=AdjustedAge type=article
+   canon=https://preemie.vercel.app/preemie-vaccines
+   ld_domains=['drzeeshanislam.blog', 'drzeewrites.com', 'preemie.vercel.app', 'schema.org', 'www.linkedin.com'] ext=['drzeeshanislam.blog', 'drzeewrites.com', 'fonts.googleapis.com', 'fonts.gstatic.com', 'preemie.vercel.app', 'schema.org', 'www.linkedin.com', 'www.w3.org']
+   dateMod=[] datePub=[] sameAs=True reviewedBy=True author=True
+   drzeewrites=True identity=True brand_in_title=True org=[] person=[]
+/late-preterm-baby | title=Late Preterm Baby Guide: 34 to 36 Weeks & Corrected Age | AdjustedAge
+   og:url=https://preemie.vercel.app/late-preterm-baby site_name=AdjustedAge type=article
+   canon=https://preemie.vercel.app/late-preterm-baby
+   ld_domains=['drzeeshanislam.blog', 'drzeewrites.com', 'preemie.vercel.app', 'schema.org', 'www.linkedin.com'] ext=['drzeeshanislam.blog', 'drzeewrites.com', 'fonts.googleapis.com', 'fonts.gstatic.com', 'preemie.vercel.app', 'schema.org', 'www.linkedin.com', 'www.w3.org']
+   dateMod=[] datePub=[] sameAs=True reviewedBy=True author=True
+   drzeewrites=True identity=True brand_in_title=True org=[] person=[]
+/nicu-follow-up-schedule | title=NICU Follow-Up Schedule for Preterm Babies | AdjustedAge
+   og:url=https://preemie.vercel.app/nicu-follow-up-schedule site_name=AdjustedAge type=article
+   canon=https://preemie.vercel.app/nicu-follow-up-schedule
+   ld_domains=['drzeeshanislam.blog', 'drzeewrites.com', 'preemie.vercel.app', 'schema.org', 'www.linkedin.com'] ext=['drzeeshanislam.blog', 'drzeewrites.com', 'fonts.googleapis.com', 'fonts.gstatic.com', 'preemie.vercel.app', 'schema.org', 'www.linkedin.com', 'www.w3.org']
+   dateMod=[] datePub=[] sameAs=True reviewedBy=True author=True
+   drzeewrites=True identity=True brand_in_title=True org=[] person=[]
+/when-can-my-preemie-start-solids | title=When Can My Preemie Start Solids? Corrected Age Guide | AdjustedAge
+   og:url=https://preemie.vercel.app/when-can-my-preemie-start-solids site_name=AdjustedAge type=article
+   canon=https://preemie.vercel.app/when-can-my-preemie-start-solids
+   ld_domains=['drzeeshanislam.blog', 'drzeewrites.com', 'preemie.vercel.app', 'schema.org', 'www.linkedin.com'] ext=['drzeeshanislam.blog', 'drzeewrites.com', 'fonts.googleapis.com', 'fonts.gstatic.com', 'preemie.vercel.app', 'schema.org', 'www.linkedin.com', 'www.w3.org']
+   dateMod=[] datePub=[] sameAs=True reviewedBy=True author=True
+   drzeewrites=True identity=True brand_in_title=True org=[] person=[]
+/adjusted-age-vs-chronological-age | title=Adjusted Age vs Chronological Age for Preemies | AdjustedAge
+   og:url=https://preemie.vercel.app/adjusted-age-vs-chronological-age site_name=AdjustedAge type=article
+   canon=https://preemie.vercel.app/adjusted-age-vs-chronological-age
+   ld_domains=['drzeeshanislam.blog', 'drzeewrites.com', 'preemie.vercel.app', 'schema.org', 'www.linkedin.com'] ext=['drzeeshanislam.blog', 'drzeewrites.com', 'fonts.googleapis.com', 'fonts.gstatic.com', 'preemie.vercel.app', 'schema.org', 'www.linkedin.com', 'www.w3.org']
+   dateMod=[] datePub=[] sameAs=True reviewedBy=True author=True
+   drzeewrites=True identity=True brand_in_title=True org=[] person=[]
+/premature-baby-milestones | title=Premature Baby Milestones Chart by Corrected Age (2û36 Months) | AdjustedAge
+   og:url=https://preemie.vercel.app/premature-baby-milestones site_name=AdjustedAge type=article
+   canon=https://preemie.vercel.app/premature-baby-milestones
+   ld_domains=['drzeeshanislam.blog', 'drzeewrites.com', 'preemie.vercel.app', 'schema.org', 'www.linkedin.com'] ext=['drzeeshanislam.blog', 'drzeewrites.com', 'fonts.googleapis.com', 'fonts.gstatic.com', 'preemie.vercel.app', 'schema.org', 'www.linkedin.com', 'www.w3.org']
+   dateMod=[] datePub=[] sameAs=True reviewedBy=False author=True
+   drzeewrites=True identity=True brand_in_title=True org=[] person=[]
+/how-to-calculate-corrected-age | title=How to Calculate Corrected Age for a Premature Baby | AdjustedAge
+   og:url=https://preemie.vercel.app/how-to-calculate-corrected-age site_name=AdjustedAge type=article
+   canon=https://preemie.vercel.app/how-to-calculate-corrected-age
+   ld_domains=['drzeeshanislam.blog', 'drzeewrites.com', 'preemie.vercel.app', 'schema.org', 'www.linkedin.com'] ext=['drzeeshanislam.blog', 'drzeewrites.com', 'fonts.googleapis.com', 'fonts.gstatic.com', 'preemie.vercel.app', 'schema.org', 'www.linkedin.com', 'www.w3.org']
+   dateMod=[] datePub=[] sameAs=True reviewedBy=False author=True
+   drzeewrites=True identity=True brand_in_title=True org=[] person=[]
+/when-to-stop-correcting | title=When to Stop Correcting Age for a Preemie | Milestones, Growth & Vaccines
+   og:url=https://preemie.vercel.app/when-to-stop-correcting site_name=AdjustedAge type=article
+   canon=https://preemie.vercel.app/when-to-stop-correcting
+   ld_domains=['drzeeshanislam.blog', 'drzeewrites.com', 'preemie.vercel.app', 'schema.org', 'www.linkedin.com'] ext=['drzeeshanislam.blog', 'drzeewrites.com', 'fonts.googleapis.com', 'fonts.gstatic.com', 'preemie.vercel.app', 'schema.org', 'www.linkedin.com', 'www.w3.org']
+   dateMod=[] datePub=[] sameAs=True reviewedBy=True author=True
+   drzeewrites=True identity=True brand_in_title=False org=[] person=[]
+/red-flags | title=Preemie Red Flags: When to Call the Doctor | AdjustedAge
+   og:url=https://preemie.vercel.app/red-flags site_name=AdjustedAge type=article
+   canon=https://preemie.vercel.app/red-flags
+   ld_domains=['drzeeshanislam.blog', 'drzeewrites.com', 'preemie.vercel.app', 'schema.org', 'www.linkedin.com'] ext=['drzeeshanislam.blog', 'drzeewrites.com', 'fonts.googleapis.com', 'fonts.gstatic.com', 'preemie.vercel.app', 'schema.org', 'www.linkedin.com', 'www.w3.org']
+   dateMod=[] datePub=[] sameAs=True reviewedBy=True author=True
+   drzeewrites=True identity=True brand_in_title=True org=[] person=[]
+/methodology | title=Corrected Age Methodology, PMA & References | AdjustedAge
+   og:url=https://preemie.vercel.app/methodology site_name=AdjustedAge type=article
+   canon=https://preemie.vercel.app/methodology
+   ld_domains=['drzeeshanislam.blog', 'drzeewrites.com', 'preemie.vercel.app', 'schema.org', 'www.linkedin.com'] ext=['drzeeshanislam.blog', 'drzeewrites.com', 'fonts.googleapis.com', 'fonts.gstatic.com', 'preemie.vercel.app', 'schema.org', 'www.linkedin.com', 'www.w3.org']
+   dateMod=[] datePub=[] sameAs=True reviewedBy=True author=True
+   drzeewrites=True identity=True brand_in_title=True org=[] person=[]
+/about | title=About Dr. Zeeshan Islam | AdjustedAge
+   og:url=https://preemie.vercel.app/about site_name=AdjustedAge type=profile
+   canon=https://preemie.vercel.app/about
+   ld_domains=['drzeeshanislam.blog', 'drzeewrites.com', 'preemie.vercel.app', 'schema.org', 'www.linkedin.com'] ext=['drzeeshanislam.blog', 'drzeewrites.com', 'fonts.googleapis.com', 'fonts.gstatic.com', 'preemie.vercel.app', 'schema.org', 'www.linkedin.com', 'www.w3.org']
+   dateMod=[] datePub=[] sameAs=True reviewedBy=False author=True
+   drzeewrites=True identity=True brand_in_title=True org=[] person=[]
+/privacy | title=Privacy & Data Handling | AdjustedAge
+   og:url=https://preemie.vercel.app/privacy site_name=AdjustedAge type=article
+   canon=https://preemie.vercel.app/privacy
+   ld_domains=['drzeeshanislam.blog', 'drzeewrites.com', 'preemie.vercel.app', 'schema.org', 'www.linkedin.com'] ext=['drzeeshanislam.blog', 'drzeewrites.com', 'fonts.googleapis.com', 'fonts.gstatic.com', 'preemie.vercel.app', 'schema.org', 'www.linkedin.com', 'www.w3.org']
+   dateMod=[] datePub=[] sameAs=True reviewedBy=False author=True
+   drzeewrites=True identity=True brand_in_title=True org=[] person=[]
