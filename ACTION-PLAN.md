@@ -43,22 +43,22 @@
 
 ## P1 — Weeks 2–3
 
-| # | Action | Audit ref | Effort | KPI |
-|---|---|---|---|---|
-| P1.1 | Self-host Google Fonts via `@fontsource-variable/*`, preload LCP weight, drop both preconnects | TECH F5 · PERF | Medium | 0 third-party font requests on LCP path |
-| P1.2 | Code-split jsPDF + Recharts behind dynamic import | TECH F6 · PERF | Medium | Initial JS well under 398 KB gzipped; lab LCP ≤2.5 s |
-| P1.3 | Schema: one `@id`-keyed `Organization` replacing 31 anonymous copies | SCHEMA F3 | Medium | 1 Organization node referenced by 16 pages |
-| P1.4 | Schema: dedupe `Physician` on `/about`, add `ProfilePage`, contact | SCHEMA F2/F12 | Low | Single `Physician` `@id`, page-level node on `/about` |
-| P1.5 | Schema: `medicalSpecialty` `"Pediatrics"` → `"Pediatric"` (14 spots) | SCHEMA F4 | Low | 0 invalid enum values |
-| P1.6 | Schema: add `image` to the 9 page nodes lacking it; retype `/privacy` as `WebPage`; add `MedicalWebPage` + `reviewedBy` to the 2 `Article` guides | SCHEMA F5/F6/F13 | Medium | 16/16 pages with complete YMYL wiring |
-| P1.7 | Schema: align every `BreadcrumbList` name with visible text | SCHEMA F7 | Low | 16/16 exact label parity |
-| P1.8 | Regenerate FAQ JSON-LD from visible copy (or render it) — **integrity only, do not add new FAQPage** | SCHEMA F9 | Medium | Question↔copy parity; no SERP-gain motive |
-| P1.9 | Expand header nav beyond 6 of 16 pages; fix 4 near-orphans (`/preemie-vaccines`, `/preemie-weight-gain`, `/pma-calculator`, `/when-can-my-preemie-start-solids`) | SITEMAP F2/F3 | Medium | ≥12/16 pages reachable from header; every page ≥5 body-link sources |
-| P1.10 | Add query-string prefill internal links (calculator ↔ guide) | SITEMAP F6 · SEO-AUDIT §3.3 | Low | ≥1 prefill link per guide → tool |
-| P1.11 | Readability pass on the 8 parent-facing guides (target Flesch ≥60) | CONTENT readability | High | Median prose Flesch ≥55 |
-| P1.12 | De-duplicate the calculator trio: unique intros/FAQs, hub/spoke split — **no page deletions** | CANNIBALIZATION | Medium | Distinctive intro + FAQ per spoke |
-| P1.13 | Give `public/` images a real TTL; drop `fetchPriority=high` from non-LCP avatars | PERF F3/F4 | Low | `max-age=604800, stale-while-revalidate` |
-| P1.14 | Add bespoke visual assets (corrected-age timeline, milestones chart image, growth-curve explainer) | GEO citability · IMG | High | ≥3 crawlable content images with alt + schema `image` |
+| # | Action | Audit ref | Effort | KPI | Status |
+|---|---|---|---|---|---|
+| P1.1 | Self-host Google Fonts via `@fontsource-variable/*`, preload LCP weight, drop both preconnects | TECH F5 · PERF | Medium | 0 third-party font requests on LCP path | ✅ shipped — 0 third-party font requests in SSR HTML; 6 `@font-face` @ `font-display: swap`; LCP preload **deliberately skipped** (Vite content-hashes the font URLs, so a preload would need a hardcoded hash or a duplicate download) |
+| P1.2 | Code-split jsPDF + Recharts behind dynamic import | TECH F6 · PERF | Medium | Initial JS well under 398 KB gzipped; lab LCP ≤2.5 s | ✅ shipped — initial JS on `/` = **153 KB gzipped** (545 KB raw); GrowthChart 104 KB gz + jspdf 128 KB gz + html2canvas 46 KB gz = **279 KB gz deferred**, none modulepreloaded. Lab LCP still unmeasured (PSI rate-limited) |
+| P1.3 | Schema: one `@id`-keyed `Organization` replacing 31 anonymous copies | SCHEMA F3 | Medium | 1 Organization node referenced by 16 pages | ✅ shipped — exactly **1** `Organization` definition, 20 `#organization` refs across 15 files; `WebSite.publisher` now a ref |
+| P1.4 | Schema: dedupe `Physician` on `/about`, add `ProfilePage`, contact | SCHEMA F2/F12 | Low | Single `Physician` `@id`, page-level node on `/about` | ✅ shipped — 1 `Physician` definition (root); `/about` is a single `ProfilePage`; richer E-E-A-T fields folded back into root (see `findings/__root-schema-patch.md` Appendix A) |
+| P1.5 | Schema: `medicalSpecialty` `"Pediatrics"` → `"Pediatric"` (14 spots) | SCHEMA F4 | Low | 0 invalid enum values | ✅ shipped — 0 invalid enum values (14 → 0); `knowsAbout` free text untouched |
+| P1.6 | Schema: add `image` to the 9 page nodes lacking it; retype `/privacy` as `WebPage`; add `MedicalWebPage` + `reviewedBy` to the 2 `Article` guides | SCHEMA F5/F6/F13 | Medium | 16/16 pages with complete YMYL wiring | ✅ shipped — 0 page nodes missing `image`; `/privacy` is `WebPage`; both guides carry `MedicalWebPage` |
+| P1.7 | Schema: align every `BreadcrumbList` name with visible text | SCHEMA F7 | Low | 16/16 exact label parity | ✅ shipped — 0 mismatches (13 fixed); homepage `BreadcrumbList` **removed** (it emitted `Home` with no visible breadcrumb) |
+| P1.8 | Regenerate FAQ JSON-LD from visible copy (or render it) — **integrity only, do not add new FAQPage** | SCHEMA F9 | Medium | Question↔copy parity; no SERP-gain motive | ◐ **partial** — 16/20 answers now trace to visible copy; `FAQPage` count held at 13. Blocked on content: 5 pages have no visible Q&A and 4 questions aren't in the copy → needs P1-phase content work, not schema work |
+| P1.9 | Expand header nav beyond 6 of 16 pages; fix 4 near-orphans (`/preemie-vaccines`, `/preemie-weight-gain`, `/pma-calculator`, `/when-can-my-preemie-start-solids`) | SITEMAP F2/F3 | Medium | ≥12/16 pages reachable from header; every page ≥5 body-link sources | ⬜ pending |
+| P1.10 | Add query-string prefill internal links (calculator ↔ guide) | SITEMAP F6 · SEO-AUDIT §3.3 | Low | ≥1 prefill link per guide → tool | ⬜ pending |
+| P1.11 | Readability pass on the 8 parent-facing guides (target Flesch ≥60) | CONTENT readability | High | Median prose Flesch ≥55 | ⬜ pending |
+| P1.12 | De-duplicate the calculator trio: unique intros/FAQs, hub/spoke split — **no page deletions** | CANNIBALIZATION | Medium | Distinctive intro + FAQ per spoke | ⬜ pending |
+| P1.13 | Give `public/` images a real TTL; drop `fetchPriority=high` from non-LCP avatars | PERF F3/F4 | Low | `max-age=604800, stale-while-revalidate` | ⬜ pending |
+| P1.14 | Add bespoke visual assets (corrected-age timeline, milestones chart image, growth-curve explainer) | GEO citability · IMG | High | ≥3 crawlable content images with alt + schema `image` | ⬜ pending |
 
 ---
 

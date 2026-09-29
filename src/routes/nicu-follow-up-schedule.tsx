@@ -121,12 +121,8 @@ export const Route = createFileRoute("/nicu-follow-up-schedule")({
           },
           author: { "@id": "https://preemie.vercel.app/about#drzeeshan" },
           reviewedBy: { "@id": "https://preemie.vercel.app/about#drzeeshan" },
-          publisher: {
-            "@type": "Organization",
-            name: "AdjustedAge",
-            logo: { "@type": "ImageObject", url: "https://preemie.vercel.app/icon-512.png" },
-          },
-          specialty: "Pediatrics",
+          publisher: { "@id": "https://preemie.vercel.app/#organization" },
+          specialty: "Pediatric",
         }),
       },
       {
@@ -172,7 +168,7 @@ export const Route = createFileRoute("/nicu-follow-up-schedule")({
             {
               "@type": "ListItem",
               position: 2,
-              name: "NICU Follow-Up Schedule",
+              name: "NICU follow-up schedule",
               item: "https://preemie.vercel.app/nicu-follow-up-schedule",
             },
           ],

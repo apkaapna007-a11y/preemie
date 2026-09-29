@@ -137,15 +137,8 @@ export const Route = createFileRoute("/when-to-stop-correcting")({
           reviewedBy: {
             "@id": "https://preemie.vercel.app/about#drzeeshan",
           },
-          publisher: {
-            "@type": "Organization",
-            name: "AdjustedAge",
-            logo: {
-              "@type": "ImageObject",
-              url: "https://preemie.vercel.app/icon-512.png",
-            },
-          },
-          specialty: "Pediatrics",
+          publisher: { "@id": "https://preemie.vercel.app/#organization" },
+          specialty: "Pediatric",
         }),
       },
       {
@@ -199,7 +192,7 @@ export const Route = createFileRoute("/when-to-stop-correcting")({
             {
               "@type": "ListItem",
               position: 2,
-              name: "When to Stop Correcting",
+              name: "When to stop correcting",
               item: "https://preemie.vercel.app/when-to-stop-correcting",
             },
           ],

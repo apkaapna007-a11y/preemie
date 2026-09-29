@@ -61,6 +61,12 @@ export const Route = createFileRoute("/")({
           description:
             "Corrected age calculator for premature babies using birth date and gestational age to calculate corrected age, chronological age and postmenstrual age.",
           url: "https://preemie.vercel.app/",
+          image: {
+            "@type": "ImageObject",
+            url: "https://preemie.vercel.app/og/og-home.png",
+            width: 1200,
+            height: 630,
+          },
           datePublished: "2026-08-11",
           dateModified: "2026-08-27",
           lastReviewed: "2026-08-27",
@@ -74,18 +80,11 @@ export const Route = createFileRoute("/")({
           reviewedBy: {
             "@id": "https://preemie.vercel.app/about#drzeeshan",
           },
-          publisher: {
-            "@type": "Organization",
-            name: "AdjustedAge",
-            logo: {
-              "@type": "ImageObject",
-              url: "https://preemie.vercel.app/icon-512.png",
-            },
-          },
+          publisher: { "@id": "https://preemie.vercel.app/#organization" },
           copyrightHolder: {
             "@id": "https://preemie.vercel.app/about#drzeeshan",
           },
-          specialty: "Pediatrics",
+          specialty: "Pediatric",
           citation: [
             {
               "@type": "WebPage",
@@ -155,15 +154,15 @@ export const Route = createFileRoute("/")({
               name: "Is adjusted age the same as corrected age?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "Yes. Adjusted age and corrected age are two names for the same concept in preterm follow-up.",
+                text: "Yes. Adjusted age and corrected age are two names for the same number. Some parents search for one phrase and some for the other, but the calculation is identical.",
               },
             },
             {
               "@type": "Question",
-              name: "What is postmenstrual age (PMA)?",
+              name: "What is PMA?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "Postmenstrual age is gestational age at birth plus the time since birth. It is especially useful before the original due date and in early neonatal follow-up.",
+                text: "PMA means postmenstrual age. It is gestational age at birth plus the time since birth, and it is especially useful before the due date and in early neonatal follow-up. Use the PMA calculator when that is the number you need.",
               },
             },
             {
@@ -171,23 +170,23 @@ export const Route = createFileRoute("/")({
               name: "Should vaccines use corrected age?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "No. Immunisations are scheduled by chronological age. Use corrected age for development-related conversations.",
+                text: "No. Immunisations are scheduled by chronological age. Use the calculator’s chronological age for vaccine timing and corrected age for development-related conversations.",
               },
             },
             {
               "@type": "Question",
-              name: "Should growth charts use corrected age?",
+              name: "Should premature baby growth charts use corrected age?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "For preterm follow-up, developmental interpretation and growth-chart discussions usually use corrected age after birth, while the exact chart choice changes around term-equivalent age. Discuss the chart being used with your clinician.",
+                text: "In preterm follow-up, clinicians usually interpret early measurements against corrected age while also deciding which chart should be used at that stage. That is one reason the tool always shows corrected age and postmenstrual age side by side. Read the methodology for the growth-chart hand-off details.",
               },
             },
             {
               "@type": "Question",
-              name: "Does a 36-week baby still need corrected age?",
+              name: "My baby was born at 36 weeks. Do I still need corrected age?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "Often yes, especially in the first year. Even a two- to four-week difference can matter when a baby is only a few months old.",
+                text: "Often yes, especially in the first year. For a four-month-old, even a two- to four-week difference changes which milestone row you should be reading. See the late preterm baby guide and the worked examples page.",
               },
             },
             {
@@ -195,19 +194,9 @@ export const Route = createFileRoute("/")({
               name: "When does corrected age stop being used?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "Developmental correction is commonly used until about 24 months, although the appropriate endpoint can vary by developmental domain.",
+                text: "Developmental correction is commonly used until about 24 months, although the appropriate endpoint can vary by developmental domain. Read when correction should stop and discuss your child’s follow-up plan with their clinician.",
               },
             },
-          ],
-        }),
-      },
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "https://preemie.vercel.app/" },
           ],
         }),
       },

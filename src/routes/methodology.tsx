@@ -87,15 +87,8 @@ export const Route = createFileRoute("/methodology")({
           reviewedBy: {
             "@id": "https://preemie.vercel.app/about#drzeeshan",
           },
-          publisher: {
-            "@type": "Organization",
-            name: "AdjustedAge",
-            logo: {
-              "@type": "ImageObject",
-              url: "https://preemie.vercel.app/icon-512.png",
-            },
-          },
-          specialty: "Pediatrics",
+          publisher: { "@id": "https://preemie.vercel.app/#organization" },
+          specialty: "Pediatric",
         }),
       },
       {

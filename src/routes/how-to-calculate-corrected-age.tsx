@@ -56,24 +56,20 @@ export const Route = createFileRoute("/how-to-calculate-corrected-age")({
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "Article",
-          headline: "How to Calculate Corrected Age for Premature Babies",
+          "@type": "MedicalWebPage",
+          name: "How to Calculate Corrected Age for Premature Babies",
           description:
             "The corrected age formula with four worked examples and the common mistakes clinicians and parents make.",
           url: "https://preemie.vercel.app/how-to-calculate-corrected-age",
+          image: {
+            "@type": "ImageObject",
+            url: "https://preemie.vercel.app/og/og-guides.png",
+            width: 1200,
+            height: 630,
+          },
           datePublished: "2026-08-11",
           dateModified: "2026-08-27",
-          author: {
-            "@id": "https://preemie.vercel.app/about#drzeeshan",
-          },
-          publisher: {
-            "@type": "Organization",
-            name: "AdjustedAge",
-            logo: {
-              "@type": "ImageObject",
-              url: "https://preemie.vercel.app/icon-512.png",
-            },
-          },
+          lastReviewed: "2026-08-27",
           citation: [
             {
               "@type": "WebPage",
@@ -96,37 +92,63 @@ export const Route = createFileRoute("/how-to-calculate-corrected-age")({
               url: "https://www.cdc.gov/vaccines/hcp/imz-schedules/",
             },
           ],
+          audience: {
+            "@type": "MedicalAudience",
+            audienceType: "Parents of preterm infants",
+          },
+          author: {
+            "@id": "https://preemie.vercel.app/about#drzeeshan",
+          },
+          reviewedBy: {
+            "@id": "https://preemie.vercel.app/about#drzeeshan",
+          },
+          publisher: { "@id": "https://preemie.vercel.app/#organization" },
+          specialty: "Pediatric",
         }),
       },
       {
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "HowTo",
-          name: "How to Calculate Corrected Age",
+          "@type": "Article",
+          headline: "How to Calculate Corrected Age for Premature Babies",
           description:
-            "Corrected age = chronological age minus weeks of prematurity. Four worked examples.",
-          totalTime: "PT2M",
-          step: [
-            {
-              "@type": "HowToStep",
-              name: "Calculate weeks of prematurity",
-              text: "Subtract gestational age at birth from 40 weeks. Example: 40 − 28 = 12 weeks premature.",
-            },
-            {
-              "@type": "HowToStep",
-              name: "Subtract from chronological age",
-              text: "Corrected age = chronological age − weeks of prematurity. Example: 6 months − 12 weeks = 3 months corrected.",
-            },
-            {
-              "@type": "HowToStep",
-              name: "Use corrected age for milestones",
-              text: "Read the CDC milestone row matching the corrected age, not the birthday age.",
-            },
-          ],
+            "The corrected age formula with four worked examples and the common mistakes clinicians and parents make.",
+          url: "https://preemie.vercel.app/how-to-calculate-corrected-age",
+          image: {
+            "@type": "ImageObject",
+            url: "https://preemie.vercel.app/og/og-guides.png",
+            width: 1200,
+            height: 630,
+          },
+          datePublished: "2026-08-11",
+          dateModified: "2026-08-27",
           author: {
             "@id": "https://preemie.vercel.app/about#drzeeshan",
           },
+          publisher: { "@id": "https://preemie.vercel.app/#organization" },
+          citation: [
+            {
+              "@type": "WebPage",
+              name: "Preterm birth — World Health Organization",
+              url: "https://www.who.int/news-room/fact-sheets/detail/preterm-birth",
+            },
+            {
+              "@type": "WebPage",
+              name: "Learn the Signs. Act Early. — CDC developmental milestones",
+              url: "https://www.cdc.gov/actearly/",
+            },
+            {
+              "@type": "Article",
+              name: "Evidence-Informed Milestones for Developmental Surveillance Tools (Zubler et al., 2022)",
+              url: "https://doi.org/10.1542/peds.2021-052138",
+            },
+            {
+              "@type": "WebPage",
+              name: "Child and Adolescent Immunization Schedule by Age — CDC",
+              url: "https://www.cdc.gov/vaccines/hcp/imz-schedules/",
+            },
+          ],
         }),
       },
       {
@@ -172,7 +194,7 @@ export const Route = createFileRoute("/how-to-calculate-corrected-age")({
             {
               "@type": "ListItem",
               position: 2,
-              name: "How to Calculate Corrected Age",
+              name: "How to calculate corrected age",
               item: "https://preemie.vercel.app/how-to-calculate-corrected-age",
             },
           ],

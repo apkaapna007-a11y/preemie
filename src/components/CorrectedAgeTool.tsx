@@ -1,17 +1,7 @@
-import { useEffect, useMemo, useState } from "react";
+import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import { z } from "zod";
 import { Link } from "@tanstack/react-router";
 import { FileDown, Printer, Table2, CalendarCheck, TrendingUp } from "lucide-react";
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  Legend,
-} from "recharts";
 import {
   computeAges,
   correctedMonths,
@@ -29,6 +19,10 @@ import {
 import { followUpSchedule } from "@/lib/followup";
 import { generateVisitPdf } from "@/lib/visit-pdf";
 import { track } from "@/lib/analytics";
+
+// Recharts is only needed once a caregiver has logged 2+ visits, so the chart
+// lives in its own chunk behind React.lazy and a <Suspense> boundary below.
+const GrowthChart = lazy(() => import("@/components/GrowthChart"));
 
 interface VisitEntry {
   id: string;
@@ -90,6 +84,8 @@ export function CorrectedAgeTool() {
   const [head, setHead] = useState("");
   const [note, setNote] = useState("");
   const [formError, setFormError] = useState<string | null>(null);
+  const [pdfBusy, setPdfBusy] = useState(false);
+  const [pdfError, setPdfError] = useState<string | null>(null);
   const [checked, setChecked] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
@@ -180,21 +176,32 @@ export function CorrectedAgeTool() {
     track("visit_saved");
   }
 
-  function exportVisitPdf(v: VisitEntry) {
+  async function exportVisitPdf(v: VisitEntry) {
+    if (pdfBusy) return;
     const idx = visits.findIndex((x) => x.id === v.id);
     const prev = idx > 0 ? visits[idx - 1] : undefined;
-    generateVisitPdf({
-      birthDate,
-      gaWeeks,
-      gaDays,
-      visitDate: v.date,
-      weightKg: v.weightKg,
-      lengthCm: v.lengthCm,
-      headCm: v.headCm,
-      note: v.note,
-      previous: prev ? { date: prev.date, weightKg: prev.weightKg } : undefined,
-    });
-    track("pdf_exported");
+    setPdfBusy(true);
+    setPdfError(null);
+    try {
+      await generateVisitPdf({
+        birthDate,
+        gaWeeks,
+        gaDays,
+        visitDate: v.date,
+        weightKg: v.weightKg,
+        lengthCm: v.lengthCm,
+        headCm: v.headCm,
+        note: v.note,
+        previous: prev ? { date: prev.date, weightKg: prev.weightKg } : undefined,
+      });
+      track("pdf_exported");
+    } catch {
+      // Never surface a raw stack trace to a caregiver — jsPDF failing to load
+      // or render must not become an unhandled rejection.
+      setPdfError("The PDF could not be created. Please try again.");
+    } finally {
+      setPdfBusy(false);
+    }
   }
 
   const plausibility: string[] = [];
@@ -544,11 +551,14 @@ export function CorrectedAgeTool() {
                             <div className="flex items-center gap-3">
                               <button
                                 type="button"
-                                onClick={() => exportVisitPdf(v)}
-                                className="inline-flex items-center gap-1.5 rounded-lg border border-border px-2.5 py-1.5 text-xs font-medium hover:bg-surface"
+                                onClick={() => void exportVisitPdf(v)}
+                                disabled={pdfBusy}
+                                aria-busy={pdfBusy}
+                                aria-label={`Download PDF for the visit on ${v.date}`}
+                                className="inline-flex items-center gap-1.5 rounded-lg border border-border px-2.5 py-1.5 text-xs font-medium hover:bg-surface disabled:cursor-not-allowed disabled:opacity-60"
                               >
                                 <FileDown className="size-3.5" aria-hidden />
-                                PDF
+                                {pdfBusy ? "Working…" : "PDF"}
                               </button>
                               <button
                                 type="button"
@@ -573,12 +583,14 @@ export function CorrectedAgeTool() {
                     type="button"
                     onClick={() => {
                       const latest = visits[visits.length - 1];
-                      if (latest) exportVisitPdf(latest);
+                      if (latest) void exportVisitPdf(latest);
                     }}
-                    className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+                    disabled={pdfBusy}
+                    aria-busy={pdfBusy}
+                    className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
                   >
                     <FileDown className="size-4" aria-hidden />
-                    Clinician PDF for latest visit
+                    {pdfBusy ? "Creating PDF…" : "Clinician PDF for latest visit"}
                   </button>
                   <button
                     type="button"
@@ -622,72 +634,42 @@ export function CorrectedAgeTool() {
                   </button>
                 </div>
 
+                {pdfError ? (
+                  <p role="alert" className="no-print mt-3 text-sm text-destructive">
+                    {pdfError}
+                  </p>
+                ) : null}
+
                 {visits.length > 1 && (
                   <div className="mt-8 border-t border-border pt-8">
                     <div className="flex items-center gap-2 mb-4">
                       <TrendingUp className="size-5 text-primary" aria-hidden />
                       <h3 className="font-display text-lg font-semibold">Growth Trajectory</h3>
                     </div>
-                    <div className="h-64 w-full">
-                      <ResponsiveContainer width="100%" height="100%">
-                        <LineChart
-                          data={visits.map((v) => ({
-                            ...v,
-                            correctedDays: computeAges({
-                              birthDate,
-                              gaWeeks,
-                              gaDays,
-                              onDate: v.date,
-                            })?.correctedDays,
-                            label: v.date,
-                          }))}
+                    <Suspense
+                      fallback={
+                        <div
+                          role="status"
+                          className="flex h-64 w-full items-center justify-center rounded-xl border border-border bg-surface text-sm text-muted-foreground"
                         >
-                          <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e5e7eb" />
-                          <XAxis
-                            dataKey="correctedDays"
-                            type="number"
-                            domain={["dataMin", "dataMax"]}
-                            tickFormatter={(v) => formatDuration(Number(v)).split(" ")[0] || ""}
-                            fontSize={10}
-                            tick={{ fill: "#6b7280" }}
-                            axisLine={{ stroke: "#e5e7eb" }}
-                          />
-                          <YAxis
-                            yAxisId="weight"
-                            fontSize={10}
-                            tick={{ fill: "#6b7280" }}
-                            axisLine={{ stroke: "#e5e7eb" }}
-                            label={{
-                              value: "Weight (kg)",
-                              angle: -90,
-                              position: "insideLeft",
-                              fontSize: 10,
-                              fill: "#6b7280",
-                            }}
-                          />
-                          <Tooltip
-                            contentStyle={{
-                              borderRadius: "12px",
-                              border: "none",
-                              boxShadow: "0 10px 15px -3px rgb(0 0 0 / 0.1)",
-                              fontSize: "12px",
-                            }}
-                            labelFormatter={(v) => `Corrected age: ${formatDuration(Number(v))}`}
-                          />
-                          <Legend verticalAlign="top" height={36} iconType="circle" />
-                          <Line
-                            yAxisId="weight"
-                            type="monotone"
-                            dataKey="weightKg"
-                            name="Weight (kg)"
-                            stroke="var(--color-primary)"
-                            strokeWidth={3}
-                            dot={{ r: 4, fill: "var(--color-primary)", strokeWidth: 0 }}
-                            activeDot={{ r: 6 }}
-                          />
-                        </LineChart>
-                      </ResponsiveContainer>
-                    </div>
+                          Loading growth chart…
+                        </div>
+                      }
+                    >
+                      <GrowthChart
+                        data={visits.map((v) => ({
+                          id: v.id,
+                          correctedDays: computeAges({
+                            birthDate,
+                            gaWeeks,
+                            gaDays,
+                            onDate: v.date,
+                          })?.correctedDays,
+                          label: v.date,
+                          weightKg: v.weightKg,
+                        }))}
+                      />
+                    </Suspense>
                     <p className="mt-4 text-xs text-muted-foreground leading-relaxed italic">
                       This chart shows raw trajectory over time. It is not plotted against reference
                       percentiles (Fenton/WHO). Growth percentiles are planned for a future update.

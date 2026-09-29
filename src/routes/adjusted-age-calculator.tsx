@@ -59,6 +59,12 @@ export const Route = createFileRoute("/adjusted-age-calculator")({
           description:
             "Adjusted age calculator for premature babies. Adjusted age and corrected age are equivalent terms in preterm follow-up.",
           url: "https://preemie.vercel.app/adjusted-age-calculator",
+          image: {
+            "@type": "ImageObject",
+            url: "https://preemie.vercel.app/og/og-home.png",
+            width: 1200,
+            height: 630,
+          },
           datePublished: "2026-08-26",
           dateModified: "2026-08-27",
           lastReviewed: "2026-08-27",
@@ -72,15 +78,8 @@ export const Route = createFileRoute("/adjusted-age-calculator")({
           reviewedBy: {
             "@id": "https://preemie.vercel.app/about#drzeeshan",
           },
-          publisher: {
-            "@type": "Organization",
-            name: "AdjustedAge",
-            logo: {
-              "@type": "ImageObject",
-              url: "https://preemie.vercel.app/icon-512.png",
-            },
-          },
-          specialty: "Pediatrics",
+          publisher: { "@id": "https://preemie.vercel.app/#organization" },
+          specialty: "Pediatric",
           citation: [
             {
               "@type": "Article",
@@ -142,7 +141,7 @@ export const Route = createFileRoute("/adjusted-age-calculator")({
               name: "Is adjusted age the same as corrected age?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "Yes. Adjusted age and corrected age are two names for the same calculation in preterm follow-up.",
+                text: "Yes. They are two names for the same concept in preterm follow-up.",
               },
             },
             {
@@ -158,7 +157,7 @@ export const Route = createFileRoute("/adjusted-age-calculator")({
               name: "Should I use adjusted age for milestones?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "For early developmental follow-up, milestones are usually interpreted by adjusted age rather than birthday age.",
+                text: "Usually yes, in the early years. Read the milestone row that matches the adjusted or corrected age rather than the birthday age.",
               },
             },
             {
@@ -166,7 +165,7 @@ export const Route = createFileRoute("/adjusted-age-calculator")({
               name: "Should vaccines use adjusted age?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "No. Vaccines are scheduled by chronological age.",
+                text: "No. Vaccines are scheduled by chronological age, not adjusted age.",
               },
             },
           ],
@@ -182,7 +181,7 @@ export const Route = createFileRoute("/adjusted-age-calculator")({
             {
               "@type": "ListItem",
               position: 2,
-              name: "Adjusted Age Calculator",
+              name: "Adjusted age calculator",
               item: "https://preemie.vercel.app/adjusted-age-calculator",
             },
           ],

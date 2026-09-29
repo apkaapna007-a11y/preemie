@@ -49,61 +49,24 @@ export const Route = createFileRoute("/about")({
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "Physician",
-          "@id": "https://preemie.vercel.app/about#drzeeshan",
-          name: "Dr. Zeeshan Islam",
-          honorificPrefix: "Dr.",
-          honorificSuffix: "MBBS, MCPS (Pediatrics)",
-          jobTitle: "Consultant Paediatrician",
-          medicalSpecialty: "Pediatrics",
+          "@type": "ProfilePage",
+          name: "About Dr. Zeeshan Islam | AdjustedAge",
+          description:
+            "AdjustedAge is written and reviewed by Dr. Zeeshan Islam, MBBS, MCPS (Pediatrics), a pediatrician, medical writer and digital health creator in Pakistan.",
           url: "https://preemie.vercel.app/about",
+          datePublished: "2026-08-11",
+          dateModified: "2026-09-28",
+          inLanguage: "en",
           image: {
             "@type": "ImageObject",
-            url: "https://preemie.vercel.app/dr-zeeshan-islam.png",
-            width: 709,
-            height: 585,
+            url: "https://preemie.vercel.app/og/og-about.png",
+            width: 1200,
+            height: 630,
           },
-          alternateName: "Dr Zee",
-          identifier: {
-            "@type": "PropertyValue",
-            propertyID: "Gravatar",
-            value: "50c92b77e1d7a4a9ee98b970f50188f88806b7b02c9c8e5004ee52a1ff4c861c",
+          mainEntity: {
+            "@id": "https://preemie.vercel.app/about#drzeeshan",
           },
-          sameAs: [
-            "https://drzeeshanislam.blog",
-            "https://www.linkedin.com/in/dr-zeeshan-islam-b81b0b373",
-            "https://drzeewrites.com",
-          ],
-          description:
-            "Dr. Zeeshan Islam is the author and clinical reviewer of AdjustedAge. He is a pediatrician, medical writer and digital health creator focused on evidence-based child health and preterm infant developmental follow-up.",
-          knowsAbout: [
-            "Pediatrics",
-            "Neonatology",
-            "Preterm infant follow-up",
-            "Developmental surveillance",
-            "Corrected age",
-          ],
-          hasCredential: [
-            {
-              "@type": "EducationalOccupationalCredential",
-              credentialCategory: "degree",
-              name: "MBBS (Bachelor of Medicine, Bachelor of Surgery)",
-            },
-            {
-              "@type": "EducationalOccupationalCredential",
-              credentialCategory: "postgraduate certification",
-              name: "MCPS in Paediatrics, College of Physicians and Surgeons Pakistan",
-            },
-          ],
-          worksFor: {
-            "@type": "Organization",
-            name: "AdjustedAge",
-            url: "https://preemie.vercel.app",
-          },
-          address: {
-            "@type": "PostalAddress",
-            addressCountry: "PK",
-          },
+          publisher: { "@id": "https://preemie.vercel.app/#organization" },
         }),
       },
       {
@@ -116,7 +79,7 @@ export const Route = createFileRoute("/about")({
             {
               "@type": "ListItem",
               position: 2,
-              name: "About",
+              name: "About the author",
               item: "https://preemie.vercel.app/about",
             },
           ],

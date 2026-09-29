@@ -59,6 +59,12 @@ export const Route = createFileRoute("/preemie-weight-gain")({
           description:
             "Preemie weight gain and weight velocity calculator using two dates and two weights.",
           url: "https://preemie.vercel.app/preemie-weight-gain",
+          image: {
+            "@type": "ImageObject",
+            url: "https://preemie.vercel.app/og/og-weight-gain.png",
+            width: 1200,
+            height: 630,
+          },
           datePublished: "2026-08-26",
           dateModified: "2026-08-27",
           lastReviewed: "2026-08-27",
@@ -68,12 +74,8 @@ export const Route = createFileRoute("/preemie-weight-gain")({
           },
           author: { "@id": "https://preemie.vercel.app/about#drzeeshan" },
           reviewedBy: { "@id": "https://preemie.vercel.app/about#drzeeshan" },
-          publisher: {
-            "@type": "Organization",
-            name: "AdjustedAge",
-            logo: { "@type": "ImageObject", url: "https://preemie.vercel.app/icon-512.png" },
-          },
-          specialty: "Pediatrics",
+          publisher: { "@id": "https://preemie.vercel.app/#organization" },
+          specialty: "Pediatric",
           citation: [
             {
               "@type": "Article",
@@ -154,7 +156,7 @@ export const Route = createFileRoute("/preemie-weight-gain")({
             {
               "@type": "ListItem",
               position: 2,
-              name: "Preemie Weight Gain",
+              name: "Preemie weight gain",
               item: "https://preemie.vercel.app/preemie-weight-gain",
             },
           ],

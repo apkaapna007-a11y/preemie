@@ -56,24 +56,67 @@ export const Route = createFileRoute("/premature-baby-milestones")({
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
+          "@type": "MedicalWebPage",
+          name: "Premature Baby Milestones Chart by Corrected Age",
+          description:
+            "Printable CDC/AAP developmental milestones chart re-indexed to corrected age for premature babies, from 2 to 36 months.",
+          url: "https://preemie.vercel.app/premature-baby-milestones",
+          image: {
+            "@type": "ImageObject",
+            url: "https://preemie.vercel.app/og/og-milestones.png",
+            width: 1200,
+            height: 630,
+          },
+          datePublished: "2026-08-11",
+          dateModified: "2026-08-27",
+          lastReviewed: "2026-08-27",
+          citation: [
+            {
+              "@type": "WebPage",
+              name: "Learn the Signs. Act Early. - CDC developmental milestones",
+              url: "https://www.cdc.gov/actearly/",
+            },
+            {
+              "@type": "WebPage",
+              name: "The 2022 CDC/AAP Revised Developmental Milestones - Pediatrics",
+              url: "https://doi.org/10.1542/peds.2021-052138",
+            },
+          ],
+          audience: {
+            "@type": "MedicalAudience",
+            audienceType: "Parents of preterm infants",
+          },
+          author: {
+            "@id": "https://preemie.vercel.app/about#drzeeshan",
+          },
+          reviewedBy: {
+            "@id": "https://preemie.vercel.app/about#drzeeshan",
+          },
+          publisher: { "@id": "https://preemie.vercel.app/#organization" },
+          specialty: "Pediatric",
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
           "@type": "Article",
           headline: "Premature Baby Milestones Chart by Corrected Age",
           description:
             "Printable CDC/AAP developmental milestones chart re-indexed to corrected age for premature babies, from 2 to 36 months.",
           url: "https://preemie.vercel.app/premature-baby-milestones",
+          image: {
+            "@type": "ImageObject",
+            url: "https://preemie.vercel.app/og/og-milestones.png",
+            width: 1200,
+            height: 630,
+          },
           datePublished: "2026-08-11",
           dateModified: "2026-08-27",
           author: {
             "@id": "https://preemie.vercel.app/about#drzeeshan",
           },
-          publisher: {
-            "@type": "Organization",
-            name: "AdjustedAge",
-            logo: {
-              "@type": "ImageObject",
-              url: "https://preemie.vercel.app/icon-512.png",
-            },
-          },
+          publisher: { "@id": "https://preemie.vercel.app/#organization" },
           citation: [
             {
               "@type": "WebPage",
@@ -123,7 +166,7 @@ export const Route = createFileRoute("/premature-baby-milestones")({
             {
               "@type": "ListItem",
               position: 2,
-              name: "Premature Baby Milestones",
+              name: "Premature baby milestones chart",
               item: "https://preemie.vercel.app/premature-baby-milestones",
             },
           ],

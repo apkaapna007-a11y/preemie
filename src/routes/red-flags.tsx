@@ -109,6 +109,12 @@ export const Route = createFileRoute("/red-flags")({
           description:
             "Emergency, same-day and same-week red flags for premature babies, ordered by urgency, with what to report to the clinician. CDC Act Early concerns that apply at every corrected age.",
           url: "https://preemie.vercel.app/red-flags",
+          image: {
+            "@type": "ImageObject",
+            url: "https://preemie.vercel.app/og/og-red-flags.png",
+            width: 1200,
+            height: 630,
+          },
           datePublished: "2026-08-11",
           dateModified: "2026-08-26",
           lastReviewed: "2026-08-26",
@@ -131,15 +137,8 @@ export const Route = createFileRoute("/red-flags")({
           reviewedBy: {
             "@id": "https://preemie.vercel.app/about#drzeeshan",
           },
-          publisher: {
-            "@type": "Organization",
-            name: "AdjustedAge",
-            logo: {
-              "@type": "ImageObject",
-              url: "https://preemie.vercel.app/icon-512.png",
-            },
-          },
-          specialty: "Pediatrics",
+          publisher: { "@id": "https://preemie.vercel.app/#organization" },
+          specialty: "Pediatric",
         }),
       },
       {
@@ -152,7 +151,7 @@ export const Route = createFileRoute("/red-flags")({
             {
               "@type": "ListItem",
               position: 2,
-              name: "Red Flags",
+              name: "Preemie red flags",
               item: "https://preemie.vercel.app/red-flags",
             },
           ],

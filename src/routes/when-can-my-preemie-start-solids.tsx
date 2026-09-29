@@ -94,12 +94,8 @@ export const Route = createFileRoute("/when-can-my-preemie-start-solids")({
           },
           author: { "@id": "https://preemie.vercel.app/about#drzeeshan" },
           reviewedBy: { "@id": "https://preemie.vercel.app/about#drzeeshan" },
-          publisher: {
-            "@type": "Organization",
-            name: "AdjustedAge",
-            logo: { "@type": "ImageObject", url: "https://preemie.vercel.app/icon-512.png" },
-          },
-          specialty: "Pediatrics",
+          publisher: { "@id": "https://preemie.vercel.app/#organization" },
+          specialty: "Pediatric",
         }),
       },
       {
@@ -110,10 +106,10 @@ export const Route = createFileRoute("/when-can-my-preemie-start-solids")({
           mainEntity: [
             {
               "@type": "Question",
-              name: "Should preemies start solids by corrected age or chronological age?",
+              name: "Should I use corrected age or chronological age?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "Corrected age is often part of the discussion, but solids should not be decided by the calendar alone. Developmental readiness and the baby's own clinical history matter too.",
+                text: "Corrected age is often more useful in preterm feeding discussions, but solids should still be based on readiness and the baby's individual history as well.",
               },
             },
             {
@@ -126,10 +122,10 @@ export const Route = createFileRoute("/when-can-my-preemie-start-solids")({
             },
             {
               "@type": "Question",
-              name: "Can a preemie who looks interested in food start early?",
+              name: "My baby looks interested in food. Is that enough?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "Interest alone is not enough. Feeding safety, maturity, motor readiness and the baby's medical history all matter.",
+                text: "No. Interest helps, but head control, posture and safe swallowing matter too.",
               },
             },
           ],
@@ -145,7 +141,7 @@ export const Route = createFileRoute("/when-can-my-preemie-start-solids")({
             {
               "@type": "ListItem",
               position: 2,
-              name: "When Can My Preemie Start Solids",
+              name: "When can my preemie start solids",
               item: "https://preemie.vercel.app/when-can-my-preemie-start-solids",
             },
           ],

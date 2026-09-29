@@ -74,6 +74,12 @@ export const Route = createFileRoute("/preemie-vaccines")({
           description:
             "Guide to vaccine timing in premature babies, explaining why routine immunisations usually follow chronological age rather than corrected age.",
           url: "https://preemie.vercel.app/preemie-vaccines",
+          image: {
+            "@type": "ImageObject",
+            url: "https://preemie.vercel.app/og/og-vaccines.png",
+            width: 1200,
+            height: 630,
+          },
           datePublished: "2026-08-26",
           dateModified: "2026-09-28",
           lastReviewed: "2026-08-27",
@@ -89,12 +95,8 @@ export const Route = createFileRoute("/preemie-vaccines")({
           },
           author: { "@id": "https://preemie.vercel.app/about#drzeeshan" },
           reviewedBy: { "@id": "https://preemie.vercel.app/about#drzeeshan" },
-          publisher: {
-            "@type": "Organization",
-            name: "AdjustedAge",
-            logo: { "@type": "ImageObject", url: "https://preemie.vercel.app/icon-512.png" },
-          },
-          specialty: "Pediatrics",
+          publisher: { "@id": "https://preemie.vercel.app/#organization" },
+          specialty: "Pediatric",
         }),
       },
       {
@@ -140,7 +142,7 @@ export const Route = createFileRoute("/preemie-vaccines")({
             {
               "@type": "ListItem",
               position: 2,
-              name: "Preemie Vaccines",
+              name: "Preemie vaccines",
               item: "https://preemie.vercel.app/preemie-vaccines",
             },
           ],

@@ -92,12 +92,8 @@ export const Route = createFileRoute("/late-preterm-baby")({
           },
           author: { "@id": "https://preemie.vercel.app/about#drzeeshan" },
           reviewedBy: { "@id": "https://preemie.vercel.app/about#drzeeshan" },
-          publisher: {
-            "@type": "Organization",
-            name: "AdjustedAge",
-            logo: { "@type": "ImageObject", url: "https://preemie.vercel.app/icon-512.png" },
-          },
-          specialty: "Pediatrics",
+          publisher: { "@id": "https://preemie.vercel.app/#organization" },
+          specialty: "Pediatric",
         }),
       },
       {
@@ -143,7 +139,7 @@ export const Route = createFileRoute("/late-preterm-baby")({
             {
               "@type": "ListItem",
               position: 2,
-              name: "Late Preterm Baby",
+              name: "Late preterm baby",
               item: "https://preemie.vercel.app/late-preterm-baby",
             },
           ],

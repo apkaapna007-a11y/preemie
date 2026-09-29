@@ -125,12 +125,8 @@ export const Route = createFileRoute("/adjusted-age-vs-chronological-age")({
           },
           author: { "@id": "https://preemie.vercel.app/about#drzeeshan" },
           reviewedBy: { "@id": "https://preemie.vercel.app/about#drzeeshan" },
-          publisher: {
-            "@type": "Organization",
-            name: "AdjustedAge",
-            logo: { "@type": "ImageObject", url: "https://preemie.vercel.app/icon-512.png" },
-          },
-          specialty: "Pediatrics",
+          publisher: { "@id": "https://preemie.vercel.app/#organization" },
+          specialty: "Pediatric",
         }),
       },
       {
@@ -144,7 +140,7 @@ export const Route = createFileRoute("/adjusted-age-vs-chronological-age")({
               name: "Is adjusted age the same as corrected age?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "Yes. Adjusted age and corrected age are two names for the same concept in preterm follow-up.",
+                text: "Yes. They are two names for the same concept in preterm follow-up.",
               },
             },
             {
@@ -152,15 +148,15 @@ export const Route = createFileRoute("/adjusted-age-vs-chronological-age")({
               name: "What is chronological age?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "Chronological age is the real time since birth.",
+                text: "Chronological age is simply the baby's real age from the day of birth.",
               },
             },
             {
               "@type": "Question",
-              name: "Which age should I use for milestones and vaccines?",
+              name: "Which age should I use for milestones?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "Milestones are usually interpreted using adjusted or corrected age in preterm follow-up, while routine vaccines usually follow chronological age.",
+                text: "For early follow-up, milestones are usually interpreted using adjusted or corrected age. Use the premature baby milestones chart after checking the calculator.",
               },
             },
           ],
@@ -176,7 +172,7 @@ export const Route = createFileRoute("/adjusted-age-vs-chronological-age")({
             {
               "@type": "ListItem",
               position: 2,
-              name: "Adjusted Age vs Chronological Age",
+              name: "Adjusted age vs chronological age",
               item: "https://preemie.vercel.app/adjusted-age-vs-chronological-age",
             },
           ],

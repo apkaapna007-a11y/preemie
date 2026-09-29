@@ -147,12 +147,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           rel: "stylesheet",
           href: appCss,
         },
-        { rel: "preconnect", href: "https://fonts.googleapis.com" },
-        { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-        {
-          rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Public+Sans:wght@400;500;600&display=swap",
-        },
         { rel: "icon", type: "image/png", href: "/favicon.png" },
         { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
         { rel: "manifest", href: "/manifest.webmanifest" },
@@ -169,14 +163,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             description: "Corrected age calculator and preemie follow-up tool for NICU graduates.",
             inLanguage: "en",
             image: "https://preemie.vercel.app/og/og-brand.png",
-            publisher: {
-              "@type": "Organization",
-              name: "AdjustedAge",
-              logo: {
-                "@type": "ImageObject",
-                url: "https://preemie.vercel.app/icon-512.png",
-              },
-            },
+            publisher: { "@id": "https://preemie.vercel.app/#organization" },
             author: {
               "@id": "https://preemie.vercel.app/about#drzeeshan",
             },
@@ -186,12 +173,39 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           type: "application/ld+json",
           children: JSON.stringify({
             "@context": "https://schema.org",
+            "@type": "Organization",
+            "@id": "https://preemie.vercel.app/#organization",
+            name: "AdjustedAge",
+            alternateName: "Adjusted Age Calculator",
+            url: "https://preemie.vercel.app/",
+            logo: {
+              "@type": "ImageObject",
+              url: "https://preemie.vercel.app/icon-512.png",
+              width: 512,
+              height: 512,
+            },
+            image: "https://preemie.vercel.app/og/og-brand.png",
+            description: "Corrected age calculator and preemie follow-up tool for NICU graduates.",
+            sameAs: ["https://preemie.vercel.app/"],
+            founder: { "@id": "https://preemie.vercel.app/about#drzeeshan" },
+          }),
+        },
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
             "@type": "Physician",
             "@id": "https://preemie.vercel.app/about#drzeeshan",
             name: "Dr. Zeeshan Islam",
+            honorificPrefix: "Dr.",
             honorificSuffix: "MBBS, MCPS (Pediatrics)",
             jobTitle: "Consultant Paediatrician",
-            medicalSpecialty: "Pediatrics",
+            medicalSpecialty: "Pediatric",
+            identifier: {
+              "@type": "PropertyValue",
+              propertyID: "Gravatar",
+              value: "50c92b77e1d7a4a9ee98b970f50188f88806b7b02c9c8e5004ee52a1ff4c861c",
+            },
             url: "https://preemie.vercel.app/about",
             image: {
               "@type": "ImageObject",
@@ -206,7 +220,27 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
               "https://drzeewrites.com",
             ],
             description:
-              "Dr. Zeeshan Islam is a pediatrician, medical writer and digital health creator specializing in neonatal follow-up and corrected age development.",
+              "Dr. Zeeshan Islam is the author and clinical reviewer of AdjustedAge. He is a pediatrician, medical writer and digital health creator focused on evidence-based child health and preterm infant developmental follow-up.",
+            knowsAbout: [
+              "Pediatrics",
+              "Neonatology",
+              "Preterm infant follow-up",
+              "Developmental surveillance",
+              "Corrected age",
+            ],
+            hasCredential: [
+              {
+                "@type": "EducationalOccupationalCredential",
+                credentialCategory: "degree",
+                name: "MBBS (Bachelor of Medicine, Bachelor of Surgery)",
+              },
+              {
+                "@type": "EducationalOccupationalCredential",
+                credentialCategory: "postgraduate certification",
+                name: "MCPS in Paediatrics, College of Physicians and Surgeons Pakistan",
+              },
+            ],
+            worksFor: { "@id": "https://preemie.vercel.app/#organization" },
             inLanguage: "en",
             address: {
               "@type": "PostalAddress",

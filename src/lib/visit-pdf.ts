@@ -1,4 +1,3 @@
-import { jsPDF } from "jspdf";
 import {
   computeAges,
   correctedMonths,
@@ -28,7 +27,10 @@ export interface VisitPdfInput {
 
 const M = 48; // page margin (pt)
 
-export function generateVisitPdf(input: VisitPdfInput) {
+export async function generateVisitPdf(input: VisitPdfInput): Promise<void> {
+  // jsPDF (~350 kB min) is only needed when the caregiver taps "Download PDF",
+  // so it is pulled in as an on-demand chunk instead of the initial bundle.
+  const { jsPDF } = await import("jspdf");
   const doc = new jsPDF({ unit: "pt", format: "a4" });
   const pageWidth = doc.internal.pageSize.getWidth();
   const right = pageWidth - M;

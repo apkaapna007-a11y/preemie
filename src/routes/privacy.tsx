@@ -70,11 +70,17 @@ export const Route = createFileRoute("/privacy")({
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "MedicalWebPage",
+          "@type": "WebPage",
           name: "Privacy & Data Handling | AdjustedAge",
           description:
             "AdjustedAge stores your baby's dates and measurements only in your browser. No accounts, no cookies and no data uploaded.",
           url: "https://preemie.vercel.app/privacy",
+          image: {
+            "@type": "ImageObject",
+            url: "https://preemie.vercel.app/og/og-brand.png",
+            width: 1200,
+            height: 630,
+          },
           dateModified: "2026-09-28",
           citation: [
             "https://preemie.vercel.app/methodology",

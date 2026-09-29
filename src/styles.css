@@ -1,6 +1,15 @@
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
+/* Self-hosted fonts (fontsource). Bare specifiers resolve through the CSS
+   import pipeline, exactly like the tw-animate-css import above, so every
+   @font-face is bundled with hashed, same-origin woff2 assets and no request
+   is made to Google's font CDN. standard.css is Newsreader Variable's default
+   entry: `opsz 6..72` + `wght 200..800` (400 default), i.e. the same
+   optical-size + weight axes the old remote stylesheet requested; Public Sans
+   index.css covers `wght 100..900`. Both declare `font-display: swap`. */
+@import "@fontsource-variable/newsreader/standard.css";
+@import "@fontsource-variable/public-sans";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -56,8 +65,8 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  --font-display: "Newsreader", Georgia, serif;
-  --font-sans: "Public Sans", system-ui, sans-serif;
+  --font-display: "Newsreader Variable", Georgia, serif;
+  --font-sans: "Public Sans Variable", system-ui, sans-serif;
   --shadow-paper: 0 1px 2px oklch(0.3 0.04 200 / 0.06), 0 8px 24px -12px oklch(0.3 0.04 200 / 0.18);
 }
 

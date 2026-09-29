@@ -59,6 +59,12 @@ export const Route = createFileRoute("/pma-calculator")({
           description:
             "PMA calculator for preterm babies, showing postmenstrual age alongside corrected age and chronological age.",
           url: "https://preemie.vercel.app/pma-calculator",
+          image: {
+            "@type": "ImageObject",
+            url: "https://preemie.vercel.app/og/og-pma.png",
+            width: 1200,
+            height: 630,
+          },
           datePublished: "2026-08-26",
           dateModified: "2026-08-27",
           lastReviewed: "2026-08-27",
@@ -68,12 +74,8 @@ export const Route = createFileRoute("/pma-calculator")({
           },
           author: { "@id": "https://preemie.vercel.app/about#drzeeshan" },
           reviewedBy: { "@id": "https://preemie.vercel.app/about#drzeeshan" },
-          publisher: {
-            "@type": "Organization",
-            name: "AdjustedAge",
-            logo: { "@type": "ImageObject", url: "https://preemie.vercel.app/icon-512.png" },
-          },
-          specialty: "Pediatrics",
+          publisher: { "@id": "https://preemie.vercel.app/#organization" },
+          specialty: "Pediatric",
           citation: [
             {
               "@type": "WebPage",
@@ -130,7 +132,7 @@ export const Route = createFileRoute("/pma-calculator")({
               name: "Is PMA the same as corrected age?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "No. Corrected age counts from the due date. PMA adds the baby's gestational age at birth to the time since birth.",
+                text: "No. PMA and corrected age are linked, but they are not the same number. PMA looks forward from conceptional maturity; corrected age looks backward from the due date.",
               },
             },
             {
@@ -154,7 +156,7 @@ export const Route = createFileRoute("/pma-calculator")({
             {
               "@type": "ListItem",
               position: 2,
-              name: "PMA Calculator",
+              name: "PMA calculator",
               item: "https://preemie.vercel.app/pma-calculator",
             },
           ],
